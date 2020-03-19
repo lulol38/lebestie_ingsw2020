@@ -1,6 +1,8 @@
 package it.polimi.ingsw.Le_Bestie;
 
-public class App 
+import javax.swing.*;
+
+public class App
 {
     public static void main( String[] args )
     {
