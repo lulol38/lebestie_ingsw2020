@@ -1,4 +1,4 @@
-# lebestie_ingsw2020
+﻿# lebestie_ingsw2020
 Repository Prova Finale di Ingegneria del Software - Anno Accademico 2019/2020, Gruppo Le Bestie
 
 PREPARAZIONE PARTITA
@@ -81,8 +81,8 @@ PAN
 
 PROMETEO
 1)    Controllo che notMoveUp==true oppure PossibleLevelUp==0 : in questo caso si può attivare il potere
-2)     Aggiungo attributo firstBuild=false
-3)    Prima volta che costruisci controllare che hasMoved==firstBuild==false 
-4)    Metto firstBuild=true
-5)    MOVE
-6)    BUILD  
+2)   Aggiungo attributo firstBuild=false
+3)   Prima volta che costruisci controllare che hasMoved==firstBuild==false 
+4)   Metto firstBuild=true
+5)   MOVE
+6)   BUILD  
