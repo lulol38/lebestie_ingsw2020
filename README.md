@@ -80,9 +80,18 @@ PAN
 1)    Modifico hasWon (aggiungo il caso se scende di due o più livelli)
 
 PROMETEO
+<<<<<<< HEAD
 1)    Controllo che notMoveUp==true oppure PossibleLevelUp==0 : in questo caso si può attivare il potere
 2)   Aggiungo attributo firstBuild=false
 3)   Prima volta che costruisci controllare che hasMoved==firstBuild==false 
 4)   Metto firstBuild=true
 5)   MOVE
 6)   BUILD  
+=======
+1)     Controllo che notMoveUp==true oppure PossibleLevelUp==0 : in questo caso si può attivare il potere
+2)     Aggiungo attributo firstBuild=false
+3)     Prima volta che costruisci controllare che hasMoved==firstBuild==false 
+4)     Metto firstBuild=true
+5)     MOVE
+6)     BUILD  
+>>>>>>> 2c650d617fbc95a0e51548399dcc7038baa96753
