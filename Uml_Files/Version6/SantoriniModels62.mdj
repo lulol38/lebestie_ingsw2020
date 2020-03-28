@@ -8250,7 +8250,7 @@
 							"left": 272,
 							"top": 384,
 							"width": 105.9853515625,
-							"height": 129,
+							"height": 103,
 							"text": "in possibleSwitch we control the cells that are occupied by an opponent player"
 						},
 						{
@@ -8267,7 +8267,7 @@
 								"$ref": "AAAAAAFwzgKMUYt6icA="
 							},
 							"lineStyle": 1,
-							"points": "252:361;271:384"
+							"points": "258:361;277:383"
 						},
 						{
 							"_type": "UMLNoteLinkView",
