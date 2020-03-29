@@ -1,4 +1,4 @@
-﻿# lebestie_ingsw2020
+# lebestie_ingsw2020
 Repository Prova Finale di Ingegneria del Software - Anno Accademico 2019/2020, Gruppo Le Bestie
 
 PREPARAZIONE PARTITA
@@ -14,7 +14,7 @@ INIZIO PARTITA
 2)    TURNO*
 3)    Quando ha finito il turno (mossa+costruzione -> hasMoved = hasBuild = true) chiama endTurn
 4)    endTurn chiama nextPlayer e inizializza hasMoved = hasBuild = false
-5)    nextPlayer cambia il currentPlayer e fa partire il suo turno
+5)    nextPlayer cambia il currentPlayer e fa partire il suo turno con beginTurn()
 
 CONDIZIONI FINE PARTITA 
 Ad ogni turno devo controllare che: 
@@ -65,8 +65,8 @@ ATLAS
 1)    Modifico la BUILD
 
 DEMETRA
-2)    Aggiungo due attributi: la cella su cui costruisce la prima volta (startingCell) e un boolean secondBuild
-3)    Logica uguale ad Artemide
+1)    Aggiungo due attributi: la cella su cui costruisce la prima volta (startingCell) e un boolean secondBuild
+2)    Logica uguale ad Artemide
 
 EFESTO
 1)    Aggiungo due attributi: la cella su cui costruisce la prima volta (startingCell) e un bollean secondBuild
@@ -76,6 +76,7 @@ MINOTAURO
 1)    Modifico hasLost (se PossibleMoves == PossibleSwitch == 0 + controllo sulla casella successiva di PossibleSwitch in quella direzione è libera e senza cupola)
 2)    Controllo se la casella scelta è in PossibleMoves o PossibleSwitch (con casella successiva libera): in quest’ultimo caso cambio la cella del builder dell’avversario
 3)    IDEA: decidere se aggiungere un metodo PossibleSwitchMinotauro in BuilderModel o fare il controllo su PossibleSwitch direttamente nell’hasLost della carta
+
 PAN
 1)    Modifico hasWon (aggiungo il caso se scende di due o più livelli)
 
