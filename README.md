@@ -8,8 +8,8 @@ Repository Prova Finale di Ingegneria del Software - Anno Accademico 2019/2020, 
 Santorini is an abstract strategy board game for 2-4 players designed and released in 2004 by Gordon Hamilton and republished via Kickstarter in 2016 by Roxley Games. Inspired by the architecture of cliffside villages on Santorini Island in Greece, and primarily designed for two players, the game is played on a grid where each turn players build a town by placing building pieces up to three levels high. To win the game, players must move one of their two characters to the third level of the town.
 
 ## TEAM MEMBERS
-<p>
-Veronica Rovelli <br>
-Davide Carini <br>
-Luca Ferrari <br>
-</p>
+<ul>
+  <li>Veronica Rovelli</li>
+  <li>Luca Ferrari</li>
+  <li>Davide Carini</li>
+</ul>
