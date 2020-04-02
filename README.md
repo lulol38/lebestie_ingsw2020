@@ -5,15 +5,14 @@ Repository Prova Finale di Ingegneria del Software - Anno Accademico 2019/2020, 
 </p>
 
 ## TEAM MEMBERS
-
-<table border="solid">
-  <thead>
+<table>
+<thead>
 <tr><th></th><th>MATRICOLA</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="https://github.com/veronicarovelli">Veronica Rovelli<a/></td><td>890673</td></tr>
-<tr><td><a href="https://github.com/lulol38"> Luca Ferrari <a/></td><td>99889</td></tr>
-<tr><a href="https://github.com/davidecarini">Davide Carini<a/><td></td><td>890034</td></tr>
+<tr><td><a href="https://github.com/veronicarovelli">Veronica Rovelli<a/></td><td align="center">890673</td></tr>
+<tr><td><a href="https://github.com/lulol38"> Luca Ferrari <a/></td><td align="center">886557</td></tr>
+<tr><td><a href="https://github.com/davidecarini">Davide Carini<a/></td><td align="center">890034</td></tr>
 </tbody>
 </table>
 
