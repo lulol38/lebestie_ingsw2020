@@ -9,7 +9,8 @@ Santorini is an abstract strategy board game for 2-4 players designed and releas
 
 ## TEAM MEMBERS
 <ul>
-  <li>Veronica Rovelli</li>
-  <li>Luca Ferrari</li>
-  <li>Davide Carini</li>
+  <li><a href="https://github.com/veronicarovelli">Veronica Rovelli<a/></li>
+  <li><a href="https://github.com/lulol38"> Luca Ferrari <a/></li>
+  <li><a href="https://github.com/davidecarini">Davide Carini<a/></li>
 </ul>
+
