@@ -19,5 +19,5 @@ The object of the game is to win by either moving a builder to stand on the thir
 
 
 
-##COPYRIGHT
+## COPYRIGHT
 Santorini is a trademark of Gordon Hamilton and Roxley Games.
