@@ -7,7 +7,7 @@ Repository Prova Finale di Ingegneria del Software - Anno Accademico 2019/2020, 
 ## TEAM MEMBERS
 <table>
 <thead>
-<tr><th></th><th>MATRICOLA</th></tr>
+<tr><th>NAME</th><th>USER</th></tr>
 </thead>
 <tbody>
 <tr><td><a href="https://github.com/veronicarovelli">Veronica Rovelli<a/></td><td align="center">890673</td></tr>
