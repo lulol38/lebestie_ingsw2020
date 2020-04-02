@@ -1,6 +1,6 @@
 ﻿# lebestie_ingsw2020
 Repository Prova Finale di Ingegneria del Software - Anno Accademico 2019/2020, Gruppo Le Bestie
-
+![alt text](https://images-na.ssl-images-amazon.com/images/I/91BXMbbF7zL._AC_SY450_.jpg)
 
 PREPARAZIONE PARTITA
 1)    Primo giocatore avvia la partita -> sceglie numero giocatori (numPlayer), viene istanziato il MatchState, inserisce nickname, viene inserito player in array 
