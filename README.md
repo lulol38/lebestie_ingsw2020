@@ -6,6 +6,15 @@ Repository Prova Finale di Ingegneria del Software - Anno Accademico 2019/2020, 
   <img src="./readmePic/SantoriniBoardGame1.png" width="350" alt="SantoriniBoardGameIMG">
 </p>
 
+## PROJECT
+The aim of the project is to implement the board game Santorini following the architectural model (MVC) for the realization of the model according to the object-oriented programming paradigm (OOP).
+The sistem is distributed and it's composed by only one server and multiple clients. 
+The game has been developed in JAVA as a Software Engineering project at Politecnico di Milano.
+#### SYSTEM ARCHITECTURE
+<p align="center">
+  <img src=".\readmePic\systemArchitecture.png" alt="model">
+</p>
+
 ## TEAM MEMBERS
 <table>
 <thead>
@@ -17,15 +26,6 @@ Repository Prova Finale di Ingegneria del Software - Anno Accademico 2019/2020, 
 <tr><td><a href="https://github.com/davidecarini">Davide Carini<a/></td><td align="center">890034</td></tr>
 </tbody>
 </table>
-
-## PROJECT
-The aim of the project is to implement the board game Santorini following the architectural model (MVC) for the realization of the model according to the object-oriented programming paradigm (OOP).
-The sistem is distributed and it's composed by only one server and multiple clients. 
-The game has been developed in JAVA as a Software Engineering project at Politecnico di Milano.
-#### SYSTEM ARCHITECTURE
-<p align="center">
-  <img src=".\readmePic\systemArchitecture.png" alt="model">
-</p>
 
 ## DESCRIPTION BOARD GAME
 Santorini is an abstract strategy board game for 2-4 players(we implements the game for only 2 or 3 players) designed and released in 2004 by Gordon Hamilton and republished via Kickstarter in 2016 by Roxley Games. Inspired by the architecture of cliffside villages on Santorini Island in Greece, and primarily designed for two players, the game is played on a 5x5 grid of squares where each turn players build a town by placing building pieces up to three levels high. 
