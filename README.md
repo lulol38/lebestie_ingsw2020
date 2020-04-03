@@ -7,7 +7,7 @@ Repository Prova Finale di Ingegneria del Software - Anno Accademico 2019/2020, 
 </p>
 
 ## PROJECT
-The aim of the project is to implement the board game Santorini following the architectural model (MVC) for the realization of the model according to the object-oriented programming paradigm (OOP).
+The aim of the project is to implement the board game **Santorini** following the architectural model (MVC) for the realization of the model according to the object-oriented programming paradigm (OOP).
 The sistem is distributed and it's composed by only one server and multiple clients. 
 The game has been developed in JAVA as a Software Engineering project at Politecnico di Milano.
 #### SYSTEM ARCHITECTURE
@@ -16,7 +16,7 @@ The game has been developed in JAVA as a Software Engineering project at Politec
 </p>
 
 ## TEAM MEMBERS
-<table>
+<table style="margin-left: auto; margin-right: auto">
 <thead>
 <tr><th>NAME</th><th>USER</th></tr>
 </thead>
