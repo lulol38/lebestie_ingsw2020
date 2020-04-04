@@ -33,7 +33,7 @@ Santorini is an abstract strategy board game for 2-4 players(we implements the g
 The object of the game is to win by either moving a worker to stand on the third level above the base of the board, or alternatively to manouver so your opponent cannot move on his turn.
 
 
-## FEATURES
+## FEATURES IMPLEMENTED
 - [ ] Simplified Rules
 - [ ] Complex Rules
 - [ ] Socket (TCP connection)
@@ -44,9 +44,13 @@ The object of the game is to win by either moving a worker to stand on the third
 - [ ] State of Game Persistent 
 - [ ] Advanced Gods
 
+## DOCUMENTATION
+### UML
+Uml files are in UML directory.
 
-## HOW PLAY
+## HOW TO PLAY
 
 ## CREDITS
 Santorini is a trademark of Gordon Hamilton and Roxley Games.
+
 Copyright (C) 2020 Davide Carini, Veronica Rovelli, Luca Ferrari
