@@ -1,30 +1,16 @@
-
-import java.util.*;
-
+package it.polimi.ingsw.Le_Bestie.Model.Board;
 /**
- * 
+ *
  */
 public class Board {
 
-    /**
-     * Default constructor
-     */
+    private final Cell[][] cells=new Cell[5][5];
+
     public Board() {
     }
 
-    /**
-     * 
-     */
-    private Cell cells[][];
-
-
-
-    /**
-     * @return
-     */
-    public Cells DisplayBoard() {
-        // TODO implement here
-        return null;
+    public Cell[][] getBoard() {
+        return this.cells;
     }
 
 }
