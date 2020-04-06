@@ -1,61 +1,36 @@
+package it.polimi.ingsw.Le_Bestie.Model.Cards;
+
+import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
+import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
 import java.util.*;
 
-/**
- * 
- */
-private class Demeter implements GodCard{
+public class Demeter implements GodCard{
 
-    /**
-     * Default constructor
-     */
-    private Demeter() {
-    }
-
-    /**
-     * 
-     */
     private boolean secondBuilt;
-
-    /**
-     * 
-     */
     private Cell startingCell;
 
-    /**
-     * @param BuilderModel 
-     * @param CellModel 
-     * @return
-     */
-    public boolean move(void BuilderModel, void CellModel) {
-        // TODO implement here
+    public Demeter() {
+
+    }
+
+    @Override
+    public boolean move(Builder w, Cell c) {
         return false;
     }
 
-    /**
-     * @param BuilderModel 
-     * @param CellModel 
-     * @return
-     */
-    public boolean build(void BuilderModel, void CellModel) {
-        // TODO implement here
+    @Override
+    public boolean build(Builder w, Cell c) {
         return false;
     }
 
-    /**
-     * @return
-     */
-    public boolean haswon() {
-        // TODO implement here
+    @Override
+    public boolean HasWon() {
         return false;
     }
 
-    /**
-     * @return
-     */
-    public boolean hasLost() {
-        // TODO implement here
+    @Override
+    public boolean HasLost() {
         return false;
     }
-
 }

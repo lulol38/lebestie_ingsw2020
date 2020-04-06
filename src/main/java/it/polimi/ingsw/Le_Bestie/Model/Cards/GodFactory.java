@@ -1,3 +1,4 @@
+package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
 import java.util.*;
 
@@ -6,21 +7,13 @@ import java.util.*;
  */
 public class GodFactory {
 
-    /**
-     * Default constructor
-     */
     public GodFactory() {
     }
 
-
-    /**
-     * @param String 
-     * @return
-     */
     public static GodCard getGod(String cardType) {
    	if(cardType== null) return null;
 	if(cardType.equalsIgnoreCase("Apollo")) return new Apollo();
-	if(cardType.equalsIgnoreCase("Artemis")) return new Arthemis();
+	if(cardType.equalsIgnoreCase("Artemis")) return new Artemis();
 	if(cardType.equalsIgnoreCase("Athena")) return new Athena();
 	if(cardType.equalsIgnoreCase("Atlas")) return new Atlas();
 	if(cardType.equalsIgnoreCase("Demeter")) return new Demeter();
