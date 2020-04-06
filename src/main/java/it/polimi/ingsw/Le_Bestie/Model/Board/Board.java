@@ -4,7 +4,8 @@ package it.polimi.ingsw.Le_Bestie.Model.Board;
  */
 public class Board {
 
-    private final Cell[][] cells=new Cell[5][5];
+    final int square=5;
+    private final Cell[][] cells=new Cell[square][square];
 
     public Board() {
     }

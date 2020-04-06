@@ -13,8 +13,12 @@ public class Cell {
     private boolean occupied;
     private boolean disabled;
 
+    public Cell(){
 
-    public Cell(int level) {
+    }
+
+    public Cell(int level)
+    {
         this.level=level;
     }
 
