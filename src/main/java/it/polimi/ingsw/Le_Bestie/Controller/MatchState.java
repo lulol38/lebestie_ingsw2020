@@ -1,4 +1,5 @@
 package it.polimi.ingsw.Le_Bestie.Controller;
+import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
@@ -14,6 +15,9 @@ public class MatchState implements MatchStateInterface{
     private Player Winner;
     private boolean notMoveUp;
     private Builder chosenBuilder;
+
+    private ArrayList<Player> playerList;
+    private Board board;
 
 
  //costruttore
