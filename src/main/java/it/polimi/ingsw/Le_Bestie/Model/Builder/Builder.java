@@ -1,71 +1,68 @@
 package it.polimi.ingsw.Le_Bestie.Model.Builder;
 
+import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
+
+import java.awt.*;
 import java.util.*;
 
-/**
- * 
- */
 public class Builder {
 
-    /**
-     * Default constructor
-     */
-    public Builder() {
-    }
-
-    /**
-     * 
-     */
     private Color color;
-
-    /**
-     * 
-     */
     private String idBuilder;
-
-    /**
-     * 
-     */
     private boolean disabled;
 
+    public Builder() {
 
-    /**
-     * @return
-     */
+    }
+
+ //set e get
+    public void setColor(Color color){
+        this.color=color;
+    }
+
+    public Color getColor(){
+        return this.color;
+    }
+
+    public void setIdBuilder(String idBuilder){
+        this.idBuilder=idBuilder;
+    }
+
+    public String getIdBuilder(){
+        return this.idBuilder;
+    }
+
+    public void setDisabled(boolean disabled){
+        this.disabled=disabled;
+    }
+
+    public boolean getDisabled(){
+        return this.disabled;
+    }
+
+
+
     public void checkDisabled() {
-        // TODO implement here
+
+    }
+
+    public ArrayList<Cell> possibleMoves() {
+
         return null;
     }
 
-    /**
-     * @return
-     */
-    public ArrayList<cellModel> possibleMoves() {
-        // TODO implement here
+    public ArrayList<Cell> possibleBuilds() {
+
         return null;
     }
 
-    /**
-     * @return
-     */
-    public ArrayList<CellModel> possibleBuilds() {
-        // TODO implement here
+    public ArrayList<Cell> possibleSwitch() {
+
         return null;
     }
 
-    /**
-     * @return
-     */
-    public ArrayList<CellModel> possibleSwitch() {
-        // TODO implement here
-        return null;
-    }
+    public ArrayList<Cell> possibleLevelUp() {
 
-    /**
-     * @return
-     */
-    public ArrayList<CellModel> possibleLevelUp() {
-        // TODO implement here
         return null;
     }
 
