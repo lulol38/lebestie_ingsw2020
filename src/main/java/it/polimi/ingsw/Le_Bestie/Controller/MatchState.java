@@ -89,13 +89,8 @@ public class MatchState{
         return chosenBuilder;
     }
 
-
-//metodi
     public ArrayList<String> removeCard(String s) {
         // TODO implement here
-        //
-
-
         return null;
     }
 
@@ -134,7 +129,7 @@ public class MatchState{
         return null;
     }
 
-    public boolean checkPieces(int level) {
+    public boolean checkPieces(void int) {
         // TODO implement here
         return false;
     }
