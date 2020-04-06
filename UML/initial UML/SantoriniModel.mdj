@@ -292,7 +292,7 @@
 											"top": 207,
 											"width": 297.31787109375,
 											"height": 13,
-											"text": "Worker"
+											"text": "Builder"
 										},
 										{
 											"_type": "LabelView",
@@ -5448,7 +5448,7 @@
 											"top": 423,
 											"width": 301.666015625,
 											"height": 13,
-											"text": "+chosenBuilder: Worker",
+											"text": "+chosenBuilder: Builder",
 											"horizontalAlignment": 0
 										}
 									],
@@ -8699,7 +8699,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Worker",
+					"name": "Builder",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
