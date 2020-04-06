@@ -1,34 +1,18 @@
+package it.polimi.ingsw.Le_Bestie.Model.Cards;
+
+import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
+import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 
 import java.util.*;
 
-/**
- * 
- */
 public interface GodCard {
 
+    boolean move(Builder w, Cell c);
 
-    /**
-     * @param BuilderModel 
-     * @param CellModel 
-     * @return
-     */
-    public boolean move(void BuilderModel, void CellModel);
+    boolean build(Builder w, Cell c);
 
-    /**
-     * @param BuilderModel 
-     * @param CellModel 
-     * @return
-     */
-    public boolean build(void BuilderModel, void CellModel);
+    boolean HasWon();
 
-    /**
-     * @return
-     */
-    public boolean haswon();
-
-    /**
-     * @return
-     */
-    public boolean hasLost();
+    boolean HasLost();
 
 }

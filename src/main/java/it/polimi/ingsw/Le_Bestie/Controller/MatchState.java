@@ -1,98 +1,146 @@
+package it.polimi.ingsw.Le_Bestie.Controller;
+import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
+import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
+import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
 import java.util.*;
 
-/**
- * 
- */
-public class MatchState {
+public class MatchState implements MatchStateInterface{
 
-    /**
-     * Default constructor
-     */
+    private int numPlayers;
+    private boolean hasMoved;
+    private ArrayList<String> deck[];
+    private ArrayList<Integer> remainingPieces[];
+    private Player currentTurnPlayer;
+    private Player Winner;
+    private boolean notMoveUp;
+    private Builder chosenBuilder;
+
+    private ArrayList<Player> playerList;
+    private Board board;
+
+
+ //costruttore
     public MatchState() {
+
     }
 
 
-    /**
-     * @param String 
-     * @return
-     */
-    public ArrayList<String> removeCard(void String) {
-        // TODO implement here
+//get e set
+    public void setNumPlayers(int numPlayers) {
+        this.numPlayers=numPlayers;
+    }
+
+    public int getNumPlayers() {
+        return numPlayers;
+    }
+
+    public void setHasMoved(boolean hasMoved) {
+        this.hasMoved=hasMoved;
+    }
+
+    public boolean getHasMoved() {
+        return hasMoved;
+    }
+
+    public void setDeck(ArrayList<String> deck[]) {
+        for(int i=0;i<deck.length;i++)
+            this.deck[i]=deck[i];
+    }
+
+    public ArrayList<String>[] getDeck() {
+        return deck;
+    }
+
+    public void setRemainingPieces(ArrayList<Integer> remainingPieces[]) {
+        for(int i=0;i<remainingPieces.length;i++)
+          this.remainingPieces[i]=remainingPieces[i];
+    }
+
+    public ArrayList<Integer>[] getRemainingPieces() {
+            return remainingPieces;
+    }
+
+    public void SetCurrentTurnPlayer(Player currentTurnPlayer) {
+        this.currentTurnPlayer=currentTurnPlayer;
+    }
+
+    public Player getCurrentTurnPlayer() {
+        return currentTurnPlayer;
+    }
+
+    public void setWinner(Player Winner) {
+        this.Winner=Winner;
+    }
+
+    public Player getWinner() {
+        return Winner;
+    }
+
+    public void setNotMoveUp(boolean notMoveUp) {
+        this.notMoveUp=notMoveUp;
+    }
+
+    public boolean getNotMoveUp() {
+        return notMoveUp;
+    }
+
+    public void setChosenBuilder(Builder chosenBuilder) {
+        this.chosenBuilder=chosenBuilder;
+    }
+
+    public Builder getChosenBuilder() {
+        return chosenBuilder;
+    }
+
+
+    @Override
+    public ArrayList<String> removeCard(String s) {
         return null;
     }
 
-    /**
-     * @return
-     */
+    @Override
     public boolean assignCard() {
-        // TODO implement here
         return false;
     }
 
-    /**
-     * @return
-     */
+    @Override
     public ArrayList<String> removeCards3Players() {
-        // TODO implement here
         return null;
     }
 
-    /**
-     * @return
-     */
+    @Override
     public Player nextPlayer() {
-        // TODO implement here
         return null;
     }
 
-    /**
-     * @return
-     */
+    @Override
     public boolean endMatch() {
-        // TODO implement here
         return false;
     }
 
-    /**
-     * @return
-     */
-    public ArrayList<PlayerModel> cleanAndRemovePlayer() {
-        // TODO implement here
+    @Override
+    public ArrayList<Player> cleanAndRemovePlayer() {
         return null;
     }
 
-    /**
-     * @return
-     */
+    @Override
     public void addPlayer() {
-        // TODO implement here
-        return null;
+
     }
 
-    /**
-     * @return
-     */
+    @Override
     public void endTurn() {
-        // TODO implement here
-        return null;
+
     }
 
-    /**
-     * @param int 
-     * @return
-     */
-    public boolean checkPieces(void int) {
-        // TODO implement here
+    @Override
+    public boolean checkPieces(int level) {
         return false;
     }
 
-    /**
-     * @return
-     */
+    @Override
     public void beginTurn() {
-        // TODO implement here
-        return null;
-    }
 
+    }
 }
