@@ -1,3 +1,4 @@
+package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
 import java.util.*;
 
