@@ -4,16 +4,16 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
 import java.util.*;
 
-public class MatchState{
+public class MatchState implements MatchStateInterface{
 
-    int numPlayers;
-    boolean hasMoved;
-    ArrayList<String> deck[];
-    ArrayList<Integer> remainingPieces[];
-    Player currentTurnPlayer;
-    Player Winner;
-    boolean notMoveUp;
-    Builder chosenBuilder;
+    private int numPlayers;
+    private boolean hasMoved;
+    private ArrayList<String> deck[];
+    private ArrayList<Integer> remainingPieces[];
+    private Player currentTurnPlayer;
+    private Player Winner;
+    private boolean notMoveUp;
+    private Builder chosenBuilder;
 
 
  //costruttore
@@ -89,54 +89,53 @@ public class MatchState{
         return chosenBuilder;
     }
 
+    @Override
     public ArrayList<String> removeCard(String s) {
-        // TODO implement here
         return null;
     }
 
+    @Override
     public boolean assignCard() {
-        // TODO implement here
         return false;
     }
 
+    @Override
     public ArrayList<String> removeCards3Players() {
-        // TODO implement here
         return null;
     }
 
+    @Override
     public Player nextPlayer() {
-        // TODO implement here
         return null;
     }
 
+    @Override
     public boolean endMatch() {
-        // TODO implement here
         return false;
     }
 
-    public ArrayList<PlayerModel> cleanAndRemovePlayer() {
-        // TODO implement here
+    @Override
+    public ArrayList<Player> cleanAndRemovePlayer() {
         return null;
     }
 
+    @Override
     public void addPlayer() {
-        // TODO implement here
-        return null;
+
     }
 
+    @Override
     public void endTurn() {
-        // TODO implement here
-        return null;
+
     }
 
-    public boolean checkPieces(void int) {
-        // TODO implement here
+    @Override
+    public boolean checkPieces(int level) {
         return false;
     }
 
+    @Override
     public void beginTurn() {
-        // TODO implement here
-        return null;
-    }
 
+    }
 }
