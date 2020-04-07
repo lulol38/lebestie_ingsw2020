@@ -5,12 +5,13 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
 import java.util.*;
 
-public class Hephaestus implements GodCard{
+public class Hephaestus extends GodCard{
 
     private boolean secondBuilt;
     private Cell startingCell;
 
-    public Hephaestus() {
+    public Hephaestus(String name) {
+        super(name);
     }
 
     @Override

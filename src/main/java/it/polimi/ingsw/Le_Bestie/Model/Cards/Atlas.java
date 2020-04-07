@@ -5,10 +5,10 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
 import java.util.*;
 
-public class Atlas implements GodCard{
+public class Atlas extends GodCard{
 
-    public Atlas() {
-
+    public Atlas(String name) {
+        super(name);
     }
 
     @Override

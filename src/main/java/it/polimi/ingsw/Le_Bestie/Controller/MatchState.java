@@ -1,5 +1,6 @@
 package it.polimi.ingsw.Le_Bestie.Controller;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
+import it.polimi.ingsw.Le_Bestie.Model.Cards.Deck;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
@@ -9,7 +10,6 @@ public class MatchState implements MatchStateInterface{
 
     private int numPlayers;
     private boolean hasMoved;
-    private ArrayList<String> deck[];
     private ArrayList<Integer> remainingPieces[];
     private Player currentTurnPlayer;
     private Player Winner;
@@ -41,15 +41,6 @@ public class MatchState implements MatchStateInterface{
 
     public boolean getHasMoved() {
         return hasMoved;
-    }
-
-    public void setDeck(ArrayList<String> deck[]) {
-        for(int i=0;i<deck.length;i++)
-            this.deck[i]=deck[i];
-    }
-
-    public ArrayList<String>[] getDeck() {
-        return deck;
     }
 
     public void setRemainingPieces(ArrayList<Integer> remainingPieces[]) {
@@ -93,22 +84,6 @@ public class MatchState implements MatchStateInterface{
         return chosenBuilder;
     }
 
-
-    @Override
-    public ArrayList<String> removeCard(String s) {
-        return null;
-    }
-
-    @Override
-    public boolean assignCard() {
-        return false;
-    }
-
-    @Override
-    public ArrayList<String> removeCards3Players() {
-        return null;
-    }
-
     @Override
     public Player nextPlayer() {
         return null;
@@ -125,14 +100,10 @@ public class MatchState implements MatchStateInterface{
     }
 
     @Override
-    public void addPlayer() {
-
-    }
+    public void addPlayer() { }
 
     @Override
-    public void endTurn() {
-
-    }
+    public void endTurn() { }
 
     @Override
     public boolean checkPieces(int level) {
@@ -140,7 +111,10 @@ public class MatchState implements MatchStateInterface{
     }
 
     @Override
-    public void beginTurn() {
+    public void beginTurn() { }
 
+    @Override
+    public Deck getDeck(int numPlayers) {
+        return null;
     }
 }

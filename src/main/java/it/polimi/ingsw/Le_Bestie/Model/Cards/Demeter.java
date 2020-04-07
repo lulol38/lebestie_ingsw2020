@@ -5,13 +5,13 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
 import java.util.*;
 
-public class Demeter implements GodCard{
+public class Demeter extends GodCard{
 
     private boolean secondBuilt;
     private Cell startingCell;
 
-    public Demeter() {
-
+    public Demeter(String name) {
+        super(name);
     }
 
     @Override

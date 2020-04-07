@@ -5,14 +5,20 @@ import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 
 import java.util.*;
 
-public interface GodCard {
+public abstract class GodCard {
 
-    boolean move(Builder w, Cell c);
+    private String name="";
 
-    boolean build(Builder w, Cell c);
+    public GodCard(String name){
+        this.name=name;
+    }
 
-    boolean HasWon();
+    public boolean move(Builder w, Cell c){return false;}
 
-    boolean HasLost();
+    public boolean build(Builder w, Cell c){return false;}
+
+    public boolean HasWon(){return false;}
+
+    public boolean HasLost(){return false;}
 
 }

@@ -5,9 +5,10 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
 import java.util.*;
 
-public class Pan implements GodCard{
+public class Pan extends GodCard{
 
-    public Pan() {
+    public Pan(String name) {
+        super(name);
     }
 
     @Override

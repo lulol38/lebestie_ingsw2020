@@ -5,11 +5,12 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
 import java.util.*;
 
-public class Prometheus implements GodCard{
+public class Prometheus extends GodCard{
 
     private boolean firstBuild;
 
-    public Prometheus() {
+    public Prometheus(String name) {
+        super(name);
     }
 
     @Override

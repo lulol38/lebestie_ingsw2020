@@ -8,10 +8,10 @@ import java.util.*;
 /**
  * 
  */
-public class Apollo implements GodCard{
+public class Apollo extends GodCard{
 
-    public Apollo() {
-
+    public Apollo(String name) {
+        super(name);
     }
 
     @Override

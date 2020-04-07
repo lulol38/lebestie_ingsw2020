@@ -5,9 +5,10 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
 import java.util.*;
 
-public class Minotaur implements GodCard{
+public class Minotaur extends GodCard{
 
-    public Minotaur() {
+    public Minotaur(String name) {
+        super(name);
     }
 
     @Override

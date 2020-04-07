@@ -8,10 +8,10 @@ import java.util.*;
 /**
  * 
  */
-public class Athena implements GodCard{
+public class Athena extends GodCard{
 
-    public Athena() {
-
+    public Athena(String name) {
+        super(name);
     }
 
     @Override
