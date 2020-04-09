@@ -1,32 +1,40 @@
 package it.polimi.ingsw.Le_Bestie.Controller;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Cards.Deck;
+import it.polimi.ingsw.Le_Bestie.Model.Cards.GodCard;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
+import java.io.IOException;
 import java.util.*;
+
 
 public class MatchState implements MatchStateInterface{
 
     private int numPlayers;
-    private boolean hasMoved;
-    private ArrayList<Integer> remainingPieces[];
+    private static boolean hasMoved;
+    private static ArrayList<Integer> remainingPieces;
     private Player currentTurnPlayer;
     private Player Winner;
     private boolean notMoveUp;
     private Builder chosenBuilder;
-
     private ArrayList<Player> playerList;
     private Board board;
+    private ArrayList<GodCard> deck;
 
 
- //costruttore
+    public ArrayList<Player> getPlayerList() {
+        return playerList;
+    }
+
+    public void setPlayerList(ArrayList<Player> playerList) {
+        this.playerList = playerList;
+    }
+
     public MatchState() {
 
     }
 
-
-//get e set
     public void setNumPlayers(int numPlayers) {
         this.numPlayers=numPlayers;
     }
@@ -35,21 +43,20 @@ public class MatchState implements MatchStateInterface{
         return numPlayers;
     }
 
-    public void setHasMoved(boolean hasMoved) {
-        this.hasMoved=hasMoved;
+    public static void setHasMoved(boolean hasMoved) {
+        MatchState.hasMoved=hasMoved;
     }
 
-    public boolean getHasMoved() {
+    public static boolean getHasMoved() {
         return hasMoved;
     }
 
-    public void setRemainingPieces(ArrayList<Integer> remainingPieces[]) {
-        for(int i=0;i<remainingPieces.length;i++)
-          this.remainingPieces[i]=remainingPieces[i];
+    public static Integer getRemainingPieces(int level) {
+        return remainingPieces.get(level-1);
     }
 
-    public ArrayList<Integer>[] getRemainingPieces() {
-            return remainingPieces;
+    public void setRemainingPieces(ArrayList<Integer> remainingPieces) {
+        this.remainingPieces = remainingPieces;
     }
 
     public void SetCurrentTurnPlayer(Player currentTurnPlayer) {
@@ -106,7 +113,7 @@ public class MatchState implements MatchStateInterface{
     public void endTurn() { }
 
     @Override
-    public boolean checkPieces(int level) {
+    public static boolean checkPieces(int level) {
         return false;
     }
 
@@ -114,7 +121,8 @@ public class MatchState implements MatchStateInterface{
     public void beginTurn() { }
 
     @Override
-    public Deck getDeck(int numPlayers) {
-        return null;
+    public ArrayList<GodCard> getDeck(int numPlayers) throws IOException {
+        Deck deck=new Deck(2);
+        return deck.getDeck();
     }
 }

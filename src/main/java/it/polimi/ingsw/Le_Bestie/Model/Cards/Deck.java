@@ -1,7 +1,6 @@
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;

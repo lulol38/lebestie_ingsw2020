@@ -20,6 +20,7 @@ public class Artemis extends GodCard{
 
     @Override
     public boolean move(Builder w, Cell c) {
+        //first move
        if(!MatchState.getHasMoved())
            if(super.move(w,c))
            {
@@ -27,30 +28,30 @@ public class Artemis extends GodCard{
                return true;
            }
 
-
+        //second optional move
        if(MatchState.getHasMoved()&&!secondMove&&c!=startingCell)
           {
-               super.move(w,c);
-               secondMove=true;
-               return true;
+               if(super.move(w,c))
+               {
+                   secondMove=true;
+                   return true;
+               }
           }
        return false;
     }
 
     @Override
     public boolean build(Builder w, Cell c) {
-              super.build(w,c);
-
-        return false;
+              return super.build(w,c);
     }
 
     @Override
     public boolean HasWon() {
-        return false;
+        return super.HasWon();
     }
 
     @Override
     public boolean HasLost() {
-        return false;
+        return super.HasLost();
     }
 }

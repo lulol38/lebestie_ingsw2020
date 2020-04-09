@@ -1,5 +1,7 @@
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
+import it.polimi.ingsw.Le_Bestie.Controller.MatchState;
+import it.polimi.ingsw.Le_Bestie.Controller.MatchStateInterface;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 
@@ -13,9 +15,46 @@ public abstract class GodCard {
         this.name=name;
     }
 
-    public boolean move(Builder w, Cell c){return false;}
+    public boolean move(Builder w, Cell c){
+        if(!MatchState.getHasMoved()&&w.possibleMoves().contains(c))
+        {
+            //winner condition
+            if(c.getLevel()==3)
+                HasWon();
 
-    public boolean build(Builder w, Cell c){return false;}
+            //free the previous builder's cell
+            w.getCell().setBuilder(null);
+            w.getCell().setOccupied(false);
+
+            //new cell
+            w.setCell(c);
+            c.setBuilder(w);
+            c.setOccupied(true);
+
+            MatchState.setHasMoved(true);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean build(Builder w, Cell c){
+        if(MatchState.getHasMoved()&&w.possibleBuilds().contains(c))
+        {
+            //buinding piece is available?
+            if(MatchState.getRemainingPieces(c.getLevel()+1)>0)
+            {
+                c.addLevel();
+                MatchState.checkPieces(c.getLevel());
+                //is the builder locked, after his build?
+                if(w.possibleMoves().size()==0)
+                    w.setDisabled(true);
+            }
+            HasLost();
+            return false;
+        }
+        HasLost();
+        return false;
+    }
 
     public boolean HasWon(){return false;}
 
