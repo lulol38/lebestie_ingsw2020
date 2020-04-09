@@ -5,6 +5,7 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 import java.util.*;
 
+
 public class MatchState implements MatchStateInterface{
 
     private int numPlayers;
@@ -17,6 +18,7 @@ public class MatchState implements MatchStateInterface{
     private ArrayList<Player> playerList;
     private Board board;
     private Deck deck;
+
 
     public ArrayList<Player> getPlayerList() {
         return playerList;

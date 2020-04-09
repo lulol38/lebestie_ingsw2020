@@ -5,31 +5,27 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 /**
  *This class implements the player
  */
+
 public class Player {
 
     private String nickname;
     private GodCard godCardPlayer;
-    private boolean disabled;
     private Builder builder1;
     private Builder builder2;
+    private boolean disabled;
 
     public Player(String nickname) {
         this.nickname=nickname;
-        this.godCardPlayer=null;
         this.disabled=false;
-        this.builder1=null;
-        this.builder2 =null;
     }
 
     //Getters
-   public String getNickname(){
+    public String getNickname(){
         return this.nickname;
    }
-
     public GodCard getGodCard() {
         return this.godCardPlayer;
     }
-
     public boolean isDisabled(){
         return this.disabled;
     }
@@ -40,18 +36,15 @@ public class Player {
         return this.builder2;
     }
 
-
     //Setters
     public void setNickname(String nickname)
     {
         this.nickname=nickname;
     }
-
     public void setGodCard(GodCard godCardPlayer)
     {
         this.godCardPlayer=godCardPlayer;
     }
-
     public void setBuilder1(Builder builder1)
     {
         this.builder1= builder1;
