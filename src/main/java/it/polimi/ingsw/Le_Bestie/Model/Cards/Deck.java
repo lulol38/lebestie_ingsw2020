@@ -14,19 +14,18 @@ public class Deck {
     private static String godCard3PlayersPath="DatabaseGodCard/Deck3Players.csv";
 
     public Deck(int numplayers) throws IOException{
-        if(numplayers==2)
-        {
-            deck=loadsCardFromFile2Players(godCard2PlayersPath);
-        }
-        else
-        {
-            deck=loadsCardFromFile2Players(godCard3PlayersPath);
 
-        }
+        if(numplayers==2)
+            deck=loadsCardFromFile2Players(godCard2PlayersPath);
+        else
+            deck=loadsCardFromFile3Players(godCard3PlayersPath);
+
         this.shuffleDeck();
 
     }
-
+    public ArrayList<GodCard> getDeck() {
+        return deck;
+    }
 
     public boolean assignCard(Player p){
         if(!deck.isEmpty())
@@ -70,7 +69,7 @@ public class Deck {
     {
         ArrayList<GodCard> cards=new ArrayList<GodCard>();
         String currentLine = "";
-        FileReader fileReader= new FileReader(godCard2PlayersPath);
+        FileReader fileReader= new FileReader(godCard3PlayersPath);
         BufferedReader br = new BufferedReader(fileReader);
         int c=1;
         while ((currentLine = br.readLine()) != null) {

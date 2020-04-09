@@ -3,9 +3,6 @@ package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
-import it.polimi.ingsw.Le_Bestie.Controller.MatchState;
-
-import java.util.*;
 
 public class Artemis extends GodCard{
 
@@ -20,7 +17,8 @@ public class Artemis extends GodCard{
 
     @Override
     public boolean move(Builder w, Cell c) {
-       if(!MatchState.getHasMoved())
+
+
            if(super.move(w,c))
            {
                startingCell=c;
@@ -28,13 +26,11 @@ public class Artemis extends GodCard{
            }
 
 
-       if(MatchState.getHasMoved()&&!secondMove&&c!=startingCell)
-          {
                super.move(w,c);
                secondMove=true;
                return true;
-          }
-       return false;
+
+
     }
 
     @Override

@@ -1,7 +1,6 @@
 package it.polimi.ingsw.Le_Bestie.Model.Player;
-import it.polimi.ingsw.Le_Bestie.Model.Cards.GodCard;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
-
+import it.polimi.ingsw.Le_Bestie.Model.Cards.*;
 /**
  *This class implements the player
  */
@@ -53,5 +52,39 @@ public class Player {
     {
         this.builder2=builder1;
     }
+
+    public String toString() {
+        StringBuilder res = new StringBuilder();
+
+        if (this.getGodCard() instanceof Apollo)
+            res.append("Apollo");
+
+        if (this.getGodCard() instanceof Artemis)
+            res.append("Artemis");
+
+        if (this.getGodCard() instanceof Prometheus)
+            res.append("Prometheus");
+
+        if (this.getGodCard() instanceof Athena)
+            res.append("Athena");
+
+        if (this.getGodCard() instanceof Atlas)
+            res.append("Atlas");
+
+        if (this.getGodCard() instanceof Demeter)
+            res.append("Demeter");
+        if (this.getGodCard() instanceof Hephaestus)
+            res.append("Hephaestus");
+
+        if (this.getGodCard() instanceof Minotaur)
+            res.append("Minotaur");
+
+        if (this.getGodCard() instanceof Pan)
+            res.append("Pan");
+
+        return res.toString();
+
+    }
+
 
 }
