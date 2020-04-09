@@ -12,8 +12,8 @@ import java.util.*;
 public class MatchState implements MatchStateInterface{
 
     private int numPlayers;
-    private boolean hasMoved;
-    private ArrayList<Integer> remainingPieces[];
+    private static boolean hasMoved;
+    private static ArrayList<Integer> remainingPieces;
     private Player currentTurnPlayer;
     private Player Winner;
     private boolean notMoveUp;
@@ -43,19 +43,19 @@ public class MatchState implements MatchStateInterface{
         return numPlayers;
     }
 
-    public void setHasMoved(boolean hasMoved) {
-        this.hasMoved=hasMoved;
+    public static void setHasMoved(boolean hasMoved) {
+        MatchState.hasMoved=hasMoved;
     }
 
-    public boolean getHasMoved() {
+    public static boolean getHasMoved() {
         return hasMoved;
     }
 
-    public ArrayList<Integer>[] getRemainingPieces() {
-        return remainingPieces;
+    public static Integer getRemainingPieces(int level) {
+        return remainingPieces.get(level-1);
     }
 
-    public void setRemainingPieces(ArrayList<Integer>[] remainingPieces) {
+    public void setRemainingPieces(ArrayList<Integer> remainingPieces) {
         this.remainingPieces = remainingPieces;
     }
 
@@ -113,7 +113,7 @@ public class MatchState implements MatchStateInterface{
     public void endTurn() { }
 
     @Override
-    public boolean checkPieces(int level) {
+    public static boolean checkPieces(int level) {
         return false;
     }
 
