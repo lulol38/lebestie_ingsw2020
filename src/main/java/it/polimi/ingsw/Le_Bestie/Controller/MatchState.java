@@ -18,12 +18,18 @@ public class MatchState implements MatchStateInterface{
     private Board board;
     private Deck deck;
 
+    public ArrayList<Player> getPlayerList() {
+        return playerList;
+    }
+
+    public void setPlayerList(ArrayList<Player> playerList) {
+        this.playerList = playerList;
+    }
+
     public MatchState() {
 
     }
 
-
-//get e set
     public void setNumPlayers(int numPlayers) {
         this.numPlayers=numPlayers;
     }
@@ -40,13 +46,12 @@ public class MatchState implements MatchStateInterface{
         return hasMoved;
     }
 
-    public void setRemainingPieces(ArrayList<Integer> remainingPieces[]) {
-        for(int i=0;i<remainingPieces.length;i++)
-          this.remainingPieces[i]=remainingPieces[i];
+    public ArrayList<Integer>[] getRemainingPieces() {
+        return remainingPieces;
     }
 
-    public ArrayList<Integer>[] getRemainingPieces() {
-            return remainingPieces;
+    public void setRemainingPieces(ArrayList<Integer>[] remainingPieces) {
+        this.remainingPieces = remainingPieces;
     }
 
     public void SetCurrentTurnPlayer(Player currentTurnPlayer) {
