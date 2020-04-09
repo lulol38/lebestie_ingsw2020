@@ -1,8 +1,10 @@
 package it.polimi.ingsw.Le_Bestie.Controller;
+
 import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Cards.Deck;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
+import java.io.IOException;
 import java.util.*;
 
 
@@ -118,7 +120,10 @@ public class MatchState implements MatchStateInterface{
     public void beginTurn() { }
 
     @Override
-    public Deck getDeck(int numPlayers) {
+    public Deck getDeck(int numPlayers) throws IOException {
+
+        deck=new Deck(numPlayers);
         return deck;
+
     }
 }
