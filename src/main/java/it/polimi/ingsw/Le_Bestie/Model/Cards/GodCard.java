@@ -1,11 +1,8 @@
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
 import it.polimi.ingsw.Le_Bestie.Controller.MatchState;
-import it.polimi.ingsw.Le_Bestie.Controller.MatchStateInterface;
-import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
-
-import java.util.*;
+import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
 public abstract class GodCard {
 
@@ -44,7 +41,9 @@ public abstract class GodCard {
             if(MatchState.getRemainingPieces(c.getLevel()+1)>0)
             {
                 c.addLevel();
-                MatchState.checkPieces(c.getLevel());
+
+
+                 //checkPieces(c.getLevel());
                 //is the builder locked, after his build?
                 if(w.possibleMoves().size()==0)
                     w.setDisabled(true);

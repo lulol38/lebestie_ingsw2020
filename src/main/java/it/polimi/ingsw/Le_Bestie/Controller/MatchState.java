@@ -1,13 +1,11 @@
 package it.polimi.ingsw.Le_Bestie.Controller;
+
 import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
-import it.polimi.ingsw.Le_Bestie.Model.Cards.Deck;
-import it.polimi.ingsw.Le_Bestie.Model.Cards.GodCard;
-import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
-
+import it.polimi.ingsw.Le_Bestie.Model.Cards.Deck;
+import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import java.io.IOException;
-import java.util.*;
-
+import java.util.ArrayList;
 
 public class MatchState implements MatchStateInterface{
 
@@ -20,8 +18,7 @@ public class MatchState implements MatchStateInterface{
     private Builder chosenBuilder;
     private ArrayList<Player> playerList;
     private Board board;
-    private ArrayList<GodCard> deck;
-
+    private Deck deck;
 
     public ArrayList<Player> getPlayerList() {
         return playerList;
@@ -31,7 +28,8 @@ public class MatchState implements MatchStateInterface{
         this.playerList = playerList;
     }
 
-    public MatchState() {
+    public MatchState() throws IOException {
+        this.deck=new Deck(numPlayers);
 
     }
 
@@ -42,6 +40,7 @@ public class MatchState implements MatchStateInterface{
     public int getNumPlayers() {
         return numPlayers;
     }
+
 
     public static void setHasMoved(boolean hasMoved) {
         MatchState.hasMoved=hasMoved;
@@ -112,17 +111,17 @@ public class MatchState implements MatchStateInterface{
     @Override
     public void endTurn() { }
 
+    /*
     @Override
     public static boolean checkPieces(int level) {
         return false;
     }
-
+    */
     @Override
     public void beginTurn() { }
 
     @Override
-    public ArrayList<GodCard> getDeck(int numPlayers) throws IOException {
-        Deck deck=new Deck(2);
-        return deck.getDeck();
+    public Deck getDeck() throws IOException {
+        return deck;
     }
 }
