@@ -2,8 +2,7 @@ package it.polimi.ingsw.Le_Bestie.Model.Builder;
 
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 
-import java.awt.*;
-import java.util.*;
+import java.util.ArrayList;
 
 public class Builder {
 
@@ -18,7 +17,7 @@ public class Builder {
 
     }
 
- //set e get
+ //setter e getter
     public void setColor(Color color){
         this.color=color;
     }
@@ -52,9 +51,7 @@ public class Builder {
     {
         return this.cell;
     }
-
-    //vero
-
+    
 
     public void checkDisabled() {
 

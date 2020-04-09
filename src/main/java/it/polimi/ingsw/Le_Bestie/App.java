@@ -1,13 +1,18 @@
 package it.polimi.ingsw.Le_Bestie;
 
+import it.polimi.ingsw.Le_Bestie.Controller.MatchState;
+
 /**
- * Hello world!
  *
+ * ******SANTORINI GAME******
  */
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World" );
+        System.out.println("SANTORINI");
+        MatchState m=new MatchState();
+
+
     }
 }
