@@ -47,22 +47,18 @@ public class Builder {
     }
 
     public ArrayList<Cell> possibleMoves() {
-
         return null;
     }
 
     public ArrayList<Cell> possibleBuilds() {
-
         return null;
     }
 
     public ArrayList<Cell> possibleSwitch() {
-
         return null;
     }
 
     public ArrayList<Cell> possibleLevelUp() {
-
         return null;
     }
 
