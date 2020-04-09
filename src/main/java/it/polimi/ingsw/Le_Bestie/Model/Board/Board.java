@@ -8,6 +8,7 @@ public class Board {
     private final Cell[][] cells=new Cell[square][square];
 
     public Board() {
+
     }
 
     public Cell[][] getBoard() {
