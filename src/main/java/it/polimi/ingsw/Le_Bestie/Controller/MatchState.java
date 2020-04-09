@@ -3,8 +3,8 @@ import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Cards.Deck;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
-import java.util.*;
 
+import java.util.*;
 
 public class MatchState implements MatchStateInterface{
 
@@ -15,23 +15,18 @@ public class MatchState implements MatchStateInterface{
     private Player Winner;
     private boolean notMoveUp;
     private Builder chosenBuilder;
+
     private ArrayList<Player> playerList;
     private Board board;
-    private Deck deck;
 
 
-    public ArrayList<Player> getPlayerList() {
-        return playerList;
-    }
-
-    public void setPlayerList(ArrayList<Player> playerList) {
-        this.playerList = playerList;
-    }
-
+ //costruttore
     public MatchState() {
 
     }
 
+
+//get e set
     public void setNumPlayers(int numPlayers) {
         this.numPlayers=numPlayers;
     }
@@ -48,12 +43,13 @@ public class MatchState implements MatchStateInterface{
         return hasMoved;
     }
 
-    public ArrayList<Integer>[] getRemainingPieces() {
-        return remainingPieces;
+    public void setRemainingPieces(ArrayList<Integer> remainingPieces[]) {
+        for(int i=0;i<remainingPieces.length;i++)
+          this.remainingPieces[i]=remainingPieces[i];
     }
 
-    public void setRemainingPieces(ArrayList<Integer>[] remainingPieces) {
-        this.remainingPieces = remainingPieces;
+    public ArrayList<Integer>[] getRemainingPieces() {
+            return remainingPieces;
     }
 
     public void SetCurrentTurnPlayer(Player currentTurnPlayer) {
@@ -119,6 +115,6 @@ public class MatchState implements MatchStateInterface{
 
     @Override
     public Deck getDeck(int numPlayers) {
-        return deck;
+        return null;
     }
 }
