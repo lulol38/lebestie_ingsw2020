@@ -10,6 +10,7 @@ public class Builder {
     private Color color;
     private String idBuilder;
     private boolean disabled;
+    private Cell cell;
 
     public Builder() {
 
@@ -38,6 +39,16 @@ public class Builder {
 
     public boolean getDisabled(){
         return this.disabled;
+    }
+
+    public void setCell(Cell cell)
+    {
+        this.cell=cell;
+    }
+
+    public Cell getCell()
+    {
+        return this.cell;
     }
 
 
