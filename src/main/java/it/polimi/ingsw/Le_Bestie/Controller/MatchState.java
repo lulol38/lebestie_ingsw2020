@@ -14,7 +14,7 @@ public class MatchState implements MatchStateInterface{
     private static ArrayList<Integer> remainingPieces;
     private Player currentTurnPlayer;
     private Player Winner;
-    private boolean notMoveUp;
+    private static boolean notMoveUp;
     private Builder chosenBuilder;
     private ArrayList<Player> playerList;
     private Board board;
@@ -74,11 +74,11 @@ public class MatchState implements MatchStateInterface{
         return Winner;
     }
 
-    public void setNotMoveUp(boolean notMoveUp) {
-        this.notMoveUp=notMoveUp;
+    public static void setNotMoveUp(boolean notMoveUp) {
+        MatchState.notMoveUp=notMoveUp;
     }
 
-    public boolean getNotMoveUp() {
+    public static boolean getNotMoveUp() {
         return notMoveUp;
     }
 
