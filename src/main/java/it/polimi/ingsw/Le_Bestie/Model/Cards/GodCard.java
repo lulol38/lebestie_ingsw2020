@@ -1,6 +1,7 @@
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
 import it.polimi.ingsw.Le_Bestie.Controller.MatchState;
+import it.polimi.ingsw.Le_Bestie.Controller.MatchStateInterface;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 
