@@ -51,6 +51,7 @@ public class Builder {
         return this.cell;
     }
 
+    //vero
 
 
     public void checkDisabled() {
