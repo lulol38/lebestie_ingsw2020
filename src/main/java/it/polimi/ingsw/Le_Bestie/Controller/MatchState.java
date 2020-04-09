@@ -89,6 +89,13 @@ public class MatchState implements MatchStateInterface{
     public Builder getChosenBuilder() {
         return chosenBuilder;
     }
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setBoard(Board board) {
+        this.board = new Board();
+    }
 
     @Override
     public Player nextPlayer() {

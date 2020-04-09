@@ -1,6 +1,5 @@
 package it.polimi.ingsw.Le_Bestie.Model.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
-
 /**
  *This class implements cell
  */
@@ -13,13 +12,11 @@ public class Cell {
     private boolean occupied;
     private boolean disabled;
 
-    public Cell(){
-
-    }
-
-    public Cell(int level)
+    public Cell(int level, int x,int y)
     {
         this.level=level;
+        this.positionX=x;
+        this.positionY=y;
     }
 
     //Getters
@@ -78,9 +75,11 @@ public class Cell {
 
     public void addLevel() {
         this.level++;
-        if(this.level>3){
+        if(this.level>3)
             setDisabled(true);
-        }
+    }
+    public String toString() {
+        return  "X  " + this.positionX +",Y  " + this.positionY ;
     }
 
 }
