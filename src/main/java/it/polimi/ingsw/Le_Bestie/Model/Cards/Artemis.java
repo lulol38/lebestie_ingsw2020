@@ -1,6 +1,7 @@
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
 
+import it.polimi.ingsw.Le_Bestie.Controller.MatchState;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
@@ -18,35 +19,35 @@ public class Artemis extends GodCard{
     @Override
     public boolean move(Builder w, Cell c) {
 
+        //first move
+        if(!MatchState.getHasMoved())
+            if(super.move(w,c))
+            {
+                startingCell=c;
+                return true;
+            }
 
-           if(super.move(w,c))
-           {
-               startingCell=c;
-               return true;
-           }
-
-
-               super.move(w,c);
-               secondMove=true;
-               return true;
-
-
+        //second optional move
+        if(MatchState.getHasMoved()&&!secondMove&&c!=startingCell) {
+            super.move(w, c);
+            secondMove = true;
+            return true;
+        }
+        return false;
     }
 
     @Override
     public boolean build(Builder w, Cell c) {
-              super.build(w,c);
-
-        return false;
+        return super.build(w,c);
     }
 
     @Override
     public boolean HasWon() {
-        return false;
+        return super.HasWon();
     }
 
     @Override
     public boolean HasLost() {
-        return false;
+        return super.HasLost();
     }
 }
