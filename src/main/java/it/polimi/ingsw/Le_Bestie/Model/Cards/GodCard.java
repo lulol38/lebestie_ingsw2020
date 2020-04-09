@@ -6,7 +6,7 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
 public abstract class GodCard {
 
-    private String name="";
+    private String name;
 
     public GodCard(String name){
         this.name=name;
@@ -41,6 +41,7 @@ public abstract class GodCard {
             if(MatchState.getRemainingPieces(c.getLevel()+1)>0)
             {
                 c.addLevel();
+
 
 
                  //checkPieces(c.getLevel());

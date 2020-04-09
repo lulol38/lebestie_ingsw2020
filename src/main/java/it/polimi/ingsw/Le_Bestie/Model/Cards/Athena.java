@@ -12,6 +12,7 @@ import java.util.*;
 public class Athena extends GodCard{
 
     public Athena(String name) {
+
         super(name);
     }
 
