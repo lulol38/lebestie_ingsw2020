@@ -10,36 +10,39 @@ public class ClientSocket {
 
     private String ip;
     private int port;
+    private String nickname;
 
     public ClientSocket(String ip, int port){
         this.ip=ip;
         this.port=port;
     }
 
-    public void startClient() throws IOException {
+    public void connectToServer() throws IOException {
         Socket socket = new Socket(ip, port);
         System.out.println("Connection established");
 
         Scanner socketIn = new Scanner(socket.getInputStream());
         PrintWriter socketOut = new PrintWriter(socket.getOutputStream());
-        Scanner stdin = new Scanner(System. in);
 
         try{
             while(true){
-                //Here the client listens the messages sent from the server or sends messages
 
-                /*String inputLine=stdin.nextLine();
-                socketOut.println(inputLine);
+                //Take the nickname from the GUI
+                socketOut.println("LOGIN_"+nickname); //Handshake with server
                 socketOut.flush();
-                String socketLine=socketIn.nextLine();
-                System.out.println(socketLine);*/
+
+                String loginResponse=socketIn.nextLine(); //Response of the login
+                if(loginResponse=="LOGIN_ACCEPTED"){
+                    //Open GUI page of the game
+                }
             }
         }
         catch(NoSuchElementException ex){
+            socketOut.println("quit");
             System.out.println("Connection closed");
         }
         finally{
-            stdin.close();
+            socketOut.println("quit");
             socketIn.close();
             socketOut.close();
             socket.close();
