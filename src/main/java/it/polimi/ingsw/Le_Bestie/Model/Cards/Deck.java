@@ -7,6 +7,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Class Deck
+ * describes a generic deck(an arraylist of cards)
+ * @author Davide Carini
+ */
+
 public class Deck {
 
     private static ArrayList<GodCard> deck;

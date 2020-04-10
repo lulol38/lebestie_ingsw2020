@@ -1,21 +1,22 @@
 package it.polimi.ingsw.Le_Bestie.Model.Board;
 /**
- *
+ *Class Board implements board of the game
+ * @author Davide Carini
  */
 public class Board {
 
     final int square=5;
-    private final Cell[][] grid=new Cell[square][square];
+    private  Cell[][] grid;
 
     public Board() {
-        for (int y = 0; y < 5; y++) {
-            for (int x = 0; x < 5; x++) {
+        grid=new Cell[square][square];
+        for (int y = 0; y < square; y++) {
+            for (int x = 0; x < square; x++) {
                 grid[y][x] = new Cell(0,x,y);
             }
         }
 
     }
-
     public Cell[][] getGrid() {
         return this.grid;
     }

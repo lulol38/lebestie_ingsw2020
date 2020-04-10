@@ -21,6 +21,12 @@ public class MatchState implements MatchStateInterface{
     private Deck deck;
     private static boolean usePower;
 
+    public MatchState() throws IOException {
+        this.board=new Board();
+        this.deck=new Deck(numPlayers);
+
+    }
+
     public static boolean getUsePower() {
         return usePower;
     }
@@ -37,9 +43,7 @@ public class MatchState implements MatchStateInterface{
         this.playerList = playerList;
     }
 
-    public MatchState() throws IOException {
-        this.deck=new Deck(numPlayers);
-    }
+
 
     public void setNumPlayers(int numPlayers) {
         this.numPlayers=numPlayers;
@@ -102,7 +106,7 @@ public class MatchState implements MatchStateInterface{
     }
 
     public void setBoard(Board board) {
-        this.board = new Board();
+        this.board= board;
     }
 
     @Override
@@ -134,7 +138,7 @@ public class MatchState implements MatchStateInterface{
         return deck;
     }
 
-    public static boolean checkPieces(int level) {
-        return false;
+    public static void checkPieces(int level) {
+        remainingPieces.set(level-1,remainingPieces.get(level-1)-1);
     }
 }

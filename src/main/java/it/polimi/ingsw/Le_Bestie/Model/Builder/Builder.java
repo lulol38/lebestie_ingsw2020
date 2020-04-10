@@ -1,23 +1,31 @@
 package it.polimi.ingsw.Le_Bestie.Model.Builder;
 
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
+import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 import java.util.ArrayList;
 
 public class Builder {
 
-    //davo
-
     private Color color;
     private String idBuilder;
     private boolean disabled;
     private Cell cell;
+    private Player player;
 
     public Builder() {
 
     }
 
  //setter e getter
+    public void setPlayer(Player player) {
+        this.player=player;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
     public void setColor(Color color){
         this.color=color;
     }

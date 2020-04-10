@@ -1,8 +1,3 @@
-/**
- * Class Card
- * describes a generic card
- * @Bob
- */
 
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
@@ -10,6 +5,14 @@ package it.polimi.ingsw.Le_Bestie.Model.Cards;
 import it.polimi.ingsw.Le_Bestie.Controller.MatchState;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
+import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
+
+/**
+ * Class Artemis
+ * your Builder may move one additional time,
+ * but not back to its initial space
+ * @VeronicaRovelli
+ */
 
 public class Artemis extends GodCard{
 
@@ -34,7 +37,7 @@ public class Artemis extends GodCard{
             }
 
         //second optional move
-        if(MatchState.getHasMoved()&&!secondMove&&c!=startingCell) {
+        if(MatchState.getHasMoved()&&!secondMove&&c!=startingCell&&MatchState.getUsePower()) {
             super.move(w, c);
             secondMove = true;
             return true;
@@ -53,7 +56,7 @@ public class Artemis extends GodCard{
     }
 
     @Override
-    public boolean HasLost() {
-        return super.HasLost();
+    public boolean HasLost(Player player) {
+        return super.HasLost(player);
     }
 }

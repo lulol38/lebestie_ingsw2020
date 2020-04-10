@@ -1,14 +1,17 @@
-/**
- * Class Card
- * describes a generic card
- * @Bob
- */
 
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
 import it.polimi.ingsw.Le_Bestie.Controller.MatchState;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
+import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
+
+/**
+ * Class Card
+ * describes a generic card
+ * @VeronicaRovelli
+ */
+
 
 public abstract class GodCard {
 
@@ -19,6 +22,8 @@ public abstract class GodCard {
     }
 
     public boolean move(Builder w, Cell c){
+        HasLost(w.getPlayer());
+
         if(!MatchState.getHasMoved()&&w.possibleMoves().contains(c))
         {
             //winner condition
@@ -43,27 +48,31 @@ public abstract class GodCard {
     public boolean build(Builder w, Cell c){
         if(MatchState.getHasMoved()&&w.possibleBuilds().contains(c))
         {
-            //buinding piece is available?
+            //is the building piece available?
             if(MatchState.getRemainingPieces(c.getLevel()+1)>0)
             {
                 c.addLevel();
+                MatchState.checkPieces(c.getLevel());
 
-
-
-                 //checkPieces(c.getLevel());
                 //is the builder locked, after his build?
                 if(w.possibleMoves().size()==0)
                     w.setDisabled(true);
+                return true;
             }
-            HasLost();
-            return false;
         }
-        HasLost();
+        HasLost(w.getPlayer());
         return false;
     }
 
     public boolean HasWon(){return false;}
 
-    public boolean HasLost(){return false;}
+    public boolean HasLost(Player player){
+        if(player.getBuilder2().possibleMoves().size()==0)
+            player.getBuilder2().setDisabled(true);
+        if(player.getBuilder1().possibleMoves().size()==0)
+            player.getBuilder1().setDisabled(true);
+        if(player.getBuilder1().getDisabled()&&player.getBuilder2().getDisabled())
+                return true;
+        return false;}
 
 }

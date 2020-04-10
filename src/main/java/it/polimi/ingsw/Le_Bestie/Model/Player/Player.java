@@ -1,8 +1,10 @@
 package it.polimi.ingsw.Le_Bestie.Model.Player;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 import it.polimi.ingsw.Le_Bestie.Model.Cards.*;
+
 /**
- *This class implements the player
+ * Class Player describes a generic player
+ * @author Davide Carini
  */
 
 public class Player {
@@ -28,7 +30,7 @@ public class Player {
     public boolean isDisabled(){
         return this.disabled;
     }
-    public Builder getWorker1(){
+    public Builder getBuilder1(){
         return this.builder1;
     }
     public Builder getBuilder2(){
