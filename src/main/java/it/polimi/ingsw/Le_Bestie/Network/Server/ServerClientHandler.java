@@ -6,10 +6,16 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Class ServerClientHandler
+ * server launches thread foreach client
+ * @author Luca Ferrari
+ */
 public class ServerClientHandler implements Runnable{
 
-    private int numPlayers;
-    private ArrayList<String> nicknames;
+    private int numPlayers=0;
+    private int maxNum;
+    private ArrayList<String> nicknames=new ArrayList<String>();
 
     private Socket socket;
 
@@ -28,7 +34,9 @@ public class ServerClientHandler implements Runnable{
                 else {
 
                     //CASE of the message received
-
+                    switch(line) {
+                        case "abc":
+                    }
 
 
 
