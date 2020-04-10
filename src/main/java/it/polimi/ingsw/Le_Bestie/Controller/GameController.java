@@ -31,7 +31,6 @@ public class GameController {
 
     public void startGame(){
         matchState();
-
     }
 
     public MatchState getMatchState() {
@@ -41,7 +40,6 @@ public class GameController {
     public void matchState(){
         updatePlayersInRound(listPlayersRound);
     }
-
 
     private void setPlayersInRound() {
         listPlayersRound.addAll(players);
@@ -54,7 +52,6 @@ public class GameController {
             players.add( players.size(), exPlayerInRound);
         } catch (IndexOutOfBoundsException e) {
             System.out.println("IndexOutOfBoundsException");
-
         }
     }
 

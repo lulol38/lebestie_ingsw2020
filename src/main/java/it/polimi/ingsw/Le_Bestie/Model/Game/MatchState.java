@@ -1,6 +1,5 @@
 package it.polimi.ingsw.Le_Bestie.Model.Game;
 
-import it.polimi.ingsw.Le_Bestie.Controller.MatchStateInterface;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 import it.polimi.ingsw.Le_Bestie.Model.Cards.Deck;
@@ -8,7 +7,7 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class MatchState implements MatchStateInterface {
+public class MatchState {
 
     private int numPlayers;
     private static boolean hasMoved;
