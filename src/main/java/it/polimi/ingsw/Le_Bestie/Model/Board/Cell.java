@@ -8,16 +8,13 @@ public class Cell {
 
     private int level;
     private Builder builder;
-    private int positionX;
-    private int positionY;
+    private Position position;
     private boolean occupied;
     private boolean disabled;
 
-    public Cell(int level, int x,int y)
+    public Cell(int level)
     {
         this.level=level;
-        this.positionX=x;
-        this.positionY=y;
     }
 
     //Getters
@@ -28,14 +25,7 @@ public class Cell {
     {
         return this.builder;
     }
-    public int getPositionX()
-    {
-        return this.positionX;
-    }
-    public int getPositionY()
-    {
-        return this.positionY;
-    }
+
     public boolean isOccupied()
     {
         return this.occupied;
@@ -43,6 +33,9 @@ public class Cell {
     public boolean isDisabled()
     {
         return this.disabled;
+    }
+    public Position getPosition() {
+        return position;
     }
 
     //Setters
@@ -57,14 +50,11 @@ public class Cell {
     {
         this.builder=builder;
     }
-    public void setPositionX(int positionX)
-    {
-        this.positionX=positionX;
+
+    public void setPosition(Position position) {
+        this.position = position;
     }
-    public void setPositionY(int positionY)
-    {
-        this.positionY=positionY;
-    }
+
     public void setOccupied(boolean occupied)
     {
         this.occupied=occupied;
@@ -78,9 +68,6 @@ public class Cell {
         this.level++;
         if(this.level>3)
             setDisabled(true);
-    }
-    public String toString() {
-        return  "X  " + this.positionX +",Y  " + this.positionY ;
     }
 
 }

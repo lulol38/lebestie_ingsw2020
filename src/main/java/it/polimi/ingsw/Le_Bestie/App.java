@@ -1,7 +1,7 @@
 package it.polimi.ingsw.Le_Bestie;
 
+import it.polimi.ingsw.Le_Bestie.Model.Board.Position;
 import it.polimi.ingsw.Le_Bestie.Model.Game.MatchState;
-import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 import java.io.IOException;
@@ -18,69 +18,16 @@ public class App
         System.out.println("SANTORINI");
 
         MatchState m =new MatchState();
-        m.setNumPlayers(3);
-        Player p1 =new Player("davide");
-        Player p2 =new Player("shish");
-        Player p3 =new Player("zeb");
-        Player p4 =new Player("davide");
-        Player p5 =new Player("shish");
-        Player p6 =new Player("zeb");
-        Player p7 =new Player("davide");
-        Player p8 =new Player("shish");
-        Player p9 =new Player("zeb");
 
+        Player p1=new Player("davide");
+        ArrayList<Position>c=new ArrayList<>();
+        p1.getBuilder1().setCell(0,2,3);
 
-        m.getDeck().assignCard(p1);
-        System.out.println(p1.toString());
-        m.getDeck().assignCard(p2);
-        System.out.println(p2.toString());
-        m.getDeck().assignCard(p3);
-        System.out.println(p3.toString());
-        m.getDeck().assignCard(p4);
-        System.out.println(p4.toString());
-        m.getDeck().assignCard(p5);
-        System.out.println(p5.toString());
-        m.getDeck().assignCard(p6);
-        System.out.println(p6.toString());
-        m.getDeck().assignCard(p7);
-        System.out.println(p7.toString());
+        c.addAll(p1.getBuilder1().possibleMoves());
 
-        Cell Matrix[][];
+        for(int i=0;i<c.size();i++) {
 
-        Matrix=m.getBoard().getGrid();
-
-
-        Matrix[2][1].addLevel();
-        Matrix[2][1].addLevel();
-        Matrix[2][1].addLevel();
-        Matrix[2][1].addLevel();
-
-        System.out.println(Matrix[2][1].toString());
-        for (int y = 0; y < Matrix.length; y++) {
-
-
-            for (int x = 0; x < Matrix.length; x++) {
-                System.out.print(Matrix[y][x].getLevel()+" ");
-            }
-            System.out.println("");
         }
-
-        ArrayList<Player> players=new ArrayList<>();
-        players.add(p1);
-        players.add(p2);
-        players.add(p3);
-        try {
-            Player exPlayerInRound = players.get(0);
-
-            players.remove(0);
-
-            players.add( players.size(), exPlayerInRound);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("IndexOutOfBoundsException");
-        }
-        System.out.println(players.get(0).getNickname());
-
-
 
 
     }

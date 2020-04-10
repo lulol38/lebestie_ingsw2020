@@ -90,31 +90,30 @@ public class MatchState {
         this.board= board;
     }
 
-    @Override
     public Player nextPlayer() {
         return null;
     }
 
-    @Override
+
     public boolean endMatch() {
         return false;
     }
 
-    @Override
+
     public ArrayList<Player> cleanAndRemovePlayer() {
         return null;
     }
 
-    @Override
+
     public void addPlayer() { }
 
-    @Override
+
     public void endTurn() { }
 
-    @Override
+
     public void beginTurn() { }
 
-    @Override
+
     public Deck getDeck() throws IOException {
         return deck;
     }

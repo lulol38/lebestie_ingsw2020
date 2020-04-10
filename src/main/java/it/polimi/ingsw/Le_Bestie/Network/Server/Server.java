@@ -47,7 +47,7 @@ public class Server {
                 Socket socket = serverSocket.accept();
                 ServerClientHandler client = new ServerClientHandler(socket);
                 clientsConnected.add(client);
-                System.out.println("Client " + client.getAddress() + " is connected to the server \n");
+//                System.out.println("Client " + client.getAddress() + " is connected to the server \n");
                 addWaitingClient(client, socket);
                 executor.submit(client);
             } catch (IOException e) { //Connection error
@@ -91,7 +91,7 @@ public class Server {
         try {
             serverSocket.close();
             for (ServerClientHandler connection: clientsConnected) {
-                connection.closeConnection();
+//                connection.closeConnection();
             }
         }
         catch (IOException e) {

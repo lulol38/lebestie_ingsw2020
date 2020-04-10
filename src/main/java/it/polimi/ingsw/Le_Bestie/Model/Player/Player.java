@@ -18,6 +18,8 @@ public class Player {
     public Player(String nickname) {
         this.nickname=nickname;
         this.disabled=false;
+        this.builder1=new Builder();
+        this.builder2=new Builder();
     }
 
     //Getters
