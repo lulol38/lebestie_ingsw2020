@@ -1,10 +1,7 @@
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
-import it.polimi.ingsw.Le_Bestie.Controller.MatchState;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
-
-import java.util.*;
 
 public class Prometheus extends GodCard{
 
@@ -29,8 +26,8 @@ public class Prometheus extends GodCard{
         return false;
     }
 
-    @Override
+ /*   @Override
     public boolean HasLost() {
         return false;
-    }
+    }*/
 }

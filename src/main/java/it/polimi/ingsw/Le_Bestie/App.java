@@ -1,10 +1,11 @@
 package it.polimi.ingsw.Le_Bestie;
 
-import it.polimi.ingsw.Le_Bestie.Controller.MatchState;
+import it.polimi.ingsw.Le_Bestie.Model.Game.MatchState;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -48,6 +49,7 @@ public class App
 
         Matrix=m.getBoard().getGrid();
 
+
         Matrix[2][1].addLevel();
         Matrix[2][1].addLevel();
         Matrix[2][1].addLevel();
@@ -62,6 +64,22 @@ public class App
             }
             System.out.println("");
         }
+
+        ArrayList<Player> players=new ArrayList<>();
+        players.add(p1);
+        players.add(p2);
+        players.add(p3);
+        try {
+            Player exPlayerInRound = players.get(0);
+
+            players.remove(0);
+
+            players.add( players.size(), exPlayerInRound);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("IndexOutOfBoundsException");
+        }
+        System.out.println(players.get(0).getNickname());
+
 
 
 
