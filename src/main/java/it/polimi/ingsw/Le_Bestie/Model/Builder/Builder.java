@@ -1,5 +1,6 @@
 package it.polimi.ingsw.Le_Bestie.Model.Builder;
 
+import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
@@ -60,12 +61,17 @@ public class Builder {
         return this.cell;
     }
     
-
-    public void checkDisabled() {
-
-    }
+/*
+    public void checkDisabled() {   }
+ */
 
     public ArrayList<Cell> possibleMoves() {
+        ArrayList<Cell> temp=new ArrayList<Cell>();
+
+
+        temp.add(Board.getGrid()[cell.getPositionX()][1]);
+
+
         return null;
     }
 
