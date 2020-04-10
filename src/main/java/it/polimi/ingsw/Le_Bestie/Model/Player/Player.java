@@ -1,8 +1,11 @@
 package it.polimi.ingsw.Le_Bestie.Model.Player;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 import it.polimi.ingsw.Le_Bestie.Model.Cards.*;
+
 /**
- *This class implements the player
+ * Class Player
+ * describes a generic player
+ * @author Davide Carini
  */
 
 public class Player {

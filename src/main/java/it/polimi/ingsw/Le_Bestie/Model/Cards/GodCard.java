@@ -4,6 +4,7 @@ import it.polimi.ingsw.Le_Bestie.Controller.MatchState;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
+
 public abstract class GodCard {
 
     private String name;

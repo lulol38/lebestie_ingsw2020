@@ -41,7 +41,7 @@ public class App
         System.out.println(p6.toString());
         m.getDeck().assignCard(p7);
         System.out.println(p7.toString());
-
+        
 
 
     }
