@@ -37,6 +37,14 @@ public class GameController {
         matchState();
     }
 
+    public Player addPlayer(String username){
+        Player p= new Player(username);
+
+        players.add(p);
+
+        return p;
+    }
+
     public MatchState getMatchState() {
         return matchState;
     }

@@ -5,6 +5,8 @@ import java.io.PrintWriter;
 import java.io.Serializable;
 import java.net.Socket;
 import java.util.NoSuchElementException;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Scanner;
 
 /**
@@ -12,7 +14,7 @@ import java.util.Scanner;
  * client connection with server using socket
  * @author Luca Ferrari
  */
-public class Client implements Serializable {
+public class Client implements Runnable, Observer {
 
     private String ip;
     private int port;
@@ -23,41 +25,18 @@ public class Client implements Serializable {
         this.port=port;
     }
 
-    public void connectToServer() throws IOException {
-        Socket socket = new Socket(ip, port);
-        System.out.println("Connection established");
+    public void run() {
 
-        Scanner socketIn = new Scanner(socket.getInputStream());
-        PrintWriter socketOut = new PrintWriter(socket.getOutputStream());
-
-        try{
-            while(true){
-
-                //Take the nickname from the GUI
-                socketOut.println("LOGIN_"+nickname); //Handshake with server
-                socketOut.flush();
-
-                String loginResponse=socketIn.nextLine(); //Response of the login
-                if(loginResponse=="LOGIN_ACCEPTED"){
-                    //Open GUI page of the game
-                }
-            }
-        }
-        catch(NoSuchElementException ex){
-            socketOut.println("quit");
-            System.out.println("Connection closed");
-        }
-        finally{
-            socketOut.println("quit");
-            socketIn.close();
-            socketOut.close();
-            socket.close();
-        }
     }
 
     public static void main(String[] args){
 
         //Here will start the GUI
+
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
 
     }
 }

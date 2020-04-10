@@ -79,6 +79,10 @@ public class Server {
     public void startMatch(Lobby lobby){
         try{
             GameController game = new GameController(lobby);
+            for (ServerClientHandler s: lobby.getClientsWaiting())
+            {
+                s.setPlayer(game.addPlayer(s.getUsername()));
+            }
             activeGames.add(game);
         }
         catch(Exception ex){
