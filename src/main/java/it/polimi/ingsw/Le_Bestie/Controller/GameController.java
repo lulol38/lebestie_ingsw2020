@@ -1,5 +1,6 @@
 package it.polimi.ingsw.Le_Bestie.Controller;
 
+<<<<<<< HEAD
 import it.polimi.ingsw.Le_Bestie.Model.Game.MatchState;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import java.io.IOException;
@@ -55,4 +56,15 @@ public class GameController {
         }
     }
 
+=======
+import it.polimi.ingsw.Le_Bestie.Network.Server.Lobby;
+
+public class GameController {
+
+    private Lobby lobby;
+
+    public GameController(Lobby lobby){
+        this.lobby=lobby;
+    }
+>>>>>>> origin/master
 }

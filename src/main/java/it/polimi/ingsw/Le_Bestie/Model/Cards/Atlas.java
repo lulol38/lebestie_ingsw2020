@@ -7,8 +7,8 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 /**
- * Class Card
- * describes a generic card
+ * Class Atlas
+ * your Builder may build a dome at any level
  * @VeronicaRovelli
  */
 

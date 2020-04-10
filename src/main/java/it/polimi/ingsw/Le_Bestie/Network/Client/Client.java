@@ -2,17 +2,23 @@ package it.polimi.ingsw.Le_Bestie.Network.Client;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.net.Socket;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class ClientSocket {
+/**
+ * Class ClientSocket
+ * client connection with server using socket
+ * @author Luca Ferrari
+ */
+public class Client implements Serializable {
 
     private String ip;
     private int port;
     private String nickname;
 
-    public ClientSocket(String ip, int port){
+    public Client(String ip, int port){
         this.ip=ip;
         this.port=port;
     }

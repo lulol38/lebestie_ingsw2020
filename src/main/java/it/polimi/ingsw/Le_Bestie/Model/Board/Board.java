@@ -6,7 +6,7 @@ package it.polimi.ingsw.Le_Bestie.Model.Board;
 public class Board {
 
     final int square=5;
-    private  Cell[][] grid;
+    private static Cell[][] grid;
 
     public Board() {
         grid=new Cell[square][square];
@@ -17,8 +17,8 @@ public class Board {
         }
 
     }
-    public Cell[][] getGrid() {
-        return this.grid;
+    public static Cell[][] getGrid() {
+        return Board.grid;
     }
 
 }

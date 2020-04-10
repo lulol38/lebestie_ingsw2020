@@ -7,8 +7,9 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 /**
- * Class Card
- * describes a generic card
+ * Class Athena
+ * if one of your Builders moved up on your last turn,
+ * opponent Builders cannot move up this turn
  * @VeronicaRovelli
  */
 
