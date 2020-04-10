@@ -1,3 +1,9 @@
+/**
+ * Class Card
+ * describes a generic card
+ * @Bob
+ */
+
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
 import it.polimi.ingsw.Le_Bestie.Controller.MatchState;
@@ -6,9 +12,6 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
 import java.util.*;
 
-/**
- * 
- */
 public class Athena extends GodCard{
 
     public Athena(String name) {
@@ -29,6 +32,7 @@ public class Athena extends GodCard{
         return x;
     }
 
+
     @Override
     public boolean build(Builder w, Cell c) {
         return super.build(w,c);
@@ -43,4 +47,7 @@ public class Athena extends GodCard{
     public boolean HasLost() {
         return super.HasLost();
     }
+
+    //if this methods don't change the same superclass' methods
+    //can I NOT write them?
 }

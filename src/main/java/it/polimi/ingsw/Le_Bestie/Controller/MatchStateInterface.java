@@ -13,7 +13,6 @@ public interface MatchStateInterface {
     ArrayList<Player> cleanAndRemovePlayer();
     void addPlayer();
     void endTurn();
-  //  boolean checkPieces(int level);
     void beginTurn();
     Deck getDeck() throws IOException;
 

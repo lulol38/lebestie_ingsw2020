@@ -1,3 +1,9 @@
+/**
+ * Class Card
+ * describes a generic card
+ * @Bob
+ */
+
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
 import it.polimi.ingsw.Le_Bestie.Controller.MatchState;
