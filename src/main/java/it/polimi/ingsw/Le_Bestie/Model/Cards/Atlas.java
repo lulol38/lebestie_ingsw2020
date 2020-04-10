@@ -1,3 +1,9 @@
+/**
+ * Class Card
+ * describes a generic card
+ * @Bob
+ */
+
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
 import it.polimi.ingsw.Le_Bestie.Controller.MatchState;
@@ -14,7 +20,7 @@ public class Atlas extends GodCard{
 
     @Override
     public boolean move(Builder w, Cell c) {
-        return false;
+        return super.move(w,c);
     }
 
     @Override
@@ -24,11 +30,11 @@ public class Atlas extends GodCard{
 
     @Override
     public boolean HasWon() {
-        return false;
+        return super.HasWon();
     }
 
     @Override
     public boolean HasLost() {
-        return false;
+        return super.HasLost();
     }
 }
