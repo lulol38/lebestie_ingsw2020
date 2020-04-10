@@ -1,19 +1,22 @@
 package it.polimi.ingsw.Le_Bestie.Controller;
 
-<<<<<<< HEAD
 import it.polimi.ingsw.Le_Bestie.Model.Game.MatchState;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
+import it.polimi.ingsw.Le_Bestie.Network.Server.Lobby;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class GameController {
 
+    private Lobby lobby;
+
     private MatchState matchState;
     private ArrayList<Player> players;
     private ArrayList<Player> listPlayersRound;
 
-    public GameController() throws IOException {
-
+    public GameController(Lobby lobby) throws IOException {
+        this.lobby=lobby;
         this.matchState=new MatchState();
     }
 
@@ -55,16 +58,4 @@ public class GameController {
             System.out.println("IndexOutOfBoundsException");
         }
     }
-
-=======
-import it.polimi.ingsw.Le_Bestie.Network.Server.Lobby;
-
-public class GameController {
-
-    private Lobby lobby;
-
-    public GameController(Lobby lobby){
-        this.lobby=lobby;
-    }
->>>>>>> origin/master
 }
