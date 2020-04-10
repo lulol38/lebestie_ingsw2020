@@ -134,7 +134,7 @@ public class MatchState implements MatchStateInterface{
         return deck;
     }
 
-    public static boolean checkPieces(int level) {
-        return false;
+    public static void checkPieces(int level) {
+        remainingPieces.set(level-1,remainingPieces.get(level-1)-1);
     }
 }

@@ -28,7 +28,7 @@ public class Player {
     public boolean isDisabled(){
         return this.disabled;
     }
-    public Builder getWorker1(){
+    public Builder getBuilder1(){
         return this.builder1;
     }
     public Builder getBuilder2(){

@@ -1,16 +1,18 @@
-/**
- * Class Card
- * describes a generic card
- * @Bob
- */
 
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
 import it.polimi.ingsw.Le_Bestie.Controller.MatchState;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
+import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 import java.util.*;
+
+/**
+ * Class Card
+ * describes a generic card
+ * @VeronicaRovelli
+ */
 
 public class Atlas extends GodCard{
 
@@ -25,7 +27,28 @@ public class Atlas extends GodCard{
 
     @Override
     public boolean build(Builder w, Cell c) {
-        return false;
+
+        //move without power
+        if(!MatchState.getUsePower())
+            return super.build(w, c);
+
+        //move with power
+        else {
+            if (MatchState.getHasMoved() && w.possibleBuilds().contains(c)) {
+                //is dome available?
+                if (MatchState.getRemainingPieces(4) > 0) {
+                    c.setLevel(4);
+                    MatchState.checkPieces(4);
+
+                    //is the builder locked, after his build?
+                    if (w.possibleMoves().size() == 0)
+                        w.setDisabled(true);
+                    return true;
+                }
+            }
+            HasLost(w.getPlayer());
+            return false;
+        }
     }
 
     @Override
@@ -34,7 +57,7 @@ public class Atlas extends GodCard{
     }
 
     @Override
-    public boolean HasLost() {
-        return super.HasLost();
+    public boolean HasLost(Player player) {
+        return super.HasLost(player);
     }
 }
