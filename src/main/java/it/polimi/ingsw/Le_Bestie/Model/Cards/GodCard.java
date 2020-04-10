@@ -12,6 +12,7 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
  * @VeronicaRovelli
  */
 
+
 public abstract class GodCard {
 
     private String name;

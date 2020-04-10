@@ -1,7 +1,9 @@
 package it.polimi.ingsw.Le_Bestie;
 
 import it.polimi.ingsw.Le_Bestie.Controller.MatchState;
+import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
+
 import java.io.IOException;
 
 /**
@@ -41,6 +43,25 @@ public class App
         System.out.println(p6.toString());
         m.getDeck().assignCard(p7);
         System.out.println(p7.toString());
+
+        Cell Matrix[][];
+
+        Matrix=m.getBoard().getGrid();
+
+        Matrix[2][1].addLevel();
+        Matrix[2][1].addLevel();
+        Matrix[2][1].addLevel();
+        Matrix[2][1].addLevel();
+
+        System.out.println(Matrix[2][1].toString());
+        for (int y = 0; y < Matrix.length; y++) {
+
+
+            for (int x = 0; x < Matrix.length; x++) {
+                System.out.print(Matrix[y][x].getLevel()+" ");
+            }
+            System.out.println("");
+        }
 
 
 
