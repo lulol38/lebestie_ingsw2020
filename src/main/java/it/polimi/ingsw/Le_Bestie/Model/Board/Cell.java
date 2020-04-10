@@ -2,6 +2,7 @@ package it.polimi.ingsw.Le_Bestie.Model.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 /**
  *This class implements cell
+ * @author Davide Carini
  */
 public class Cell {
 

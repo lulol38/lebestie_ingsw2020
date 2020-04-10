@@ -3,8 +3,7 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 import it.polimi.ingsw.Le_Bestie.Model.Cards.*;
 
 /**
- * Class Player
- * describes a generic player
+ * Class Player describes a generic player
  * @author Davide Carini
  */
 
