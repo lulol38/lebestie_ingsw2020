@@ -8,8 +8,9 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 /**
- * Class Card
- * describes a generic card
+ * Class Artemis
+ * your Builder may move one additional time,
+ * but not back to its initial space
  * @VeronicaRovelli
  */
 
