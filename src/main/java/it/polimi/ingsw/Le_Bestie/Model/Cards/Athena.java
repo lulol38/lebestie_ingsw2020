@@ -18,21 +18,29 @@ public class Athena extends GodCard{
 
     @Override
     public boolean move(Builder w, Cell c) {
-        return false;
+        MatchState.setNotMoveUp(false);
+        int startingLevel=c.getLevel();
+        boolean x=super.move(w,c);
+
+        //Athena power
+        if(w.getCell().getLevel()>startingLevel)
+            MatchState.setNotMoveUp(true);
+
+        return x;
     }
 
     @Override
     public boolean build(Builder w, Cell c) {
-        return false;
+        return super.build(w,c);
     }
 
     @Override
     public boolean HasWon() {
-        return false;
+        return super.HasWon();
     }
 
     @Override
     public boolean HasLost() {
-        return false;
+        return super.HasLost();
     }
 }
