@@ -1,3 +1,8 @@
+/**
+ * Class Card
+ * describes a generic card
+ * @Bob
+ */
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
 import it.polimi.ingsw.Le_Bestie.Controller.MatchState;
@@ -24,7 +29,7 @@ public class Apollo extends GodCard{
     @Override
     public boolean build(Builder w, Cell c) {
 
-        return false;
+      return super.build(w,c);
     }
 
     @Override

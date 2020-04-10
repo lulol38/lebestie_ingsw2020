@@ -19,6 +19,15 @@ public class MatchState implements MatchStateInterface{
     private ArrayList<Player> playerList;
     private Board board;
     private Deck deck;
+    private static boolean usePower;
+
+    public static boolean getUsePower() {
+        return usePower;
+    }
+
+    public static void setUsePower(boolean usePower) {
+        MatchState.usePower = usePower;
+    }
 
     public ArrayList<Player> getPlayerList() {
         return playerList;
@@ -30,7 +39,6 @@ public class MatchState implements MatchStateInterface{
 
     public MatchState() throws IOException {
         this.deck=new Deck(numPlayers);
-
     }
 
     public void setNumPlayers(int numPlayers) {
@@ -118,17 +126,15 @@ public class MatchState implements MatchStateInterface{
     @Override
     public void endTurn() { }
 
-    /*
-    @Override
-    public static boolean checkPieces(int level) {
-        return false;
-    }
-    */
     @Override
     public void beginTurn() { }
 
     @Override
     public Deck getDeck() throws IOException {
         return deck;
+    }
+
+    public static boolean checkPieces(int level) {
+        return false;
     }
 }
