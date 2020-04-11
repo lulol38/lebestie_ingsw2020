@@ -90,6 +90,7 @@ public class Server {
                 s.setPlayer(game.addPlayer(s.getUsername()));
             }
             activeGames.add(game);
+            game.startGame();
         }
         catch(Exception ex){
             System.out.println(ex.getMessage());
