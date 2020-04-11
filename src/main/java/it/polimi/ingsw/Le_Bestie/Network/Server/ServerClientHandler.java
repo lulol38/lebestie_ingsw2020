@@ -1,6 +1,8 @@
 package it.polimi.ingsw.Le_Bestie.Network.Server;
 
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.Message;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageParser;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -28,6 +30,8 @@ public class ServerClientHandler implements Runnable, Observer {
 
     private Socket socket;
 
+    private boolean connected;
+
     public ServerClientHandler(Socket socket){
         this.socket=socket;
         try {
@@ -40,11 +44,13 @@ public class ServerClientHandler implements Runnable, Observer {
 
     public void run(){
         try{
-
+            while(connected) {
+                receiveMessage();
+            }
         }
-        catch(IOException ex)
+        catch(Exception ex)
         {
-            System.err.println(ex.getMessage());
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -66,6 +72,26 @@ public class ServerClientHandler implements Runnable, Observer {
 
     public String getAddress(){
         return socket.getInetAddress().toString();
+    }
+
+    public void receiveMessage(){
+        try {
+            Message mex= (Message) in.readObject();
+            mex.receive(new MessageParser(this));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sendMessage(Message message){
+        try {
+            out.writeObject(message);
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void closeConnection(){
