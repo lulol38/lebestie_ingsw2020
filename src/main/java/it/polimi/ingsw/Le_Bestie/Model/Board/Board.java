@@ -12,7 +12,7 @@ public class Board {
         grid=new Cell[square][square];
         for (int x = 0; x < square; x++) {
             for (int y = 0; y < square; y++) {
-                grid[x][y] = new Cell(0);
+                grid[x][y] = new Cell(1);
                 grid[x][y].setPosition(new Position(x, y));
             }
         }

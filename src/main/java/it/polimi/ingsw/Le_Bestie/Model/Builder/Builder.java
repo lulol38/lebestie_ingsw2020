@@ -1,9 +1,11 @@
 package it.polimi.ingsw.Le_Bestie.Model.Builder;
 
+import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Position;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Builder {
 
@@ -15,53 +17,38 @@ public class Builder {
 
     public Builder(Position position){
         this.position=position;
-
     }
 
- //setter e getter
+    //Getter
     public void setPlayer(Player player) {
         this.player=player;
     }
-
+    public Position getPosition() { return position; }
     public Player getPlayer() {
         return player;
     }
-
-    public void setPosition(Position position) {
-        this.position = position;
-    }
-    public Position getPosition() {
-        return position;
-    }
-    public void setColor(Color color){
-        this.color=color;
-    }
-
     public Color getColor(){
         return this.color;
     }
-
-    public void setIdBuilder(String idBuilder){
-        this.idBuilder=idBuilder;
-    }
-
     public String getIdBuilder(){
         return this.idBuilder;
     }
+    public boolean getDisabled(){ return this.disabled; }
 
+    //Setter
+    public void setPosition(Position position) { this.position = position; }
+    public void setColor(Color color){
+        this.color=color;
+    }
+    public void setIdBuilder(String idBuilder){
+        this.idBuilder=idBuilder;
+    }
     public void setDisabled(boolean disabled){
         this.disabled=disabled;
     }
 
-    public boolean getDisabled(){ return this.disabled; }
-
-    
-/*
-    public void checkDisabled() {   }
- */
-
-    public ArrayList<Position> possibleMoves() {
-
+    public ArrayList<Cell> possibleMoves(Board b,boolean notmoveup) {
+        Cell currentCell=b.getGrid()[this.getPosition().getX()][this.getPosition().getX()];
         ArrayList<Position> possibleMoves = new ArrayList<>();
         int x = this.getPosition().getX();
         int y = this.getPosition().getY();
@@ -72,21 +59,65 @@ public class Builder {
                     possibleMoves.add(tryMove);
                 }
         }
-        return possibleMoves;
+        ArrayList<Cell> around=new ArrayList<>();
+        for(int i=0;i<possibleMoves.size();i++)
+            around.add(b.getGrid()[possibleMoves.get(i).getX()][possibleMoves.get(i).getY()]);
+        for(Iterator<Cell> i = around.iterator(); i.hasNext();) {
+            Cell c1= i.next();
+            if(notmoveup==false)
+                if(c1.isDisabled()||c1.getBuilder()!=null|| c1.getLevel()-currentCell.getLevel()>1) i.remove();
+            else
+                 if(c1.isDisabled()||c1.getBuilder()!=null|| c1.getLevel()-currentCell.getLevel()>0) i.remove();
+
+        }
+        return around;
     }
 
-    public ArrayList<Cell> possibleBuilds() {
-        return null;
+    public ArrayList<Cell> possibleBuilds(Board b) {
+        Cell currentCell=b.getGrid()[this.getPosition().getX()][this.getPosition().getX()];
+        ArrayList<Position> possibleMoves = new ArrayList<>();
+        int x = this.getPosition().getX();
+        int y = this.getPosition().getY();
+        for (int i = y - 1; i <= y + 1; i++) {
+            for (int j = x - 1; j <= x + 1; j++) {
+                Position tryMove = new Position(i,j);
+                if (!(i == y && j == x)&&tryMove.onGrid())
+                    possibleMoves.add(tryMove);
+            }
+        }
+        ArrayList<Cell> around=new ArrayList<>();
+        for(int i=0;i<possibleMoves.size();i++)
+            around.add(b.getGrid()[possibleMoves.get(i).getX()][possibleMoves.get(i).getY()]);
+        for(Iterator<Cell> i = around.iterator(); i.hasNext();) {
+            Cell c1= i.next();
+            if(c1.isDisabled()||c1.getBuilder()!=null) i.remove();
+        }
+        return around;
     }
 
-    public ArrayList<Cell> possibleSwitch() {
-        return null;
-    }
+    public ArrayList<Cell> possibleSwitch(Board b,boolean notmoveup) {
+        Cell currentCell=b.getGrid()[this.getPosition().getX()][this.getPosition().getX()];
+        ArrayList<Position> possibleMoves = new ArrayList<>();
+        int x = this.getPosition().getX();
+        int y = this.getPosition().getY();
+        for (int i = y - 1; i <= y + 1; i++) {
+            for (int j = x - 1; j <= x + 1; j++) {
+                Position tryMove = new Position(i,j);
+                if (!(i == y && j == x)&&tryMove.onGrid())
+                    possibleMoves.add(tryMove);
+            }
+        }
+        ArrayList<Cell> around=new ArrayList<>();
+        for(int i=0;i<possibleMoves.size();i++)
+            around.add(b.getGrid()[possibleMoves.get(i).getX()][possibleMoves.get(i).getY()]);
+        for(Iterator<Cell> i = around.iterator(); i.hasNext();) {
+            Cell c1= i.next();
+            if(notmoveup==false)
+                if(c1.isDisabled()||c1.getBuilder()==null||c1.getLevel()-currentCell.getLevel()>1|| c1.getBuilder().getPlayer()==this.getPlayer()) i.remove();
+            else
+                if(c1.isDisabled()||c1.getBuilder()==null||c1.getLevel()-currentCell.getLevel()>0|| c1.getBuilder().getPlayer()==this.getPlayer()) i.remove();
 
-    public ArrayList<Cell> possibleLevelUp() {
-        return null;
-    }
-
-    public void setCell(int i, int i1, int i2) {
+        }
+        return around;
     }
 }
