@@ -5,7 +5,7 @@ package it.polimi.ingsw.Le_Bestie.Model.Cards;
  * your Builder may move into an opponent Builder's
  * space by forcing their Builder to the space
  * yours just vacated
- * @VeronicaRovelli
+ * @author VeronicaRovelli
  */
 
 public class Apollo extends GodCard {

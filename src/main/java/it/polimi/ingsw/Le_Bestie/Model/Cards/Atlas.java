@@ -1,10 +1,15 @@
 
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
+import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
+import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
+import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
+import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
+
 /**
  * Class Atlas
  * your Builder may build a dome at any level
- * @VeronicaRovelli
+ * @author VeronicaRovelli
  */
 
 public class Atlas extends GodCard{
@@ -12,45 +17,35 @@ public class Atlas extends GodCard{
     public Atlas(String name) {
         super(name);
     }
-/*
+
     @Override
-    public boolean move(Builder w, Cell c) {
-        return super.move(w,c);
+    public int move(Board b, Builder w, Cell c, boolean usePower) {
+        return super.move(b,w,c,usePower);
     }
 
     @Override
-    public boolean build(Builder w, Cell c) {
+    public boolean build(Board b, Builder w, Cell c, boolean usePower) {
 
-        //move without power
-        if(!MatchState.getUsePower())
-            return super.build(w, c);
+        //build without power
+        if(!usePower)
+            return super.build(b,w, c,usePower);
 
-        //move with power
-        else {
-            if (MatchState.getHasMoved() && w.possibleBuilds().contains(c)) {
-                //is dome available?
-                if (MatchState.getRemainingPieces(4) > 0) {
+        //build with power
+        else if (w.possibleBuilds(b).contains(c)) {
                     c.setLevel(4);
-                    MatchState.checkPieces(4);
-
-                    //is the builder locked, after his build?
-                    if (w.possibleMoves().size() == 0)
-                        w.setDisabled(true);
                     return true;
                 }
-            }
-            HasLost(w.getPlayer());
+
             return false;
-        }
     }
 
     @Override
-    public boolean HasWon() {
-        return super.HasWon();
+    public boolean HasWon(Cell c) {
+        return super.HasWon(c);
     }
 
     @Override
-    public boolean HasLost(Player player) {
-        return super.HasLost(player);
-    }*/
+    public boolean HasLost(Player player,Board b) {
+        return super.HasLost(player,b);
+    }
 }

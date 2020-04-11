@@ -2,58 +2,66 @@
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
 
+import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
+import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
+import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 /**
  * Class Artemis
  * your Builder may move one additional time,
  * but not back to its initial space
- * @VeronicaRovelli
+ * @author VeronicaRovelli
  */
 
 public class Artemis extends GodCard{
 
-    private boolean secondMove;
+ //   private boolean secondMove;
     private Cell startingCell;
 
 
     public Artemis(String name) {
         super(name);
-        secondMove=false;
+//       secondMove=false;
     }
 
-   /* @Override
-    public boolean move(Builder w, Cell c) {
+   @Override
+    public int move(Board b, Builder w, Cell c, boolean usePower) {
 
         //first move
-        if(!MatchState.getHasMoved())
-            if(super.move(w,c))
+            if(!usePower)
             {
-                startingCell=c;
-                return true;
+                int x=super.move(b,w,c, usePower);
+                if(x==1)
+                {
+                    startingCell=c;
+                    return 3;
+                }
+                else
+                    return x;
             }
-
-        //second optional move
-        if(MatchState.getHasMoved()&&!secondMove&&c!=startingCell&&MatchState.getUsePower()) {
-            super.move(w, c);
-            secondMove = true;
-            return true;
-        }
-        return false;
+            //second optional move
+            else
+            {
+               if(c!=startingCell)
+                   return super.move(b,w, c,usePower);
+               else
+                   return 0;
+            }
     }
 
     @Override
-    public boolean build(Builder w, Cell c) {
-        return super.build(w,c);
+    public boolean build(Board  b,Builder w, Cell c, boolean usePower) {
+        return super.build(b,w,c,usePower);
     }
 
     @Override
-    public boolean HasWon() {
-        return super.HasWon();
+    public boolean HasWon(Cell c) {
+        return super.HasWon(c);
     }
 
     @Override
-    public boolean HasLost(Player player) {
-        return super.HasLost(player);
-    }*/
+    public boolean HasLost(Player player, Board b) {
+        return super.HasLost(player, b);
+    }
 }

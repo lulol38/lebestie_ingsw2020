@@ -10,14 +10,13 @@ import java.util.ArrayList;
 public class MatchState {
 
     private int numPlayers;
-    private static boolean hasMoved;
-    private static ArrayList<Integer> remainingPieces;
+    private boolean hasMoved;
+    private ArrayList<Integer> remainingPieces;
     private Player Winner;
-    private static boolean notMoveUp;
     private Builder chosenBuilder;
     private Board board;
     private Deck deck;
-    private static boolean usePower;
+    private boolean usePower;
 
     public MatchState() throws IOException {
         this.board=new Board();
@@ -25,12 +24,12 @@ public class MatchState {
 
     }
 
-    public static boolean getUsePower() {
+    public boolean getUsePower() {
         return usePower;
     }
 
-    public static void setUsePower(boolean usePower) {
-        MatchState.usePower = usePower;
+    public void setUsePower(boolean usePower) {
+        this.usePower = usePower;
     }
 
     public void setNumPlayers(int numPlayers) {
@@ -42,15 +41,15 @@ public class MatchState {
     }
 
 
-    public static void setHasMoved(boolean hasMoved) {
-        MatchState.hasMoved=hasMoved;
+    public void setHasMoved(boolean hasMoved) {
+        this.hasMoved=hasMoved;
     }
 
-    public static boolean getHasMoved() {
+    public boolean getHasMoved() {
         return hasMoved;
     }
 
-    public static Integer getRemainingPieces(int level) {
+    public Integer getRemainingPieces(int level) {
         return remainingPieces.get(level-1);
     }
 
@@ -65,14 +64,6 @@ public class MatchState {
 
     public Player getWinner() {
         return Winner;
-    }
-
-    public static void setNotMoveUp(boolean notMoveUp) {
-        MatchState.notMoveUp=notMoveUp;
-    }
-
-    public static boolean getNotMoveUp() {
-        return notMoveUp;
     }
 
     public void setChosenBuilder(Builder chosenBuilder) {
@@ -118,7 +109,7 @@ public class MatchState {
         return deck;
     }
 
-    public static void checkPieces(int level) {
+    public void checkPieces(int level) {
         remainingPieces.set(level-1,remainingPieces.get(level-1)-1);
     }
 }
