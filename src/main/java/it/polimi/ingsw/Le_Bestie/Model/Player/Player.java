@@ -1,4 +1,5 @@
 package it.polimi.ingsw.Le_Bestie.Model.Player;
+import it.polimi.ingsw.Le_Bestie.Model.Board.Position;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 import it.polimi.ingsw.Le_Bestie.Model.Cards.*;
 
@@ -9,6 +10,7 @@ import it.polimi.ingsw.Le_Bestie.Model.Cards.*;
 
 public class Player {
 
+    private static final Position startPosition = new Position(0, 0);
     private String nickname;
     private GodCard godCardPlayer;
     private Builder builder1;
@@ -18,8 +20,8 @@ public class Player {
     public Player(String nickname) {
         this.nickname=nickname;
         this.disabled=false;
-        this.builder1=new Builder();
-        this.builder2=new Builder();
+        this.builder1=new Builder(startPosition);
+        this.builder2=new Builder(startPosition);
     }
 
     //Getters
@@ -58,37 +60,7 @@ public class Player {
     }
 
     public String toString() {
-        StringBuilder res = new StringBuilder();
-
-        if (this.getGodCard() instanceof Apollo)
-            res.append("Apollo");
-
-        if (this.getGodCard() instanceof Artemis)
-            res.append("Artemis");
-
-        if (this.getGodCard() instanceof Prometheus)
-            res.append("Prometheus");
-
-        if (this.getGodCard() instanceof Athena)
-            res.append("Athena");
-
-        if (this.getGodCard() instanceof Atlas)
-            res.append("Atlas");
-
-        if (this.getGodCard() instanceof Demeter)
-            res.append("Demeter");
-        if (this.getGodCard() instanceof Hephaestus)
-            res.append("Hephaestus");
-
-        if (this.getGodCard() instanceof Minotaur)
-            res.append("Minotaur");
-
-        if (this.getGodCard() instanceof Pan)
-            res.append("Pan");
-
-        return res.toString();
-
+        return this.godCardPlayer.getName();
     }
-
 
 }

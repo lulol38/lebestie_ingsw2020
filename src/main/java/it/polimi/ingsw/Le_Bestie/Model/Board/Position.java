@@ -3,7 +3,7 @@ package it.polimi.ingsw.Le_Bestie.Model.Board;
 public class Position {
     private int x, y;
 
-    public Position(int y, int x) {
+    public Position(int x, int y) {
         this.x = x;
         this.y = y;
     }

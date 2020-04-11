@@ -9,7 +9,6 @@ public class Cell {
     private int level;
     private Builder builder;
     private Position position;
-    private boolean occupied;
     private boolean disabled;
 
     public Cell(int level)
@@ -24,11 +23,6 @@ public class Cell {
     public Builder getBuilder()
     {
         return this.builder;
-    }
-
-    public boolean isOccupied()
-    {
-        return this.occupied;
     }
     public boolean isDisabled()
     {
@@ -50,19 +44,14 @@ public class Cell {
     {
         this.builder=builder;
     }
-
     public void setPosition(Position position) {
         this.position = position;
-    }
-
-    public void setOccupied(boolean occupied)
-    {
-        this.occupied=occupied;
     }
     public void setDisabled(boolean disabled)
     {
         this.disabled=disabled;
     }
+
 
     public void addLevel() {
         this.level++;

@@ -1,4 +1,3 @@
-
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
 import it.polimi.ingsw.Le_Bestie.Model.Game.MatchState;
@@ -12,7 +11,6 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
  * @VeronicaRovelli
  */
 
-
 public abstract class GodCard {
 
     private String name;
@@ -23,7 +21,6 @@ public abstract class GodCard {
 
     public boolean move(Builder w, Cell c){
         HasLost(w.getPlayer());
-
         if(!MatchState.getHasMoved()&&w.possibleMoves().contains(c))
         {
             //winner condition
@@ -43,6 +40,10 @@ public abstract class GodCard {
             return true;
         }
         return false;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public boolean build(Builder w, Cell c){
