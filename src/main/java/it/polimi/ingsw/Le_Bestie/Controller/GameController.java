@@ -7,6 +7,8 @@ import it.polimi.ingsw.Le_Bestie.Network.Server.Lobby;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
+//Controller for the server, it takes place between the model and the network in the server side
 public class GameController {
 
     private Lobby lobby;

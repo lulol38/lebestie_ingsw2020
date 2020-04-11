@@ -75,7 +75,5 @@ public class Client implements Runnable, Observer {
 
     public static void main(String[] args){
 
-        //Here will start the GUI
-
     }
 }
