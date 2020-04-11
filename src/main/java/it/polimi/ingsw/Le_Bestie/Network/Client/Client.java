@@ -1,5 +1,8 @@
 package it.polimi.ingsw.Le_Bestie.Network.Client;
 
+import it.polimi.ingsw.Le_Bestie.Network.Messages.Message;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageParser;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.NoSuchElementException;
@@ -46,11 +49,9 @@ public class Client implements Runnable, Observer {
     }
 
     public void receiveMessage(){
-        //
-        //PARSE before
-        //
         try {
-            in.readObject();
+            Message mex= (Message) in.readObject();
+            mex.receive(new MessageParser(this));
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -58,8 +59,7 @@ public class Client implements Runnable, Observer {
         }
     }
 
-    //TYPE OF MESSAGE
-    public void sendMessage(String message){
+    public void sendMessage(Message message){
         try {
             out.writeObject(message);
             out.flush();

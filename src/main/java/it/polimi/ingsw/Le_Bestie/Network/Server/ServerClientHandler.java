@@ -30,6 +30,8 @@ public class ServerClientHandler implements Runnable, Observer {
 
     private Socket socket;
 
+    private boolean connected;
+
     public ServerClientHandler(Socket socket){
         this.socket=socket;
         try {
@@ -42,7 +44,9 @@ public class ServerClientHandler implements Runnable, Observer {
 
     public void run(){
         try{
-            receiveMessage();
+            while(connected) {
+                receiveMessage();
+            }
         }
         catch(Exception ex)
         {
