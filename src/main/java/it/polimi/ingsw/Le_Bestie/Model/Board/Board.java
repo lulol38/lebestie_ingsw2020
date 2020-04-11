@@ -10,9 +10,10 @@ public class Board {
 
     public Board() {
         grid=new Cell[square][square];
-        for (int y = 0; y < square; y++) {
-            for (int x = 0; x < square; x++) {
-                grid[y][x] = new Cell(0);
+        for (int x = 0; x < square; x++) {
+            for (int y = 0; y < square; y++) {
+                grid[x][y] = new Cell(0);
+                grid[x][y].setPosition(new Position(x, y));
             }
         }
     }

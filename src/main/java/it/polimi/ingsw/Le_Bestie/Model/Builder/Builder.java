@@ -13,6 +13,11 @@ public class Builder {
     private Position position;
     private Player player;
 
+    public Builder(Position position){
+        this.position=position;
+
+    }
+
  //setter e getter
     public void setPlayer(Player player) {
         this.player=player;
