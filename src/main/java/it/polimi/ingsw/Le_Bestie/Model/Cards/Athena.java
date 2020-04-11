@@ -1,11 +1,6 @@
 
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
-import it.polimi.ingsw.Le_Bestie.Model.Game.MatchState;
-import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
-import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
-import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
-
 /**
  * Class Athena
  * if one of your Builders moved up on your last turn,
@@ -20,7 +15,7 @@ public class Athena extends GodCard{
         super(name);
     }
 
-    @Override
+ /*   @Override
     public boolean move(Builder w, Cell c) {
         MatchState.setNotMoveUp(false);
         int startingLevel=c.getLevel();
@@ -47,7 +42,7 @@ public class Athena extends GodCard{
     @Override
     public boolean HasLost(Player player) {
         return super.HasLost(player);
-    }
+    }*/
 
 
 }

@@ -2,10 +2,7 @@
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
 
-import it.polimi.ingsw.Le_Bestie.Model.Game.MatchState;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
-import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
-import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 /**
  * Class Artemis
@@ -25,7 +22,7 @@ public class Artemis extends GodCard{
         secondMove=false;
     }
 
-    @Override
+   /* @Override
     public boolean move(Builder w, Cell c) {
 
         //first move
@@ -58,5 +55,5 @@ public class Artemis extends GodCard{
     @Override
     public boolean HasLost(Player player) {
         return super.HasLost(player);
-    }
+    }*/
 }

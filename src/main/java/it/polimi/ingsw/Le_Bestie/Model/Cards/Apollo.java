@@ -1,10 +1,5 @@
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
-import it.polimi.ingsw.Le_Bestie.Model.Game.MatchState;
-import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
-import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
-import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
-
 /**
  * Class Apollo
  * your Builder may move into an opponent Builder's
@@ -19,7 +14,7 @@ public class Apollo extends GodCard {
         super(name);
     }
 
-    @Override
+  /*  @Override
     public boolean move(Builder w, Cell c) {
         if (w.possibleMoves().contains(c))
             return super.move(w, c);
@@ -61,5 +56,5 @@ public class Apollo extends GodCard {
             player.getBuilder1().setDisabled(true);
 
         return super.HasLost(player);
-    }
+    }*/
 }

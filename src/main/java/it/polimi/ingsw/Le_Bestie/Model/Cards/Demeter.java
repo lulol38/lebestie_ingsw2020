@@ -1,17 +1,17 @@
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
-import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
 public class Demeter extends GodCard{
 
     private boolean secondBuilt;
     private Cell startingCell;
 
+
     public Demeter(String name) {
         super(name);
     }
-
+/*
     @Override
     public boolean move(Builder w, Cell c) {
         return false;
@@ -26,6 +26,7 @@ public class Demeter extends GodCard{
     public boolean HasWon() {
         return false;
     }
+*/
 
   /*  @Override
     public boolean HasLost() {
