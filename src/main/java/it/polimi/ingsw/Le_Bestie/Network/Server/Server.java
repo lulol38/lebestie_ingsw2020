@@ -47,7 +47,7 @@ public class Server {
                 Socket socket = serverSocket.accept();
                 ServerClientHandler client = new ServerClientHandler(socket);
                 clientsConnected.add(client);
-//                System.out.println("Client " + client.getAddress() + " is connected to the server \n");
+                System.out.println("Client " + client.getAddress() + " is connected to the server \n");
                 addWaitingClient(client, socket);
                 executor.submit(client);
             } catch (IOException e) { //Connection error
@@ -56,13 +56,19 @@ public class Server {
         }
     }
 
+
+    //
+    //
+    //MODIFY WITH CORRECT MESSAGE SENT, NOT OUTPUT STREAM
+    //
+    //
     public void addWaitingClient(ServerClientHandler client, Socket soc){
         lobby.addClientToLobby(client);
         if(lobby.getClientsWaiting().size()==1){ //First player decides if 3 or 4 players
             try {
                 Scanner in = new Scanner(soc.getInputStream());
                 PrintWriter out = new PrintWriter(soc.getOutputStream());
-                out.println("DEC34PLAYERS");
+                out.println("DEC23PLAYERS");
                 lobby.setNumPlayersMatch(in.nextInt()); //Read from the client the number of players and sets to the lobby
             } catch (IOException e) {
                 e.printStackTrace();
@@ -95,7 +101,7 @@ public class Server {
         try {
             serverSocket.close();
             for (ServerClientHandler connection: clientsConnected) {
-//                connection.closeConnection();
+                connection.closeConnection();
             }
         }
         catch (IOException e) {
