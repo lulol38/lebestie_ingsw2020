@@ -1,12 +1,13 @@
 package it.polimi.ingsw.Le_Bestie;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
  *
  * ******SANTORINI GAME******
  */
-public class App 
+public class App
 {
     public static void main( String[] args ) throws IOException
     {
@@ -25,9 +26,5 @@ public class App
         System.out.println("                *   *               *");
         System.out.println("*****************   *               *");
         System.out.println("___________________________________________________________________________________________________________");
-
-
-
-
     }
 }
