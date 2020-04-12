@@ -1,5 +1,10 @@
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
+import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
+import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
+import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
+import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
+
 /**
  * Class Apollo
  * your Builder may move into an opponent Builder's
@@ -14,47 +19,51 @@ public class Apollo extends GodCard {
         super(name);
     }
 
-  /*  @Override
-    public boolean move(Builder w, Cell c) {
-        if (w.possibleMoves().contains(c))
-            return super.move(w, c);
+    @Override
+    public int move(Board b, Builder w, Cell c,boolean usePower) {
+        if (w.possibleMoves(b, notMoveUp).contains(c))
+            return super.move(b, w, c,usePower);
 
-        if (!MatchState.getHasMoved() && w.possibleSwitch().contains(c)) {
+        if (w.possibleSwitch(b, notMoveUp).contains(c)) {
             //winner condition
-            if (c.getLevel() == 3)
-                HasWon();
+            if(HasWon(c))
+                return 2;
+
+            Cell currentCell=b.getGrid()[w.getPosition().getX()][w.getPosition().getX()];
 
             //change cell to the opponent Builder
-            w.getCell().setBuilder(c.getBuilder());
-            c.getBuilder().setCell(w.getCell());
+            currentCell.setBuilder(c.getBuilder());
+            c.getBuilder().setPosition(currentCell.getPosition());
 
             //change my cell
-            w.setCell(c);
+            w.setPosition(c.getPosition());
             c.setBuilder(w);
 
-            MatchState.setHasMoved(true);
-            return true;
+            return 1;
         }
-        return false;
+        return 0;
+    }
+
+
+
+    @Override
+    public boolean build(Board b, Builder w, Cell c, boolean usePower) {
+        return super.build(b,w, c,usePower);
     }
 
     @Override
-    public boolean build(Builder w, Cell c) {
-        return super.build(w, c);
+    public boolean HasWon(Cell c) {
+        return super.HasWon(c);
     }
 
     @Override
-    public boolean HasWon() {
-        return super.HasWon();
-    }
+    public boolean HasLost(Player player,Board b) {
 
-    @Override
-    public boolean HasLost(Player player) {
-        if (player.getBuilder2().possibleSwitch().size() == 0)
-            player.getBuilder2().setDisabled(true);
-        if (player.getBuilder1().possibleSwitch().size() == 0)
+        if (player.getBuilder1().possibleSwitch(b, notMoveUp).size() == 0&&player.getBuilder1().possibleMoves(b, notMoveUp).size() == 0)
             player.getBuilder1().setDisabled(true);
+        if (player.getBuilder2().possibleSwitch(b, notMoveUp).size() == 0&&player.getBuilder2().possibleMoves(b, notMoveUp).size() == 0)
+            player.getBuilder2().setDisabled(true);
 
-        return super.HasLost(player);
-    }*/
+        return player.getBuilder1().getDisabled() && player.getBuilder2().getDisabled();
+    }
 }
