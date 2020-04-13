@@ -33,8 +33,7 @@ public abstract class GodCard {
     0->il builder non può muoversi nella cella richiesta
     1->il builder si è spostato nella cella desiderata(c)
     2->il player associato al builder ha vinto!!
-    3->se vuoi usare il potere, puoi richiamare la move (con usePower=true),
-        altrimenti fai come se return fosse 1
+    3->richiama la move (con usePower sempre true)
     */
 
     public int move(Board b, Builder w, Cell c,boolean usePower){
@@ -42,7 +41,7 @@ public abstract class GodCard {
          if(w.possibleMoves(b,notMoveUp).contains(c))
          {
              //winner condition
-             if(HasWon(c))
+             if(HasWon(c,currentCell))
                   return 2;
              currentCell.setBuilder(null);
              c.setBuilder(w);
@@ -52,16 +51,21 @@ public abstract class GodCard {
          return 0;
     }
 
-    public boolean build(Board b,Builder w, Cell c, boolean usePower){
+    /* return
+    0->il builder non può costruire in quella cella (c)
+    1->il builder ha costruito con successo
+    2->richiama la build (con usePower sempre true)
+     */
+    public int build(Board b,Builder w, Cell c, boolean usePower){
         if(w.possibleBuilds(b).contains(c))
         {
             c.addLevel();
-            return true;
+            return 1;
         }
-        return false;
+        return 0;
     }
 
-    public boolean HasWon(Cell c) {
+    public boolean HasWon(Cell c,Cell currentCell) {
         return c.getLevel() == 3;
     }
 

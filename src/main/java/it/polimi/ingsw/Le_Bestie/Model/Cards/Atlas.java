@@ -24,7 +24,7 @@ public class Atlas extends GodCard{
     }
 
     @Override
-    public boolean build(Board b, Builder w, Cell c, boolean usePower) {
+    public int build(Board b, Builder w, Cell c, boolean usePower) {
 
         //build without power
         if(!usePower)
@@ -33,15 +33,15 @@ public class Atlas extends GodCard{
         //build with power
         else if (w.possibleBuilds(b).contains(c)) {
                     c.setLevel(4);
-                    return true;
+                    return 1;
                 }
 
-            return false;
+            return 0;
     }
 
     @Override
-    public boolean HasWon(Cell c) {
-        return super.HasWon(c);
+    public boolean HasWon(Cell c,Cell currentCell) {
+        return super.HasWon(c,currentCell);
     }
 
     @Override
