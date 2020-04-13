@@ -20,7 +20,6 @@ public class MatchState {
 
     public MatchState() throws IOException {
         this.board=new Board();
-        this.deck=new Deck(numPlayers);
 
     }
 
