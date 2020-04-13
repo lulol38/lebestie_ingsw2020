@@ -1,4 +1,4 @@
-package it.polimi.ingsw.Le_Bestie;
+package it.polimi.ingsw.Le_Bestie.jsonParser;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;

@@ -2,6 +2,7 @@ package it.polimi.ingsw.Le_Bestie;
 
 import it.polimi.ingsw.Le_Bestie.Model.Cards.Deck;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
+import it.polimi.ingsw.Le_Bestie.jsonParser.GodCardsParser;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,7 +31,7 @@ public class App extends Application {
         launch(args);
 
         Deck d;
-        d=GodCardsParser.parseCards(3);
+        d= GodCardsParser.parseCards(3);
 
 
         Player p1=new Player("dabide");
