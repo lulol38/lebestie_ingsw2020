@@ -1,7 +1,6 @@
 
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
-
 import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
@@ -22,7 +21,7 @@ public class Artemis extends GodCard{
 
     public Artemis(String name) {
         super(name);
-//       secondMove=false;
+//      secondMove=false;
     }
 
    @Override
