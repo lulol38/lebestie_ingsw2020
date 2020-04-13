@@ -20,14 +20,15 @@ public class Client implements Runnable, Observer {
     private String ip;
     private int port;
     private Socket socket;
-    private String nickname;
+    private String username;
 
     private ObjectOutputStream out;
     private ObjectInputStream in;
 
-    public Client(String ip, int port){
+    public Client(String ip, int port, String Username){
         this.ip=ip;
         this.port=port;
+        this.username=username;
         try {
             this.socket = new Socket(ip, port);
             this.out = new ObjectOutputStream(socket.getOutputStream());
@@ -35,6 +36,7 @@ public class Client implements Runnable, Observer {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        run();
     }
 
     public void run() {

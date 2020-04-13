@@ -19,7 +19,7 @@ import java.util.Scanner;
  * server launches thread foreach client
  * @author Luca Ferrari
  */
-public class ServerClientHandler implements Runnable, Observer {
+public class ServerClientHandler implements Runnable {
 
     private Player player;
 
@@ -101,10 +101,5 @@ public class ServerClientHandler implements Runnable, Observer {
         catch(Exception ex){
             System.out.println(ex.getMessage().toString());
         }
-    }
-
-    @Override
-    public void update(Observable observable, Object o) {
-        //
     }
 }

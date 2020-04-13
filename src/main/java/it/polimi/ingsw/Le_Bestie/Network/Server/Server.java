@@ -113,9 +113,6 @@ public class Server {
     }
 
     public static void main(String[] args){
-
-        //Here will start the server
-
         Server s = new Server(1345);
         s.startServer();
     }

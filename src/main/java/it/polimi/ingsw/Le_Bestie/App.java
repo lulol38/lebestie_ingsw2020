@@ -63,7 +63,7 @@ public class App extends Application {
         System.out.println(p5.getGodCard().getName());
         System.out.println(p6.getGodCard().getName());
         System.out.println(p7.getGodCard().getName());
-        System.out.println(p8.getGodCard().getName());
-        System.out.println(p9.getGodCard().getName());
+        //System.out.println(p8.getGodCard().getName());
+        //System.out.println(p9.getGodCard().getName());
     }
 }
