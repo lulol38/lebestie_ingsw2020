@@ -1,34 +1,28 @@
 package it.polimi.ingsw.Le_Bestie.Model.Cards;
 
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 /**
  * Class Deck
- * describes a generic deck(an arraylist of cards)
+ * describes a generic deck(an arraylist of God cards)
  * @author Davide Carini
  */
 
 public class Deck {
 
-    private static ArrayList<GodCard> deck;
-    private static String godCard2PlayersPath="DatabaseGodCard/Deck2Players.csv";
-    private static String godCard3PlayersPath="DatabaseGodCard/Deck3Players.csv";
+    private ArrayList<GodCard> deck;
 
-    public Deck(int numplayers) throws IOException{
-
-        if(numplayers==2)
-            deck=loadsCardFromFile2Players(godCard2PlayersPath);
-        else
-            deck=loadsCardFromFile3Players(godCard3PlayersPath);
-
-        this.shuffleDeck();
-
+    public Deck(){
+        deck=new ArrayList<>();
     }
+
     public ArrayList<GodCard> getDeck() {
         return deck;
     }
@@ -44,7 +38,8 @@ public class Deck {
             return false;
     }
 
-    public ArrayList<GodCard> loadsCardFromFile2Players(String godCard2PlayersPath)throws IOException
+
+    private ArrayList<GodCard> loadsCardFromFile2Players(String godCard2PlayersPath)throws IOException
     {
         ArrayList<GodCard> cards=new ArrayList<GodCard>();
         String currentLine = "";
@@ -96,8 +91,26 @@ public class Deck {
         return cards;
     }
 
-    private void shuffleDeck(){
+    public void addCard(GodCard card) {
+        if (card == null) throw new NullPointerException("Card cannot be null");
+        deck.add(card);
+    }
+
+    public void shuffle(){
         Collections.shuffle(deck);
     }
+
+    private int getRandomNumber(int max) {
+        Random nRand = new Random();
+        return nRand.nextInt(max);
+    }
+    public GodCard draw() {
+        try {
+            return deck.remove(0);
+        } catch (IndexOutOfBoundsException e) {
+            return null;
+        }
+    }
+
 
 }

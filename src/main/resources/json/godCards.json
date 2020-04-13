@@ -1,0 +1,74 @@
+{
+  "godcards": [
+    {
+      "name" : "Apollo",
+      "title":"God Of Music",
+      "description": "Your Worker may move into an opponent Worker’s space by forcing their Worker to the space yours just vacated.",
+      "active":"Your Move",
+      "3players" : "true"
+    },
+    {
+      "name" : "Artemis",
+      "title":"Goddess of the Hunt",
+      "description": "Your Worker may move one additional time, but not back to its initial space.",
+      "active":"Your Move",
+      "3players" : "true"
+
+    }, 
+    {
+      "name" : "Athena",
+      "title": "Goddess of Wisdom",
+      "description": "If one of your Workers moved up on your last turn, opponent Workers cannot move up this turn.",
+      "active":"Opponent’s Turn",
+      "3players" : "true"
+
+    },
+   {
+      "name" : "Atlas",
+      "title": "Titan Shouldering the Heavens",
+      "description": "Your Worker may build a dome at any level.",
+      "active":"Your Build",
+      "3players" : "true"
+
+    },
+   {
+      "name" : "Demeter",
+      "title": "Goddess of the Harvest",
+      "description": "Your Worker may build one additional time, but not on the same space.",
+      "active":"Your Build",
+      "3players" : "true"
+    },
+   {
+      "name" : "Hephaestus",
+      "title": "God of Blacksmiths",
+      "description": "Your Worker may build one additional block (not dome) on top of your first block.",
+      "active":"Your Build",
+      "3players" : "false"
+
+    },
+   {
+      "name" : "Minotaur",
+      "title": "Bull-headed Monster",
+      "description": "Your Worker may move into an opponent Worker’s space, if their Worker can be forced one space straight backwards to an unoccupied space at any level.",
+      "active":"Your Move",
+      "3players" : "true"
+
+    },
+   {
+      "name" : "Pan",
+      "title": "God of the Wild"
+      "description": "You also win if your Worker moves down two or more levels.",
+      "active":"Your Move",
+      "3players" : "true"
+
+    },
+   {
+      "name" : "Prometheus",
+      "title": "Titan Benefactor of Mankind"
+      "description": "If your Worker does not move up, it may build both before and after moving.",
+      "active":"Win Condition",
+      "3players" : "false"
+
+    }
+  ]
+}
