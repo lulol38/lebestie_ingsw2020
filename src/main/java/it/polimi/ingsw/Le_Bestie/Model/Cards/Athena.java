@@ -38,13 +38,13 @@ public class Athena extends GodCard{
 
 
     @Override
-    public boolean build(Board b, Builder w, Cell c, boolean usePower) {
+    public int build(Board b, Builder w, Cell c, boolean usePower) {
         return super.build(b,w,c,usePower);
     }
 
     @Override
-    public boolean HasWon(Cell c) {
-        return super.HasWon(c);
+    public boolean HasWon(Cell c,Cell currentCell) {
+        return super.HasWon(c,currentCell);
     }
 
     @Override

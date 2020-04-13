@@ -16,48 +16,54 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 public class Artemis extends GodCard{
 
- //   private boolean secondMove;
     private Cell startingCell;
+    private boolean firstMoveDone;
 
 
     public Artemis(String name) {
         super(name);
-//       secondMove=false;
     }
 
    @Override
     public int move(Board b, Builder w, Cell c, boolean usePower) {
-
-        //first move
+            //no power
             if(!usePower)
+                return super.move(b,w,c, usePower);
+
+            //first move
+            if(!firstMoveDone)
             {
                 int x=super.move(b,w,c, usePower);
                 if(x==1)
                 {
+                    firstMoveDone=true;
                     startingCell=c;
                     return 3;
                 }
                 else
                     return x;
             }
-            //second optional move
+            //second move
             else
             {
                if(c!=startingCell)
+               {
+                   firstMoveDone=false;
                    return super.move(b,w, c,usePower);
+               }
                else
                    return 0;
             }
     }
 
     @Override
-    public boolean build(Board  b,Builder w, Cell c, boolean usePower) {
+    public int build(Board  b,Builder w, Cell c, boolean usePower) {
         return super.build(b,w,c,usePower);
     }
 
     @Override
-    public boolean HasWon(Cell c) {
-        return super.HasWon(c);
+    public boolean HasWon(Cell c,Cell currentCell) {
+        return super.HasWon(c,currentCell);
     }
 
     @Override
