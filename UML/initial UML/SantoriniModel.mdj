@@ -8001,7 +8001,7 @@
 											"top": 357,
 											"width": 305.24609375,
 											"height": 13,
-											"text": "+createDeck(ArrayListGodCard): void",
+											"text": "+addCard(GodCard): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8018,7 +8018,7 @@
 											"top": 372,
 											"width": 305.24609375,
 											"height": 13,
-											"text": "+assignCard(Player p): boolean",
+											"text": "+draw(): GodCard",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8035,24 +8035,7 @@
 											"top": 387,
 											"width": 305.24609375,
 											"height": 13,
-											"text": "+removeCard(GodCard gc): void",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAFxVOLZKLKjZIQ=",
-											"_parent": {
-												"$ref": "AAAAAAFxVN1r7KUZgnQ="
-											},
-											"model": {
-												"$ref": "AAAAAAFxVOLY47KOIpM="
-											},
-											"font": "Arial;13;0",
-											"left": 965,
-											"top": 402,
-											"width": 305.24609375,
-											"height": 13,
-											"text": "+loadCardsFromFile(String url): ArrayList<GodCard>",
+											"text": "+flush(): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8066,10 +8049,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 965,
-											"top": 417,
+											"top": 402,
 											"width": 305.24609375,
 											"height": 13,
-											"text": "+shuffleDeck(): void",
+											"text": "+shuffle(): void",
 											"horizontalAlignment": 0
 										}
 									],
@@ -8077,7 +8060,7 @@
 									"left": 960,
 									"top": 352,
 									"width": 315.24609375,
-									"height": 83
+									"height": 68
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -11450,7 +11433,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFxVN1r7KUQhMw="
 							},
-							"name": "createDeck",
+							"name": "addCard",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -11458,7 +11441,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFxVN2UsaXu4Hc="
 									},
-									"name": "ArrayListGodCard"
+									"name": "GodCard"
 								},
 								{
 									"_type": "UMLParameter",
@@ -11477,7 +11460,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFxVN1r7KUQhMw="
 							},
-							"name": "assignCard",
+							"name": "draw",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -11485,17 +11468,10 @@
 									"_parent": {
 										"$ref": "AAAAAAFxVN+TlKiZesU="
 									},
-									"type": "boolean",
-									"direction": "return"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFxVOKL1rHqBic=",
-									"_parent": {
-										"$ref": "AAAAAAFxVN+TlKiZesU="
+									"type": {
+										"$ref": "AAAAAAFw4+1fj/nVOnA="
 									},
-									"name": "Player p",
-									"type": ""
+									"direction": "return"
 								}
 							]
 						},
@@ -11505,17 +11481,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFxVN1r7KUQhMw="
 							},
-							"name": "removeCard",
+							"name": "flush",
 							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFxVOJXO7DCVRY=",
-									"_parent": {
-										"$ref": "AAAAAAFxVOIVm7ArF7U="
-									},
-									"name": "GodCard gc",
-									"type": ""
-								},
 								{
 									"_type": "UMLParameter",
 									"_id": "AAAAAAFxVOJXPLDDqzM=",
@@ -11529,39 +11496,11 @@
 						},
 						{
 							"_type": "UMLOperation",
-							"_id": "AAAAAAFxVOLY47KOIpM=",
-							"_parent": {
-								"$ref": "AAAAAAFxVN1r7KUQhMw="
-							},
-							"name": "loadCardsFromFile",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFxVOMw77MlWQU=",
-									"_parent": {
-										"$ref": "AAAAAAFxVOLY47KOIpM="
-									},
-									"name": "String url",
-									"type": ""
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFxVOMw77MmU5s=",
-									"_parent": {
-										"$ref": "AAAAAAFxVOLY47KOIpM="
-									},
-									"type": "ArrayList<GodCard>",
-									"direction": "return"
-								}
-							]
-						},
-						{
-							"_type": "UMLOperation",
 							"_id": "AAAAAAFxVOPIprVIlIA=",
 							"_parent": {
 								"$ref": "AAAAAAFxVN1r7KUQhMw="
 							},
-							"name": "shuffleDeck",
+							"name": "shuffle",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
