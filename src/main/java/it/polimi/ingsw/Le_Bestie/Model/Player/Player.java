@@ -4,7 +4,7 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 import it.polimi.ingsw.Le_Bestie.Model.Cards.GodCard;
 
 /**
- * Class Player describes a generic player
+ * Class Player describes a generic player that play on the board
  * @author Davide Carini
  */
 
@@ -59,6 +59,7 @@ public class Player {
         this.builder2=builder1;
     }
 
+    //Method that returns the God Card name(string) associated to the player
     public String toString() {
         return this.godCardPlayer.getName();
     }
