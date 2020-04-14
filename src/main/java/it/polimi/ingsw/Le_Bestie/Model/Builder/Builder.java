@@ -9,7 +9,7 @@ import java.util.Iterator;
 
 public class Builder {
 
-    private Color color;
+    private BuilderColor color;
     private String idBuilder;
     private boolean disabled;
     private Position position;
@@ -27,7 +27,7 @@ public class Builder {
     public Player getPlayer() {
         return player;
     }
-    public Color getColor(){
+    public BuilderColor getColor(){
         return this.color;
     }
     public String getIdBuilder(){
@@ -37,7 +37,7 @@ public class Builder {
 
     //Setter
     public void setPosition(Position position) { this.position = position; }
-    public void setColor(Color color){
+    public void setColor(BuilderColor color){
         this.color=color;
     }
     public void setIdBuilder(String idBuilder){
