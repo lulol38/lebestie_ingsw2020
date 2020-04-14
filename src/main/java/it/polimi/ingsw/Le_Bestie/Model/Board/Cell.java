@@ -59,4 +59,22 @@ public class Cell {
             setDisabled(true);
     }
 
+    // !!!!! "currentCell" is the cell in which is OUR Builder and "this" is the cell in which is OPPONENT builder !!!!!!!!!!
+    public Position nextCellFree(Board b,Cell currentCell)
+    {
+        Position nextCell;
+        int ccY=currentCell.getPosition().getY(),ccX=currentCell.getPosition().getX();
+        if(this.position.getY()==ccY)
+            nextCell=new Position(this.position.getX()+(this.position.getX()-ccX),ccY);
+        else
+            if(this.position.getX()==ccX)
+            nextCell=new Position(ccX,this.position.getY()+(this.position.getY()-ccY));
+            else
+                nextCell=new Position(this.position.getX()+(this.position.getX()-ccX),this.position.getY()+(this.position.getY()-ccY));
+       if(!nextCell.onGrid())
+           return null;
+       if(b.getGrid()[nextCell.getX()][nextCell.getY()].isDisabled()||b.getGrid()[nextCell.getX()][nextCell.getY()].getBuilder()!=null)
+              return null;
+       return nextCell;
+    }
 }
