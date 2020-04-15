@@ -54,9 +54,6 @@ public class MatchState {
     public void setChosenBuilder(Builder chosenBuilder) {
         this.chosenBuilder=chosenBuilder;
     }
-    public void checkPieces(int level) {
-        remainingPieces.set(level-1,remainingPieces.get(level-1)-1);
-    }
 
     public void startGame(){
         gameStarted=true;

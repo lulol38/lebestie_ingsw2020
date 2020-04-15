@@ -30,7 +30,7 @@ public class Board {
     }
 
     public void removePiece(int level) {
-        remainingPieces.set(level-1,remainingPieces.get(level-1)-1);
+        this.remainingPieces.set(level-1,this.remainingPieces.get(level-1)-1);
     }
     public int getRemainingPieces(int level) {
         return remainingPieces.get(level-1);
