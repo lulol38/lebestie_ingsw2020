@@ -3,6 +3,8 @@ package it.polimi.ingsw.Le_Bestie;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.BuilderColor;
 import it.polimi.ingsw.Le_Bestie.Model.Cards.Deck;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
+import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.CloseConnection;
 import it.polimi.ingsw.Le_Bestie.jsonParser.GodCardsParser;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -40,6 +42,8 @@ public class App extends Application {
                 stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                     @Override
                     public void handle(WindowEvent we) {
+                        if(Client.getInstance()!=null)
+                            Client.getInstance().sendMessage(new CloseConnection());
                         System.exit(0);
                     }
                 });

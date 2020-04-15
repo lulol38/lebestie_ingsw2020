@@ -13,7 +13,7 @@ import java.net.Socket;
  */
 public class Client implements Runnable {
 
-    public static Client instance;
+    private static Client instance;
 
     private String ip;
     private int port;
