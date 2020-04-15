@@ -12,12 +12,10 @@ import java.util.ArrayList;
 public class GameController {
 
     private Lobby lobby;
-
     private MatchState matchState;
-    private ArrayList<Player> players;
-    private ArrayList<Player> listPlayersRound;
+    private Player Winner;
 
-    public GameController(Lobby lobby) throws IOException {
+    public GameController(Lobby lobby) {
         this.lobby=lobby;
         this.matchState=new MatchState();
     }
@@ -26,25 +24,9 @@ public class GameController {
         this.players = players;
     }
 
-    private boolean searchUser(String user){
-        for(int i=0;i<this.players.size();i++)
-        {
-            if(players.get(i).getNickname().equalsIgnoreCase(user))
-                return true;
-        }
-        return false;
-    }
 
-    public void startGame(){
-        matchState();
-    }
-
-    public Player addPlayer(String username){
-        Player p= new Player(username);
-
-        players.add(p);
-
-        return p;
+    public void initGame(){
+        matchState.startGame();
     }
 
     public MatchState getMatchState() {
