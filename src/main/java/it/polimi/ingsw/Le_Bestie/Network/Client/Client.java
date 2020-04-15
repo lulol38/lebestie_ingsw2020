@@ -2,6 +2,7 @@ package it.polimi.ingsw.Le_Bestie.Network.Client;
 
 import it.polimi.ingsw.Le_Bestie.Network.Messages.Message;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageParser;
+import javafx.application.Platform;
 
 import java.io.*;
 import java.net.Socket;
@@ -39,17 +40,17 @@ public class Client implements Runnable {
         }
     }
 
-    public void run() {
-        while(true){
-            try{
+    public synchronized void run() {
+        while (true) {
+            try {
                 receiveMessage();
             }
             catch(Exception ex){
-                System.out.println(ex.getMessage().toString());
+                System.out.println(ex.getMessage());
             }
+
         }
     }
-
     public String getUsername() {
         return username;
     }
@@ -66,9 +67,9 @@ public class Client implements Runnable {
         this.numPlayers = numPlayers;
     }
 
-    public void receiveMessage(){
+    public synchronized void receiveMessage() {
         try {
-            Message mex= (Message) in.readObject();
+            Message mex = (Message) in.readObject();
             mex.receive(new MessageParser(this));
         } catch (IOException e) {
             e.printStackTrace();
@@ -77,7 +78,7 @@ public class Client implements Runnable {
         }
     }
 
-    public void sendMessage(Message message){
+    public synchronized void sendMessage(Message message){
         try {
             out.writeObject(message);
             out.flush();
