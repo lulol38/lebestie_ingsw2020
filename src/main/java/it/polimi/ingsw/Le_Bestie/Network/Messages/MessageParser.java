@@ -1,8 +1,12 @@
 package it.polimi.ingsw.Le_Bestie.Network.Messages;
 
+import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.CloseConnection;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendNumPlayers;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendUsername;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskNumPlayers;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskUsername;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.ErrorUsername;
 import it.polimi.ingsw.Le_Bestie.Network.Server.Server;
 import it.polimi.ingsw.Le_Bestie.Network.Server.ServerClientHandler;
 import javafx.fxml.FXMLLoader;
@@ -26,28 +30,72 @@ public class MessageParser implements MessageVisitor {
     //Ask to the client the number of players for the match
     @Override
     public void visit(AskNumPlayers mex){
-        try {
-            Stage stage= new Stage();
-            Parent root = null;
-            root = FXMLLoader.load(getClass().getResource("/GUI/NumPlayers.fxml"));
-            Scene scene = new Scene(root);
+        javafx.application.Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Stage stage= new Stage();
+                    Parent root = null;
+                    root = FXMLLoader.load(getClass().getResource("/GUI/NumPlayers.fxml"));
+                    Scene scene = new Scene(root);
 
-            stage.setTitle("Menu");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                    stage.setTitle("Menu");
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
     @Override
     public void visit(SendNumPlayers mex) {
         Server.instance.getLobby().setNumPlayersMatch(mex.getNumPlayers());
+        System.out.println("Setted match num players to: " + Server.getInstance().getLobby().getNumPlayersMatch());
     }
 
     @Override
     public void visit(CloseConnection mex) {
-        ServerClientHandler client = ((ServerClientHandler) obj);
-        client.closeConnection();
+        ServerClientHandler clientSender = ((ServerClientHandler) obj);
+        clientSender.closeConnection();
     }
+
+    @Override
+    public void visit(AskUsername mex) {
+        Client c = ((Client) obj);
+        c.sendMessage(new SendUsername(c.getUsername()));
+    }
+
+    @Override
+    public void visit(SendUsername mex) {
+        ServerClientHandler clientSender = ((ServerClientHandler) obj);
+        if(Server.getInstance().checkUsername(mex.getUsername()))
+            clientSender.setUsername(mex.getUsername());
+        else
+            clientSender.sendMessage(new ErrorUsername());
+    }
+
+    @Override
+    public void visit(ErrorUsername mex) {
+        javafx.application.Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Stage stage= new Stage();
+                    Parent root = null;
+                    root = FXMLLoader.load(getClass().getResource("/GUI/ModifyUsername.fxml"));
+                    Scene scene = new Scene(root);
+
+                    stage.setTitle("Modify Username");
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
 }

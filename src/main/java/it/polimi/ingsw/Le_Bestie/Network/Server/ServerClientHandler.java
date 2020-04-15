@@ -75,7 +75,7 @@ public class ServerClientHandler implements Runnable {
         return socket.getInetAddress().toString();
     }
 
-    public synchronized void receiveMessage(){
+    public void receiveMessage(){
         try {
             Message mex= (Message) in.readObject();
             mex.receive(new MessageParser(this));
@@ -86,7 +86,7 @@ public class ServerClientHandler implements Runnable {
         }
     }
 
-    public synchronized void sendMessage(Message message){
+    public void sendMessage(Message message){
         try {
             out.writeObject(message);
             out.flush();

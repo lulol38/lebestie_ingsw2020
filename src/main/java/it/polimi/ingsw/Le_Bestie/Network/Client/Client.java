@@ -2,14 +2,9 @@ package it.polimi.ingsw.Le_Bestie.Network.Client;
 
 import it.polimi.ingsw.Le_Bestie.Network.Messages.Message;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageParser;
-import javafx.application.Platform;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.NoSuchElementException;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Scanner;
 
 /**
  * Class ClientSocket
@@ -17,6 +12,8 @@ import java.util.Scanner;
  * @author Luca Ferrari
  */
 public class Client implements Runnable {
+
+    public static Client instance;
 
     private String ip;
     private int port;
@@ -38,9 +35,10 @@ public class Client implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        instance=this;
     }
 
-    public synchronized void run() {
+    public void run() {
         while (true) {
             try {
                 receiveMessage();
@@ -51,6 +49,11 @@ public class Client implements Runnable {
 
         }
     }
+
+    public static Client getInstance() {
+        return instance;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -67,7 +70,7 @@ public class Client implements Runnable {
         this.numPlayers = numPlayers;
     }
 
-    public synchronized void receiveMessage() {
+    public void receiveMessage() {
         try {
             Message mex = (Message) in.readObject();
             mex.receive(new MessageParser(this));
@@ -78,7 +81,7 @@ public class Client implements Runnable {
         }
     }
 
-    public synchronized void sendMessage(Message message){
+    public void sendMessage(Message message){
         try {
             out.writeObject(message);
             out.flush();

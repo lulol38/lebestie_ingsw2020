@@ -2,7 +2,10 @@ package it.polimi.ingsw.Le_Bestie.Network.Messages;
 
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.CloseConnection;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendNumPlayers;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendUsername;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskNumPlayers;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskUsername;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.ErrorUsername;
 
 public interface MessageVisitor {
 
@@ -13,4 +16,10 @@ public interface MessageVisitor {
     void visit(SendNumPlayers mex);
 
     void visit(CloseConnection mex);
+
+    void visit(AskUsername mex);
+
+    void visit(SendUsername mex);
+
+    void visit(ErrorUsername mex);
 }

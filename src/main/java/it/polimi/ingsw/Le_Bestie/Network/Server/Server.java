@@ -96,10 +96,10 @@ public class Server {
             GameController game = new GameController(lobby);
             for (ServerClientHandler s: lobby.getClientsWaiting())
             {
-                s.setPlayer(game.addPlayer(s.getUsername()));
+                //s.setPlayer(game.addPlayer(s.getUsername()));
             }
             activeGames.add(game);
-            game.startGame();
+            //game.startGame();
         }
         catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -125,6 +125,14 @@ public class Server {
             return;
         }
         System.out.println("Server closed");
+    }
+
+    //This method controls if a username is already taken in the lobby
+    public boolean checkUsername(String Username){
+        for (ServerClientHandler s: lobby.getClientsWaiting()) {
+            if(s.getUsername()==Username) return false;
+        }
+        return true;
     }
 
     public static void main(String[] args){

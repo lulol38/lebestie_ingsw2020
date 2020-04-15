@@ -5,10 +5,12 @@ import it.polimi.ingsw.Le_Bestie.Model.Cards.Deck;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import it.polimi.ingsw.Le_Bestie.jsonParser.GodCardsParser;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,13 +21,31 @@ import java.util.ArrayList;
  */
 public class App extends Application {
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/Menu.fxml"));
+        javafx.application.Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Parent root = null;
+                try {
+                    root = FXMLLoader.load(getClass().getResource("/GUI/Menu.fxml"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-        Scene scene = new Scene(root);
+                Scene scene = new Scene(root);
 
-        stage.setTitle("Menu");
-        stage.setScene(scene);
-        stage.show();
+                stage.setTitle("Menu");
+                stage.setScene(scene);
+                stage.show();
+
+                stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                    @Override
+                    public void handle(WindowEvent we) {
+                        System.exit(0);
+                    }
+                });
+            }
+        });
+
     }
 
     public static void main( String[] args ) throws IOException
