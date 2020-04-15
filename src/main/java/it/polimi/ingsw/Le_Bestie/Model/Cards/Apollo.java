@@ -30,6 +30,7 @@ public class Apollo extends GodCard {
             if(HasWon(c,currentCell))
                 return 2;
 
+
             //change cell to the opponent Builder
             currentCell.setBuilder(c.getBuilder());
             c.getBuilder().setPosition(currentCell.getPosition());

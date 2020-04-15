@@ -32,10 +32,12 @@ public class Atlas extends GodCard{
 
         //build with power
         else if (w.possibleBuilds(b).contains(c)) {
-                    c.setLevel(4);
-                    return 1;
-                }
-
+            if(b.getRemainingPieces(4)==0)
+                return 3;
+            c.setLevel(4);
+            b.removePiece(4);
+            return 1;
+        }
             return 0;
     }
 

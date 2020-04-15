@@ -20,10 +20,6 @@ public class GameController {
         this.matchState=new MatchState();
     }
 
-    public void setPlayers(ArrayList<Player> players) {
-        this.players = players;
-    }
-
 
     public void initGame(){
         matchState.startGame();
@@ -33,13 +29,7 @@ public class GameController {
         return matchState;
     }
 
-    public void matchState(){
-        updatePlayersInRound(listPlayersRound);
-    }
 
-    private void setPlayersInRound() {
-        listPlayersRound.addAll(players);
-    }
 
     private void updatePlayersInRound(ArrayList<Player> players) {
         try {

@@ -17,8 +17,6 @@ public class MatchState {
     private boolean hasMoved;
     private boolean gameStarted;
     private ArrayList<Player> players;
-
-    private ArrayList<Integer> remainingPieces;
     private Builder chosenBuilder;
 
     public MatchState(){
@@ -52,13 +50,6 @@ public class MatchState {
     }
     public void setHasMoved(boolean hasMoved) {
         this.hasMoved=hasMoved;
-    }
-
-    public Integer getRemainingPieces(int level) {
-        return remainingPieces.get(level-1);
-    }
-    public void setRemainingPieces(ArrayList<Integer> remainingPieces) {
-        this.remainingPieces = remainingPieces;
     }
     public void setChosenBuilder(Builder chosenBuilder) {
         this.chosenBuilder=chosenBuilder;
@@ -120,5 +111,10 @@ public class MatchState {
         }
         return builderColors;
     }
+
+    public void addPlayer(Player player) {
+        players.add(player);
+    }
+
 
 }

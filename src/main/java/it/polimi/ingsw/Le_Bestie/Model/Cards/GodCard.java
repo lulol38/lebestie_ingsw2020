@@ -55,11 +55,15 @@ public abstract class GodCard {
     0->il builder non può costruire in quella cella (c)
     1->il builder ha costruito con successo
     2->richiama la build (con usePower sempre true)
+    3->il builder non ha costruito per mancanza di pezzi
      */
     public int build(Board b,Builder w, Cell c, boolean usePower){
         if(w.possibleBuilds(b).contains(c))
         {
+            if(b.getRemainingPieces(c.getLevel()+1)==0)
+                return 3;
             c.addLevel();
+            b.removePiece(c.getLevel());
             return 1;
         }
         return 0;
