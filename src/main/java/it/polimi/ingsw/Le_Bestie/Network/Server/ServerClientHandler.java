@@ -40,6 +40,7 @@ public class ServerClientHandler implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        this.connected=true;
     }
 
     public void run(){
@@ -74,7 +75,7 @@ public class ServerClientHandler implements Runnable {
         return socket.getInetAddress().toString();
     }
 
-    public void receiveMessage(){
+    public synchronized void receiveMessage(){
         try {
             Message mex= (Message) in.readObject();
             mex.receive(new MessageParser(this));
@@ -85,7 +86,7 @@ public class ServerClientHandler implements Runnable {
         }
     }
 
-    public void sendMessage(Message message){
+    public synchronized void sendMessage(Message message){
         try {
             out.writeObject(message);
             out.flush();
@@ -99,6 +100,7 @@ public class ServerClientHandler implements Runnable {
             Server.getInstance().deleteConnection(this);
             System.out.println("Closing: "+ socket.toString());
             socket.close();
+            this.connected=false;
         }
         catch(Exception ex){
             System.out.println(ex.getMessage().toString());

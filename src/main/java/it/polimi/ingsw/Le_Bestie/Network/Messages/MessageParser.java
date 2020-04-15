@@ -25,7 +25,7 @@ public class MessageParser implements MessageVisitor {
 
     //Ask to the client the number of players for the match
     @Override
-    public void visit(AskNumPlayers mex){/*
+    public void visit(AskNumPlayers mex){
         try {
             Stage stage= new Stage();
             Parent root = null;
@@ -37,8 +37,7 @@ public class MessageParser implements MessageVisitor {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
-        JOptionPane.showMessageDialog(null, "infoMessage", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     @Override
