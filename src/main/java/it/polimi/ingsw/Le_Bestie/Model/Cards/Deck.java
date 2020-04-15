@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Class Deck
- * describes a generic deck(an arraylist of God cards)
+ * Class Deck describes a generic deck(an arraylist of God cards)
  * @author Davide Carini
  */
 
@@ -49,6 +48,9 @@ public class Deck {
         return nRand.nextInt(max);
     }
     */
+    public int numberOfCards(){
+        return deck.size();
+    }
 
 
 }

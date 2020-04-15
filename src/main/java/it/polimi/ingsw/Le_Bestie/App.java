@@ -1,5 +1,6 @@
 package it.polimi.ingsw.Le_Bestie;
 
+import it.polimi.ingsw.Le_Bestie.Model.Builder.BuilderColor;
 import it.polimi.ingsw.Le_Bestie.Model.Cards.Deck;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import it.polimi.ingsw.Le_Bestie.jsonParser.GodCardsParser;
@@ -10,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -66,5 +68,28 @@ public class App extends Application {
         System.out.println(p7.getGodCard().getName());
         //System.out.println(p8.getGodCard().getName());
         //System.out.println(p9.getGodCard().getName());
+
+
+
+        ArrayList<BuilderColor> unusedColorsList = new ArrayList<>();
+        for (BuilderColor curColor : BuilderColor.values()) {
+
+                unusedColorsList.add(curColor);
+
+        }
+        BuilderColor b1;
+        p1.getBuilder1().setColor(BuilderColor.getColor("BLUE"));
+        unusedColorsList.remove(p1.getBuilder1().getColor());
+        for(BuilderColor bc : unusedColorsList)
+            System.out.println(bc.toString());
+
+        BuilderColor b;
+        b= BuilderColor.getColor("WHITE");
+        if(b!=null)
+            System.out.println("Colore scelto OK");
+
+
+
+
     }
 }
