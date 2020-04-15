@@ -1,6 +1,8 @@
 package it.polimi.ingsw.Le_Bestie.Network.Server;
 
 import it.polimi.ingsw.Le_Bestie.Controller.GameController;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.Message;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskNumPlayers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,6 +20,8 @@ import java.util.concurrent.Executors;
  */
 public class Server {
 
+    public static Server instance;
+
     private int port;
 
     private ArrayList<ServerClientHandler> clientsConnected = new ArrayList<ServerClientHandler>();
@@ -30,6 +34,19 @@ public class Server {
     public Server(int port){
         this.port=port;
         this.lobby= new Lobby();
+        instance=this;
+    }
+
+    public static Server getInstance(){
+        return instance;
+    }
+
+    public Lobby getLobby() {
+        return lobby;
+    }
+
+    public void setLobby(Lobby lobby) {
+        this.lobby = lobby;
     }
 
     public void startServer() {
@@ -46,31 +63,23 @@ public class Server {
             try {
                 Socket socket = serverSocket.accept();
                 ServerClientHandler client = new ServerClientHandler(socket);
+                executor.submit(client);
                 clientsConnected.add(client);
                 System.out.println("Client " + client.getAddress() + " is connected to the server \n");
                 addWaitingClient(client, socket);
-                executor.submit(client);
             } catch (IOException e) { //Connection error
                 break;
             }
         }
     }
 
-
-    //
-    //
-    //MODIFY WITH CORRECT MESSAGE SENT, NOT OUTPUT STREAM
-    //
-    //
     public void addWaitingClient(ServerClientHandler client, Socket soc){
         lobby.addClientToLobby(client);
         if(lobby.getClientsWaiting().size()==1){ //First player decides if 3 or 4 players
             try {
-                Scanner in = new Scanner(soc.getInputStream());
-                PrintWriter out = new PrintWriter(soc.getOutputStream());
-                out.println("DEC23PLAYERS");
-                lobby.setNumPlayersMatch(in.nextInt()); //Read from the client the number of players and sets to the lobby
-            } catch (IOException e) {
+                client.sendMessage(new AskNumPlayers());
+                System.out.println("Asking num players");
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -96,6 +105,12 @@ public class Server {
             System.out.println(ex.getMessage());
         }
     }
+
+    public synchronized void deleteConnection(ServerClientHandler c) {
+        clientsConnected.remove(c);
+
+        if ( lobby.getClientsWaiting().contains(c) ) lobby.getClientsWaiting().remove(c);
+    }
     
     public void closeServer(){
         executor.shutdown();
@@ -113,7 +128,7 @@ public class Server {
     }
 
     public static void main(String[] args){
-        Server s = new Server(1345);
+        Server s = new Server(45331);
         s.startServer();
     }
 }

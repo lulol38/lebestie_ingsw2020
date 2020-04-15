@@ -11,8 +11,8 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField id="serverAddressText" fx:id="txtServerAddress" layoutX="301.0" layoutY="151.0" />
-      <TextField id="serverPortText" fx:id="txtServerPort" layoutX="301.0" layoutY="200.0" />
+      <TextField id="serverAddressText" fx:id="txtServerAddress" layoutX="301.0" layoutY="151.0" text="localhost" />
+      <TextField id="serverPortText" fx:id="txtServerPort" layoutX="301.0" layoutY="200.0" text="45331" />
       <Label layoutX="157.0" layoutY="150.0" text="Server address">
          <font>
             <Font size="18.0" />
@@ -23,7 +23,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField id="usernameText" fx:id="txtUsername" layoutX="301.0" layoutY="245.0" />
+      <TextField id="usernameText" fx:id="txtUsername" layoutX="301.0" layoutY="245.0" text="luca" />
       <Label layoutX="154.0" layoutY="244.0" text="Username">
          <font>
             <Font size="18.0" />

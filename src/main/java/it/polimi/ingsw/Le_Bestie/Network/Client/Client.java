@@ -15,12 +15,13 @@ import java.util.Scanner;
  * client connection with server using socket
  * @author Luca Ferrari
  */
-public class Client implements Runnable, Observer {
+public class Client implements Runnable {
 
     private String ip;
     private int port;
     private Socket socket;
     private String username;
+    private int numPlayers;
 
     private ObjectOutputStream out;
     private ObjectInputStream in;
@@ -36,7 +37,6 @@ public class Client implements Runnable, Observer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        run();
     }
 
     public void run() {
@@ -48,6 +48,22 @@ public class Client implements Runnable, Observer {
                 System.out.println(ex.getMessage().toString());
             }
         }
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getNumPlayers() {
+        return numPlayers;
+    }
+
+    public void setNumPlayers(int numPlayers) {
+        this.numPlayers = numPlayers;
     }
 
     public void receiveMessage(){
@@ -68,14 +84,5 @@ public class Client implements Runnable, Observer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void update(Observable observable, Object o) {
-
-    }
-
-    public static void main(String[] args){
-
     }
 }

@@ -94,8 +94,10 @@ public class ServerClientHandler implements Runnable {
         }
     }
 
-    public void closeConnection(){
+    public synchronized void closeConnection(){
         try{
+            Server.getInstance().deleteConnection(this);
+            System.out.println("Closing: "+ socket.toString());
             socket.close();
         }
         catch(Exception ex){
