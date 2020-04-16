@@ -4,6 +4,7 @@ import it.polimi.ingsw.Le_Bestie.Controller.GameController;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.Message;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskNumPlayers;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskUsername;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.SendGameStart;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -86,6 +87,10 @@ public class Server {
         }
         else {
             if(lobby.getClientsWaiting().size()==lobby.getNumPlayersMatch()) {
+                System.out.println("Starting game");
+                for (ServerClientHandler s: lobby.getClientsWaiting()) {
+                    s.sendMessage(new SendGameStart());
+                }
                 startMatch(lobby);
                 lobby.cleanLobby();
             }
