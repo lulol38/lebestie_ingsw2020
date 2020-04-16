@@ -7,12 +7,15 @@ import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendUsername;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskNumPlayers;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskUsername;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.ErrorUsername;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.SendGameStart;
 import it.polimi.ingsw.Le_Bestie.Network.Server.Server;
 import it.polimi.ingsw.Le_Bestie.Network.Server.ServerClientHandler;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -100,4 +103,33 @@ public class MessageParser implements MessageVisitor {
         });
     }
 
+    @Override
+    public void visit(SendGameStart visitor) {
+        javafx.application.Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Stage stage= new Stage();
+                    Parent root = null;
+                    root = FXMLLoader.load(getClass().getResource("/GUI/Board.fxml"));
+                    Scene scene = new Scene(root);
+
+                    stage.setTitle("Board");
+                    stage.setScene(scene);
+                    stage.show();
+
+                    stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                        @Override
+                        public void handle(WindowEvent we) {
+                            if(Client.getInstance()!=null)
+                                Client.getInstance().sendMessage(new CloseConnection());
+                            System.exit(0);
+                        }
+                    });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 }

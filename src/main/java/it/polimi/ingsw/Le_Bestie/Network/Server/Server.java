@@ -4,6 +4,7 @@ import it.polimi.ingsw.Le_Bestie.Controller.GameController;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.Message;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskNumPlayers;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskUsername;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.SendGameStart;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -76,7 +77,7 @@ public class Server {
 
     public void addWaitingClient(ServerClientHandler client, Socket soc){
         lobby.addClientToLobby(client);
-        if(lobby.getClientsWaiting().size()==1){ //First player decides if 3 or 4 players
+        if(lobby.getClientsWaiting().size()==1){ //First player decides if 2 or 3 players
             try {
                 client.sendMessage(new AskNumPlayers());
                 System.out.println("Asking num players");
@@ -86,6 +87,10 @@ public class Server {
         }
         else {
             if(lobby.getClientsWaiting().size()==lobby.getNumPlayersMatch()) {
+                System.out.println("Starting game");
+                for (ServerClientHandler s: lobby.getClientsWaiting()) {
+                    s.sendMessage(new SendGameStart());
+                }
                 startMatch(lobby);
                 lobby.cleanLobby();
             }

@@ -6,20 +6,23 @@ import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendUsername;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskNumPlayers;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskUsername;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.ErrorUsername;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.SendGameStart;
 
 public interface MessageVisitor {
 
     //1 metodo per ogni tipo di messaggio
 
-    void visit(AskNumPlayers mex);
+    void visit(AskNumPlayers visitor);
 
-    void visit(SendNumPlayers mex);
+    void visit(SendNumPlayers visitor);
 
-    void visit(CloseConnection mex);
+    void visit(CloseConnection visitor);
 
-    void visit(AskUsername mex);
+    void visit(AskUsername visitor);
 
-    void visit(SendUsername mex);
+    void visit(SendUsername visitor);
 
-    void visit(ErrorUsername mex);
+    void visit(ErrorUsername visitor);
+
+    void visit(SendGameStart visitor);
 }
