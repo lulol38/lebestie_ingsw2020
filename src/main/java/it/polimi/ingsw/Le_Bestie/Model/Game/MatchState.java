@@ -87,9 +87,10 @@ public class MatchState {
         return false;
     }
 
-    public void addPlayer(String nickname){
+    public Player addPlayer(String nickname){
         Player p= new Player(nickname);
         players.add(p);
+        return p;
     }
 
     public Player getFirstPlayer(){

@@ -76,7 +76,7 @@ public class Server {
 
     public void addWaitingClient(ServerClientHandler client, Socket soc){
         lobby.addClientToLobby(client);
-        if(lobby.getClientsWaiting().size()==1){ //First player decides if 3 or 4 players
+        if(lobby.getClientsWaiting().size()==1){ //First player decides if 2 or 3 players
             try {
                 client.sendMessage(new AskNumPlayers());
                 System.out.println("Asking num players");
@@ -97,10 +97,10 @@ public class Server {
             GameController game = new GameController(lobby);
             for (ServerClientHandler s: lobby.getClientsWaiting())
             {
-                //s.setPlayer(game.addPlayer(s.getUsername()));
+//                s.setPlayer(game.getMatchState().addPlayer(s.getUsername()));
             }
-            activeGames.add(game);
-            //game.startGame();
+//            activeGames.add(game);
+            game.initGame();
         }
         catch(Exception ex){
             System.out.println(ex.getMessage());

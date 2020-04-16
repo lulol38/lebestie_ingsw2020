@@ -21,23 +21,11 @@ public class GameController {
     }
 
 
-    public void initGame(){
-        matchState.startGame();
-    }
-
     public MatchState getMatchState() {
         return matchState;
     }
-
-
-
-    private void updatePlayersInRound(ArrayList<Player> players) {
-        try {
-            Player exPlayerInRound = players.get(0);
-            players.remove(0);
-            players.add( players.size(), exPlayerInRound);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("IndexOutOfBoundsException");
-        }
+    public void initGame(){
+    matchState.startGame();
     }
+
 }
