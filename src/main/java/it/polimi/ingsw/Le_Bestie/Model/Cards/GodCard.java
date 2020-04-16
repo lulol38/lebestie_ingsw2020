@@ -78,11 +78,12 @@ public abstract class GodCard {
         if(player.getBuilder1().possibleMoves(b,notMoveUp).size()==0)
             player.getBuilder1().setDisabled(true);
         else
-            player.getBuilder1().setDisabled(true);
+            player.getBuilder1().setDisabled(false);
+
         if(player.getBuilder2().possibleMoves(b,notMoveUp).size()==0)
             player.getBuilder2().setDisabled(true);
         else
-            player.getBuilder2().setDisabled(true);
+            player.getBuilder2().setDisabled(false);
         return player.getBuilder1().getDisabled() && player.getBuilder2().getDisabled();
     }
 
