@@ -77,7 +77,11 @@ public abstract class GodCard {
     public boolean HasLost(Player player,Board b){
         if(player.getBuilder1().possibleMoves(b,notMoveUp).size()==0)
             player.getBuilder1().setDisabled(true);
+        else
+            player.getBuilder1().setDisabled(true);
         if(player.getBuilder2().possibleMoves(b,notMoveUp).size()==0)
+            player.getBuilder2().setDisabled(true);
+        else
             player.getBuilder2().setDisabled(true);
         return player.getBuilder1().getDisabled() && player.getBuilder2().getDisabled();
     }

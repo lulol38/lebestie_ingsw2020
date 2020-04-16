@@ -61,7 +61,11 @@ public class Apollo extends GodCard {
 
         if (player.getBuilder1().possibleSwitch(b, notMoveUp).size() == 0&&player.getBuilder1().possibleMoves(b, notMoveUp).size() == 0)
             player.getBuilder1().setDisabled(true);
+        else
+            player.getBuilder1().setDisabled(true);
         if (player.getBuilder2().possibleSwitch(b, notMoveUp).size() == 0&&player.getBuilder2().possibleMoves(b, notMoveUp).size() == 0)
+            player.getBuilder2().setDisabled(true);
+        else
             player.getBuilder2().setDisabled(true);
 
         return player.getBuilder1().getDisabled() && player.getBuilder2().getDisabled();
