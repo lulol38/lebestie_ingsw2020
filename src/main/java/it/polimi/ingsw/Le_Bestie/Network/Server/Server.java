@@ -3,6 +3,7 @@ package it.polimi.ingsw.Le_Bestie.Network.Server;
 import it.polimi.ingsw.Le_Bestie.Controller.GameController;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.Message;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskNumPlayers;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskUsername;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -66,7 +67,7 @@ public class Server {
                 executor.submit(client);
                 clientsConnected.add(client);
                 System.out.println("Client " + client.getAddress() + " is connected to the server \n");
-                addWaitingClient(client, socket);
+                client.sendMessage(new AskUsername());
             } catch (IOException e) { //Connection error
                 break;
             }
@@ -130,7 +131,8 @@ public class Server {
     //This method controls if a username is already taken in the lobby
     public boolean checkUsername(String Username){
         for (ServerClientHandler s: lobby.getClientsWaiting()) {
-            if(s.getUsername()==Username) return false;
+            if(s.getUsername().compareTo(Username)==0)
+                return false;
         }
         return true;
     }

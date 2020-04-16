@@ -71,8 +71,10 @@ public class MessageParser implements MessageVisitor {
     @Override
     public void visit(SendUsername mex) {
         ServerClientHandler clientSender = ((ServerClientHandler) obj);
-        if(Server.getInstance().checkUsername(mex.getUsername()))
+        if(Server.getInstance().checkUsername(mex.getUsername())) {
             clientSender.setUsername(mex.getUsername());
+            Server.getInstance().addWaitingClient(clientSender, clientSender.getSocket());
+        }
         else
             clientSender.sendMessage(new ErrorUsername());
     }

@@ -24,7 +24,7 @@ public class Client implements Runnable {
     private ObjectOutputStream out;
     private ObjectInputStream in;
 
-    public Client(String ip, int port, String Username){
+    public Client(String ip, int port, String username){
         this.ip=ip;
         this.port=port;
         this.username=username;

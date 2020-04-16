@@ -14,7 +14,7 @@ public class SendUsername extends C2S{
     }
 
     @Override
-    public void receive(MessageVisitor mex) {
-
+    public void receive(MessageVisitor visitor) {
+        visitor.visit(this);
     }
 }

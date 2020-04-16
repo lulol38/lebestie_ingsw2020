@@ -75,6 +75,10 @@ public class ServerClientHandler implements Runnable {
         return socket.getInetAddress().toString();
     }
 
+    public Socket getSocket() {
+        return socket;
+    }
+
     public void receiveMessage(){
         try {
             Message mex= (Message) in.readObject();
