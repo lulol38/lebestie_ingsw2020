@@ -17,7 +17,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-import javax.swing.*;
 import java.io.IOException;
 
 public class MessageParser implements MessageVisitor {
@@ -39,7 +38,7 @@ public class MessageParser implements MessageVisitor {
                 try {
                     Stage stage= new Stage();
                     Parent root = null;
-                    root = FXMLLoader.load(getClass().getResource("/GUI/NumPlayers.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("/fxml/NumPlayers.fxml"));
                     Scene scene = new Scene(root);
 
                     stage.setTitle("Menu");
@@ -90,7 +89,7 @@ public class MessageParser implements MessageVisitor {
                 try {
                     Stage stage= new Stage();
                     Parent root = null;
-                    root = FXMLLoader.load(getClass().getResource("/GUI/ModifyUsername.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("/fxml/ModifyUsername.fxml"));
                     Scene scene = new Scene(root);
 
                     stage.setTitle("Modify Username");
@@ -111,7 +110,7 @@ public class MessageParser implements MessageVisitor {
                 try {
                     Stage stage= new Stage();
                     Parent root = null;
-                    root = FXMLLoader.load(getClass().getResource("/GUI/Board.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("/fxml/Board.fxml"));
                     Scene scene = new Scene(root);
 
                     stage.setTitle("Board");

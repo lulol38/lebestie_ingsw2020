@@ -5,7 +5,6 @@ import it.polimi.ingsw.Le_Bestie.Network.Messages.Message;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskNumPlayers;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskUsername;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.SendGameStart;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
@@ -23,11 +22,10 @@ import java.util.concurrent.Executors;
 public class Server {
 
     public static Server instance;
-
     private int port;
 
-    private ArrayList<ServerClientHandler> clientsConnected = new ArrayList<ServerClientHandler>();
-    private ArrayList<GameController> activeGames = new ArrayList<GameController>();
+    private ArrayList<ServerClientHandler> clientsConnected = new ArrayList<>();
+    private ArrayList<GameController> activeGames = new ArrayList<>();
     private Lobby lobby;
 
     private ExecutorService executor = Executors.newCachedThreadPool();

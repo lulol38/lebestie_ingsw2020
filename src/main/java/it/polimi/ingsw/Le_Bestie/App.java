@@ -1,23 +1,16 @@
 package it.polimi.ingsw.Le_Bestie;
 
-import it.polimi.ingsw.Le_Bestie.Model.Builder.BuilderColor;
-import it.polimi.ingsw.Le_Bestie.Model.Cards.Deck;
-import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.CloseConnection;
-import it.polimi.ingsw.Le_Bestie.jsonParser.GodCardsParser;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 
 /**
  * *SANTORINI GAME*
@@ -29,7 +22,7 @@ public class App extends Application {
             public void run() {
                 Parent root = null;
                 try {
-                    root = FXMLLoader.load(getClass().getResource("/GUI/Menu.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("/fxml/Menu2.fxml"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
