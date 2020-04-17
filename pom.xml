@@ -97,7 +97,7 @@
 				<artifactId>javafx-maven-plugin</artifactId>
 				<version>0.0.4</version>
 				<configuration>
-					<mainClass>it.polimi.ingsw.Le_Bestie.App</mainClass>
+					<mainClass>it.polimi.ingsw.Le_Bestie.Network.Client.MainClient</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
