@@ -11,6 +11,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -19,8 +20,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
- *
- * ******SANTORINI GAME******
+ * *SANTORINI GAME*
  */
 public class App extends Application {
     public void start(Stage stage) {
@@ -33,7 +33,7 @@ public class App extends Application {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
+                //stage.getIcons().add(new Image(App.class.getClassLoader().getResourceAsStream("icon.png")));
                 Scene scene = new Scene(root);
                 stage.setTitle("Santorini Menu");
                 stage.setScene(scene);
@@ -54,6 +54,7 @@ public class App extends Application {
 
     public static void main( String[] args )
     {
+        System.out.println("SANTORINI");
         launch(args);
     }
 }

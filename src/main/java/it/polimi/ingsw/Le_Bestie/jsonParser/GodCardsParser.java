@@ -9,19 +9,27 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+/**
+ * Class GodCardsParser that creates a deck of cards
+ * @author Davide Carini
+ */
+
+
 public class GodCardsParser {
 
     public static Deck parseCards(int numberOfPlayers){
+
         Deck deck =new Deck();
         String path = "json/godCards.json";
-        InputStream is = GodCardsParser.class.getClassLoader().getResourceAsStream(path);
+        InputStream inputstr = GodCardsParser.class.getClassLoader().getResourceAsStream(path);
 
-       if (is == null) {
-           //throw new JsonFileNotFoundException("File " + path + " not found");
+       if (inputstr == null) {
+           //exception
         }
+
         JsonParser parser = new JsonParser();
         JsonObject json;
-        json = parser.parse(new InputStreamReader(is)).getAsJsonObject();
+        json = parser.parse(new InputStreamReader(inputstr)).getAsJsonObject();
         JsonArray godcards = json.getAsJsonArray("godcards");
 
         for (JsonElement je : godcards) {
