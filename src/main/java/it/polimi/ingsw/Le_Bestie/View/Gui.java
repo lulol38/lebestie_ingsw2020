@@ -20,7 +20,7 @@ public class Gui extends Application {
             public void run() {
                 Parent root = null;
                 try {
-                    root = FXMLLoader.load(getClass().getResource("/fxml/Menu2.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
