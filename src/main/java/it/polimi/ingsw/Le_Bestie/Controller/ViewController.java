@@ -10,7 +10,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -36,6 +36,7 @@ public class ViewController {
     @FXML
     TextField txtUsernameModified;
 
+
     public void pressConnectButton(javafx.event.ActionEvent actionEvent) {
         System.out.println("Trying to connect...");
         if(txtServerAddress.getText()!="" && txtServerPort.getText()!="" && txtUsername.getText()!="") {
@@ -45,6 +46,7 @@ public class ViewController {
     }
 
     public void pressSendNumPlayers(ActionEvent actionEvent) {
+
         int text = Integer.parseInt(txtNumPlayers.getText());
         if(text==2||text==3){
             Client.getInstance().sendMessage(new SendNumPlayers(Integer.parseInt(txtNumPlayers.getText())));
@@ -63,9 +65,10 @@ public class ViewController {
         }
     }
 
+
     public void pressSendCorrectedUsername(ActionEvent actionEvent) {
         String text= txtUsernameModified.getText();
-        if(text!=""){
+        if(text.length()!=0){
             Client.getInstance().sendMessage(new SendUsername(text));
 
             Node  source = (Node)  actionEvent.getSource();

@@ -28,6 +28,7 @@ public class Gui extends Application {
                 Scene scene = new Scene(root);
                 stage.setTitle("SANTORINI MENU");
                 stage.setScene(scene);
+                stage.setResizable(false);
                 stage.show();
 
                 stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
