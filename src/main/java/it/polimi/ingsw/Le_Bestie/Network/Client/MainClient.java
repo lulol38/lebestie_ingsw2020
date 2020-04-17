@@ -19,7 +19,7 @@ import java.io.IOException;
 public class MainClient {
     public static void main(String[] args )
     {
-        System.out.println("SANTORINI");
+        System.out.println("Starting GUI...");
         Application.launch(Gui.class);
     }
 }
