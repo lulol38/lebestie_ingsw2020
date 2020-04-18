@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 //Controller for the server, it takes place between the model and the network in the server side
 public class GameController {
+    private static GameController instance;
 
     private Lobby lobby;
     private MatchState matchState;
@@ -18,8 +19,12 @@ public class GameController {
     public GameController(Lobby lobby) {
         this.lobby=lobby;
         this.matchState=new MatchState();
+        this.instance=this;
     }
 
+    public static GameController getInstance() {
+        return instance;
+    }
 
     public MatchState getMatchState() {
         return matchState;

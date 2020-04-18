@@ -1,5 +1,6 @@
 package it.polimi.ingsw.Le_Bestie.Network.Messages;
 
+import it.polimi.ingsw.Le_Bestie.Controller.GameController;
 import it.polimi.ingsw.Le_Bestie.View.BoardController;
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.CloseConnection;
@@ -54,7 +55,7 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(SendNumPlayers mex) {
-        Server.instance.getLobby().setNumPlayersMatch(mex.getNumPlayers());
+        Server.getInstance().getLobby().setNumPlayersMatch(mex.getNumPlayers());
         System.out.println("Setted match num players to: " + Server.getInstance().getLobby().getNumPlayersMatch());
     }
 
@@ -109,6 +110,8 @@ public class MessageParser implements MessageVisitor {
             @Override
             public void run() {
                 try {
+                    BoardController b = new BoardController();
+
                     Stage stage= new Stage();
                     Parent root = null;
                     root = FXMLLoader.load(getClass().getResource("/fxml/Board.fxml"));
@@ -137,12 +140,13 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(SendBeginTurn visitor) {
-        BoardController.activeGUI();
+        BoardController.getInstance().activeGUI();
+        //DO MOVES
     }
 
     @Override
     public void visit(SendEndTurn visitor) {
-
+        //GameController.getInstance().getMatchState().nextRound();
         //
         //Server goes to next player and sends begin turn to him
         //
