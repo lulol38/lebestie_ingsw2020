@@ -1,6 +1,5 @@
 package it.polimi.ingsw.Le_Bestie.Controller;
 
-
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.CloseConnection;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendNumPlayers;
@@ -35,6 +34,12 @@ public class ViewController {
     TextField txtNumPlayers;
     @FXML
     TextField txtUsernameModified;
+    @FXML
+    RadioButton radio2P;
+    @FXML
+    RadioButton radio3P;
+    @FXML
+    ToggleGroup mygroup;
 
 
     public void pressConnectButton(javafx.event.ActionEvent actionEvent) {
@@ -45,12 +50,11 @@ public class ViewController {
         }
     }
 
+
     public void pressSendNumPlayers(ActionEvent actionEvent) {
 
-        int text = Integer.parseInt(txtNumPlayers.getText());
-        if(text==2||text==3){
-            Client.getInstance().sendMessage(new SendNumPlayers(Integer.parseInt(txtNumPlayers.getText())));
-
+        if(radio2P.isSelected()||radio3P.isSelected()){
+            Client.getInstance().sendMessage(new SendNumPlayers(Integer.parseInt(mygroup.getSelectedToggle().getUserData().toString())));
             Node  source = (Node)  actionEvent.getSource();
             Stage stage  = (Stage) source.getScene().getWindow();
             stage.close();

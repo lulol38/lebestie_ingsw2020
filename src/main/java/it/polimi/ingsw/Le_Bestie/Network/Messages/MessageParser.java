@@ -38,10 +38,11 @@ public class MessageParser implements MessageVisitor {
                 try {
                     Stage stage= new Stage();
                     Parent root = null;
-                    root = FXMLLoader.load(getClass().getResource("/fxml/NumPlayers.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("/fxml/NPlayersWindow.fxml"));
                     Scene scene = new Scene(root);
 
-                    stage.setTitle("Menu");
+                    stage.setTitle("START GAME");
+                    stage.setResizable(false);
                     stage.setScene(scene);
                     stage.show();
                 } catch (IOException e) {
@@ -94,6 +95,7 @@ public class MessageParser implements MessageVisitor {
 
                     stage.setTitle("Modify Username");
                     stage.setScene(scene);
+                    stage.setResizable(false);
                     stage.show();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -111,10 +113,12 @@ public class MessageParser implements MessageVisitor {
                     Stage stage= new Stage();
                     Parent root = null;
                     root = FXMLLoader.load(getClass().getResource("/fxml/Board.fxml"));
+
                     Scene scene = new Scene(root);
 
                     stage.setTitle("Board");
                     stage.setScene(scene);
+                    stage.setResizable(false);
                     stage.show();
 
                     stage.setOnCloseRequest(new EventHandler<WindowEvent>() {

@@ -10,11 +10,11 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.control.ToggleGroup?>
-<AnchorPane prefHeight="350.0" prefWidth="553.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.Le_Bestie.Controller.ViewController">
+<AnchorPane prefHeight="350.0" prefWidth="553.0" style="-fx-background-color: antiquewhite;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.Le_Bestie.Controller.ViewController">
    <children>
       <ImageView fitHeight="129.0" fitWidth="553.0" layoutX="-1.0">
          <image>
-            <Image url="@/images/santoriniFrame.png" />
+            <Image url="@../images/santoriniFrame.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="61.0" fitWidth="211.0" layoutX="171.0" layoutY="226.0">
@@ -22,22 +22,23 @@
             <Image url="@../images/buttons/button2.png" />
          </image>
       </ImageView>
-      <Label layoutX="225.0" layoutY="231.0" prefHeight="34.0" prefWidth="133.0" text="CREATE MATCH" textAlignment="CENTER">
+      <Label layoutX="229.0" layoutY="231.0" prefHeight="42.0" prefWidth="129.0" text="CREATE MATCH" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <VBox fx:id="r" layoutX="238.0" layoutY="158.0" prefHeight="34.0" prefWidth="77.0">
+      <VBox fx:id="r" layoutX="238.0" layoutY="148.0" prefHeight="77.0" prefWidth="181.0">
          <children>
 
-            <RadioButton fx:id="radio2P" mnemonicParsing="false" prefHeight="18.0" prefWidth="69.0" text="2 Players">
-                <toggleGroup>
-                   <ToggleGroup fx:id="group1" />
-                 </toggleGroup>
-            </RadioButton>
-            <RadioButton fx:id="radio3P" mnemonicParsing="false" text="3 Players" toggleGroup="$group1"/>
-         </children>
+         <RadioButton fx:id="radio2P"  mnemonicParsing="false" prefHeight="18.0" userData="2" prefWidth="69.0" text="2 Players">
+            <toggleGroup>
+               <ToggleGroup fx:id="mygroup" />
+            </toggleGroup>
+         </RadioButton>
+         <RadioButton fx:id="radio3P" mnemonicParsing="false" prefHeight="69.0" prefWidth="99.0" userData="3" text="3 Players" toggleGroup="$mygroup" />
+      </children>
       </VBox>
       <Button fx:id="sendNumPlayers" layoutX="199.0" layoutY="239.0" mnemonicParsing="false" onAction="#pressSendNumPlayers" opacity="0.0" prefHeight="34.0" prefWidth="153.0" text="Button" />
    </children>
 </AnchorPane>
+
