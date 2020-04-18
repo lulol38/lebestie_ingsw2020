@@ -1,6 +1,6 @@
 package it.polimi.ingsw.Le_Bestie.Network.Messages;
 
-import it.polimi.ingsw.Le_Bestie.Controller.ViewController;
+import it.polimi.ingsw.Le_Bestie.View.BoardController;
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.CloseConnection;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendEndTurn;
@@ -14,12 +14,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
-import javax.swing.text.View;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class MessageParser implements MessageVisitor {
 
@@ -140,7 +137,7 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(SendBeginTurn visitor) {
-        ViewController.activeGUI();
+        BoardController.activeGUI();
     }
 
     @Override
@@ -151,6 +148,4 @@ public class MessageParser implements MessageVisitor {
         //
 
     }
-
-
 }
