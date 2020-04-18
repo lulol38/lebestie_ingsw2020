@@ -1,13 +1,12 @@
 package it.polimi.ingsw.Le_Bestie.Network.Messages;
 
+import it.polimi.ingsw.Le_Bestie.Controller.ViewController;
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.CloseConnection;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendEndTurn;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendNumPlayers;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendUsername;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskNumPlayers;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskUsername;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.ErrorUsername;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.SendGameStart;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.*;
 import it.polimi.ingsw.Le_Bestie.Network.Server.Server;
 import it.polimi.ingsw.Le_Bestie.Network.Server.ServerClientHandler;
 import javafx.event.EventHandler;
@@ -15,9 +14,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
+import javax.swing.text.View;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MessageParser implements MessageVisitor {
 
@@ -135,4 +137,20 @@ public class MessageParser implements MessageVisitor {
             }
         });
     }
+
+    @Override
+    public void visit(SendBeginTurn visitor) {
+        ViewController.activeGUI();
+    }
+
+    @Override
+    public void visit(SendEndTurn visitor) {
+
+        //
+        //Server goes to next player and sends begin turn to him
+        //
+
+    }
+
+
 }
