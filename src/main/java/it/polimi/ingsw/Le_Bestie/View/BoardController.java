@@ -36,8 +36,6 @@ public class BoardController extends GridPane {
     private int countPositionedBuilders=0;
     private int pos1x, pos1y, pos2x, pos2y;
 
-    private Board board;
-
     @FXML
     GridPane gridBoard;
     @FXML
@@ -49,7 +47,6 @@ public class BoardController extends GridPane {
 
     public BoardController(){
         this.instance=this;
-        this.board=new Board();
 
         /*gridBoard.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override
@@ -73,13 +70,14 @@ public class BoardController extends GridPane {
     }
 
     public void BuilderPositions(){
-        gridBoard.setDisable(false);
+        activeGUI();
         lblMessages.setText("Add workers to board");
     }
 
     public void getCell(MouseEvent event) {
         Node clickedNode = event.getPickResult().getIntersectedNode();
         if (clickedNode != gridBoard) {
+
             // click on descendant node
             countPositionedBuilders++;
             if(countPositionedBuilders==1) {

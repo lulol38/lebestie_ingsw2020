@@ -13,11 +13,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
 //Controller for the server, it takes place between the model and the network in the server side
 public class GameController {
-    private static GameController instance;
 
+    private static GameController instance;
     private Lobby lobby;
     private MatchState matchState;
     private Player Winner;

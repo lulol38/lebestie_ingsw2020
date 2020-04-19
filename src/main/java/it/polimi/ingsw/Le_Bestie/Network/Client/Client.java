@@ -5,7 +5,6 @@ import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageParser;
 
 import java.io.*;
 import java.net.Socket;
-
 /**
  * Class ClientSocket
  * client connection with server using socket
@@ -31,7 +30,7 @@ public class Client implements Runnable {
         this.port=port;
         this.username=username;
         try {
-            //Create the connession with the server
+            //Create the connection with the server
             this.socket = new Socket(ip, port);
             this.out = new ObjectOutputStream(socket.getOutputStream());
             this.in = new ObjectInputStream(socket.getInputStream());
