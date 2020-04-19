@@ -18,7 +18,6 @@ public class MatchState {
     private boolean hasMoved;
     private boolean gameStarted;
     private ArrayList<Player> players;
-    private Builder chosenBuilder;
 
     public MatchState(){
         this.board=new Board();
@@ -27,10 +26,10 @@ public class MatchState {
         hasMoved=false;
         gameStarted=false;
         deck=null;
-        this.players=new ArrayList<Player>();
+
     }
 
-    public Deck getDeck() { return this.deck; }
+    public Deck getDeck() { return deck; }
     public Board getBoard() {
         return board;
     }
@@ -39,9 +38,6 @@ public class MatchState {
     }
     public boolean getHasMoved() {
         return hasMoved;
-    }
-    public Builder getChosenBuilder() {
-        return chosenBuilder;
     }
     public ArrayList<Player> getPlayers(){ return players;}
 
@@ -52,16 +48,17 @@ public class MatchState {
     public void setHasMoved(boolean hasMoved) {
         this.hasMoved=hasMoved;
     }
-    public void setChosenBuilder(Builder chosenBuilder) {
-        this.chosenBuilder=chosenBuilder;
-    }
 
     public void startGame(){
+
+        if(gameStarted)
+            return;
+        this.players=new ArrayList<Player>();
         gameStarted=true;
         initializeDeck();
+
         assignCardToPlayers();
     }
-
 
     public int numberOfPlayers(){
         int n=players.size();
@@ -91,11 +88,10 @@ public class MatchState {
     public void addPlayer(String nickname){
         Player p= new Player(nickname);
         players.add(p);
-        //return p;
     }
 
     public Player getCurrentPlayer(){
-       return players.get(0);
+        return players.get(0);
     }
 
     public void nextTurn(){
