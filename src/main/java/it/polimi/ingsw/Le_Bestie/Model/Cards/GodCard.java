@@ -70,7 +70,9 @@ public abstract class GodCard {
     }
 
     public boolean HasWon(Cell c,Cell currentCell) {
-        return c.getLevel() == 3;
+
+        return currentCell.getLevel()<c.getLevel()&&c.getLevel()==3;
+
     }
 
     //HasLost viene chiamato da matchstate prima la move e dopo la build

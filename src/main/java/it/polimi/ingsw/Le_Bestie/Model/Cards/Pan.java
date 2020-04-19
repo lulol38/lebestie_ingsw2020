@@ -30,7 +30,7 @@ public class Pan extends GodCard{
 
     @Override
     public boolean HasWon(Cell c,Cell currentCell) {
-        return c.getLevel() == 3||currentCell.getLevel()-c.getLevel()>=2;
+        return (currentCell.getLevel()<c.getLevel()&&c.getLevel()==3)||currentCell.getLevel()-c.getLevel()>=2;
     }
 
     @Override
