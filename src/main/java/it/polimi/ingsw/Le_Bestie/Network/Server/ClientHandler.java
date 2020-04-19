@@ -19,7 +19,7 @@ import java.util.Scanner;
  * server launches thread foreach client
  * @author Luca Ferrari
  */
-public class ServerClientHandler implements Runnable {
+public class ClientHandler implements Runnable {
 
     private Player player;
 
@@ -32,7 +32,7 @@ public class ServerClientHandler implements Runnable {
 
     private boolean connected;
 
-    public ServerClientHandler(Socket socket){
+    public ClientHandler(Socket socket){
         this.socket=socket;
         try {
             this.in = new ObjectInputStream(socket.getInputStream());

@@ -1,16 +1,13 @@
 package it.polimi.ingsw.Le_Bestie.Network.Server;
 
 import it.polimi.ingsw.Le_Bestie.Controller.GameController;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.Message;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskNumPlayers;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskUsername;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.SendGameStart;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -20,19 +17,20 @@ import java.util.concurrent.Executors;
  * @author Luca Ferrari
  */
 public class Server {
-
-    public static Server instance;
     private int port;
 
-    private ArrayList<ServerClientHandler> clientsConnected = new ArrayList<>();
+    public static Server instance;
+
+    private ServerSocket serverSocket;
+    private ArrayList<ClientHandler> clientsConnected = new ArrayList<>();
     private ArrayList<GameController> activeGames = new ArrayList<>();
     private Lobby lobby;
-
     private ExecutorService executor = Executors.newCachedThreadPool();
-    private ServerSocket serverSocket;
+
 
     public Server(int port){
         this.port=port;
+
         this.lobby= new Lobby();
         instance=this;
     }
@@ -50,19 +48,20 @@ public class Server {
     }
 
     public void startServer() {
-        
         System.out.println("Server is starting...");
         try {
+            //Create the Server
             serverSocket = new ServerSocket(port);
         } catch (IOException e) {
             System.err.println(e.getMessage()); //Port not available
             return;
         }
         System.out.println("Server ready");
+        //The server is listening at the port 45531
         while (true) {
             try {
                 Socket socket = serverSocket.accept();
-                ServerClientHandler client = new ServerClientHandler(socket);
+                ClientHandler client = new ClientHandler(socket);
                 executor.submit(client);
                 clientsConnected.add(client);
                 System.out.println("Client " + client.getAddress() + " is connected to the server \n");
@@ -73,7 +72,7 @@ public class Server {
         }
     }
 
-    public void addWaitingClient(ServerClientHandler client, Socket soc){
+    public void addWaitingClient(ClientHandler client, Socket soc){
         lobby.addClientToLobby(client);
         if(lobby.getClientsWaiting().size()==1){ //First player decides if 2 or 3 players
             try {
@@ -86,7 +85,7 @@ public class Server {
         else {
             if(lobby.getClientsWaiting().size()==lobby.getNumPlayersMatch()) {
                 System.out.println("Starting game");
-                for (ServerClientHandler s: lobby.getClientsWaiting()) {
+                for (ClientHandler s: lobby.getClientsWaiting()) {
                     s.sendMessage(new SendGameStart());
                 }
                 startMatch(lobby);
@@ -98,7 +97,7 @@ public class Server {
     public void startMatch(Lobby lobby){
         try{
             GameController game = new GameController(lobby);
-            for (ServerClientHandler s: lobby.getClientsWaiting())
+            for (ClientHandler s: lobby.getClientsWaiting())
             {
 //                s.setPlayer(game.getMatchState().addPlayer(s.getUsername()));
             }
@@ -110,9 +109,8 @@ public class Server {
         }
     }
 
-    public synchronized void deleteConnection(ServerClientHandler c) {
+    public synchronized void deleteConnection(ClientHandler c) {
         clientsConnected.remove(c);
-
         if ( lobby.getClientsWaiting().contains(c) ) lobby.getClientsWaiting().remove(c);
     }
     
@@ -120,7 +118,7 @@ public class Server {
         executor.shutdown();
         try {
             serverSocket.close();
-            for (ServerClientHandler connection: clientsConnected) {
+            for (ClientHandler connection: clientsConnected) {
                 connection.closeConnection();
             }
         }
@@ -133,15 +131,17 @@ public class Server {
 
     //This method controls if a username is already taken in the lobby
     public boolean checkUsername(String Username){
-        for (ServerClientHandler s: lobby.getClientsWaiting()) {
+        for (ClientHandler s: lobby.getClientsWaiting()) {
             if(s.getUsername().compareTo(Username)==0)
                 return false;
         }
         return true;
     }
 
+
     public static void main(String[] args){
-        Server s = new Server(45331);
-        s.startServer();
+        Server multiEchoServer = new Server(45331);
+        //Start the Server
+        multiEchoServer.startServer();
     }
 }

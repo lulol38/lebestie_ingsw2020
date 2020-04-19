@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Lobby {
 
-    private ArrayList<ServerClientHandler> clientsWaiting = new ArrayList<ServerClientHandler>();
+    private ArrayList<ClientHandler> clientsWaiting = new ArrayList<ClientHandler>();
     private int numPlayersMatch;
 
     public Lobby(){
@@ -19,11 +19,11 @@ public class Lobby {
         this.numPlayersMatch = numPlayersMatch;
     }
 
-    public ArrayList<ServerClientHandler> getClientsWaiting() {
+    public ArrayList<ClientHandler> getClientsWaiting() {
         return clientsWaiting;
     }
 
-    public void addClientToLobby(ServerClientHandler s){
+    public void addClientToLobby(ClientHandler s){
         clientsWaiting.add(s);
     }
 

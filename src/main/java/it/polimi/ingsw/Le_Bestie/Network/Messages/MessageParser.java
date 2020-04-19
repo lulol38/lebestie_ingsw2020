@@ -1,6 +1,5 @@
 package it.polimi.ingsw.Le_Bestie.Network.Messages;
 
-import it.polimi.ingsw.Le_Bestie.Controller.GameController;
 import it.polimi.ingsw.Le_Bestie.View.BoardController;
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.CloseConnection;
@@ -9,7 +8,7 @@ import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendNumPlayers;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendUsername;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.*;
 import it.polimi.ingsw.Le_Bestie.Network.Server.Server;
-import it.polimi.ingsw.Le_Bestie.Network.Server.ServerClientHandler;
+import it.polimi.ingsw.Le_Bestie.Network.Server.ClientHandler;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -61,7 +60,7 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(CloseConnection mex) {
-        ServerClientHandler clientSender = ((ServerClientHandler) obj);
+        ClientHandler clientSender = ((ClientHandler) obj);
         clientSender.closeConnection();
     }
 
@@ -73,7 +72,7 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(SendUsername mex) {
-        ServerClientHandler clientSender = ((ServerClientHandler) obj);
+        ClientHandler clientSender = ((ClientHandler) obj);
         if(Server.getInstance().checkUsername(mex.getUsername())) {
             clientSender.setUsername(mex.getUsername());
             Server.getInstance().addWaitingClient(clientSender, clientSender.getSocket());
