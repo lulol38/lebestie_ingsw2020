@@ -1,11 +1,9 @@
 package it.polimi.ingsw.Le_Bestie.Network.Messages;
 
+import it.polimi.ingsw.Le_Bestie.Controller.GameController;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.*;
 import it.polimi.ingsw.Le_Bestie.View.BoardController;
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.CloseConnection;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendEndTurn;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendNumPlayers;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendUsername;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.*;
 import it.polimi.ingsw.Le_Bestie.Network.Server.Server;
 import it.polimi.ingsw.Le_Bestie.Network.Server.ClientHandler;
@@ -145,10 +143,21 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(SendEndTurn visitor) {
-        //GameController.getInstance().getMatchState().nextRound();
+        GameController.getInstance().nextTurn();
         //
         //Server goes to next player and sends begin turn to him
         //
 
+    }
+
+    public void visit(AskPositionBuilders visitor){
+        BoardController.getInstance().BuilderPositions();
+    }
+
+    @Override
+    public void visit(SendBuilderPositions visitor) {
+        ClientHandler clientSender = ((ClientHandler) obj);
+        String user = clientSender.getUsername();
+        GameController.getInstance().setPlayerBuilders(visitor.getPos1x(), visitor.getPos1y(), visitor.getPos2x(), visitor.getPos2y());
     }
 }

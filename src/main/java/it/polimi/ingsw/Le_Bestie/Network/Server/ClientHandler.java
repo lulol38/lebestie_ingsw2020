@@ -21,8 +21,6 @@ import java.util.Scanner;
  */
 public class ClientHandler implements Runnable {
 
-    private Player player;
-
     private String username;
 
     private ObjectOutputStream out;
@@ -61,14 +59,6 @@ public class ClientHandler implements Runnable {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
     }
 
     public String getAddress(){

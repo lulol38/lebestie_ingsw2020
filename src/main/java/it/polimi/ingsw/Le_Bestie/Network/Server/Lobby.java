@@ -30,4 +30,11 @@ public class Lobby {
     public void cleanLobby(){
         clientsWaiting.clear();
     }
+
+    public ClientHandler getClientHandlerFromUsername(String username){
+        for (ClientHandler c: clientsWaiting) {
+            if(c.getUsername()==username) return c;
+        }
+        return null;
+    }
 }
