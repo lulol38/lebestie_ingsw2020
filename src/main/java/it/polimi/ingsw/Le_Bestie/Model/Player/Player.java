@@ -60,8 +60,8 @@ public class Player {
     }
 
     //Method that returns the God Card name(string) associated to the player
-    public String toString() {
+    /*public String toString() {
         return this.godCardPlayer.getName();
-    }
+    }*/
 
 }

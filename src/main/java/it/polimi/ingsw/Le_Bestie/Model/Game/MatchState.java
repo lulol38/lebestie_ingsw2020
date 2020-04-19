@@ -8,6 +8,7 @@ import it.polimi.ingsw.Le_Bestie.Model.Cards.GodCard;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import it.polimi.ingsw.Le_Bestie.jsonParser.GodCardsParser;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MatchState {
 
@@ -26,7 +27,7 @@ public class MatchState {
         hasMoved=false;
         gameStarted=false;
         deck=null;
-
+        this.players=new ArrayList<Player>();
     }
 
     public Deck getDeck() { return this.deck; }
@@ -87,14 +88,19 @@ public class MatchState {
         return false;
     }
 
-    public Player addPlayer(String nickname){
+    public void addPlayer(String nickname){
         Player p= new Player(nickname);
         players.add(p);
-        return p;
+        //return p;
     }
 
-    public Player getFirstPlayer(){
+    public Player getCurrentPlayer(){
        return players.get(0);
+    }
+
+    public void nextTurn(){
+        //rotate list
+        Collections.rotate(players, -1);
     }
 
     private ArrayList <BuilderColor> builderColorNotUsed() {
@@ -108,10 +114,6 @@ public class MatchState {
                  builderColors.add(BuilderColor.values()[i]) ;
         }
         return builderColors;
-    }
-
-    public void addPlayer(Player player) {
-        players.add(player);
     }
 
 

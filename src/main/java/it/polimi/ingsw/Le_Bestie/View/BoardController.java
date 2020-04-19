@@ -4,10 +4,7 @@ import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Position;
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.CloseConnection;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendEndTurn;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendNumPlayers;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendUsername;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.*;
 import it.polimi.ingsw.Le_Bestie.Network.Server.Server;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -36,8 +33,10 @@ public class BoardController extends GridPane {
 
     private static BoardController instance;
 
+    private int countPositionedBuilders=0;
+    private int pos1x, pos1y, pos2x, pos2y;
+
     private Board board;
-    private Cell selectedCell;
 
     @FXML
     GridPane gridBoard;
@@ -45,17 +44,19 @@ public class BoardController extends GridPane {
     ImageView imgGodCard;
     @FXML
     Button btnEndTurn;
+    @FXML
+    Label lblMessages;
 
     public BoardController(){
         this.instance=this;
         this.board=new Board();
 
-        gridBoard.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+        /*gridBoard.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
                 selectedCell.setPosition(new Position((int)e.getSceneX(), (int)e.getSceneY()));
             }
-        });
+        });*/
     }
 
     public static BoardController getInstance() {
@@ -64,12 +65,34 @@ public class BoardController extends GridPane {
 
     public void pressEndTurn(ActionEvent actionEvent){
         Client.getInstance().sendMessage(new SendEndTurn());
-        btnEndTurn.setDisable(true);
         gridBoard.setDisable(true);
     }
 
     public void activeGUI(){
-        btnEndTurn.setDisable(false);
         gridBoard.setDisable(false);
+    }
+
+    public void BuilderPositions(){
+        gridBoard.setDisable(false);
+        lblMessages.setText("Add workers to board");
+    }
+
+    public void getCell(MouseEvent event) {
+        Node clickedNode = event.getPickResult().getIntersectedNode();
+        if (clickedNode != gridBoard) {
+            // click on descendant node
+            countPositionedBuilders++;
+            if(countPositionedBuilders==1) {
+                pos1x = GridPane.getColumnIndex(clickedNode);
+                pos1y = GridPane.getRowIndex(clickedNode);
+            }
+            if(countPositionedBuilders==2){
+                pos2x=GridPane.getColumnIndex(clickedNode);
+                pos2y=GridPane.getRowIndex(clickedNode);
+                Client.getInstance().sendMessage(new SendBuilderPositions(pos1x, pos1y, pos2x, pos2y));
+                gridBoard.setDisable(true);
+                Client.getInstance().sendMessage(new SendEndTurn());
+            }
+        }
     }
 }
