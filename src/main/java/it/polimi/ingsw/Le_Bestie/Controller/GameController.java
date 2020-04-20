@@ -6,6 +6,7 @@ import it.polimi.ingsw.Le_Bestie.Model.Game.MatchState;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskPositionBuilders;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.SendBeginTurn;
 import it.polimi.ingsw.Le_Bestie.Network.Server.ClientHandler;
 import it.polimi.ingsw.Le_Bestie.Network.Server.Lobby;
 
@@ -59,6 +60,9 @@ public class GameController {
     public void nextTurn(){
         matchState.nextTurn();
         Collections.rotate(lobby.getClientsWaiting(), -1);
+        if(matchState.getCurrentPlayer().getBuilder1()==null||matchState.getCurrentPlayer().getBuilder2()==null)
+            lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
+        else lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
     }
 
 }

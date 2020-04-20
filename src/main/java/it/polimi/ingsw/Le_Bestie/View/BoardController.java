@@ -76,6 +76,7 @@ public class BoardController extends GridPane {
 
     public void disableGUI(){
         gridBoard.setDisable(true);
+        lblMessages.setText("");
     }
 
     public void BuilderPositions(){
