@@ -14,7 +14,6 @@ import java.util.ArrayList;
  * @author Davide Carini
  */
 
-
 public class GodCardsParser {
 
     public static Deck parseCards(int numberOfPlayers){

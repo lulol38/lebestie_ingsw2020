@@ -19,10 +19,6 @@ public class Hephaestus extends GodCard{
         super(name);
     }
 
-    @Override
-    public int move(Board b, Builder w, Cell c, boolean usePower) {
-        return super.move(b, w, c, usePower);
-    }
 
     @Override
     public int build(Board b, Builder w, Cell c, boolean usePower) {
@@ -35,15 +31,5 @@ public class Hephaestus extends GodCard{
            else
                return 0;
        }
-    }
-
-    @Override
-    public boolean HasWon(Cell c,Cell currentCell) {
-        return super.HasWon(c,currentCell);
-    }
-
-    @Override
-    public boolean HasLost(Player player, Board b) {
-        return super.HasLost(player,b);
     }
 }

@@ -53,16 +53,6 @@ public class Minotaur extends GodCard{
     }
 
     @Override
-    public int build(Board b, Builder w, Cell c, boolean usePower) {
-        return super.build(b, w, c, usePower);
-    }
-
-    @Override
-    public boolean HasWon(Cell c,Cell currentCell) {
-        return super.HasWon(c,currentCell);
-    }
-
-    @Override
     public boolean HasLost(Player player, Board b) {
         if (player.getBuilder1().possibleMoves(b, notMoveUp).size() == 0&&player.getBuilder1().notPossibleSwitchMinotaur(b,notMoveUp))
                 player.getBuilder1().setDisabled(true);

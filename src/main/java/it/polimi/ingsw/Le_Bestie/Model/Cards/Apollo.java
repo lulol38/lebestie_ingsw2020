@@ -30,7 +30,6 @@ public class Apollo extends GodCard {
             if(HasWon(c,currentCell))
                 return 2;
 
-
             //change cell to the opponent Builder
             currentCell.setBuilder(c.getBuilder());
             c.getBuilder().setPosition(currentCell.getPosition());
@@ -42,18 +41,6 @@ public class Apollo extends GodCard {
             return 1;
         }
         return 0;
-    }
-
-
-
-    @Override
-    public int build(Board b, Builder w, Cell c, boolean usePower) {
-        return super.build(b,w, c,usePower);
-    }
-
-    @Override
-    public boolean HasWon(Cell c,Cell currentCell) {
-        return super.HasWon(c,currentCell);
     }
 
     @Override

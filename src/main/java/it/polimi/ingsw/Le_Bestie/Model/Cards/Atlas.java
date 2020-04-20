@@ -19,11 +19,6 @@ public class Atlas extends GodCard{
     }
 
     @Override
-    public int move(Board b, Builder w, Cell c, boolean usePower) {
-        return super.move(b,w,c,usePower);
-    }
-
-    @Override
     public int build(Board b, Builder w, Cell c, boolean usePower) {
 
         //build without power
@@ -41,13 +36,4 @@ public class Atlas extends GodCard{
             return 0;
     }
 
-    @Override
-    public boolean HasWon(Cell c,Cell currentCell) {
-        return super.HasWon(c,currentCell);
-    }
-
-    @Override
-    public boolean HasLost(Player player,Board b) {
-        return super.HasLost(player,b);
-    }
 }
