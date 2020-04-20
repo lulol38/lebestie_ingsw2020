@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+
+   <children>
+      <ImageView fitHeight="450.0" fitWidth="600.0">
+         <image>
+            <Image url="@../images/Odyssey_UI_Backdrop.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="107.0" fitWidth="427.0" layoutX="86.0" layoutY="58.0">
+         <image>
+            <Image url="@../images/santorini-logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="200.0" layoutX="200.0" layoutY="323.0">
+         <image>
+            <Image url="@../images/buttons/btn_purple.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="200.0" layoutX="200.0" layoutY="200.0">
+         <image>
+            <Image url="@../images/buttons/btn_purple.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="240.0" layoutY="207.0" text="PLAY GAME">
+         <font>
+            <Font name="Cambria" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="271.0" layoutY="323.0" prefHeight="38.0" prefWidth="57.0" text="QUIT">
+         <font>
+            <Font name="Cambria" size="23.0" />
+         </font>
+      </Label>
+      <Button mnemonicParsing="false" text="Button" />
+   </children>
+</AnchorPane>
