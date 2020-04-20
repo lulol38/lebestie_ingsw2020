@@ -14,26 +14,49 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 public class Atlas extends GodCard{
 
+    private boolean checkUsePower;
+
     public Atlas(String name) {
         super(name);
+        checkUsePower=false;
     }
 
     @Override
     public int build(Board b, Builder w, Cell c, boolean usePower) {
 
-        //build without power
-        if(!usePower)
-            return super.build(b,w, c,usePower);
+        if (c.getLevel() == 3)
+            return build(b, w, c, usePower);
 
-        //build with power
-        else if (w.possibleBuilds(b).contains(c)) {
-            if(b.getRemainingPieces(4)==0)
-                return 3;
-            c.setLevel(4);
-            b.removePiece(4);
-            return 1;
+        if (!checkUsePower)
+        //ask client if usePower or not
+        {
+            if(w.possibleBuilds(b).contains(c))
+            {
+                checkUsePower = true;
+                return 4;
+            }
+            else
+                return 0;
+        } else {
+            //it's the second method's call, so client already chooses if use power
+            //build without power
+            if (usePower) {
+                checkUsePower=false;
+                return super.build(b, w, c, usePower);
+                //here can return only 1 or 2
+            }
+
+            //build with power
+            else
+            { checkUsePower=false;
+                if (b.getRemainingPieces(4) == 0)
+                    return 2;
+                c.setLevel(4);
+                b.removePiece(4);
+                return 1;
+            }
         }
-            return 0;
     }
 
 }
+

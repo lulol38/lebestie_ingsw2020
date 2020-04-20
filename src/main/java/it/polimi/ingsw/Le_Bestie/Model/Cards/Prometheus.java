@@ -14,37 +14,59 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 public class Prometheus extends GodCard{
 
+    private boolean sendMessage;
     private boolean firstBuild;
 
     public Prometheus(String name) {
         super(name);
+        firstBuild=false;
+        sendMessage=false;
     }
 
     @Override
     public int move(Board b,Builder w, Cell c, boolean usePower) {
-        if(!usePower)
-            return super.move(b, w, c, usePower);
+
+        if(!sendMessage) {
+            sendMessage=true;
+            return 4;
+        }
+
+        //if client not use power
+        if(usePower) {
+            int x= super.move(b, w, c, usePower);
+            if(x==1)
+                sendMessage=false;
+            return x;
+        }
+        //if client use power
         else
         {
             if(!firstBuild)
             {
-                if(build(b, w, c, usePower)==1) {
+                int x=build(b, w, c, usePower);
+                if(x==1) {
                     firstBuild = true;
-                    return 3;
+                    return 0;
                 }
-                return 0;
+                return x;
             }
             else
             {
                 Cell currentCell=b.getGrid()[w.getPosition().getX()][w.getPosition().getX()];
                 if(c.getLevel()-currentCell.getLevel()<1) {
-                    firstBuild=false;
-                    return super.move(b, w, c, usePower);
+
+                    int x=super.move(b, w, c, usePower);
+                    if(x==1)
+                    {
+                        firstBuild=false;
+                        sendMessage=false;
+                    }
+                    return x;
                 }
                 else
                     return 0;
             }
         }
     }
-
 }
+

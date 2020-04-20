@@ -15,36 +15,38 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 public class Artemis extends GodCard {
 
     private Cell startingCell;
-    private boolean firstMoveDone;
 
     public Artemis(String name) {
         super(name);
+        startingCell = null;
     }
 
     @Override
     public int move(Board b, Builder w, Cell c, boolean usePower) {
-        //no power
-        if (!usePower)
-            return super.move(b, w, c, usePower);
 
         //first move
-        if (!firstMoveDone) {
+        if (startingCell == null) {
+            Cell currentCell = b.getGrid()[w.getPosition().getX()][w.getPosition().getX()];
             int x = super.move(b, w, c, usePower);
             if (x == 1) {
-                firstMoveDone = true;
-                startingCell = c;
+                startingCell = currentCell;
                 return 3;
             } else
                 return x;
         }
         //second move
         else {
-            if (c != startingCell) {
-                firstMoveDone = false;
+            if (c != startingCell)
                 return super.move(b, w, c, usePower);
-            } else
+            else
                 return 0;
         }
+    }
+
+    @Override
+    public int build(Board b, Builder w, Cell c, boolean usePower) {
+        startingCell = null;
+        return super.build(b, w, c, usePower);
     }
 }
 

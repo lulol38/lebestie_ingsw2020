@@ -30,38 +30,47 @@ public abstract class GodCard {
     }
 
    /* return
-    0->il builder non può muoversi nella cella richiesta
-    1->il builder si è spostato nella cella desiderata(c)
-    2->il player associato al builder ha vinto!!
-    3->richiama la move (con usePower sempre true)
+    0 -> il builder non può muoversi nella cella richiesta
+         **** scrivo all'utente "scegli un'altra cella"
+         **** NON che non può muoversi in quella selezionata (vedi prometeo)
+    1 -> il builder si è spostato nella cella desiderata(c)
+    2 -> il player associato al builder ha vinto!!
+    3 -> richiama la move SSE l'utente vuole usare potere (nuovi parametri da chiedere a utente)
+    4 -> richiama la move passando stessi paramentri di prima ma usePower = !(risposta utente)
+    ***
+    ***ATTENZIONE: quando richiamo metodi move o build perchè la prima volta
+    ***hanno avuto dei problemi(return 0 or 2) devo passare anche hasPower corretto
     */
 
     public int move(Board b, Builder w, Cell c,boolean usePower){
-         Cell currentCell=b.getGrid()[w.getPosition().getX()][w.getPosition().getX()];
-         if(w.possibleMoves(b,notMoveUp).contains(c))
-         {
-             //winner condition
-             if(HasWon(c,currentCell))
-                  return 2;
-             currentCell.setBuilder(null);
-             c.setBuilder(w);
-             w.setPosition(c.getPosition());
-             return 1;
-         }
-         return 0;
+        Cell currentCell=b.getGrid()[w.getPosition().getX()][w.getPosition().getX()];
+        if(w.possibleMoves(b,notMoveUp).contains(c))
+        {
+            //winner condition
+            if(HasWon(c,currentCell))
+                return 2;
+            currentCell.setBuilder(null);
+            c.setBuilder(w);
+            w.setPosition(c.getPosition());
+            return 1;
+        }
+        return 0;
     }
 
     /* return
-    0->il builder non può costruire in quella cella (c)
-    1->il builder ha costruito con successo
-    2->richiama la build (con usePower sempre true)
-    3->il builder non ha costruito per mancanza di pezzi
+    0 -> il builder non può costruire in quella cella (c)
+    1 -> il builder ha costruito con successo
+    2 -> il builder non ha costruito per mancanza di pezzi
+    3 -> chiedo all'utente se vuole usare potere:
+         se si: richiedo nuova cella e richiamo la build (usePower=FALSE)
+         se no: richiamo la build senza richiedere cella (usePower=TRUE)
+    4 -> richiama la build passando stessi paramentri di prima ma hasPower=!(risposta utente)
      */
     public int build(Board b,Builder w, Cell c, boolean usePower){
         if(w.possibleBuilds(b).contains(c))
         {
             if(b.getRemainingPieces(c.getLevel()+1)==0)
-                return 3;
+                return 2;
             c.addLevel();
             b.removePiece(c.getLevel());
             return 1;
@@ -90,3 +99,4 @@ public abstract class GodCard {
     }
 
 }
+
