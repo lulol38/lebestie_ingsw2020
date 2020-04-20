@@ -7,27 +7,27 @@ public interface MessageVisitor {
 
     //1 metodo per ogni tipo di messaggio
 
-    void visit(AskNumPlayers visitor);
+    void visit(AskNumPlayers mex);
 
-    void visit(SendNumPlayers visitor);
+    void visit(SendNumPlayers mex);
 
-    void visit(CloseConnection visitor);
+    void visit(CloseConnection mex);
 
-    void visit(AskUsername visitor);
+    void visit(AskUsername mex);
 
-    void visit(SendUsername visitor);
+    void visit(SendUsername mex);
 
-    void visit(ErrorUsername visitor);
+    void visit(ErrorUsername mex);
 
-    void visit(SendGameStart visitor);
+    void visit(SendGameStart mex);
 
-    void visit(SendBeginTurn visitor);
+    void visit(SendBeginTurn mex);
 
-    void visit(SendEndTurn visitor);
+    void visit(SendEndTurn mex);
 
-    void visit(AskPositionBuilders visitor);
+    void visit(AskPositionBuilders mex);
 
-    void visit(SendBuilderPositions visitor);
+    void visit(SendBuilderPositions mex);
 
-    void visit(AcceptedSetupBuilder visitor);
+    void visit(AcceptedSetupBuilder mex);
 }

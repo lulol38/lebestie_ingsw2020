@@ -103,7 +103,7 @@ public class MessageParser implements MessageVisitor {
     }
 
     @Override
-    public void visit(SendGameStart visitor) {
+    public void visit(SendGameStart mex) {
         javafx.application.Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -137,13 +137,13 @@ public class MessageParser implements MessageVisitor {
     }
 
     @Override
-    public void visit(SendBeginTurn visitor) {
+    public void visit(SendBeginTurn mex) {
         BoardController.getInstance().activeGUI();
         //DO MOVES
     }
 
     @Override
-    public void visit(SendEndTurn visitor) {
+    public void visit(SendEndTurn mex) {
         GameController.getInstance().nextTurn();
         //
         //Server goes to next player and sends begin turn to him
@@ -151,14 +151,14 @@ public class MessageParser implements MessageVisitor {
 
     }
 
-    public void visit(AskPositionBuilders visitor){
+    public void visit(AskPositionBuilders mex){
         BoardController.getInstance().BuilderPositions();
     }
 
     @Override
-    public void visit(SendBuilderPositions visitor) {
+    public void visit(SendBuilderPositions mex) {
         ClientHandler clientSender = ((ClientHandler) obj);
-        GameController.getInstance().setPlayerBuilders(visitor.getPos1x(), visitor.getPos1y(), visitor.getPos2x(), visitor.getPos2y());
+        GameController.getInstance().setPlayerBuilders(mex.getPos1x(), mex.getPos1y(), mex.getPos2x(), mex.getPos2y());
         //THIS SHOULD RETURN SOMETHING TO UNDERSTAND IF THE PROCEDURE GONE WELL
 
 
@@ -168,7 +168,7 @@ public class MessageParser implements MessageVisitor {
     }
 
     @Override
-    public void visit(AcceptedSetupBuilder visitor) {
+    public void visit(AcceptedSetupBuilder mex) {
         Client client = (Client) obj;
         client.sendMessage(new SendEndTurn());
     }
