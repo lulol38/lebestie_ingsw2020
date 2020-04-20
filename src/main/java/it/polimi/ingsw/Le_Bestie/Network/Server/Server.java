@@ -61,7 +61,7 @@ public class Server {
         while (true) {
             try {
                 Socket socket = serverSocket.accept();
-                ClientHandler client = new ClientHandler(socket);
+                ClientHandler client = new ClientHandler(socket, this);
                 executor.submit(client);
                 clientsConnected.add(client);
                 System.out.println("Client " + client.getAddress() + " is connected to the server \n");
@@ -72,7 +72,7 @@ public class Server {
         }
     }
 
-    public void addWaitingClient(ClientHandler client, Socket soc){
+    public synchronized void addWaitingClient(ClientHandler client, Socket soc){
         lobby.addClientToLobby(client);
         if(lobby.getClientsWaiting().size()==1){ //First player decides if 2 or 3 players
             try {
@@ -94,7 +94,7 @@ public class Server {
         }
     }
 
-    public void startMatch(Lobby lobby){
+    public synchronized void startMatch(Lobby lobby){
         try{
             GameController game = new GameController(lobby);
             activeGames.add(game);
@@ -108,21 +108,9 @@ public class Server {
     public synchronized void deleteConnection(ClientHandler c) {
         clientsConnected.remove(c);
         if ( lobby.getClientsWaiting().contains(c) ) lobby.getClientsWaiting().remove(c);
-    }
-    
-    public void closeServer(){
-        executor.shutdown();
-        try {
-            serverSocket.close();
-            for (ClientHandler connection: clientsConnected) {
-                connection.closeConnection();
-            }
+        for (GameController g: activeGames) {
+            if(g.getLobby().getClientsWaiting().contains(c)) activeGames.remove(g);
         }
-        catch (IOException e) {
-            System.err.println(e.getMessage());
-            return;
-        }
-        System.out.println("Server closed");
     }
 
     //This method controls if a username is already taken in the lobby

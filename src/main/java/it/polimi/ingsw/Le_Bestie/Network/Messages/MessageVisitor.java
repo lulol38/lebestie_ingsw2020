@@ -28,4 +28,6 @@ public interface MessageVisitor {
     void visit(AskPositionBuilders visitor);
 
     void visit(SendBuilderPositions visitor);
+
+    void visit(AcceptedSetupBuilder visitor);
 }

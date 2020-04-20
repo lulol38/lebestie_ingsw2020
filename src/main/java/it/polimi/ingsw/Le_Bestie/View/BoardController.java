@@ -34,7 +34,7 @@ public class BoardController extends GridPane {
     private static BoardController instance;
 
     private int countPositionedBuilders=0;
-    private int pos1x, pos1y, pos2x, pos2y;
+    private int pos1x, pos1y, pos2x, pos2y; //Builders positions
 
     @FXML
     GridPane gridBoard;
@@ -62,35 +62,54 @@ public class BoardController extends GridPane {
 
     public void pressEndTurn(ActionEvent actionEvent){
         Client.getInstance().sendMessage(new SendEndTurn());
-        gridBoard.setDisable(true);
+        javafx.application.Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                disableGUI();
+            }
+        });
     }
 
     public void activeGUI(){
         gridBoard.setDisable(false);
     }
 
+    public void disableGUI(){
+        gridBoard.setDisable(true);
+    }
+
     public void BuilderPositions(){
-        activeGUI();
-        lblMessages.setText("Add workers to board");
+        javafx.application.Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                activeGUI();
+                lblMessages.setText("Add workers to board");
+            }
+        });
     }
 
     public void getCell(MouseEvent event) {
         Node clickedNode = event.getPickResult().getIntersectedNode();
-        if (clickedNode != gridBoard) {
+        if(countPositionedBuilders==0||countPositionedBuilders==1) { //Enter here only to setup builders
+            if (clickedNode != gridBoard) {
 
-            // click on descendant node
-            countPositionedBuilders++;
-            if(countPositionedBuilders==1) {
-                pos1x = GridPane.getColumnIndex(clickedNode);
-                pos1y = GridPane.getRowIndex(clickedNode);
-            }
-            if(countPositionedBuilders==2){
-                pos2x=GridPane.getColumnIndex(clickedNode);
-                pos2y=GridPane.getRowIndex(clickedNode);
-                Client.getInstance().sendMessage(new SendBuilderPositions(pos1x, pos1y, pos2x, pos2y));
-                gridBoard.setDisable(true);
-                Client.getInstance().sendMessage(new SendEndTurn());
+                // click on descendant node
+                countPositionedBuilders++;
+                if (countPositionedBuilders == 1) {
+                    pos1x = gridBoard.getColumnIndex(clickedNode);
+                    pos1y = gridBoard.getRowIndex(clickedNode);
+                }
+                if (countPositionedBuilders == 2) {
+                    pos2x = gridBoard.getColumnIndex(clickedNode);
+                    pos2y = gridBoard.getRowIndex(clickedNode);
+                    Client.getInstance().sendMessage(new SendBuilderPositions(pos1x, pos1y, pos2x, pos2y));
+                    disableGUI();
+                }
             }
         }
+        else { //Here the user is doing a move or a build because the builders are already setted
+
+        }
+
     }
 }

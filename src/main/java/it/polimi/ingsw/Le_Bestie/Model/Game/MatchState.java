@@ -26,7 +26,7 @@ public class MatchState {
         hasMoved=false;
         gameStarted=false;
         deck=null;
-
+        players=new ArrayList<Player>();
     }
 
     public Deck getDeck() { return deck; }

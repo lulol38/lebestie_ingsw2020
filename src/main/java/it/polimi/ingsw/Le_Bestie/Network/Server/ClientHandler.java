@@ -30,7 +30,9 @@ public class ClientHandler implements Runnable {
 
     private boolean connected;
 
-    public ClientHandler(Socket socket){
+    private Server server;
+
+    public ClientHandler(Socket socket, Server server){
         this.socket=socket;
         try {
             this.in = new ObjectInputStream(socket.getInputStream());
@@ -39,6 +41,7 @@ public class ClientHandler implements Runnable {
             e.printStackTrace();
         }
         this.connected=true;
+        this.server=server;
     }
 
     public void run(){
@@ -51,6 +54,10 @@ public class ClientHandler implements Runnable {
         {
             System.out.println(ex.getMessage());
         }
+    }
+
+    public Server getServer() {
+        return server;
     }
 
     public String getUsername() {

@@ -52,7 +52,8 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(SendNumPlayers mex) {
-        Server.getInstance().getLobby().setNumPlayersMatch(mex.getNumPlayers());
+        ClientHandler clientSender= (ClientHandler) obj;
+        clientSender.getServer().getLobby().setNumPlayersMatch(mex.getNumPlayers());
         System.out.println("Setted match num players to: " + Server.getInstance().getLobby().getNumPlayersMatch());
     }
 
@@ -71,9 +72,9 @@ public class MessageParser implements MessageVisitor {
     @Override
     public void visit(SendUsername mex) {
         ClientHandler clientSender = ((ClientHandler) obj);
-        if(Server.getInstance().checkUsername(mex.getUsername())) {
+        if(clientSender.getServer().checkUsername(mex.getUsername())) {
             clientSender.setUsername(mex.getUsername());
-            Server.getInstance().addWaitingClient(clientSender, clientSender.getSocket());
+            clientSender.getServer().addWaitingClient(clientSender, clientSender.getSocket());
         }
         else
             clientSender.sendMessage(new ErrorUsername());
@@ -157,7 +158,18 @@ public class MessageParser implements MessageVisitor {
     @Override
     public void visit(SendBuilderPositions visitor) {
         ClientHandler clientSender = ((ClientHandler) obj);
-        String user = clientSender.getUsername();
         GameController.getInstance().setPlayerBuilders(visitor.getPos1x(), visitor.getPos1y(), visitor.getPos2x(), visitor.getPos2y());
+        //THIS SHOULD RETURN SOMETHING TO UNDERSTAND IF THE PROCEDURE GONE WELL
+
+
+        //IF CORRECT SEND ACCEPTEDSETUPBUILDER ELSE RE-DO ASKPOSITIONBUILDERS
+
+
+    }
+
+    @Override
+    public void visit(AcceptedSetupBuilder visitor) {
+        Client client = (Client) obj;
+        client.sendMessage(new SendEndTurn());
     }
 }
