@@ -11,8 +11,6 @@ target/
 *~
 # ignore metadata directories
 .metadata
-# Intellij
-.idea/
-*.iml
+
 # ignore DS_Store and files starting with ._ (for Mac)
 .DS_Store
