@@ -7,6 +7,8 @@ import it.polimi.ingsw.Le_Bestie.Model.Cards.*;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 /**
@@ -16,14 +18,14 @@ import java.util.ArrayList;
 
 public class GodCardsParser {
 
-    public static Deck parseCards(int numberOfPlayers){
+    public static Deck parseCards(int numberOfPlayers) {
 
-        Deck deck =new Deck();
+        Deck deck = new Deck();
         String path = "json/godCards.json";
         InputStream inputstr = GodCardsParser.class.getClassLoader().getResourceAsStream(path);
 
-       if (inputstr == null) {
-           //exception
+        if (inputstr == null) {
+            //exception
         }
 
         JsonParser parser = new JsonParser();
@@ -34,7 +36,7 @@ public class GodCardsParser {
         for (JsonElement je : godcards) {
             JsonObject jo = je.getAsJsonObject();
 
-            ArrayList<GodCard> cards = parseGod(jo,numberOfPlayers);
+            ArrayList<GodCard> cards = parseGod(jo, numberOfPlayers);
 
             for (GodCard card : cards) {
                 deck.addCard(card);
@@ -44,7 +46,8 @@ public class GodCardsParser {
         return deck;
 
     }
-    private static ArrayList<GodCard> parseGod(JsonObject jsonObject,int n) {
+
+    private static ArrayList<GodCard> parseGod(JsonObject jsonObject, int n) {
         String name = jsonObject.get("name").getAsString();
         String title = jsonObject.get("title").getAsString();
         String description = jsonObject.get("description").getAsString();
@@ -56,8 +59,9 @@ public class GodCardsParser {
             players.add(Integer.valueOf(elem.getAsString()));
         }
 
-        ArrayList<GodCard> cards=new ArrayList<>();
-            switch (name) {
+        ArrayList<GodCard> cards = new ArrayList<>();
+
+           switch (name) {
                 case "Apollo":
                     if(players.contains(n))
                     cards.add(new Apollo(name));
