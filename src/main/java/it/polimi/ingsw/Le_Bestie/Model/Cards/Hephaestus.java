@@ -14,22 +14,45 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 public class Hephaestus extends GodCard{
 
+    boolean secondBuild;
 
     public Hephaestus(String name) {
         super(name);
+        secondBuild=false;
     }
 
 
     @Override
     public int build(Board b, Builder w, Cell c, boolean usePower) {
-        if(!usePower||c.getLevel()>2)
-           return super.build(b, w, c, usePower);
-       else
-       {
-           if(super.build(b, w, c, usePower)==1)
-               return super.build(b, w, c, usePower);
-           else
-               return 0;
-       }
+
+        if(!secondBuild)
+        {
+            int x=super.build(b, w, c, usePower);
+            if(x==1)
+            {
+                if(c.getLevel()<4) {
+                    secondBuild = true;
+                    return 4;
+                }
+                return 1;
+            }
+            return x;
+        }
+
+        if(!usePower) {
+            int x=super.build(b, w, c, usePower);
+            if(x==1) {
+                secondBuild=false;
+            }
+            return x;
+        }
+        else {
+            secondBuild=false;
+            return 1;
+        }
+
+
+
     }
 }
+

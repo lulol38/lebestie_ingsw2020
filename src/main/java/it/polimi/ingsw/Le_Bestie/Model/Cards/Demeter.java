@@ -14,39 +14,45 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 public class Demeter extends GodCard{
 
-    private Cell startingCell;
-    private boolean firstBuiltDone;
+    private Cell firstBuiltCell;
 
     public Demeter(String name) {
         super(name);
+        firstBuiltCell=null;
     }
 
     @Override
     public int build(Board b,Builder w, Cell c, boolean usePower) {
-        //no power
-        if(!usePower)
-            return super.build(b,w,c,usePower);
 
-           //first built
-            if(!firstBuiltDone)
+        //first built
+        if(firstBuiltCell==null)
+        {
+            int x=super.build(b,w,c,usePower);
+            if(x==1)
             {
-                if(super.build(b,w,c,usePower)==1)
-                {
-                    firstBuiltDone=true;
-                    startingCell=c;
-                    return 2;
-                }
-                return 0;
+                firstBuiltCell=c;
+                return 3;
             }
-            //second built
+            return x;
+        }
+        //second built
+        else {
+            if (!usePower) {
+                if (c != firstBuiltCell) {
+                    int x=super.build(b, w, c, usePower);
+                    if(x==1)
+                        firstBuiltCell = null;
+                    return x;
+                } else return 0;
+            }
             else
             {
-                if(c!=startingCell) {
-                    firstBuiltDone=false;
-                    return super.build(b, w, c, usePower);
-                }
-                else return 0;
+                firstBuiltCell = null;
+                return 1;
             }
+
+        }
     }
 
 }
+
