@@ -72,7 +72,7 @@ public class BoardController extends GridPane {
             gridBoard.setDisable(true);
             lblMessages.setText("");});
 
-    }
+        }
 
     public void BuilderPositions(){
         javafx.application.Platform.runLater(() -> {
