@@ -102,27 +102,35 @@ public class MatchState {
     private ArrayList<BuilderColor> builderColorNotUsed() {
         ArrayList<BuilderColor> builderColorsUsed = new ArrayList<>();
         ArrayList<BuilderColor> builderColors = new ArrayList<>();
+        ArrayList<BuilderColor> helpBuilderColors = new ArrayList<>();
         for (Player player : players) {
             builderColorsUsed.add(player.getColor());
         }
 
-        for (int i = 0; i < BuilderColor.values().length; i++) {
-            if(builderColorsUsed.size()!=0) {
-                for (int y = 0; y < builderColorsUsed.size(); y++) {
-                    if (builderColorsUsed.get(y).name() != BuilderColor.values()[i].name())
-                        builderColors.add(BuilderColor.values()[i]);
-                }
-            }
-            else{
-                for(int x=0; x< BuilderColor.values().length; x++)
-                    builderColors.add(BuilderColor.values()[x]);
-                return builderColors;
-                }
+        for(int x=0; x< BuilderColor.values().length; x++)
+            helpBuilderColors.add(BuilderColor.values()[x]);
 
+        if(builderColorsUsed.size()!=0) {
+            for (int i = 0; i < BuilderColor.values().length; i++) {
+                for (int y = 0; y < builderColorsUsed.size(); y++) {
+                    if (builderColorsUsed.get(y).name() == BuilderColor.values()[i].name()){
+                        for(int z=0; z<helpBuilderColors.size();z++){
+                            if(helpBuilderColors.get(z).name()==BuilderColor.values()[i].name())
+                                helpBuilderColors.remove(z);
+                        }
+                    }
+
+                }
             /*if (!builderColorsUsed.contains(BuilderColor.getColor(BuilderColor.values()[i].toString())));
                  builderColors.add(BuilderColor.values()[i]) ;*/
+            }
+            return helpBuilderColors;
         }
-        return builderColors;
+        else{
+            for(int x=0; x< BuilderColor.values().length; x++)
+                builderColors.add(BuilderColor.values()[x]);
+            return builderColors;
+        }
     }
 
 
