@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="it.polimi.ingsw.Le_Bestie.View.StartGameController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
 
    <children>
       <ImageView fitHeight="450.0" fitWidth="600.0">
@@ -23,7 +23,7 @@
             <Image url="@../images/buttons/btn_purple.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="200.0" layoutX="200.0" layoutY="200.0">
+      <ImageView fx:id="btnPlay" fitHeight="50.0" fitWidth="200.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#pressButtonPlay">
          <image>
             <Image url="@../images/buttons/btn_purple.png" />
          </image>
@@ -38,6 +38,6 @@
             <Font name="Cambria" size="23.0" />
          </font>
       </Label>
-      <Button mnemonicParsing="false" text="Button" />
+      <Label fx:id="l1" text="Label" textFill="WHITE" />
    </children>
 </AnchorPane>

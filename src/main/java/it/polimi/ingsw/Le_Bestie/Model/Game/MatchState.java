@@ -41,7 +41,6 @@ public class MatchState {
     }
     public ArrayList<Player> getPlayers(){ return players;}
 
-
     public void setUsePower(boolean usePower) {
         this.usePower = usePower;
     }
