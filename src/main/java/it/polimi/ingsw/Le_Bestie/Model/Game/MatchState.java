@@ -17,7 +17,7 @@ public class MatchState {
     private boolean usePower;
     private boolean hasMoved;
     private boolean gameStarted;
-    private ArrayList<Player> players = new ArrayList<Player>();;
+    private ArrayList<Player> players = new ArrayList<Player>();
 
     public MatchState(){
         this.board=new Board();
