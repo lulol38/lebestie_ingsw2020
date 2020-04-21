@@ -164,7 +164,7 @@ public class MessageParser implements MessageVisitor {
 
         //IF CORRECT SEND ACCEPTEDSETUPBUILDER ELSE RE-DO ASKPOSITIONBUILDERS
 
-
+        clientSender.sendMessage(new AcceptedSetupBuilder()); //ONLY FOR TEST
     }
 
     @Override

@@ -89,7 +89,7 @@ public class Server {
                     s.sendMessage(new SendGameStart());
                 }
                 startMatch(lobby);
-                lobby.cleanLobby();
+                //lobby.cleanLobby();
             }
         }
     }

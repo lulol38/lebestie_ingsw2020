@@ -20,8 +20,8 @@ public class Player {
     public Player(String nickname) {
         this.nickname=nickname;
         this.disabled=false;
-        this.builder1=new Builder(startPosition);
-        this.builder2=new Builder(startPosition);
+        this.builder1=null;
+        this.builder2=null;
     }
 
     //Getters
@@ -56,7 +56,7 @@ public class Player {
     }
     public void setBuilder2(Builder builder2)
     {
-        this.builder2=builder1;
+        this.builder2=builder2;
     }
 
     //Method that returns the God Card name(string) associated to the player

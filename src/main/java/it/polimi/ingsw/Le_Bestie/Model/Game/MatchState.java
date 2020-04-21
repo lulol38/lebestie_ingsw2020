@@ -17,7 +17,7 @@ public class MatchState {
     private boolean usePower;
     private boolean hasMoved;
     private boolean gameStarted;
-    private ArrayList<Player> players;
+    private ArrayList<Player> players = new ArrayList<Player>();;
 
     public MatchState(){
         this.board=new Board();
@@ -52,7 +52,6 @@ public class MatchState {
 
         if(gameStarted)
             return;
-        this.players=new ArrayList<Player>();
         gameStarted=true;
         initializeDeck();
 
@@ -64,7 +63,9 @@ public class MatchState {
         return n;
     }
 
-    private void initializeDeck(){ this.deck= GodCardsParser.parseCards(numberOfPlayers());}
+    private void initializeDeck(){
+        this.deck= GodCardsParser.parseCards(numberOfPlayers());
+    }
 
 
     private void assignCardToPlayers(){

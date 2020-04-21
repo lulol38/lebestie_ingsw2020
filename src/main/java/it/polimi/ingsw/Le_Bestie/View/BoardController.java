@@ -62,55 +62,57 @@ public class BoardController extends GridPane {
 
     public void pressEndTurn(ActionEvent actionEvent){
         Client.getInstance().sendMessage(new SendEndTurn());
-        javafx.application.Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                disableGUI();
-            }
-        });
+        javafx.application.Platform.runLater(() -> disableGUI());
     }
 
     public void activeGUI(){
-        gridBoard.setDisable(false);
+        javafx.application.Platform.runLater(() -> gridBoard.setDisable(false));
     }
 
     public void disableGUI(){
-        gridBoard.setDisable(true);
-        lblMessages.setText("");
+        javafx.application.Platform.runLater(() -> {
+            gridBoard.setDisable(true);
+            lblMessages.setText("");});
+
     }
 
     public void BuilderPositions(){
-        javafx.application.Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                activeGUI();
-                lblMessages.setText("Add workers to board");
-            }
+        javafx.application.Platform.runLater(() -> {
+            activeGUI();
+            lblMessages.setText("Add workers to board");
         });
     }
 
     public void getCell(MouseEvent event) {
-        Node clickedNode = event.getPickResult().getIntersectedNode();
-        if(countPositionedBuilders==0||countPositionedBuilders==1) { //Enter here only to setup builders
-            if (clickedNode != gridBoard) {
+        javafx.application.Platform.runLater(() -> {
+            Node clickedNode = event.getPickResult().getIntersectedNode();
+            if(countPositionedBuilders==0||countPositionedBuilders==1) { //Enter here only to setup builders
+                if (clickedNode != gridBoard) {
 
-                // click on descendant node
-                countPositionedBuilders++;
-                if (countPositionedBuilders == 1) {
-                    pos1x = gridBoard.getColumnIndex(clickedNode);
-                    pos1y = gridBoard.getRowIndex(clickedNode);
-                }
-                if (countPositionedBuilders == 2) {
-                    pos2x = gridBoard.getColumnIndex(clickedNode);
-                    pos2y = gridBoard.getRowIndex(clickedNode);
-                    Client.getInstance().sendMessage(new SendBuilderPositions(pos1x, pos1y, pos2x, pos2y));
-                    disableGUI();
+                    // click on descendant node
+                    countPositionedBuilders++;
+                    if (countPositionedBuilders == 1) {
+                        pos1x = gridBoard.getColumnIndex(clickedNode);
+                        pos1y = gridBoard.getRowIndex(clickedNode);
+                    }
+                    if (countPositionedBuilders == 2) {
+                        pos2x = gridBoard.getColumnIndex(clickedNode);
+                        pos2y = gridBoard.getRowIndex(clickedNode);
+                        try {
+                            Client.getInstance().sendMessage(new SendBuilderPositions(pos1x, pos1y, pos2x, pos2y));
+                        }
+                        catch(Exception ex){
+                            System.out.println(ex.getMessage());
+                        }
+                        disableGUI();
+                    }
                 }
             }
-        }
-        else { //Here the user is doing a move or a build because the builders are already setted
+            else { //Here the user is doing a move or a build because the builders are already setted
 
-        }
+            }
+        });
+
 
     }
 }
