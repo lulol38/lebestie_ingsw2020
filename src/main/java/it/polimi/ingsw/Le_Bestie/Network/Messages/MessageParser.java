@@ -158,14 +158,18 @@ public class MessageParser implements MessageVisitor {
     @Override
     public void visit(SendBuilderPositions mex) {
         ClientHandler clientSender = ((ClientHandler) obj);
-        if(GameController.getInstance().setPlayerBuilder(mex.getPosX(), mex.getPosY())){
+        if(GameController.getInstance().setPlayerBuilder(mex.getPosX(), mex.getPosY())==2){
             Board b=GameController.getInstance().getMatchState().getBoard();
-            clientSender.sendMessage(new SendUpdatedBoard(b));
+            for (ClientHandler c : GameController.getInstance().getLobby().getClientsWaiting()) {
+                c.sendMessage(new SendUpdatedBoard(b));
+            }
             clientSender.sendMessage(new AcceptedSetupBuilder());
         }
         else{
             Board b=GameController.getInstance().getMatchState().getBoard();
-            clientSender.sendMessage(new SendUpdatedBoard(b));
+            for (ClientHandler c : GameController.getInstance().getLobby().getClientsWaiting()) {
+                c.sendMessage(new SendUpdatedBoard(b));
+            }
             clientSender.sendMessage(new AskPositionBuilders());
         }
     }
@@ -173,6 +177,7 @@ public class MessageParser implements MessageVisitor {
     @Override
     public void visit(AcceptedSetupBuilder mex) {
         Client client = (Client) obj;
+        BoardController.getInstance().setBuildersSetted(true);
         client.sendMessage(new SendEndTurn());
         BoardController.getInstance().disableGUI();
     }

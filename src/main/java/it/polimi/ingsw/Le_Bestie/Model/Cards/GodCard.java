@@ -5,13 +5,15 @@ import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
+import java.io.Serializable;
+
 /**
  * Class GodCard
  * describes a generic turn without power
  * @author VeronicaRovelli
  */
 
-public abstract class GodCard {
+public abstract class GodCard implements Serializable {
 
     private String name;
     protected boolean notMoveUp;

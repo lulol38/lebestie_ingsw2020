@@ -86,7 +86,7 @@ public class MatchState {
     }
 
     public void addPlayer(String nickname){
-        Player p= new Player(nickname);
+        Player p= new Player(nickname, builderColorNotUsed().get(0));
         players.add(p);
     }
 
@@ -99,15 +99,28 @@ public class MatchState {
         Collections.rotate(players, -1);
     }
 
-    private ArrayList <BuilderColor> builderColorNotUsed() {
+    private ArrayList<BuilderColor> builderColorNotUsed() {
         ArrayList<BuilderColor> builderColorsUsed = new ArrayList<>();
         ArrayList<BuilderColor> builderColors = new ArrayList<>();
         for (Player player : players) {
-            builderColorsUsed.add(player.getBuilder1().getColor());
+            builderColorsUsed.add(player.getColor());
         }
+
         for (int i = 0; i < BuilderColor.values().length; i++) {
-            if (!builderColorsUsed.contains(BuilderColor.values()[i]));
-                 builderColors.add(BuilderColor.values()[i]) ;
+            if(builderColorsUsed.size()!=0) {
+                for (int y = 0; y < builderColorsUsed.size(); y++) {
+                    if (builderColorsUsed.get(y).name() != BuilderColor.values()[i].name())
+                        builderColors.add(BuilderColor.values()[i]);
+                }
+            }
+            else{
+                for(int x=0; x< BuilderColor.values().length; x++)
+                    builderColors.add(BuilderColor.values()[x]);
+                return builderColors;
+                }
+
+            /*if (!builderColorsUsed.contains(BuilderColor.getColor(BuilderColor.values()[i].toString())));
+                 builderColors.add(BuilderColor.values()[i]) ;*/
         }
         return builderColors;
     }

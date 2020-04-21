@@ -6,7 +6,7 @@ import java.io.Serializable;
  * 
  */
 public enum BuilderColor implements Serializable {
-    WHITE, LIGHT, BLUE, BROWN;
+    WHITE, BLUE, BROWN;
 
     //This method return the object of color request if the color chosen is a possible Builder color else return null
     public static BuilderColor getColor(String colorBuilderChosen) {

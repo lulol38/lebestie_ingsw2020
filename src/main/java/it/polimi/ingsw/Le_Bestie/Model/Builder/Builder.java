@@ -11,7 +11,6 @@ import java.util.Iterator;
 
 public class Builder implements Serializable {
 
-    private BuilderColor color;
     private String idBuilder;
     private boolean disabled;
     private Position position;
@@ -22,15 +21,9 @@ public class Builder implements Serializable {
     }
 
     //Getter
-    public void setPlayer(Player player) {
-        this.player=player;
-    }
     public Position getPosition() { return position; }
     public Player getPlayer() {
         return player;
-    }
-    public BuilderColor getColor(){
-        return this.color;
     }
     public String getIdBuilder(){
         return this.idBuilder;
@@ -38,10 +31,10 @@ public class Builder implements Serializable {
     public boolean getDisabled(){ return this.disabled; }
 
     //Setter
-    public void setPosition(Position position) { this.position = position; }
-    public void setColor(BuilderColor color){
-        this.color=color;
+    public void setPlayer(Player player) {
+        this.player=player;
     }
+    public void setPosition(Position position) { this.position = position; }
     public void setIdBuilder(String idBuilder){
         this.idBuilder=idBuilder;
     }

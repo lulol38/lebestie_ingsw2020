@@ -44,11 +44,6 @@ public class PlayerTest {
         Builder b=new Builder(initialPosition);
         Player player=new Player("Davide");
         player.setBuilder1(b);
-
-        player.getBuilder1().setColor(BuilderColor.BLUE);
-
-        assertSame(BuilderColor.BLUE,player.getBuilder1().getColor());
-
     }
 
 }

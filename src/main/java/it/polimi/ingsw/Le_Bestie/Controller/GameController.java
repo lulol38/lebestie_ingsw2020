@@ -50,17 +50,24 @@ public class GameController {
         lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
     }
 
-    public boolean setPlayerBuilder(int posx, int posy){
+    public int setPlayerBuilder(int posx, int posy){
         if(matchState.getCurrentPlayer().getBuilder1()==null) {
-            matchState.getCurrentPlayer().setBuilder1(new Builder(new Position(posx, posy)));
-            matchState.getBoard().getGrid()[posx][posy].setBuilder(matchState.getCurrentPlayer().getBuilder1());
-            return false;
+            if(matchState.getBoard().getGrid()[posx][posy].getBuilder()==null) {
+                matchState.getCurrentPlayer().setBuilder1(new Builder(new Position(posx, posy)));
+                matchState.getBoard().getGrid()[posx][posy].setBuilder(matchState.getCurrentPlayer().getBuilder1());
+                matchState.getCurrentPlayer().getBuilder1().setPlayer(matchState.getCurrentPlayer());
+                return 1;
+            }
         }
         else {
-            matchState.getCurrentPlayer().setBuilder2(new Builder(new Position(posx, posy)));
-            matchState.getBoard().getGrid()[posx][posy].setBuilder(matchState.getCurrentPlayer().getBuilder2());
-            return true;
+            if(matchState.getBoard().getGrid()[posx][posy].getBuilder()==null) {
+                matchState.getCurrentPlayer().setBuilder2(new Builder(new Position(posx, posy)));
+                matchState.getBoard().getGrid()[posx][posy].setBuilder(matchState.getCurrentPlayer().getBuilder2());
+                matchState.getCurrentPlayer().getBuilder2().setPlayer(matchState.getCurrentPlayer());
+                return 2;
+            }
         }
+        return 0; //The cell was occupied
     }
 
     public void nextTurn(){
