@@ -160,7 +160,6 @@ public class MessageParser implements MessageVisitor {
         GameController.getInstance().setPlayerBuilders(mex.getPos1x(), mex.getPos1y(), mex.getPos2x(), mex.getPos2y());
         //THIS SHOULD RETURN SOMETHING TO UNDERSTAND IF THE PROCEDURE GONE WELL
 
-
         //IF CORRECT SEND ACCEPTEDSETUPBUILDER ELSE RE-DO ASKPOSITIONBUILDERS
 
         clientSender.sendMessage(new AcceptedSetupBuilder()); //ONLY FOR TEST

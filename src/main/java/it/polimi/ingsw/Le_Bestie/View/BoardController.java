@@ -5,6 +5,7 @@ import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Position;
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.*;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.SendUpdatedBoard;
 import it.polimi.ingsw.Le_Bestie.Network.Server.Server;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -43,8 +44,7 @@ public class BoardController extends GridPane {
     GridPane gridBoard;
     @FXML
     ImageView imgGodCard;
-    @FXML
-    Button btnEndTurn;
+
     @FXML
     Label lblMessages;
 
@@ -126,8 +126,7 @@ public class BoardController extends GridPane {
                 for(int y=0; y<5; y++){
                     if(b.getGrid()[x][y].getBuilder()!=null){ //There is a builder in the cell, update gui
                         Label Node = (Label) getNodeGridPane(gridBoard, x, y);
-                        Node.setGraphic(new Circle(1, Color.BLACK));
-                        Node.setText("BBBB");
+                        Node.setGraphic(new Circle(10,10 ,25, Color.RED));
                     }
                 }
             }

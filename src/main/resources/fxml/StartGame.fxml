@@ -23,7 +23,7 @@
             <Image url="@../images/buttons/btn_purple.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="btnPlay" fitHeight="50.0" fitWidth="200.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#pressButtonPlay">
+      <ImageView  fitHeight="50.0" fitWidth="200.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#pressButtonPlay">
          <image>
             <Image url="@../images/buttons/btn_purple.png" />
          </image>
@@ -38,6 +38,6 @@
             <Font name="Cambria" size="23.0" />
          </font>
       </Label>
-      <Label fx:id="l1" text="Label" textFill="WHITE" />
+      <Label  text="Label" textFill="WHITE" />
    </children>
 </AnchorPane>
