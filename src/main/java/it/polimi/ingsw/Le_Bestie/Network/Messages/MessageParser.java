@@ -145,6 +145,7 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(SendEndTurn mex) {
+        BoardController.getInstance().disableGUI();
         GameController.getInstance().nextTurn();
         //
         //Server goes to next player and sends begin turn to him

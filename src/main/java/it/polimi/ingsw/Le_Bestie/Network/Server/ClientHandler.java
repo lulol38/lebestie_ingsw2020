@@ -89,6 +89,7 @@ public class ClientHandler implements Runnable {
 
     public void sendMessage(Message message){
         try {
+            out.reset();
             out.writeObject(message);
             out.flush();
         } catch (IOException e) {
