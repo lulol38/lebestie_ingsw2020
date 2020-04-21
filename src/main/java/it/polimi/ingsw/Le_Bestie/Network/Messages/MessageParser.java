@@ -1,6 +1,7 @@
 package it.polimi.ingsw.Le_Bestie.Network.Messages;
 
 import it.polimi.ingsw.Le_Bestie.Controller.GameController;
+import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.*;
 import it.polimi.ingsw.Le_Bestie.View.BoardController;
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
@@ -157,13 +158,16 @@ public class MessageParser implements MessageVisitor {
     @Override
     public void visit(SendBuilderPositions mex) {
         ClientHandler clientSender = ((ClientHandler) obj);
-        GameController.getInstance().setPlayerBuilders(mex.getPos1x(), mex.getPos1y(), mex.getPos2x(), mex.getPos2y());
-        //THIS SHOULD RETURN SOMETHING TO UNDERSTAND IF THE PROCEDURE GONE WELL
-
-        //IF CORRECT SEND ACCEPTEDSETUPBUILDER ELSE RE-DO ASKPOSITIONBUILDERS
-
-        clientSender.sendMessage(new AcceptedSetupBuilder()); //ONLY FOR TEST
-        clientSender.sendMessage(new SendUpdatedBoard(GameController.getInstance().getMatchState().getBoard()));
+        if(GameController.getInstance().setPlayerBuilder(mex.getPosX(), mex.getPosY())){
+            Board b=GameController.getInstance().getMatchState().getBoard();
+            clientSender.sendMessage(new SendUpdatedBoard(b));
+            clientSender.sendMessage(new AcceptedSetupBuilder());
+        }
+        else{
+            Board b=GameController.getInstance().getMatchState().getBoard();
+            clientSender.sendMessage(new SendUpdatedBoard(b));
+            clientSender.sendMessage(new AskPositionBuilders());
+        }
     }
 
     @Override

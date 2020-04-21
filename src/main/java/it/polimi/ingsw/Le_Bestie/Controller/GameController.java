@@ -50,11 +50,17 @@ public class GameController {
         lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
     }
 
-    public void setPlayerBuilders(int pos1x, int pos1y, int pos2x, int pos2y){
-        matchState.getCurrentPlayer().setBuilder1(new Builder(new Position(pos1x,pos1y)));
-        matchState.getBoard().getGrid()[pos1x][pos1y].setBuilder(matchState.getCurrentPlayer().getBuilder1());
-        matchState.getCurrentPlayer().setBuilder2(new Builder(new Position(pos2x,pos2y)));
-        matchState.getBoard().getGrid()[pos2x][pos2y].setBuilder(matchState.getCurrentPlayer().getBuilder2());
+    public boolean setPlayerBuilder(int posx, int posy){
+        if(matchState.getCurrentPlayer().getBuilder1()==null) {
+            matchState.getCurrentPlayer().setBuilder1(new Builder(new Position(posx, posy)));
+            matchState.getBoard().getGrid()[posx][posy].setBuilder(matchState.getCurrentPlayer().getBuilder1());
+            return false;
+        }
+        else {
+            matchState.getCurrentPlayer().setBuilder2(new Builder(new Position(posx, posy)));
+            matchState.getBoard().getGrid()[posx][posy].setBuilder(matchState.getCurrentPlayer().getBuilder2());
+            return true;
+        }
     }
 
     public void nextTurn(){
