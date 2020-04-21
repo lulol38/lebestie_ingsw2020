@@ -174,6 +174,7 @@ public class MessageParser implements MessageVisitor {
     public void visit(AcceptedSetupBuilder mex) {
         Client client = (Client) obj;
         client.sendMessage(new SendEndTurn());
+        BoardController.getInstance().disableGUI();
     }
 
     @Override
