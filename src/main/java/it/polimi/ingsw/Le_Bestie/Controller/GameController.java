@@ -21,8 +21,6 @@ public class GameController {
     private Lobby lobby;
     private MatchState matchState;
     private Player Winner;
-
-  
     private Player currentTurnPlayer;
 
     public GameController(Lobby lobby) {

@@ -34,6 +34,6 @@ public class Position {
     }
 
     public String toString() {
-        return "Y  " + this.y + ",X  " + this.x;
+        return "X  " + this.x + ",Y  " + this.y;
     }
 }
