@@ -1,5 +1,5 @@
-#btn {
-    -fx-background-image: url("images/buttons.png");
+#btnStart {
+    -fx-background-image: url("/images/buttons/btn_purple.png");
     -fx-background-size: 18 18;
     -fx-background-repeat: no-repeat;
     -fx-background-position:left;

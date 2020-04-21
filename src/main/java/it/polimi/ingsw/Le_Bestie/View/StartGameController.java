@@ -2,29 +2,37 @@ package it.polimi.ingsw.Le_Bestie.View;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-import javax.swing.text.html.ImageView;
-import java.awt.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 
 public class StartGameController {
 
-    private ExecutorService executor = Executors.newCachedThreadPool();
     @FXML
-    ImageView btnPlay;
+    private AnchorPane rootPane;
     @FXML
-    Label l1;
-
-    public void pressButtonPlay(javafx.event.ActionEvent actionEvent){
-
+    private ImageView btnStart;
+    @FXML
+    private ImageView btnQuit;
+    @FXML
+    public void initialize() {
+        button();
     }
 
+    private void button(){
+        btnStart.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> playGameClick());
+        btnQuit.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> System.exit(0));
+    }
+    private void playGameClick() {
 
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
+            rootPane.getChildren().setAll(pane);
+        }
+        catch (IOException e){
 
+        }
+    }
 }

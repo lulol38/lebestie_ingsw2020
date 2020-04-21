@@ -16,30 +16,18 @@ import java.io.IOException;
 public class Gui extends Application {
     @Override
     public void start(Stage stage) {
-        javafx.application.Platform.runLater(new Runnable() {
-            public void run() {
                 Parent root = null;
                 try {
-                    root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("/fxml/StartGame.fxml"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 stage.getIcons().add(new Image(Gui.class.getClassLoader().getResourceAsStream("images/icon.png")));
+
                 Scene scene = new Scene(root);
                 stage.setTitle("SANTORINI MENU");
                 stage.setScene(scene);
                 stage.setResizable(false);
                 stage.show();
-
-                stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                    @Override
-                    public void handle(WindowEvent we) {
-                        if (Client.getInstance() != null)
-                            Client.getInstance().sendMessage(new CloseConnection());
-                        System.exit(0);
-                    }
-                });
-            }
-        });
     }
 }

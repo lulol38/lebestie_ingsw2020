@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import java.net.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<?import java.net.URL?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.Le_Bestie.View.StartGameController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.Le_Bestie.View.StartGameController">
    <stylesheets>
       <URL value="@../css/Start.css" />
    </stylesheets>
    <children>
-      <ImageView fitHeight="450.0" fitWidth="600.0">
+      <ImageView fitHeight="500.0" fitWidth="600.0">
          <image>
             <Image url="@../images/Odyssey_UI_Backdrop.png" />
          </image>
@@ -21,25 +19,16 @@
             <Image url="@../images/santorini-logo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="200.0" layoutX="200.0" layoutY="323.0">
+      <ImageView id="btnQuit" fx:id="btnQuit" fitHeight="50.0" fitWidth="200.0" layoutX="200.0" layoutY="359.0" styleClass="button">
          <image>
-            <Image url="@../images/buttons/btn_purple.png" />
+            <Image url="@../images/buttons/btn_quit.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="200.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#pressButtonPlay">
+      <ImageView id="btnStart" fx:id="btnStart" fitHeight="50.0" fitWidth="200.0" layoutX="200.0" layoutY="250.0" styleClass="button">
          <image>
-            <Image url="@../images/buttons/btn_purple.png" />
+            <Image url="@../images/buttons/btn_start.png" />
          </image>
       </ImageView>
-      <Label layoutX="240.0" layoutY="207.0" text="PLAY GAME">
-         <font>
-            <Font name="Cambria" size="23.0" />
-         </font>
-      </Label>
-      <Label layoutX="271.0" layoutY="323.0" prefHeight="38.0" prefWidth="57.0" text="QUIT">
-         <font>
-            <Font name="Cambria" size="23.0" />
-         </font>
-      </Label>
+
    </children>
 </AnchorPane>
