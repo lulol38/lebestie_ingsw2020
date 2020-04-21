@@ -54,7 +54,9 @@ public class GameController {
 
     public void setPlayerBuilders(int pos1x, int pos1y, int pos2x, int pos2y){
         matchState.getCurrentPlayer().setBuilder1(new Builder(new Position(pos1x,pos1y)));
+        matchState.getBoard().getGrid()[pos1x][pos1y].setBuilder(matchState.getCurrentPlayer().getBuilder1());
         matchState.getCurrentPlayer().setBuilder2(new Builder(new Position(pos2x,pos2y)));
+        matchState.getBoard().getGrid()[pos2x][pos2y].setBuilder(matchState.getCurrentPlayer().getBuilder2());
     }
 
     public void nextTurn(){

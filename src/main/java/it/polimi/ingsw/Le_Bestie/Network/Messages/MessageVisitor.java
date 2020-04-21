@@ -30,4 +30,6 @@ public interface MessageVisitor {
     void visit(SendBuilderPositions mex);
 
     void visit(AcceptedSetupBuilder mex);
+
+    void visit(SendUpdatedBoard mex);
 }

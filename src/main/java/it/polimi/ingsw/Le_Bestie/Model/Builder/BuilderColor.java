@@ -1,8 +1,11 @@
 package it.polimi.ingsw.Le_Bestie.Model.Builder;
+
+import java.io.Serializable;
+
 /**
  * 
  */
-public enum BuilderColor {
+public enum BuilderColor implements Serializable {
     WHITE, LIGHT, BLUE, BROWN;
 
     //This method return the object of color request if the color chosen is a possible Builder color else return null

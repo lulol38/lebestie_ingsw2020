@@ -20,6 +20,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 import org.w3c.dom.Text;
 
@@ -92,12 +95,12 @@ public class BoardController extends GridPane {
                     // click on descendant node
                     countPositionedBuilders++;
                     if (countPositionedBuilders == 1) {
-                        pos1x = gridBoard.getColumnIndex(clickedNode);
-                        pos1y = gridBoard.getRowIndex(clickedNode);
+                        pos1x = gridBoard.getRowIndex(clickedNode);
+                        pos1y = gridBoard.getColumnIndex(clickedNode);
                     }
                     if (countPositionedBuilders == 2) {
-                        pos2x = gridBoard.getColumnIndex(clickedNode);
-                        pos2y = gridBoard.getRowIndex(clickedNode);
+                        pos2x = gridBoard.getRowIndex(clickedNode);
+                        pos2y = gridBoard.getColumnIndex(clickedNode);
                         try {
                             Client.getInstance().sendMessage(new SendBuilderPositions(pos1x, pos1y, pos2x, pos2y));
                         }
@@ -114,5 +117,32 @@ public class BoardController extends GridPane {
         });
 
 
+    }
+
+    public void setupBoard(Board b) { //UPDATE BOARD
+        javafx.application.Platform.runLater(()->{
+
+            for(int x=0; x<5; x++){
+                for(int y=0; y<5; y++){
+                    if(b.getGrid()[x][y].getBuilder()!=null){ //There is a builder in the cell, update gui
+                        Label Node = (Label) getNodeGridPane(gridBoard, x, y);
+                        Node.setGraphic(new Circle(1, Color.BLACK));
+                        Node.setText("BBBB");
+                    }
+                }
+            }
+
+        });
+    }
+
+    private Label getNodeGridPane(GridPane gridPane, int row, int col) {
+        for (Node node : gridBoard.getChildren()) {
+            if (node instanceof Label
+                    && gridBoard.getColumnIndex(node) == col
+                    && gridBoard.getRowIndex(node) == row) {
+                return (Label) node;
+            }
+        }
+        return null;
     }
 }

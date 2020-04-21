@@ -1,6 +1,8 @@
 package it.polimi.ingsw.Le_Bestie.Model.Board;
 
-public class Position {
+import java.io.Serializable;
+
+public class Position implements Serializable {
     private int x, y;
 
     public Position(int x, int y) {

@@ -1,10 +1,13 @@
 package it.polimi.ingsw.Le_Bestie.Model.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
+
+import java.io.Serializable;
+
 /**
  *This class implements cell
  * @author Davide Carini
  */
-public class Cell {
+public class Cell implements Serializable {
 
     private int level;
     private Builder builder;

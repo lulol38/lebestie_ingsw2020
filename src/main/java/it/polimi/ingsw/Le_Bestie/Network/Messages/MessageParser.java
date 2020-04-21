@@ -148,7 +148,6 @@ public class MessageParser implements MessageVisitor {
         //
         //Server goes to next player and sends begin turn to him
         //
-
     }
 
     public void visit(AskPositionBuilders mex){
@@ -165,11 +164,17 @@ public class MessageParser implements MessageVisitor {
         //IF CORRECT SEND ACCEPTEDSETUPBUILDER ELSE RE-DO ASKPOSITIONBUILDERS
 
         clientSender.sendMessage(new AcceptedSetupBuilder()); //ONLY FOR TEST
+        clientSender.sendMessage(new SendUpdatedBoard(GameController.getInstance().getMatchState().getBoard()));
     }
 
     @Override
     public void visit(AcceptedSetupBuilder mex) {
         Client client = (Client) obj;
         client.sendMessage(new SendEndTurn());
+    }
+
+    @Override
+    public void visit(SendUpdatedBoard mex) {
+        BoardController.getInstance().setupBoard(mex.getB());
     }
 }

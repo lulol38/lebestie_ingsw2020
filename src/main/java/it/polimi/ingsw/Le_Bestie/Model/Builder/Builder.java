@@ -4,10 +4,12 @@ import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Position;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Builder {
+public class Builder implements Serializable {
 
     private BuilderColor color;
     private String idBuilder;
