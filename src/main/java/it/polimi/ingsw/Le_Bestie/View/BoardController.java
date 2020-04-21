@@ -38,7 +38,7 @@ public class BoardController extends GridPane {
     private static BoardController instance;
 
     private int countPositionedBuilders=0;
-    private int pos1x, pos1y, pos2x, pos2y; //Builders positions
+    private int posx, posy; //Builders positions
 
     @FXML
     GridPane gridBoard;
@@ -61,11 +61,6 @@ public class BoardController extends GridPane {
 
     public static BoardController getInstance() {
         return instance;
-    }
-
-    public void pressEndTurn(ActionEvent actionEvent){
-        Client.getInstance().sendMessage(new SendEndTurn());
-        javafx.application.Platform.runLater(() -> disableGUI());
     }
 
     public void activeGUI(){
@@ -95,19 +90,24 @@ public class BoardController extends GridPane {
                     // click on descendant node
                     countPositionedBuilders++;
                     if (countPositionedBuilders == 1) {
-                        pos1x = gridBoard.getRowIndex(clickedNode);
-                        pos1y = gridBoard.getColumnIndex(clickedNode);
-                    }
-                    if (countPositionedBuilders == 2) {
-                        pos2x = gridBoard.getRowIndex(clickedNode);
-                        pos2y = gridBoard.getColumnIndex(clickedNode);
+                        posx = gridBoard.getRowIndex(clickedNode);
+                        posy = gridBoard.getColumnIndex(clickedNode);
                         try {
-                            Client.getInstance().sendMessage(new SendBuilderPositions(pos1x, pos1y, pos2x, pos2y));
+                            Client.getInstance().sendMessage(new SendBuilderPositions(posx, posy));
                         }
                         catch(Exception ex){
                             System.out.println(ex.getMessage());
                         }
-                        disableGUI();
+                    }
+                    if (countPositionedBuilders == 2) {
+                        posx = gridBoard.getRowIndex(clickedNode);
+                        posy = gridBoard.getColumnIndex(clickedNode);
+                        try {
+                            Client.getInstance().sendMessage(new SendBuilderPositions(posx, posy));
+                        }
+                        catch(Exception ex){
+                            System.out.println(ex.getMessage());
+                        }
                     }
                 }
             }
