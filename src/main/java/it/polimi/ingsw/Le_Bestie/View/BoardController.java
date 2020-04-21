@@ -121,7 +121,6 @@ public class BoardController extends GridPane {
 
     public void setupBoard(Board b) { //UPDATE BOARD
         javafx.application.Platform.runLater(()->{
-
             for(int x=0; x<5; x++){
                 for(int y=0; y<5; y++){
                     if(b.getGrid()[x][y].getBuilder()!=null){ //There is a builder in the cell, update gui

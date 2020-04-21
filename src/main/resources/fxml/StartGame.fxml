@@ -5,8 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:controller="it.polimi.ingsw.Le_Bestie.View.StartGameController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
-
+<?import java.net.URL?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.Le_Bestie.View.StartGameController">
+   <stylesheets>
+      <URL value="@../css/Start.css" />
+   </stylesheets>
    <children>
       <ImageView fitHeight="450.0" fitWidth="600.0">
          <image>
@@ -23,7 +26,7 @@
             <Image url="@../images/buttons/btn_purple.png" />
          </image>
       </ImageView>
-      <ImageView  fitHeight="50.0" fitWidth="200.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#pressButtonPlay">
+      <ImageView fitHeight="50.0" fitWidth="200.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#pressButtonPlay">
          <image>
             <Image url="@../images/buttons/btn_purple.png" />
          </image>
@@ -38,6 +41,5 @@
             <Font name="Cambria" size="23.0" />
          </font>
       </Label>
-      <Label  text="Label" textFill="WHITE" />
    </children>
 </AnchorPane>
