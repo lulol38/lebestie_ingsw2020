@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="lobbyPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+  <stylesheets>
+      <URL value="@../css/Connection.css" />
+  </stylesheets>
+
+   <children>
+      <Label layoutX="153.0" layoutY="79.0" text="WAITING OTHERS PLAYERS..." />
+   </children>
+
+</AnchorPane>

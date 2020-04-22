@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.Le_Bestie.View.ViewController.StartGameController">
+
+   <!--Import css -->
+   <stylesheets>
+      <URL value="@../css/Start.css" />
+   </stylesheets>
+
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="600.0">
+         <image>
+            <Image url="@../images/Odyssey_UI_Backdrop.png" />
+         </image>
+      </ImageView>
+
+      <ImageView fitHeight="107.0" fitWidth="427.0" layoutX="86.0" layoutY="58.0">
+         <image>
+            <Image url="@../images/santorini-logo.png" />
+         </image>
+      </ImageView>
+
+      <Button id="btnStart" layoutX="211.0" layoutY="269.0" mnemonicParsing="false" onAction="#playGameClick" prefHeight="50.0" prefWidth="179.0" text="START GAME">
+      </Button>
+
+      <Button id="btnQuit" layoutX="211.0" layoutY="367.0" mnemonicParsing="false" onAction="#pressQuit" prefHeight="50.0" prefWidth="179.0" text="QUIT">
+      </Button>
+
+   </children>
+</AnchorPane>

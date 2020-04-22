@@ -1,38 +1,18 @@
-package it.polimi.ingsw.Le_Bestie.View;
+package it.polimi.ingsw.Le_Bestie.View.ViewController;
 
 import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
-import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
-import it.polimi.ingsw.Le_Bestie.Model.Board.Position;
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.*;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.SendUpdatedBoard;
-import it.polimi.ingsw.Le_Bestie.Network.Server.Server;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Shape;
-import javafx.stage.Stage;
-import org.w3c.dom.Text;
 
-import java.awt.*;
 import java.lang.reflect.Field;
-import java.lang.reflect.Parameter;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 //Controller for the client Board
 public class BoardController extends GridPane {

@@ -1,4 +1,4 @@
-package it.polimi.ingsw.Le_Bestie.View;
+package it.polimi.ingsw.Le_Bestie.View.ViewController;
 
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import javafx.fxml.FXML;
@@ -7,27 +7,36 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import javafx.event.ActionEvent;
 
-public class MenuController {
-
-    private ExecutorService executor = Executors.newCachedThreadPool();
-
+public class ConnectionController {
     @FXML
     TextField txtUsername, txtServerAddress, txtServerPort;
     @FXML
-    Button connectButton;
+    Button btnConnect;
+    @FXML
+    AnchorPane connectionPane;
 
-    public void pressConnectButton(javafx.event.ActionEvent actionEvent) {
+    private ExecutorService executor = Executors.newCachedThreadPool();
+
+    public void pressConnectButton(ActionEvent actionEvent) throws IOException {
         System.out.println("Trying to connect...");
         if(txtServerAddress.getText()!="" && txtServerPort.getText()!="" && txtUsername.getText()!="") {
             Client c= new Client(txtServerAddress.getText(), Integer.parseInt(txtServerPort.getText()), txtUsername.getText());
             executor.submit(c);
         }
+        AnchorPane lobbyPane = FXMLLoader.load(getClass().getResource("/fxml/LobbyStage.fxml"));
+        connectionPane.getChildren().setAll(lobbyPane);
 
     }
+    public  void pressBack(ActionEvent actionEvent) throws IOException {
+        AnchorPane rootPane = FXMLLoader.load(getClass().getResource("/fxml/StartStage.fxml"));
+        connectionPane.getChildren().setAll(rootPane);
+    }
+
 
 }

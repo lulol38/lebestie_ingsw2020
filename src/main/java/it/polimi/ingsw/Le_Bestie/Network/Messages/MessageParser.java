@@ -3,7 +3,7 @@ package it.polimi.ingsw.Le_Bestie.Network.Messages;
 import it.polimi.ingsw.Le_Bestie.Controller.GameController;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.*;
-import it.polimi.ingsw.Le_Bestie.View.BoardController;
+import it.polimi.ingsw.Le_Bestie.View.ViewController.BoardController;
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.*;
 import it.polimi.ingsw.Le_Bestie.Network.Server.Server;
@@ -36,7 +36,7 @@ public class MessageParser implements MessageVisitor {
                 try {
                     Stage stage= new Stage();
                     Parent root = null;
-                    root = FXMLLoader.load(getClass().getResource("/fxml/NPlayersWindow.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("/fxml/NPlayersStage.fxml"));
                     Scene scene = new Scene(root);
 
                     stage.setTitle("START GAME");
@@ -113,11 +113,9 @@ public class MessageParser implements MessageVisitor {
 
                     Stage stage= new Stage();
                     Parent root = null;
-                    root = FXMLLoader.load(getClass().getResource("/fxml/Board.fxml"));
-
+                    root = FXMLLoader.load(getClass().getResource("/fxml/BoardStage.fxml"));
                     Scene scene = new Scene(root);
-
-                    stage.setTitle("Board");
+                    stage.setTitle("BOARD");
                     stage.setScene(scene);
                     stage.setResizable(false);
                     stage.show();

@@ -1,4 +1,4 @@
-package it.polimi.ingsw.Le_Bestie.View;
+package it.polimi.ingsw.Le_Bestie.View.ViewController;
 
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendNumPlayers;

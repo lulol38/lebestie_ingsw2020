@@ -1,10 +1,14 @@
-#rootPane{
+#connectionPane{
     -fx-font-family :Cambria;
-    -fx-font-size: 21 px;
+    -fx-font-size: 23 px;
     -fx-text-align: center;
 }
-
-#btnStart {
+#lobbyPane{
+    -fx-font-family :Cambria;
+    -fx-font-size: 23 px;
+    -fx-text-align: center;
+}
+#btnBack{
     -fx-background-color: #ddd;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
@@ -16,29 +20,28 @@
     -fx-border-color:#DAA520;
 
 }
-#btnQuit {
-   -fx-background-color: #ddd;
-       -fx-background-repeat: no-repeat;
-       -fx-background-position: center center;
-       -fx-opacity: 0.8;
-       -fx-border: black;
-       -fx-color: white;
-       -fx-margin: 4px 2px;
-       -fx-opacity: 0.8;
-       -fx-transition: 0.3s;
-       -fx-border-color:#DAA520;
+#btnConnect{
+    -fx-background-color: #ddd;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-opacity: 0.8;
+    -fx-color: white;
+    -fx-margin: 4px 2px;
+    -fx-opacity: 0.8;
+    -fx-transition: 0.3s;
+    -fx-border-color:#DAA520;
+
 }
 
-#btnStart:hover {
+#btnBack:hover {
    -fx-background-color: #87CEFA;
    -fx-opacity: 1;
    -fx-color: white;
    -fx-font-size:24 px;
 }
-
-#btnQuit:hover {
+#btnConnect:hover {
    -fx-background-color: #87CEFA;
    -fx-opacity: 1;
    -fx-color: white;
-   -fx-font-size:25 px;
+   -fx-font-size:24 px;
 }
