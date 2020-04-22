@@ -139,6 +139,7 @@ public class MessageParser implements MessageVisitor {
     public void visit(SendBeginTurn mex) {
         BoardController.getInstance().activeGUI();
         //DO MOVES
+        BoardController.getInstance().AskBuilderChosen();
     }
 
     @Override
@@ -183,5 +184,48 @@ public class MessageParser implements MessageVisitor {
     @Override
     public void visit(SendUpdatedBoard mex) {
         BoardController.getInstance().setupBoard(mex.getB());
+    }
+
+    @Override
+    public void visit(SendBuilderChosen mex) {
+        GameController.getInstance().checkBuilder(mex.getBx(), mex.getBy());
+    }
+
+    @Override
+    public void visit(AskCell mex) {
+        BoardController.getInstance().AskCellChosen();
+    }
+
+    @Override
+    public void visit(SendCellChosen mex) {
+        GameController.getInstance().requestAction(mex.getCx(), mex.getCy());
+    }
+
+    @Override
+    public void visit(SendPowerMessage mex) {
+        BoardController.getInstance().ShowPowerMessage(mex.getMessage());
+    }
+
+    @Override
+    public void visit(SendPowerNotUsed mex) {
+        ClientHandler c = (ClientHandler) obj;
+        if(!GameController.getInstance().getMatchState().getHasMoved()){
+            GameController.getInstance().getMatchState().setHasMoved(true);
+            c.sendMessage(new AskCell());
+        }
+        else{
+            GameController.getInstance().requestAction(mex.getCx(), mex.getCy());
+        }
+    }
+
+    @Override
+    public void visit(AskUsePower mex) {
+        BoardController.getInstance().ShowQuestionPower(mex.getMex());
+    }
+
+    @Override
+    public void visit(SendCellWithPower mex) {
+        GameController.getInstance().getMatchState().setUsePower(mex.isPower());
+        GameController.getInstance().requestAction(mex.getCx(), mex.getCy());
     }
 }

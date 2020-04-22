@@ -27,6 +27,7 @@ public class ConnectionController {
         System.out.println("Trying to connect...");
         if(txtServerAddress.getText()!="" && txtServerPort.getText()!="" && txtUsername.getText()!="") {
             Client c= new Client(txtServerAddress.getText(), Integer.parseInt(txtServerPort.getText()), txtUsername.getText());
+            c.init();
             executor.submit(c);
         }
         AnchorPane lobbyPane = FXMLLoader.load(getClass().getResource("/fxml/LobbyStage.fxml"));

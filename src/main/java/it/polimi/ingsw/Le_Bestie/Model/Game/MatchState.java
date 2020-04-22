@@ -97,6 +97,7 @@ public class MatchState {
     public void nextTurn(){
         //rotate list
         Collections.rotate(players, -1);
+        usePower=false;
     }
 
     private ArrayList<BuilderColor> builderColorNotUsed() {

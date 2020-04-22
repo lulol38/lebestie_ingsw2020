@@ -1,12 +1,12 @@
 package it.polimi.ingsw.Le_Bestie.Controller;
 
+import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Position;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 import it.polimi.ingsw.Le_Bestie.Model.Game.MatchState;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskPositionBuilders;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.SendBeginTurn;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.*;
 import it.polimi.ingsw.Le_Bestie.Network.Server.ClientHandler;
 import it.polimi.ingsw.Le_Bestie.Network.Server.Lobby;
 
@@ -45,9 +45,16 @@ public class GameController {
         return matchState;
     }
 
+    public void setWinner(Player winner) {
+        Winner = winner;
+    }
+
     public void initGame(){
         matchState.startGame();
         lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
+
+        //(TODO) SEND GODCARD TO CLIENTS
+
     }
 
     public int setPlayerBuilder(int posx, int posy){
@@ -76,6 +83,51 @@ public class GameController {
         if(matchState.getCurrentPlayer().getBuilder1()==null||matchState.getCurrentPlayer().getBuilder2()==null)
             lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
         else lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
+    }
+
+    public void checkBuilder(int bx, int by){
+        if(matchState.getBoard().getGrid()[bx][by].getBuilder().getPlayer()==matchState.getCurrentPlayer()){
+            matchState.getCurrentPlayer().setBuilderChosen(matchState.getBoard().getGrid()[bx][by].getBuilder());
+
+            lobby.getClientsWaiting().get(0).sendMessage(new AskCell());
+        }
+    }
+
+    public void requestAction(int cx, int cy){
+        if(!matchState.getHasMoved()) {
+            int result = matchState.getCurrentPlayer().getGodCard().move(matchState.getBoard(), matchState.getCurrentPlayer().getBuilderChosen(), matchState.getBoard().getGrid()[cx][cy], matchState.getUsePower());
+
+            switch (result) {
+                case 0:
+                    Client.getInstance().sendMessage(new AskCell());
+                    break;
+                case 1:
+                    matchState.setHasMoved(true);
+                    Client.getInstance().sendMessage(new AskCell());
+                    break;
+                case 2:
+                    setWinner(matchState.getCurrentPlayer());
+                    endMatch();
+                    break;
+                case 3:
+                    Client.getInstance().sendMessage(new SendPowerMessage(matchState.getCurrentPlayer().getGodCard().getMessage()));
+                    break;
+                case 4:
+                    Client.getInstance().sendMessage(new AskUsePower(matchState.getCurrentPlayer().getGodCard().getMessage()));
+                    break;
+            }
+        }
+        else{
+            int result = matchState.getCurrentPlayer().getGodCard().build(matchState.getBoard(), matchState.getCurrentPlayer().getBuilderChosen(), matchState.getBoard().getGrid()[cx][cy], matchState.getUsePower());
+        }
+
+    }
+
+    public void endMatch(){
+
+        //(todo)
+
+
     }
 
 }

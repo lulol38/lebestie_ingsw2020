@@ -5,6 +5,9 @@ import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.*;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -13,6 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 import java.lang.reflect.Field;
+import java.util.Optional;
 
 //Controller for the client Board
 public class BoardController extends GridPane {
@@ -23,6 +27,11 @@ public class BoardController extends GridPane {
     private int posx, posy; //Builders positions
 
     private boolean buildersSetted;
+
+    private int selectedBuilderX=10;
+    private int selectedBuilderY=10;
+    private int selectedCellX=10;
+    private int selectedCellY=10;
 
     @FXML
     GridPane gridBoard;
@@ -41,6 +50,14 @@ public class BoardController extends GridPane {
                 selectedCell.setPosition(new Position((int)e.getSceneX(), (int)e.getSceneY()));
             }
         });*/
+    }
+
+    public void setSelectedCellX(int selectedCellX) {
+        this.selectedCellX = selectedCellX;
+    }
+
+    public void setSelectedCellY(int selectedCellY) {
+        this.selectedCellY = selectedCellY;
     }
 
     public boolean isBuildersSetted() {
@@ -63,13 +80,70 @@ public class BoardController extends GridPane {
         javafx.application.Platform.runLater(() -> {
             gridBoard.setDisable(true);
             lblMessages.setText("");});
-
         }
 
     public void BuilderPositions(){
         javafx.application.Platform.runLater(() -> {
             activeGUI();
             lblMessages.setText("Add workers to board");
+        });
+    }
+
+    public void AskBuilderChosen(){
+        javafx.application.Platform.runLater(()->{
+            lblMessages.setText("Select a worker");
+        });
+    }
+
+    public void AskCellChosen(){
+        setSelectedCellX(10);
+        setSelectedCellY(10);
+        javafx.application.Platform.runLater(()->{
+            lblMessages.setText("Select a cell");
+        });
+    }
+
+    public void ShowQuestionPower(String mex){
+        javafx.application.Platform.runLater(()->{
+            lblMessages.setText(mex);
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("POWER");
+            alert.setContentText(mex);
+
+            ButtonType buttonTypeOne = new ButtonType("Yes");
+            ButtonType buttonTypeTwo = new ButtonType("No");
+
+            alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == buttonTypeOne){
+                Client.getInstance().sendMessage(new SendCellWithPower(selectedCellX, selectedCellY, false));
+            } else if (result.get() == buttonTypeTwo) {
+                Client.getInstance().sendMessage(new SendCellWithPower(selectedCellX, selectedCellY, true));
+            }
+        });
+    }
+
+    public void ShowPowerMessage(String mex) {
+        javafx.application.Platform.runLater(()->{
+            lblMessages.setText(mex);
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("POWER");
+            alert.setContentText(mex);
+
+            ButtonType buttonTypeOne = new ButtonType("Yes");
+            ButtonType buttonTypeTwo = new ButtonType("No");
+
+            alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == buttonTypeOne){
+                AskCellChosen();
+            } else if (result.get() == buttonTypeTwo) {
+                Client.getInstance().sendMessage(new SendPowerNotUsed(selectedCellX, selectedCellY));
+            }
         });
     }
 
@@ -89,7 +163,24 @@ public class BoardController extends GridPane {
                 }
             }
             else { //Here the user is doing a move or a build because the builders are already setted
+                if(selectedBuilderX==10||selectedBuilderY==10){
+                    if (clickedNode != gridBoard) {
+                        selectedBuilderX = gridBoard.getRowIndex(clickedNode);
+                        selectedBuilderY = gridBoard.getColumnIndex(clickedNode);
 
+                        Client.getInstance().sendMessage(new SendBuilderChosen(selectedBuilderX, selectedBuilderY));
+                    }
+                }
+                else{
+                    if(selectedCellX==10||selectedCellY==10) {
+                        if (clickedNode != gridBoard) {
+                            selectedCellX = gridBoard.getRowIndex(clickedNode);
+                            selectedCellY = gridBoard.getColumnIndex(clickedNode);
+
+                            Client.getInstance().sendMessage(new SendCellChosen(selectedCellX, selectedBuilderY));
+                        }
+                    }
+                }
             }
         });
 
@@ -99,7 +190,6 @@ public class BoardController extends GridPane {
     public void setupBoard(Board b) { //UPDATE BOARD
         javafx.application.Platform.runLater(()->{
             Field field = null;
-
 
             for(int x=0; x<5; x++){
                 for(int y=0; y<5; y++){

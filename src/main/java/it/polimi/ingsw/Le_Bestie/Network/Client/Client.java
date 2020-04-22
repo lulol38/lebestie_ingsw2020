@@ -24,20 +24,20 @@ public class Client implements Runnable {
     private ObjectOutputStream out;
     private ObjectInputStream in;
 
-    public Client(String ip, int port, String username){
+    public Client(String ip, int port, String username) throws IOException {
 
         this.ip=ip;
         this.port=port;
         this.username=username;
-        try {
+
+        instance=this;
+    }
+
+    public void init() throws IOException {
             //Create the connection with the server
             this.socket = new Socket(ip, port);
             this.out = new ObjectOutputStream(socket.getOutputStream());
             this.in = new ObjectInputStream(socket.getInputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        instance=this;
     }
 
     public void run() {
