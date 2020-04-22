@@ -1,6 +1,6 @@
 package it.polimi.ingsw.Le_Bestie.Network.Client;
 
-import it.polimi.ingsw.Le_Bestie.View.Gui;
+import it.polimi.ingsw.Le_Bestie.View.GUI;
 import javafx.application.Application;
 
 /**
@@ -10,6 +10,6 @@ public class MainClient {
     public static void main(String[] args )
     {
         System.out.println("Starting GUI...");
-        Application.launch(Gui.class);
+        Application.launch(GUI.class);
     }
 }

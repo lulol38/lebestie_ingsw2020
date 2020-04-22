@@ -8,12 +8,12 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class Gui extends Application {
+public class GUI extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/StartStage.fxml"));
-        stage.getIcons().add(new Image(Gui.class.getClassLoader().getResourceAsStream("images/icon.png")));
+        stage.getIcons().add(new Image(GUI.class.getClassLoader().getResourceAsStream("images/icon.png")));
         Scene scene = new Scene(root);
         stage.setTitle("SANTORINI");
         stage.setScene(scene);
