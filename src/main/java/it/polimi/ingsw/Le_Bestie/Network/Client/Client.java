@@ -2,6 +2,7 @@ package it.polimi.ingsw.Le_Bestie.Network.Client;
 
 import it.polimi.ingsw.Le_Bestie.Network.Messages.Message;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageParser;
+import javafx.scene.control.Alert;
 
 import java.io.*;
 import java.net.Socket;
@@ -33,11 +34,24 @@ public class Client implements Runnable {
         instance=this;
     }
 
-    public void init() throws IOException {
+    public boolean init() throws IOException {
+        try {
             //Create the connection with the server
             this.socket = new Socket(ip, port);
             this.out = new ObjectOutputStream(socket.getOutputStream());
             this.in = new ObjectInputStream(socket.getInputStream());
+            return true;
+        }
+        catch(Exception ex){
+            javafx.application.Platform.runLater(()->{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setContentText("The server is not running");
+
+                alert.showAndWait();
+            });
+            return false;
+        }
     }
 
     public void run() {
