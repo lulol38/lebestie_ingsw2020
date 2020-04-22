@@ -19,6 +19,7 @@ public class Player implements Serializable {
     private Builder builder2;
     private boolean disabled;
     private BuilderColor color;
+    private Builder builderChosen;
 
     public Player(String nickname) {
         this.nickname=nickname;
@@ -54,6 +55,7 @@ public class Player implements Serializable {
     public BuilderColor getColor() {
         return color;
     }
+    public Builder getBuilderChosen() { return builderChosen; }
 
     //Setters
     public void setNickname(String nickname)
@@ -75,6 +77,7 @@ public class Player implements Serializable {
     public void setColor(BuilderColor color) {
         this.color = color;
     }
+    public void setBuilderChosen(Builder builderChosen) { this.builderChosen = builderChosen; }
 
     //Method that returns the God Card name(string) associated to the player
     public String toString() {

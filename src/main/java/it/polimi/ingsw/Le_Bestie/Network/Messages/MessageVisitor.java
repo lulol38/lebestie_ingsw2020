@@ -32,4 +32,18 @@ public interface MessageVisitor {
     void visit(AcceptedSetupBuilder mex);
 
     void visit(SendUpdatedBoard mex);
+
+    void visit(SendBuilderChosen mex);
+
+    void visit(AskCell mex);
+
+    void visit(SendCellChosen mex);
+
+    void visit(SendPowerMessage mex);
+
+    void visit(SendPowerNotUsed mex);
+
+    void visit(AskUsePower mex);
+
+    void visit(SendCellWithPower mex);
 }

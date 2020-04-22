@@ -17,6 +17,7 @@ public abstract class GodCard implements Serializable {
 
     private String name;
     protected boolean notMoveUp;
+    private String Message;
 
     public GodCard(String name){
         this.name=name;
@@ -31,7 +32,15 @@ public abstract class GodCard implements Serializable {
         return notMoveUp;
     }
 
-   /* return
+    public String getMessage() {
+        return Message;
+    }
+
+    public void setMessage(String message) {
+        Message = message;
+    }
+
+    /* return
     0 -> il builder non può muoversi nella cella richiesta
          **** scrivo all'utente "scegli un'altra cella"
          **** NON che non può muoversi in quella selezionata (vedi prometeo)
