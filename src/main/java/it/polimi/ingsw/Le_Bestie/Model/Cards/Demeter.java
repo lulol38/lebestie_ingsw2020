@@ -15,10 +15,12 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 public class Demeter extends GodCard{
 
     private Cell firstBuiltCell;
+    private String Message;
 
     public Demeter(String name) {
         super(name);
         firstBuiltCell=null;
+        Message="Do you want to build one additional time? (NOT on the same space!)";
     }
 
     @Override
