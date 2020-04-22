@@ -22,6 +22,7 @@ public class StartGameController {
     }
 
     private void button(){
+         
         btnStart.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> playGameClick());
         btnQuit.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> System.exit(0));
     }

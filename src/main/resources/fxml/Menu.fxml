@@ -9,40 +9,40 @@
    <children>
       <ImageView fitHeight="550.0" fitWidth="600.0" layoutX="1.0">
          <image>
-            <Image url="@../images/SantoriniBoardGame1.png" />
+            <Image url="@../images/santorini_menu_bg.jpg" />
          </image>
       </ImageView>
-      <Pane layoutX="47.0" layoutY="180.0" opacity="0.9" prefHeight="167.0" prefWidth="514.0" style="-fx-background-color: white;">
+      <Pane layoutX="47.0" layoutY="180.0" opacity="0.9" prefHeight="308.0" prefWidth="507.0" style="-fx-background-color: white;">
          <children>
-            <TextField id="serverAddressText" fx:id="txtServerAddress" layoutX="277.0" layoutY="17.0" prefHeight="25.0" prefWidth="192.0" text="localhost" />
-            <TextField id="usernameText" fx:id="txtUsername" layoutX="276.0" layoutY="90.0" prefHeight="25.0" prefWidth="192.0" text="luca" />
-            <Label layoutX="95.0" layoutY="92.0" prefHeight="22.0" prefWidth="109.0" text="USERNAME">
+            <TextField id="serverAddressText" fx:id="txtServerAddress" layoutX="254.0" layoutY="55.0" prefHeight="38.0" prefWidth="216.0" text="localhost" />
+            <TextField id="usernameText" fx:id="txtUsername" layoutX="253.0" layoutY="182.0" prefHeight="38.0" prefWidth="216.0" text="luca" />
+            <Label layoutX="83.0" layoutY="194.0" prefHeight="27.0" prefWidth="121.0" text="USERNAME">
                <font>
-                  <Font name="Consolas" size="18.0" />
+                  <Font name="Cambria" size="22.0" />
                </font>
             </Label>
-            <Label layoutX="95.0" layoutY="55.0" text="SERVER PORT">
+            <Label layoutX="76.0" layoutY="132.0" text="SERVER PORT">
                <font>
-                  <Font name="Consolas" size="18.0" />
+                  <Font name="Cambria" size="22.0" />
                </font>
             </Label>
-            <TextField id="serverPortText" fx:id="txtServerPort" layoutX="277.0" layoutY="53.0" prefHeight="25.0" prefWidth="192.0" text="45331" />
-            <Label layoutX="83.0" layoutY="19.0" prefHeight="22.0" prefWidth="155.0" text="SERVER ADDRESS">
+            <TextField id="serverPortText" fx:id="txtServerPort" layoutX="254.0" layoutY="120.0" prefHeight="38.0" prefWidth="216.0" text="45331" />
+            <Label layoutX="55.0" layoutY="67.0" prefHeight="27.0" prefWidth="177.0" text="SERVER ADDRESS">
                <font>
-                  <Font name="Consolas" size="18.0" />
+                  <Font name="Cambria" size="22.0" />
                </font>
             </Label>
-            <ImageView fitHeight="55.0" fitWidth="136.0" layoutX="183.0" layoutY="115.0">
+            <ImageView fitHeight="55.0" fitWidth="136.0" layoutX="296.0" layoutY="248.0">
                <image>
                   <Image url="@../images/buttons/menu_button.png" />
                </image>
             </ImageView>
-            <Label layoutX="215.0" layoutY="115.0" prefHeight="47.0" prefWidth="73.0" text="CONNECT">
+            <Label layoutX="328.0" layoutY="252.0" prefHeight="47.0" prefWidth="73.0" text="CONNECT">
                <font>
                   <Font name="Cambria Bold" size="14.0" />
                </font>
             </Label>
-            <Button id="connectButton" fx:id="connectButton" layoutX="191.0" layoutY="115.0" mnemonicParsing="false" onAction="#pressConnectButton" opacity="0.0" prefHeight="38.0" prefWidth="121.0" text="Connect" />
+            <Button id="connectButton" fx:id="connectButton" layoutX="303.0" layoutY="256.0" mnemonicParsing="false" onAction="#pressConnectButton" opacity="0.0" prefHeight="38.0" prefWidth="121.0" text="Connect" />
          </children>
       </Pane>
    </children>
