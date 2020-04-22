@@ -7,13 +7,23 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+
+import java.awt.*;
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.Collections;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import javafx.event.ActionEvent;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
+
+
+import javax.swing.*;
 
 public class ConnectionController {
+
     @FXML
     TextField txtUsername, txtServerAddress, txtServerPort;
     @FXML
@@ -23,7 +33,39 @@ public class ConnectionController {
 
     private ExecutorService executor = Executors.newCachedThreadPool();
 
-    public void pressConnectButton(ActionEvent actionEvent) throws IOException {
+    private void setRed(TextField tf) {
+        ObservableList<String> styleClass = tf.getStyleClass();
+
+        if(!styleClass.contains("tferror")) {
+            styleClass.add("tferror");
+        }
+    }
+    private void removeRed(TextField tf) {
+        ObservableList<String> styleClass = tf.getStyleClass();
+        styleClass.removeAll(Collections.singleton("tferror"));
+    }
+
+    public void pressTextFieldUsername(){
+        removeRed(txtUsername);
+    }
+    public void pressTextFieldPort(){
+        removeRed(txtServerPort);
+    }
+    public void pressTextFieldAddress(){
+        removeRed(txtServerAddress);
+    }
+
+    public void pressConnectButton(ActionEvent actionEvent) throws Exception {
+        if(txtUsername.getLength()==0||txtServerAddress.getLength()==0||txtServerPort.getLength()==0){
+            if(txtUsername.getLength()==0)
+                 setRed(txtUsername);
+            if(txtServerPort.getLength()==0)
+                setRed(txtServerPort);
+            if(txtServerAddress.getLength()==0)
+                setRed(txtServerAddress);
+            return;
+        }
+
         System.out.println("Trying to connect...");
         if(txtServerAddress.getText()!="" && txtServerPort.getText()!="" && txtUsername.getText()!="") {
             Client c= new Client(txtServerAddress.getText(), Integer.parseInt(txtServerPort.getText()), txtUsername.getText());

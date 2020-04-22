@@ -13,15 +13,15 @@
    <children>
       <Pane layoutX="47.0" layoutY="94.0" opacity="0.9" prefHeight="364.0" prefWidth="507.0">
          <children>
-            <TextField id="serverAddressText" fx:id="txtServerAddress" layoutX="254.0" layoutY="55.0" prefHeight="38.0" prefWidth="216.0" text="localhost" />
-            <TextField id="usernameText" fx:id="txtUsername" layoutX="253.0" layoutY="182.0" prefHeight="38.0" prefWidth="216.0" text="luca" />
+            <TextField id="serverAddressText" fx:id="txtServerAddress" layoutX="254.0" layoutY="55.0" onMouseClicked="#pressTextFieldAddress" prefHeight="38.0" prefWidth="216.0" text="localhost" />
+            <TextField id="usernameText" fx:id="txtUsername" layoutX="253.0" layoutY="182.0" onMouseClicked="#pressTextFieldUsername" prefHeight="38.0" prefWidth="216.0" text="luca" />
             <Label layoutX="43.0" layoutY="190.0" prefHeight="27.0" prefWidth="121.0" text="USERNAME" />
             <Label layoutX="33.0" layoutY="128.0" text="SERVER PORT" />
-            <TextField id="serverPortText" fx:id="txtServerPort" layoutX="254.0" layoutY="120.0" prefHeight="38.0" prefWidth="216.0" text="45331" />
+            <TextField id="serverPortText" fx:id="txtServerPort" layoutX="254.0" layoutY="120.0" onMouseClicked="#pressTextFieldPort" prefHeight="38.0" prefWidth="216.0" text="45331" />
             <Label layoutX="16.0" layoutY="63.0" prefHeight="28.0" prefWidth="216.0" text="SERVER ADDRESS" />
             <Button id="btnConnect" fx:id="btnConnect" layoutX="301.0" layoutY="287.0" mnemonicParsing="false" onAction="#pressConnectButton" prefHeight="63.0" prefWidth="169.0" text="CONNECT" />
          </children>
       </Pane>
-      <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false"  text="BACK" onAction="#pressBack" />
+      <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#pressBack" text="BACK" />
    </children>
 </AnchorPane>

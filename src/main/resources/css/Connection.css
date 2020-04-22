@@ -45,3 +45,8 @@
    -fx-color: white;
    -fx-font-size:24 px;
 }
+
+.tferror {
+     -fx-text-box-border: red ;
+     -fx-focus-color: red ;
+}
