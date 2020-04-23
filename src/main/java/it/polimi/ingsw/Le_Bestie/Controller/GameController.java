@@ -140,7 +140,7 @@ public class GameController {
                     lobby.getClientsWaiting().get(0).sendMessage(new AskCellError());
                     break;
                 case 3:
-
+                    lobby.getClientsWaiting().get(0).sendMessage(new SendPowerMessage(matchState.getCurrentPlayer().getGodCard().getMessage()));
                     break;
                 case 4:
                     lobby.getClientsWaiting().get(0).sendMessage(new AskUsePower(matchState.getCurrentPlayer().getGodCard().getMessage()));
