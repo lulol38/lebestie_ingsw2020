@@ -4,6 +4,7 @@ import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.Message;
 
 /**
  * Class Artemis
@@ -15,10 +16,17 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 public class Artemis extends GodCard {
 
     private Cell startingCell;
+    private String Message;
 
     public Artemis(String name) {
         super(name);
         startingCell = null;
+        Message="Do you want to move one additional time? (NOT back!!)";
+    }
+
+    @Override
+    public String getMessage() {
+        return Message;
     }
 
     @Override

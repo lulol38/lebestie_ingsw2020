@@ -15,10 +15,17 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 public class Atlas extends GodCard{
 
     private boolean checkUsePower;
+    private String Message;
 
     public Atlas(String name) {
         super(name);
         checkUsePower=false;
+        Message="Do you want to build a dome on this cell?";
+    }
+
+    @Override
+    public String getMessage() {
+        return Message;
     }
 
     @Override

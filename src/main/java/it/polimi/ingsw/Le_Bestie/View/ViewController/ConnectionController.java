@@ -68,8 +68,9 @@ public class ConnectionController {
         if(txtServerAddress.getText()!="" && txtServerPort.getText()!="" && txtUsername.getText()!="") {
 
             Client c= new Client(txtServerAddress.getText(), Integer.parseInt(txtServerPort.getText()), txtUsername.getText());
-            c.init();
-            executor.submit(c);
+            if(c.init())
+                executor.submit(c);
+            else return;
         }
 
         GUIController.getInstance().setScene(connectionPane.getScene(),"/fxml/LobbyStage.fxml");

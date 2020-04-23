@@ -15,12 +15,18 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 public class Hephaestus extends GodCard{
 
     boolean secondBuild;
+    private String Message;
 
     public Hephaestus(String name) {
         super(name);
         secondBuild=false;
+        Message="Do you want to build one additional block on top of your first block?";
     }
 
+    @Override
+    public String getMessage() {
+        return Message;
+    }
 
     @Override
     public int build(Board b, Builder w, Cell c, boolean usePower) {
@@ -30,7 +36,7 @@ public class Hephaestus extends GodCard{
             int x=super.build(b, w, c, usePower);
             if(x==1)
             {
-                if(c.getLevel()<4) {
+                if(c.getLevel()<3) {
                     secondBuild = true;
                     return 4;
                 }

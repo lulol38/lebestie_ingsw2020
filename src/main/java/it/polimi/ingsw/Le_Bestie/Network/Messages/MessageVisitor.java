@@ -46,4 +46,8 @@ public interface MessageVisitor {
     void visit(AskUsePower mex);
 
     void visit(SendCellWithPower mex);
+
+    void visit(AskBuilderChosen mex);
+
+    void visit(AskCellError mex);
 }
