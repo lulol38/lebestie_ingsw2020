@@ -54,7 +54,7 @@ public abstract class GodCard implements Serializable {
     */
 
     public int move(Board b, Builder w, Cell c,boolean usePower){
-        Cell currentCell=b.getGrid()[w.getPosition().getX()][w.getPosition().getX()];
+        Cell currentCell=b.getGrid()[w.getPosition().getX()][w.getPosition().getY()];
         if(w.possibleMoves(b,notMoveUp).contains(c))
         {
             //winner condition

@@ -20,7 +20,7 @@ public class Board implements Serializable {
         grid=new Cell[ROW][COL];
         for (int x = 0; x < ROW; x++) {
             for (int y = 0; y < COL; y++) {
-                grid[x][y] = new Cell(1);
+                grid[x][y] = new Cell(0);
                 grid[x][y].setPosition(new Position(x, y));
             }
         }

@@ -211,6 +211,10 @@ public class MessageParser implements MessageVisitor {
         ClientHandler c = (ClientHandler) obj;
         if(!GameController.getInstance().getMatchState().getHasMoved()){
             GameController.getInstance().getMatchState().setHasMoved(true);
+            //Update clients
+            for (ClientHandler client : GameController.getInstance().getLobby().getClientsWaiting()) {
+                client.sendMessage(new SendUpdatedBoard(GameController.getInstance().getMatchState().getBoard()));
+            }
             c.sendMessage(new AskCell());
         }
         else{
@@ -228,6 +232,10 @@ public class MessageParser implements MessageVisitor {
     public void visit(SendCellWithPower mex) {
         GameController.getInstance().getMatchState().setUsePower(mex.isPower());
         GameController.getInstance().requestAction(mex.getCx(), mex.getCy());
+        //Update clients
+        for (ClientHandler client : GameController.getInstance().getLobby().getClientsWaiting()) {
+            client.sendMessage(new SendUpdatedBoard(GameController.getInstance().getMatchState().getBoard()));
+        }
     }
 
     @Override

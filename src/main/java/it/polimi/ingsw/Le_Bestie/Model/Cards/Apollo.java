@@ -26,7 +26,7 @@ public class Apollo extends GodCard {
             return super.move(b, w, c,usePower);
 
         if (w.possibleSwitch(b, notMoveUp).contains(c)) {
-            Cell currentCell=b.getGrid()[w.getPosition().getX()][w.getPosition().getX()];
+            Cell currentCell=b.getGrid()[w.getPosition().getX()][w.getPosition().getY()];
             //winner condition
             if(HasWon(c,currentCell))
                 return 2;

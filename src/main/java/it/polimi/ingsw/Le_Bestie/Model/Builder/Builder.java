@@ -43,13 +43,13 @@ public class Builder implements Serializable {
     }
 
     public ArrayList<Cell> possibleMoves(Board b,boolean notmoveup) {
-        Cell currentCell=b.getGrid()[this.getPosition().getX()][this.getPosition().getX()];
+        Cell currentCell=b.getGrid()[this.getPosition().getX()][this.getPosition().getY()];
         ArrayList<Position> possibleMoves = new ArrayList<>();
         int x = this.getPosition().getX();
         int y = this.getPosition().getY();
         for (int i = y - 1; i <= y + 1; i++) {
             for (int j = x - 1; j <= x + 1; j++) {
-                Position tryMove = new Position(i,j);
+                Position tryMove = new Position(j,i);
                 if (!(i == y && j == x)&&tryMove.onGrid())
                     possibleMoves.add(tryMove);
                 }
@@ -69,13 +69,13 @@ public class Builder implements Serializable {
     }
 
     public ArrayList<Cell> possibleBuilds(Board b) {
-        Cell currentCell=b.getGrid()[this.getPosition().getX()][this.getPosition().getX()];
+        Cell currentCell=b.getGrid()[this.getPosition().getX()][this.getPosition().getY()];
         ArrayList<Position> possibleMoves = new ArrayList<>();
         int x = this.getPosition().getX();
         int y = this.getPosition().getY();
         for (int i = y - 1; i <= y + 1; i++) {
             for (int j = x - 1; j <= x + 1; j++) {
-                Position tryMove = new Position(i,j);
+                Position tryMove = new Position(j,i);
                 if (!(i == y && j == x)&&tryMove.onGrid())
                     possibleMoves.add(tryMove);
             }
@@ -91,7 +91,7 @@ public class Builder implements Serializable {
     }
 
     public ArrayList<Cell> possibleSwitch(Board b,boolean notmoveup) {
-        Cell currentCell=b.getGrid()[this.getPosition().getX()][this.getPosition().getX()];
+        Cell currentCell=b.getGrid()[this.getPosition().getX()][this.getPosition().getY()];
         ArrayList<Position> possibleMoves = new ArrayList<>();
         int x = this.getPosition().getX();
         int y = this.getPosition().getY();
@@ -120,7 +120,7 @@ public class Builder implements Serializable {
         if (this.possibleSwitch(b, notMoveUp).size() == 0)
             return true;
         else {
-            Cell currentCell = b.getGrid()[this.getPosition().getX()][this.getPosition().getX()];
+            Cell currentCell = b.getGrid()[this.getPosition().getX()][this.getPosition().getY()];
             ArrayList<Cell> possibleSwitch = this.possibleSwitch(b, notMoveUp);
 
             for (int i = 0; i < possibleSwitch.size(); i++)

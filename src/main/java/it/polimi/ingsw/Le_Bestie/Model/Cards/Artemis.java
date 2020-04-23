@@ -34,7 +34,7 @@ public class Artemis extends GodCard {
 
         //first move
         if (startingCell == null) {
-            Cell currentCell = b.getGrid()[w.getPosition().getX()][w.getPosition().getX()];
+            Cell currentCell = b.getGrid()[w.getPosition().getX()][w.getPosition().getY()];
             int x = super.move(b, w, c, usePower);
             if (x == 1) {
                 startingCell = currentCell;

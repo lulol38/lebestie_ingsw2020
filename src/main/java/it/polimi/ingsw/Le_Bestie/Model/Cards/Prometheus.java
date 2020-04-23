@@ -59,7 +59,7 @@ public class Prometheus extends GodCard{
             }
             else
             {
-                Cell currentCell=b.getGrid()[w.getPosition().getX()][w.getPosition().getX()];
+                Cell currentCell=b.getGrid()[w.getPosition().getX()][w.getPosition().getY()];
                 if(c.getLevel()-currentCell.getLevel()<1) {
 
                     int x=super.move(b, w, c, usePower);

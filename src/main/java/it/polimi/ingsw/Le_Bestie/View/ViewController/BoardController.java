@@ -36,8 +36,9 @@ public class BoardController extends GridPane {
     @FXML
     GridPane gridBoard;
     @FXML
+    GridPane gridLevels;
+    @FXML
     ImageView imgGodCard;
-
     @FXML
     Label lblMessages;
 
@@ -97,17 +98,17 @@ public class BoardController extends GridPane {
     }
 
     public void AskBuilderChosen(){
-        setSelectedBuilderX(10);
-        setSelectedBuilderY(10);
         javafx.application.Platform.runLater(()->{
+            setSelectedBuilderX(10);
+            setSelectedBuilderY(10);
             lblMessages.setText("Select a worker");
         });
     }
 
     public void AskCellChosen(){
-        setSelectedCellX(10);
-        setSelectedCellY(10);
         javafx.application.Platform.runLater(()->{
+            setSelectedCellX(10);
+            setSelectedCellY(10);
             lblMessages.setText("Select a cell");
         });
     }
@@ -205,6 +206,9 @@ public class BoardController extends GridPane {
 
             for(int x=0; x<5; x++){
                 for(int y=0; y<5; y++){
+                    Label lbl = (Label) getNodeGridPane(gridLevels, x, y);
+                    lbl.setText(String.valueOf(b.getGrid()[x][y].getLevel()));
+
                     if(b.getGrid()[x][y].getBuilder()!=null){ //There is a builder in the cell, update gui
                         Label Node = (Label) getNodeGridPane(gridBoard, x, y);
 
