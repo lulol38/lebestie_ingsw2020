@@ -26,6 +26,11 @@ public class Prometheus extends GodCard{
     }
 
     @Override
+    public String getMessage() {
+        return Message;
+    }
+
+    @Override
     public int move(Board b,Builder w, Cell c, boolean usePower) {
 
         if(!sendMessage) {

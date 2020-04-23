@@ -24,6 +24,11 @@ public class Atlas extends GodCard{
     }
 
     @Override
+    public String getMessage() {
+        return Message;
+    }
+
+    @Override
     public int build(Board b, Builder w, Cell c, boolean usePower) {
 
         if (c.getLevel() == 3)

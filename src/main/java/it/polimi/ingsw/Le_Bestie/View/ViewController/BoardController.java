@@ -60,6 +60,14 @@ public class BoardController extends GridPane {
         this.selectedCellY = selectedCellY;
     }
 
+    public void setSelectedBuilderX(int selectedBuilderX) {
+        this.selectedBuilderX = selectedBuilderX;
+    }
+
+    public void setSelectedBuilderY(int selectedBuilderY) {
+        this.selectedBuilderY = selectedBuilderY;
+    }
+
     public boolean isBuildersSetted() {
         return buildersSetted;
     }
@@ -90,6 +98,8 @@ public class BoardController extends GridPane {
     }
 
     public void AskBuilderChosen(){
+        setSelectedBuilderX(10);
+        setSelectedBuilderY(10);
         javafx.application.Platform.runLater(()->{
             lblMessages.setText("Select a worker");
         });
@@ -164,6 +174,7 @@ public class BoardController extends GridPane {
             }
             else { //Here the user is doing a move or a build because the builders are already setted
                 if(selectedBuilderX==10||selectedBuilderY==10){
+                    clickedNode=clickedNode.getParent();
                     if (clickedNode != gridBoard) {
                         selectedBuilderX = gridBoard.getRowIndex(clickedNode);
                         selectedBuilderY = gridBoard.getColumnIndex(clickedNode);
@@ -189,6 +200,8 @@ public class BoardController extends GridPane {
 
     public void setupBoard(Board b) { //UPDATE BOARD
         javafx.application.Platform.runLater(()->{
+            //gridBoard.getChildren().clear();
+
             Field field = null;
 
             for(int x=0; x<5; x++){
@@ -203,6 +216,10 @@ public class BoardController extends GridPane {
                         } catch (Exception e) {
                             System.out.println(e.getMessage());
                         }
+                    }
+                    else{
+                        Label Node = (Label) getNodeGridPane(gridBoard, x, y);
+                        Node.setGraphic(null);
                     }
                 }
             }
@@ -219,5 +236,32 @@ public class BoardController extends GridPane {
             }
         }
         return null;
+    }
+
+    public void beginTurn() {
+        javafx.application.Platform.runLater(()->{
+            BoardController.getInstance().activeGUI();
+            lblMessages.setText("Is your turn");
+        });
+    }
+
+    public void endTurn() {
+        javafx.application.Platform.runLater(()->{
+            BoardController.getInstance().disableGUI();
+            lblMessages.setText("Your turn is ended");
+        });
+    }
+
+    public void AskCellError(String s) {
+        javafx.application.Platform.runLater(()->{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("ERROR");
+            alert.setHeaderText(null);
+            alert.setContentText(s);
+
+            alert.showAndWait();
+
+            AskCellChosen();
+        });
     }
 }

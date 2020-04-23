@@ -82,7 +82,10 @@ public class GameController {
         Collections.rotate(lobby.getClientsWaiting(), -1);
         if(matchState.getCurrentPlayer().getBuilder1()==null||matchState.getCurrentPlayer().getBuilder2()==null)
             lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
-        else lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
+        else{
+            lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
+            lobby.getClientsWaiting().get(0).sendMessage(new AskBuilderChosen());
+        }
     }
 
     public void checkBuilder(int bx, int by){
@@ -91,36 +94,66 @@ public class GameController {
 
             lobby.getClientsWaiting().get(0).sendMessage(new AskCell());
         }
+        else{
+            lobby.getClientsWaiting().get(0).sendMessage(new AskBuilderChosen());
+        }
     }
 
     public void requestAction(int cx, int cy){
         if(!matchState.getHasMoved()) {
-            int result = matchState.getCurrentPlayer().getGodCard().move(matchState.getBoard(), matchState.getCurrentPlayer().getBuilderChosen(), matchState.getBoard().getGrid()[cx][cy], matchState.getUsePower());
+            int moveResult = matchState.getCurrentPlayer().getGodCard().move(matchState.getBoard(), matchState.getCurrentPlayer().getBuilderChosen(), matchState.getBoard().getGrid()[cx][cy], matchState.getUsePower());
 
-            switch (result) {
+            switch (moveResult) {
                 case 0:
-                    Client.getInstance().sendMessage(new AskCell());
+                    lobby.getClientsWaiting().get(0).sendMessage(new AskCell());
                     break;
                 case 1:
                     matchState.setHasMoved(true);
-                    Client.getInstance().sendMessage(new AskCell());
+                    updateClients();
+                    lobby.getClientsWaiting().get(0).sendMessage(new AskCell());
                     break;
                 case 2:
                     setWinner(matchState.getCurrentPlayer());
                     endMatch();
                     break;
                 case 3:
-                    Client.getInstance().sendMessage(new SendPowerMessage(matchState.getCurrentPlayer().getGodCard().getMessage()));
+                    lobby.getClientsWaiting().get(0).sendMessage(new SendPowerMessage(matchState.getCurrentPlayer().getGodCard().getMessage()));
                     break;
                 case 4:
-                    Client.getInstance().sendMessage(new AskUsePower(matchState.getCurrentPlayer().getGodCard().getMessage()));
+                    lobby.getClientsWaiting().get(0).sendMessage(new AskUsePower(matchState.getCurrentPlayer().getGodCard().getMessage()));
                     break;
             }
         }
         else{
-            int result = matchState.getCurrentPlayer().getGodCard().build(matchState.getBoard(), matchState.getCurrentPlayer().getBuilderChosen(), matchState.getBoard().getGrid()[cx][cy], matchState.getUsePower());
+            int buildResult = matchState.getCurrentPlayer().getGodCard().build(matchState.getBoard(), matchState.getCurrentPlayer().getBuilderChosen(), matchState.getBoard().getGrid()[cx][cy], matchState.getUsePower());
+
+            switch(buildResult){
+                case 0:
+                    lobby.getClientsWaiting().get(0).sendMessage(new AskCell());
+                    break;
+                case 1:
+                    updateClients();
+                    lobby.getClientsWaiting().get(0).sendMessage(new SendEndTurn());
+                    nextTurn();
+                    break;
+                case 2:
+                    lobby.getClientsWaiting().get(0).sendMessage(new AskCellError());
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+                    lobby.getClientsWaiting().get(0).sendMessage(new AskUsePower(matchState.getCurrentPlayer().getGodCard().getMessage()));
+                    break;
+            }
         }
 
+    }
+
+    public void updateClients(){
+        for (ClientHandler c : lobby.getClientsWaiting()) {
+            c.sendMessage(new SendUpdatedBoard(matchState.getBoard()));
+        }
     }
 
     public void endMatch(){

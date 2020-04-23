@@ -23,6 +23,10 @@ public class Hephaestus extends GodCard{
         Message="Do you want to build one additional block on top of your first block?";
     }
 
+    @Override
+    public String getMessage() {
+        return Message;
+    }
 
     @Override
     public int build(Board b, Builder w, Cell c, boolean usePower) {

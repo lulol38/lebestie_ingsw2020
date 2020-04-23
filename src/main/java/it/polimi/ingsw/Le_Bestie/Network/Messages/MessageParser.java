@@ -137,17 +137,12 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(SendBeginTurn mex) {
-        BoardController.getInstance().activeGUI();
-        //DO MOVES
-        BoardController.getInstance().AskBuilderChosen();
+        BoardController.getInstance().beginTurn();
     }
 
     @Override
     public void visit(SendEndTurn mex) {
-        GameController.getInstance().nextTurn();
-        //
-        //Server goes to next player and sends begin turn to him
-        //
+        BoardController.getInstance().endTurn();
     }
 
     public void visit(AskPositionBuilders mex){
@@ -214,6 +209,7 @@ public class MessageParser implements MessageVisitor {
             c.sendMessage(new AskCell());
         }
         else{
+            GameController.getInstance().getMatchState().setUsePower(true);
             GameController.getInstance().requestAction(mex.getCx(), mex.getCy());
         }
     }
@@ -227,5 +223,15 @@ public class MessageParser implements MessageVisitor {
     public void visit(SendCellWithPower mex) {
         GameController.getInstance().getMatchState().setUsePower(mex.isPower());
         GameController.getInstance().requestAction(mex.getCx(), mex.getCy());
+    }
+
+    @Override
+    public void visit(AskBuilderChosen mex) {
+        BoardController.getInstance().AskBuilderChosen();
+    }
+
+    @Override
+    public void visit(AskCellError mex) {
+        BoardController.getInstance().AskCellError("The pieces aren't available");
     }
 }
