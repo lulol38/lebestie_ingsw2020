@@ -92,7 +92,6 @@ public class BoardController extends GridPane {
 
     public void BuilderPositions(){
         javafx.application.Platform.runLater(() -> {
-            activeGUI();
             lblMessages.setText("Add workers to board");
         });
     }

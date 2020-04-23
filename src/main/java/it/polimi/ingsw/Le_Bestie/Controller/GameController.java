@@ -51,6 +51,7 @@ public class GameController {
 
     public void initGame(){
         matchState.startGame();
+        lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
         lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
 
         //(TODO) SEND GODCARD TO CLIENTS
@@ -78,12 +79,13 @@ public class GameController {
     }
 
     public void nextTurn(){
+        lobby.getClientsWaiting().get(0).sendMessage(new SendEndTurn());
         matchState.nextTurn();
         Collections.rotate(lobby.getClientsWaiting(), -1);
+        lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
         if(matchState.getCurrentPlayer().getBuilder1()==null||matchState.getCurrentPlayer().getBuilder2()==null)
             lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
         else{
-            lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
             lobby.getClientsWaiting().get(0).sendMessage(new AskBuilderChosen());
         }
     }
@@ -133,7 +135,6 @@ public class GameController {
                     break;
                 case 1:
                     updateClients();
-                    lobby.getClientsWaiting().get(0).sendMessage(new SendEndTurn());
                     nextTurn();
                     break;
                 case 2:

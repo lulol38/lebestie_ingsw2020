@@ -158,6 +158,7 @@ public class MessageParser implements MessageVisitor {
                 c.sendMessage(new SendUpdatedBoard(b));
             }
             clientSender.sendMessage(new AcceptedSetupBuilder());
+            GameController.getInstance().nextTurn();
         }
         else{
             Board b=GameController.getInstance().getMatchState().getBoard();
@@ -172,8 +173,6 @@ public class MessageParser implements MessageVisitor {
     public void visit(AcceptedSetupBuilder mex) {
         Client client = (Client) obj;
         BoardController.getInstance().setBuildersSetted(true);
-        client.sendMessage(new SendEndTurn());
-        BoardController.getInstance().disableGUI();
     }
 
     @Override
