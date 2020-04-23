@@ -9,11 +9,10 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
     -fx-opacity: 0.8;
-    -fx-color: white;
     -fx-margin: 4px 2px;
     -fx-opacity: 0.8;
     -fx-transition: 0.3s;
-    -fx-border-color:#DAA520;
+    -fx-border-color:#E9967A;
 
 }
 #btnQuit {
@@ -22,23 +21,22 @@
        -fx-background-position: center center;
        -fx-opacity: 0.8;
        -fx-border: black;
-       -fx-color: white;
        -fx-margin: 4px 2px;
        -fx-opacity: 0.8;
        -fx-transition: 0.3s;
-       -fx-border-color:#DAA520;
+       -fx-border-color:#E9967A;
 }
 
 #btnStart:hover {
-   -fx-background-color: #87CEFA;
+   -fx-background-color: #E9967A;
    -fx-opacity: 1;
-   -fx-color: white;
+   -fx-color:#191970;
    -fx-font-size:24 px;
 }
 
 #btnQuit:hover {
-   -fx-background-color: #87CEFA;
+   -fx-background-color: #E9967A;
    -fx-opacity: 1;
-   -fx-color: white;
+   -fx-color:#191970;
    -fx-font-size:25 px;
 }

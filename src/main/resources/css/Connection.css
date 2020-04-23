@@ -1,3 +1,9 @@
+#playersPane{
+    -fx-font-family : Cambria;
+    -fx-font-size: 17 px;
+    -fx-text-align: center;
+
+}
 #connectionPane{
     -fx-font-family :Cambria;
     -fx-font-size: 23 px;
@@ -13,14 +19,14 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
     -fx-opacity: 0.8;
-    -fx-color: white;
     -fx-margin: 4px 2px;
     -fx-opacity: 0.8;
     -fx-transition: 0.3s;
-    -fx-border-color:#DAA520;
+    -fx-border-color:#E9967A;
+    -fx-font-size: 15 px;
 
 }
-#btnConnect{
+#btnNPlayers{
     -fx-background-color: #ddd;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
@@ -29,24 +35,50 @@
     -fx-margin: 4px 2px;
     -fx-opacity: 0.8;
     -fx-transition: 0.3s;
-    -fx-border-color:#DAA520;
+    -fx-border-color:#E9967A;
+    -fx-font-size: 16 px;
 
+}
+#btnConnect{
+    -fx-background-color: #ddd;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-opacity: 0.8;
+    -fx-margin: 4px 2px;
+    -fx-opacity: 0.8;
+    -fx-transition: 0.3s;
+    -fx-border-color:#E9967A;
+}
+
+#easterPane{
+     -fx-opacity: 0;
 }
 
 #btnBack:hover {
-   -fx-background-color: #87CEFA;
+   -fx-background-color: #E9967A;
    -fx-opacity: 1;
-   -fx-color: white;
-   -fx-font-size:24 px;
+   -fx-color: #191970;
+
 }
 #btnConnect:hover {
-   -fx-background-color: #87CEFA;
+   -fx-background-color: #E9967A;
    -fx-opacity: 1;
-   -fx-color: white;
+   -fx-color: #191970;
    -fx-font-size:24 px;
+}
+#btnNPlayers:hover {
+   -fx-background-color: #E9967A;
+   -fx-opacity: 1;
+   -fx-color: #191970;
+   -fx-font-size:20 px;
+}
+
+#easterPane:hover{
+     -fx-opacity: 1;
 }
 
 .tferror {
      -fx-text-box-border: red ;
      -fx-focus-color: red ;
 }
+

@@ -3,6 +3,7 @@ package it.polimi.ingsw.Le_Bestie.Network.Messages;
 import it.polimi.ingsw.Le_Bestie.Controller.GameController;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.*;
+import it.polimi.ingsw.Le_Bestie.View.GUIController;
 import it.polimi.ingsw.Le_Bestie.View.ViewController.BoardController;
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.*;
@@ -13,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 import java.io.IOException;
@@ -30,7 +32,9 @@ public class MessageParser implements MessageVisitor {
     //Ask to the client the number of players for the match
     @Override
     public void visit(AskNumPlayers mex){
-        javafx.application.Platform.runLater(new Runnable() {
+
+        GUIController.getInstance().numberOfPlayers();
+       /* javafx.application.Platform.runLater(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -47,7 +51,7 @@ public class MessageParser implements MessageVisitor {
                     e.printStackTrace();
                 }
             }
-        });
+        });*/
 
     }
 
@@ -95,6 +99,7 @@ public class MessageParser implements MessageVisitor {
                     stage.setTitle("Modify Username");
                     stage.setScene(scene);
                     stage.setResizable(false);
+                    stage.initStyle(StageStyle.UNDECORATED);
                     stage.show();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -105,6 +110,7 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(SendGameStart mex) {
+
         javafx.application.Platform.runLater(new Runnable() {
             @Override
             public void run() {
