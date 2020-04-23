@@ -11,18 +11,16 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
-public class NPlayersWindowController {
+public class NPlayersController {
     @FXML
-    public RadioButton radio2P;
+    public RadioButton rdb2P;
     @FXML
     public ToggleGroup mygroup;
     @FXML
-    public RadioButton radio3P;
-    @FXML
-    public Button sendNumPlayers;
+    public RadioButton rdb3P;
 
     public void pressSendNumPlayers(ActionEvent actionEvent) {
-        if(radio2P.isSelected()||radio3P.isSelected()){
+        if(rdb2P.isSelected()||rdb3P.isSelected()){
             Client.getInstance().sendMessage(new SendNumPlayers(Integer.parseInt(mygroup.getSelectedToggle().getUserData().toString())));
             Node source = (Node)  actionEvent.getSource();
             Stage stage  = (Stage) source.getScene().getWindow();
@@ -33,8 +31,8 @@ public class NPlayersWindowController {
             alert.setTitle("Number of players");
             alert.setHeaderText(null);
             alert.setContentText("The number of players must be 2 or 3");
-
             alert.showAndWait();
         }
+
     }
 }
