@@ -59,11 +59,12 @@ public class Builder implements Serializable {
             around.add(b.getGrid()[possibleMoves.get(i).getX()][possibleMoves.get(i).getY()]);
         for(Iterator<Cell> i = around.iterator(); i.hasNext();) {
             Cell c1= i.next();
-            if(!notmoveup)
-                if(c1.isDisabled()||c1.getBuilder()!=null|| c1.getLevel()-currentCell.getLevel()>1) i.remove();
-            else
-                 if(c1.isDisabled()||c1.getBuilder()!=null|| c1.getLevel()-currentCell.getLevel()>0) i.remove();
-
+            if(!notmoveup) {
+                if (c1.isDisabled() || c1.getBuilder() != null || c1.getLevel() - currentCell.getLevel() > 1) i.remove();
+            }
+            else {
+                if (c1.isDisabled() || c1.getBuilder() != null || c1.getLevel() - currentCell.getLevel() > 0) i.remove();
+            }
         }
         return around;
     }
@@ -107,11 +108,14 @@ public class Builder implements Serializable {
             around.add(b.getGrid()[possibleMoves.get(i).getX()][possibleMoves.get(i).getY()]);
         for(Iterator<Cell> i = around.iterator(); i.hasNext();) {
             Cell c1= i.next();
-            if(!notmoveup)
-                if(c1.isDisabled()||c1.getBuilder()==null||c1.getLevel()-currentCell.getLevel()>1|| c1.getBuilder().getPlayer()==this.getPlayer()) i.remove();
-            else
-                if(c1.isDisabled()||c1.getBuilder()==null||c1.getLevel()-currentCell.getLevel()>0|| c1.getBuilder().getPlayer()==this.getPlayer()) i.remove();
-
+            if(!notmoveup) {
+                if (c1.isDisabled() || c1.getBuilder() == null || c1.getLevel() - currentCell.getLevel() > 1 || c1.getBuilder().getPlayer() == this.getPlayer())
+                    i.remove();
+            }
+            else {
+                if (c1.isDisabled() || c1.getBuilder() == null || c1.getLevel() - currentCell.getLevel() > 0 || c1.getBuilder().getPlayer() == this.getPlayer())
+                    i.remove();
+            }
         }
         return around;
     }
@@ -123,10 +127,10 @@ public class Builder implements Serializable {
             Cell currentCell = b.getGrid()[this.getPosition().getX()][this.getPosition().getY()];
             ArrayList<Cell> possibleSwitch = this.possibleSwitch(b, notMoveUp);
 
-            for (int i = 0; i < possibleSwitch.size(); i++)
-                if (possibleSwitch.get(i).nextCellFree(b, currentCell)!=null)
+            for (int i = 0; i < possibleSwitch.size(); i++) {
+                if (possibleSwitch.get(i).nextCellFree(b, currentCell) != null)
                     return false;
-
+            }
             return true;
         }
     }

@@ -56,9 +56,6 @@ public class Hephaestus extends GodCard{
             secondBuild=false;
             return 1;
         }
-
-
-
     }
 }
 

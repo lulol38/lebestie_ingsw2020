@@ -204,13 +204,15 @@ public class BoardController extends GridPane {
                 for(int y=0; y<5; y++){
                     //Label lbl = (Label) getNodeGridPane(gridLevels, x, y);
                     //lbl.setText(String.valueOf(b.getGrid()[x][y].getLevel()));
+
                     Label Node = (Label) getNodeGridPane(gridBoard, x, y);
+                    Node.setText(String.valueOf(b.getGrid()[x][y].getLevel()));
                     if(b.getGrid()[x][y].getBuilder()!=null){ //There is a builder in the cell, update gui
 
                         try {
                             field = Class.forName("javafx.scene.paint.Color").getField(b.getGrid()[x][y].getBuilder().getPlayer().getColor().toString());
                             Color color = (Color)field.get(null);
-                            Node.setGraphic(new Circle(10,10 ,25, color));
+                            Node.setGraphic(new Circle(10,10 ,10, color));
                         } catch (Exception e) {
                             System.out.println(e.getMessage());
                         }
