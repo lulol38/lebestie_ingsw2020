@@ -142,6 +142,10 @@ public class MessageParser implements MessageVisitor {
     }
 
     @Override
+    public void visit(SendCardToPlayers mex) {
+        BoardController.getInstance().addCardOnBoard(mex.getCard());
+    }
+    @Override
     public void visit(SendBeginTurn mex) {
         BoardController.getInstance().beginTurn();
     }

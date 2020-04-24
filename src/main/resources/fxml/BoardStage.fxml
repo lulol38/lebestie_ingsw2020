@@ -106,5 +106,9 @@
                 <Label alignment="TOP_RIGHT" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
             </children>
         </GridPane>
+      <Label fx:id="lblCard" layoutX="9.0" layoutY="351.0" prefHeight="30.0" prefWidth="158.0">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
     </children>
 </AnchorPane>

@@ -51,9 +51,15 @@ public class GameController {
 
     public void initGame(){
         matchState.startGame();
+        int i=0;
+        for (ClientHandler client :lobby.getClientsWaiting()){
+            client.sendMessage(new SendCardToPlayers(matchState.getPlayers().get(i).getGodCard().getName()));
+            i++;
+        }
+        i=0;
+        updateClients();
         lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
         lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
-
         //(TODO) SEND GODCARD TO CLIENTS
 
     }

@@ -50,4 +50,7 @@ public interface MessageVisitor {
     void visit(AskBuilderChosen mex);
 
     void visit(AskCellError mex);
+
+
+    void visit(SendCardToPlayers mex);
 }

@@ -42,6 +42,8 @@ public class BoardController extends GridPane {
     ImageView imgGodCard;
     @FXML
     Label lblMessages;
+    @FXML
+    Label lblCard;
 
     public BoardController(){
         this.instance=this;
@@ -261,6 +263,12 @@ public class BoardController extends GridPane {
             alert.showAndWait();
 
             AskCellChosen();
+        });
+    }
+
+    public void addCardOnBoard(String card){
+        javafx.application.Platform.runLater(()-> {
+            lblCard.setText(card);
         });
     }
 }
