@@ -97,7 +97,7 @@ public class Builder implements Serializable {
         int y = this.getPosition().getY();
         for (int i = y - 1; i <= y + 1; i++) {
             for (int j = x - 1; j <= x + 1; j++) {
-                Position tryMove = new Position(i,j);
+                Position tryMove = new Position(j,i);
                 if (!(i == y && j == x)&&tryMove.onGrid())
                     possibleMoves.add(tryMove);
             }

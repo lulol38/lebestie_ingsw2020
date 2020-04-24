@@ -3,6 +3,7 @@ package it.polimi.ingsw.Le_Bestie.View.ViewController;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.*;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -158,44 +159,39 @@ public class BoardController extends GridPane {
     }
 
     public void getCell(MouseEvent event) {
-        javafx.application.Platform.runLater(() -> {
+        javafx.application.Platform.runLater(()->{
             Node clickedNode = event.getPickResult().getIntersectedNode();
-            if(buildersSetted==false) { //Enter here only to setup builders
+            if (buildersSetted == false) { //Enter here only to setup builders
                 if (clickedNode != gridBoard) {
-                        posx = gridBoard.getRowIndex(clickedNode);
-                        posy = gridBoard.getColumnIndex(clickedNode);
-                        try {
-                            Client.getInstance().sendMessage(new SendBuilderPositions(posx, posy));
-                        }
-                        catch(Exception ex){
-                            System.out.println(ex.getMessage());
-                        }
+                    posx = gridBoard.getRowIndex(clickedNode);
+                    posy = gridBoard.getColumnIndex(clickedNode);
+                    try {
+                        Client.getInstance().sendMessage(new SendBuilderPositions(posx, posy));
+                    } catch (Exception ex) {
+                        System.out.println(ex.getMessage());
+                    }
                 }
-            }
-            else { //Here the user is doing a move or a build because the builders are already setted
-                if(selectedBuilderX==10||selectedBuilderY==10){
-                    clickedNode=clickedNode.getParent();
+            } else { //Here the user is doing a move or a build because the builders are already setted
+                if (selectedBuilderX == 10 || selectedBuilderY == 10) {
+                    clickedNode = clickedNode.getParent();
                     if (clickedNode != gridBoard) {
                         selectedBuilderX = gridBoard.getRowIndex(clickedNode);
                         selectedBuilderY = gridBoard.getColumnIndex(clickedNode);
 
                         Client.getInstance().sendMessage(new SendBuilderChosen(selectedBuilderX, selectedBuilderY));
                     }
-                }
-                else{
-                    if(selectedCellX==10||selectedCellY==10) {
+                } else {
+                    if (selectedCellX == 10 || selectedCellY == 10) {
                         if (clickedNode != gridBoard) {
                             selectedCellX = gridBoard.getRowIndex(clickedNode);
                             selectedCellY = gridBoard.getColumnIndex(clickedNode);
 
-                            Client.getInstance().sendMessage(new SendCellChosen(selectedCellX, selectedBuilderY));
+                            Client.getInstance().sendMessage(new SendCellChosen(selectedCellX, selectedCellY));
                         }
                     }
                 }
             }
         });
-
-
     }
 
     public void setupBoard(Board b) { //UPDATE BOARD
@@ -206,11 +202,10 @@ public class BoardController extends GridPane {
 
             for(int x=0; x<5; x++){
                 for(int y=0; y<5; y++){
-                    Label lbl = (Label) getNodeGridPane(gridLevels, x, y);
-                    lbl.setText(String.valueOf(b.getGrid()[x][y].getLevel()));
-
+                    //Label lbl = (Label) getNodeGridPane(gridLevels, x, y);
+                    //lbl.setText(String.valueOf(b.getGrid()[x][y].getLevel()));
+                    Label Node = (Label) getNodeGridPane(gridBoard, x, y);
                     if(b.getGrid()[x][y].getBuilder()!=null){ //There is a builder in the cell, update gui
-                        Label Node = (Label) getNodeGridPane(gridBoard, x, y);
 
                         try {
                             field = Class.forName("javafx.scene.paint.Color").getField(b.getGrid()[x][y].getBuilder().getPlayer().getColor().toString());
@@ -221,7 +216,6 @@ public class BoardController extends GridPane {
                         }
                     }
                     else{
-                        Label Node = (Label) getNodeGridPane(gridBoard, x, y);
                         Node.setGraphic(null);
                     }
                 }
