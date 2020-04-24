@@ -9,7 +9,7 @@
     <children>
         <ImageView fitHeight="448.0" fitWidth="800.0" layoutX="1.0">
             <image>
-                <Image url="@../images/SantoriniBoard.png" />
+                <Image url="@../images/board/SantoriniBoard.png" />
                </image>
         </ImageView>
       <ImageView fx:id="imgGodCard" fitHeight="181.0" fitWidth="129.0" layoutX="27.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true" />
