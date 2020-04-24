@@ -15,13 +15,13 @@
    <children>
       <ImageView fitHeight="500.0" fitWidth="600.0">
          <image>
-            <Image url="@../images/Odyssey_UI_Backdrop.png" />
+            <Image url="@../images/Start/Odyssey_UI_Backdrop.png" />
          </image>
       </ImageView>
 
       <ImageView fitHeight="107.0" fitWidth="427.0" layoutX="86.0" layoutY="58.0">
          <image>
-            <Image url="@../images/santorini-logo.png" />
+            <Image url="@../images/Start/santorini-logo.png" />
          </image>
       </ImageView>
 

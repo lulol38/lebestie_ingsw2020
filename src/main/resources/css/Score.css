@@ -1,0 +1,39 @@
+#winPane{
+    -fx-font-size: 46 px;
+    -fx-font-family: "Cambria";
+}
+
+#lostPane{
+    -fx-font-size: 46 px;
+    -fx-font-family: "Cambria";
+}
+
+#btnRejoin{
+    -fx-background-color: #ddd;
+    -fx-opacity: 0.8;
+    -fx-transition: 0.3s;
+    -fx-border-color:#E9967A;
+    -fx-font-size: 14 px;
+}
+
+#btnQuit{
+    -fx-background-color: #ddd;
+    -fx-opacity: 0.8;
+    -fx-transition: 0.3s;
+    -fx-border-color:#E9967A;
+    -fx-font-size: 14 px;
+}
+
+#btnRejoin:hover {
+   -fx-background-color: #E9967A;
+   -fx-opacity: 1;
+   -fx-color:#191970;
+   -fx-font-size:14 px;
+}
+
+#btnQuit:hover {
+   -fx-background-color: #E9967A;
+   -fx-opacity: 1;
+   -fx-color:#191970;
+   -fx-font-size:14 px;
+}

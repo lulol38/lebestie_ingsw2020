@@ -15,7 +15,7 @@
 
     <ImageView fitHeight="87.0" fitWidth="150.0" layoutX="226.0" layoutY="111.0">
         <image>
-            <Image url="@../images/lobbyLoading.gif" />
+            <Image url="@../images/lobby/lobbyLoading.gif" />
         </image>
     </ImageView>
 
