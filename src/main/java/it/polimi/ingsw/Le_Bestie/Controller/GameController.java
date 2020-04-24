@@ -119,6 +119,7 @@ public class GameController {
                     endMatch();
                     break;
                 case 3:
+                    updateClients();
                     lobby.getClientsWaiting().get(0).sendMessage(new SendPowerMessage(matchState.getCurrentPlayer().getGodCard().getMessage()));
                     break;
                 case 4:
@@ -141,6 +142,7 @@ public class GameController {
                     lobby.getClientsWaiting().get(0).sendMessage(new AskCellError());
                     break;
                 case 3:
+                    updateClients();
                     lobby.getClientsWaiting().get(0).sendMessage(new SendPowerMessage(matchState.getCurrentPlayer().getGodCard().getMessage()));
                     break;
                 case 4:
