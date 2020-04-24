@@ -210,6 +210,7 @@ public class BoardController extends GridPane {
 
                     Label Node = (Label) getNodeGridPane(gridBoard, x, y);
                     Node.setText(String.valueOf(b.getGrid()[x][y].getLevel()));
+                    Node.setAlignment(Pos.CENTER);
                     if(b.getGrid()[x][y].getBuilder()!=null){ //There is a builder in the cell, update gui
 
                         try {
@@ -217,7 +218,7 @@ public class BoardController extends GridPane {
                             Color color = (Color)field.get(null);
 
                             Node.setGraphic(new Circle(10,10 ,10, color));
-                            Node.setAlignment(Pos.CENTER);
+
                         } catch (Exception e) {
                             System.out.println(e.getMessage());
                         }
