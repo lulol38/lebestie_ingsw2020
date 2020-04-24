@@ -175,8 +175,10 @@ public class BoardController extends GridPane {
                     }
                 }
             } else { //Here the user is doing a move or a build because the builders are already setted
+                if(!(clickedNode instanceof Label))
+                    clickedNode=clickedNode.getParent();
+
                 if (selectedBuilderX == 10 || selectedBuilderY == 10) {
-                    clickedNode = clickedNode.getParent();
                     if (clickedNode != gridBoard) {
                         selectedBuilderX = gridBoard.getRowIndex(clickedNode);
                         selectedBuilderY = gridBoard.getColumnIndex(clickedNode);

@@ -17,6 +17,7 @@ public class Builder implements Serializable {
 
     public Builder(Position position){
         this.position=position;
+        this.disabled=false;
     }
 
     //Getter
