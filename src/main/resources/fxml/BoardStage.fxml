@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.Le_Bestie.View.ViewController.BoardController">
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0"  VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.Le_Bestie.View.ViewController.BoardController">
     <children>
         <ImageView fitHeight="448.0" fitWidth="800.0" layoutX="1.0">
             <image>
@@ -15,17 +15,17 @@
       <ImageView fx:id="imgGodCard" fitHeight="181.0" fitWidth="129.0" layoutX="27.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="lblOpponent1" layoutX="27.0" layoutY="27.0" text="Opponent 1" />
       <Label fx:id="lblOpponent2" layoutX="27.0" layoutY="64.0" text="Opponent 2" />
-      <GridPane fx:id="gridBoard" disable="true" layoutX="239.0" layoutY="64.0" prefHeight="325.0" prefWidth="324.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="63.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.0" minWidth="10.0" prefWidth="68.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="74.0" minWidth="10.0" prefWidth="68.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="76.0" minWidth="10.0" prefWidth="66.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="62.0" />
+      <GridPane fx:id="gridBoard" alignment="center"  disable="true" layoutX="239.0" layoutY="64.0" prefHeight="325.0" prefWidth="324.0">
+        <columnConstraints >
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="63.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="117.0" minWidth="10.0" prefWidth="68.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="74.0" minWidth="10.0" prefWidth="68.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="76.0" minWidth="10.0" prefWidth="66.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="62.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="62.0" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="73.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+            <RowConstraints  maxHeight="62.0" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES" />
+            <RowConstraints   maxHeight="73.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />

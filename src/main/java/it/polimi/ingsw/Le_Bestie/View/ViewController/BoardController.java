@@ -5,6 +5,7 @@ import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.*;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
@@ -214,7 +215,9 @@ public class BoardController extends GridPane {
                         try {
                             field = Class.forName("javafx.scene.paint.Color").getField(b.getGrid()[x][y].getBuilder().getPlayer().getColor().toString());
                             Color color = (Color)field.get(null);
+
                             Node.setGraphic(new Circle(10,10 ,10, color));
+                            Node.setAlignment(Pos.CENTER);
                         } catch (Exception e) {
                             System.out.println(e.getMessage());
                         }
