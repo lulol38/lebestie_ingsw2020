@@ -54,7 +54,7 @@ public class GameController {
         matchState.startGame();
 
         lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
-        lobby.getClientsWaiting().get(0).sendMessage(new SendCardToPlayers(matchState.getCurrentPlayer().getGodCard().getName()));
+        lobby.getClientsWaiting().get(0).sendMessage(new SendCardToPlayers(matchState.getCurrentPlayer().getGodCard().getName(),matchState.getCurrentPlayer().getColor().toString()));
         lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
     }
 
@@ -84,7 +84,7 @@ public class GameController {
         Collections.rotate(lobby.getClientsWaiting(), -1);
         lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
         if(matchState.getCurrentPlayer().getBuilder1()==null||matchState.getCurrentPlayer().getBuilder2()==null) {
-            lobby.getClientsWaiting().get(0).sendMessage(new SendCardToPlayers(matchState.getCurrentPlayer().getGodCard().getName()));
+            lobby.getClientsWaiting().get(0).sendMessage(new SendCardToPlayers(matchState.getCurrentPlayer().getGodCard().getName(),matchState.getCurrentPlayer().getColor().toString()));
             lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
         }
         else{ //BEGIN TURN
