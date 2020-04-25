@@ -4,20 +4,24 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
 <AnchorPane fx:id="lobbyPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
-  <stylesheets>
-      <URL value="@../css/Connection.css" />
-  </stylesheets>
 
-   <children>
-      <Label layoutX="153.0" layoutY="79.0" text="WAITING OTHERS PLAYERS..." />
+    <stylesheets>
+        <URL value="@../css/Loading.css" />
+    </stylesheets>
+
+    <children>
+      <Label layoutX="153.0" layoutY="79.0" text="WAITING OTHERS PLAYERS" />
 
     <ImageView fitHeight="87.0" fitWidth="150.0" layoutX="226.0" layoutY="111.0">
         <image>
             <Image url="@../images/lobby/lobbyLoading.gif" />
         </image>
     </ImageView>
+      <ImageView fitHeight="216.0" fitWidth="150.0" layoutX="48.0" layoutY="26.0">
+      </ImageView>
 
    </children>
 </AnchorPane>

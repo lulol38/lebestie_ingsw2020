@@ -47,7 +47,6 @@ public class Client implements Runnable {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("ERROR");
                 alert.setContentText("The server is not running");
-
                 alert.showAndWait();
             });
             return false;

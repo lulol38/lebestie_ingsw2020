@@ -19,6 +19,7 @@ import javafx.event.ActionEvent;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
+import javafx.stage.Stage;
 
 public class ConnectionController {
 
@@ -66,22 +67,19 @@ public class ConnectionController {
 
         System.out.println("Trying to connect...");
         if(txtServerAddress.getText()!="" && txtServerPort.getText()!="" && txtUsername.getText()!="") {
-
             Client c= new Client(txtServerAddress.getText(), Integer.parseInt(txtServerPort.getText()), txtUsername.getText());
             if(c.init())
                 executor.submit(c);
             else return;
         }
-
-        GUIController.getInstance().setScene(connectionPane.getScene(),"/fxml/LobbyStage.fxml");
-       /* AnchorPane lobbyPane = FXMLLoader.load(getClass().getResource("/fxml/LobbyStage.fxml"));
-        connectionPane.getChildren().setAll(lobbyPane);*/
+        /*Stage stage = (Stage) connectionPane.getScene().getWindow();
+        stage.close();*/
+        //GUIController.getInstance().setScene(connectionPane.getScene(),"/fxml/LobbyStage.fxml");
 
     }
+
     public  void pressBack(ActionEvent actionEvent) throws Exception {
         GUIController.getInstance().setScene(connectionPane.getScene(),"/fxml/StartStage.fxml");
-        /*AnchorPane rootPane = FXMLLoader.load(getClass().getResource("/fxml/StartStage.fxml"));
-        connectionPane.getChildren().setAll(rootPane);*/
     }
 
 }
