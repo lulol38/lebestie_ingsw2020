@@ -88,23 +88,27 @@ public class GameController {
             lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
         }
         else{ //BEGIN TURN
-            if(matchState.getCurrentPlayer().getGodCard().HasLost(matchState.getCurrentPlayer(), matchState.getBoard())){ //CHECK IF THE PLAYER LOSES
-                if(matchState.getPlayers().size()==2){ //IF ONLY 2 PLAYERS
-                    //lobby.getClientsWaiting().get(0).sendMessage(new SendHasLost());
-                    //lobby.getClientsWaiting().get(1).sendMessage(new SendHasWon());
-                    setWinner(1);
-                    endMatch();
-                }
-                else{ //3 PLAYERS
-                    matchState.getBoard().getGrid()[matchState.getCurrentPlayer().getBuilder1().getPosition().getX()][matchState.getCurrentPlayer().getBuilder1().getPosition().getX()].setBuilder(null);
-                    matchState.getBoard().getGrid()[matchState.getCurrentPlayer().getBuilder2().getPosition().getX()][matchState.getCurrentPlayer().getBuilder2().getPosition().getX()].setBuilder(null);
-                    matchState.getPlayers().remove(matchState.getCurrentPlayer());
-                    lobby.getClientsWaiting().get(0).sendMessage(new SendHasLost());
-                    lobby.getClientsWaiting().remove(0);
-                    lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
-                }
+            if(matchState.getCurrentPlayer().getGodCard().HasLost(matchState.getCurrentPlayer(), matchState.getBoard())) { //CHECK IF THE PLAYER LOSES
+                manageHasLost();
             }
             lobby.getClientsWaiting().get(0).sendMessage(new AskBuilderChosen());
+        }
+    }
+
+    public void manageHasLost(){
+        if(matchState.getPlayers().size()==2){ //IF ONLY 2 PLAYERS
+            //lobby.getClientsWaiting().get(0).sendMessage(new SendHasLost());
+            //lobby.getClientsWaiting().get(1).sendMessage(new SendHasWon());
+            setWinner(1);
+            endMatch();
+        }
+        else{ //3 PLAYERS
+            matchState.getBoard().getGrid()[matchState.getCurrentPlayer().getBuilder1().getPosition().getX()][matchState.getCurrentPlayer().getBuilder1().getPosition().getX()].setBuilder(null);
+            matchState.getBoard().getGrid()[matchState.getCurrentPlayer().getBuilder2().getPosition().getX()][matchState.getCurrentPlayer().getBuilder2().getPosition().getX()].setBuilder(null);
+            matchState.getPlayers().remove(matchState.getCurrentPlayer());
+            lobby.getClientsWaiting().get(0).sendMessage(new SendHasLost());
+            lobby.getClientsWaiting().remove(0);
+            lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
         }
     }
 
@@ -125,6 +129,8 @@ public class GameController {
 
             switch (moveResult) {
                 case 0:
+                    if(matchState.getCurrentPlayer().getBuilderChosen().getDisabled())
+                        manageHasLost();
                     lobby.getClientsWaiting().get(0).sendMessage(new AskCell());
                     break;
                 case 1:
