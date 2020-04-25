@@ -113,7 +113,7 @@ public class GameController {
     }
 
     public void checkBuilder(int bx, int by){
-        if(matchState.getBoard().getGrid()[bx][by].getBuilder().getPlayer()==matchState.getCurrentPlayer()&&matchState.getBoard().getGrid()[bx][by].getBuilder().getDisabled()==false){
+        if(matchState.getBoard().getGrid()[bx][by].getBuilder()!=null && matchState.getBoard().getGrid()[bx][by].getBuilder().getPlayer()==matchState.getCurrentPlayer()&&matchState.getBoard().getGrid()[bx][by].getBuilder().getDisabled()==false){
             matchState.getCurrentPlayer().setBuilderChosen(matchState.getBoard().getGrid()[bx][by].getBuilder());
 
             lobby.getClientsWaiting().get(0).sendMessage(new AskCell());
