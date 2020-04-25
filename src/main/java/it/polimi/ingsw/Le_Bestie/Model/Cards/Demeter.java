@@ -38,6 +38,8 @@ public class Demeter extends GodCard{
             if(x==1)
             {
                 firstBuiltCell=c;
+                if((w.possibleBuilds(b).size()==1&&w.possibleBuilds(b).get(0)==c)||w.possibleBuilds(b).size()==0)
+                    w.setDisabled(true);
                 return 3;
             }
             return x;

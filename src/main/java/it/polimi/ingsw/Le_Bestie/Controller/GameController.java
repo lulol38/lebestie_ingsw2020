@@ -167,6 +167,8 @@ public class GameController {
                     break;
                 case 3:
                     updateClients();
+                    if(matchState.getCurrentPlayer().getBuilderChosen().getDisabled())
+                        manageHasLost();
                     lobby.getClientsWaiting().get(0).sendMessage(new SendPowerMessage(matchState.getCurrentPlayer().getGodCard().getMessage()));
                     break;
                 case 4:
