@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="winPane" prefHeight="305.0" prefWidth="347.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="winPane" prefHeight="305.0" prefWidth="347.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.Le_Bestie.View.ViewController.WinController" >
 
    <stylesheets>
       <URL value="@../css/Score.css" />
@@ -27,8 +27,8 @@
 
       <Label layoutX="75.0" layoutY="32.0" text="YOU WIN!" />
 
-      <Button fx:id="btnRejoin" layoutX="133.0" layoutY="194.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="82.0" text="REJOIN" />
-      <Button fx:id="btnQuit" layoutX="133.0" layoutY="241.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="82.0" text="QUIT" />
+      <Button fx:id="btnRejoin" layoutX="133.0" layoutY="194.0" onAction="#pressRejoin" mnemonicParsing="false" prefHeight="36.0" prefWidth="82.0" text="REJOIN" />
+      <Button fx:id="btnQuit" layoutX="133.0" layoutY="241.0" onAction="#pressQuit" mnemonicParsing="false" prefHeight="36.0" prefWidth="82.0" text="QUIT" />
 
    </children>
 </AnchorPane>

@@ -194,6 +194,7 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(SendBuilderChosen mex) {
+
         GameController.getInstance().checkBuilder(mex.getBx(), mex.getBy());
     }
 

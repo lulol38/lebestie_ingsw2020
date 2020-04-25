@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 
-<AnchorPane fx:id="lostPane" prefHeight="297.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="lostPane" prefHeight="297.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.Le_Bestie.View.ViewController.LostController">
    <stylesheets>
       <URL value="@../css/Score.css"/>
    </stylesheets>
@@ -18,7 +18,7 @@
       </ImageView>
       <Label layoutX="83.0" layoutY="36.0" text="YOU LOST" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS"/>
 
-      <Button fx:id="btnRejoin" layoutX="130.0" layoutY="147.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="86.0" text="QUIT" />
-      <Button fx:id="btnQuit" layoutX="130.0" layoutY="100.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="86.0" text="REJOIN" />
+      <Button fx:id="btnRejoin" layoutX="130.0" layoutY="147.0" onAction="#pressRejoin" mnemonicParsing="false" prefHeight="33.0" prefWidth="86.0" text="QUIT" />
+      <Button fx:id="btnQuit" layoutX="130.0" layoutY="100.0" onAction="#pressQuit" mnemonicParsing="false" prefHeight="33.0" prefWidth="86.0" text="REJOIN" />
    </children>
 </AnchorPane>
