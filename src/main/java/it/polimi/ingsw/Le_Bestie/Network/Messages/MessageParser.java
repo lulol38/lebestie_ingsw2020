@@ -13,6 +13,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
@@ -145,6 +146,7 @@ public class MessageParser implements MessageVisitor {
     public void visit(SendCardToPlayers mex) {
         BoardController.getInstance().addCardOnBoard(mex.getCard());
     }
+
     @Override
     public void visit(SendBeginTurn mex) {
         BoardController.getInstance().beginTurn();
@@ -250,5 +252,31 @@ public class MessageParser implements MessageVisitor {
     @Override
     public void visit(AskCellError mex) {
         BoardController.getInstance().AskCellError("The pieces aren't available");
+    }
+
+    @Override
+    public void visit(SendHasLost mex) {
+        //(TODO)
+        javafx.application.Platform.runLater(()->{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("LOST");
+            alert.setHeaderText(null);
+            alert.setContentText("You have lost!");
+
+            alert.showAndWait();
+        });
+    }
+
+    @Override
+    public void visit(SendHasWon mex) {
+        //(TODO)
+        javafx.application.Platform.runLater(()->{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("WIN");
+            alert.setHeaderText(null);
+            alert.setContentText("You win!");
+
+            alert.showAndWait();
+        });
     }
 }

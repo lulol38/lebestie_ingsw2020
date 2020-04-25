@@ -9,6 +9,7 @@ import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.*;
 import it.polimi.ingsw.Le_Bestie.Network.Server.ClientHandler;
 import it.polimi.ingsw.Le_Bestie.Network.Server.Lobby;
+import it.polimi.ingsw.Le_Bestie.Network.Server.Server;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class GameController {
     private static GameController instance;
     private Lobby lobby;
     private MatchState matchState;
-    private Player Winner;
+    private int Winner;
     private Player currentTurnPlayer;
 
     public GameController(Lobby lobby) {
@@ -45,7 +46,7 @@ public class GameController {
         return matchState;
     }
 
-    public void setWinner(Player winner) {
+    public void setWinner(int winner) {
         Winner = winner;
     }
 
@@ -86,7 +87,23 @@ public class GameController {
             lobby.getClientsWaiting().get(0).sendMessage(new SendCardToPlayers(matchState.getCurrentPlayer().getGodCard().getName()));
             lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
         }
-        else{
+        else{ //BEGIN TURN
+            if(matchState.getCurrentPlayer().getGodCard().HasLost(matchState.getCurrentPlayer(), matchState.getBoard())){ //CHECK IF THE PLAYER LOSES
+                if(matchState.getPlayers().size()==2){ //IF ONLY 2 PLAYERS
+                    //lobby.getClientsWaiting().get(0).sendMessage(new SendHasLost());
+                    //lobby.getClientsWaiting().get(1).sendMessage(new SendHasWon());
+                    setWinner(1);
+                    endMatch();
+                }
+                else{ //3 PLAYERS
+                    matchState.getBoard().getGrid()[matchState.getCurrentPlayer().getBuilder1().getPosition().getX()][matchState.getCurrentPlayer().getBuilder1().getPosition().getX()].setBuilder(null);
+                    matchState.getBoard().getGrid()[matchState.getCurrentPlayer().getBuilder2().getPosition().getX()][matchState.getCurrentPlayer().getBuilder2().getPosition().getX()].setBuilder(null);
+                    matchState.getPlayers().remove(matchState.getCurrentPlayer());
+                    lobby.getClientsWaiting().get(0).sendMessage(new SendHasLost());
+                    lobby.getClientsWaiting().remove(0);
+                    lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
+                }
+            }
             lobby.getClientsWaiting().get(0).sendMessage(new AskBuilderChosen());
         }
     }
@@ -116,7 +133,7 @@ public class GameController {
                     lobby.getClientsWaiting().get(0).sendMessage(new AskCell());
                     break;
                 case 2:
-                    setWinner(matchState.getCurrentPlayer());
+                    setWinner(0);
                     endMatch();
                     break;
                 case 3:
@@ -161,10 +178,14 @@ public class GameController {
     }
 
     public void endMatch(){
-
         //(todo)
+        lobby.getClientsWaiting().get(Winner).sendMessage(new SendHasWon());
+        lobby.getClientsWaiting().remove(Winner);
+        for(int i=0; i<lobby.getClientsWaiting().size();i++){
+            lobby.getClientsWaiting().get(i).sendMessage(new SendHasLost());
+        }
 
-
+        Server.removeGame(this);
     }
 
 }

@@ -51,6 +51,9 @@ public interface MessageVisitor {
 
     void visit(AskCellError mex);
 
-
     void visit(SendCardToPlayers mex);
+
+    void visit(SendHasLost mex);
+
+    void visit(SendHasWon mex);
 }

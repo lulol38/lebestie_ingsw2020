@@ -23,7 +23,7 @@ public class Server {
 
     private ServerSocket serverSocket;
     private ArrayList<ClientHandler> clientsConnected = new ArrayList<>();
-    private ArrayList<GameController> activeGames = new ArrayList<>();
+    private static ArrayList<GameController> activeGames = new ArrayList<>();
     private Lobby lobby;
     private ExecutorService executor = Executors.newCachedThreadPool();
 
@@ -122,6 +122,9 @@ public class Server {
         return true;
     }
 
+    public static void removeGame(GameController game){
+        activeGames.remove(game);
+    }
 
     public static void main(String[] args){
         Server multiEchoServer = new Server(45331);
