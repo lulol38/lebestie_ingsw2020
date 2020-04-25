@@ -38,6 +38,8 @@ public class Artemis extends GodCard {
             int x = super.move(b, w, c, usePower);
             if (x == 1) {
                 startingCell = currentCell;
+                if(w.possibleMoves(b, notMoveUp).size()==1&&w.possibleMoves(b, notMoveUp).get(0)==startingCell)
+                    return 1;
                 return 3;
             } else
                 return x;

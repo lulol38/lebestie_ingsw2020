@@ -124,6 +124,7 @@ public class Server {
 
     public static void removeGame(GameController game){
         activeGames.remove(game);
+        System.out.println("Closing game");
     }
 
     public static void main(String[] args){
