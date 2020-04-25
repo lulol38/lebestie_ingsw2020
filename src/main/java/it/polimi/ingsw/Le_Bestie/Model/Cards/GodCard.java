@@ -16,7 +16,7 @@ import java.io.Serializable;
 public abstract class GodCard implements Serializable {
 
     private String name;
-    protected boolean notMoveUp;
+    static protected boolean notMoveUp;
     private String Message;
 
     public GodCard(String name){
