@@ -109,6 +109,6 @@
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Rectangle fx:id="rect" arcHeight="5.0" arcWidth="5.0" height="38.0" layoutX="71.0" layoutY="295.0" stroke="BLACK" strokeType="INSIDE" width="41.0" />
+      <Rectangle fx:id="rect" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="38.0" layoutX="51.0" layoutY="295.0" stroke="RED" strokeType="INSIDE" width="41.0" />
     </children>
 </AnchorPane>
