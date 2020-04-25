@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 
 import java.lang.reflect.Field;
 import java.util.Optional;
@@ -45,6 +46,8 @@ public class BoardController extends GridPane {
     Label lblMessages;
     @FXML
     Label lblCard;
+    @FXML
+    Rectangle rect;
 
     public BoardController(){
         this.instance=this;
@@ -272,9 +275,10 @@ public class BoardController extends GridPane {
         });
     }
 
-    public void addCardOnBoard(String card){
+    public void addCardOnBoard(String card,String color){
         javafx.application.Platform.runLater(()-> {
             lblCard.setText(card);
+            rect.setFill(Color.valueOf(color));
         });
     }
 }

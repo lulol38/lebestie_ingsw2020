@@ -144,7 +144,7 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(SendCardToPlayers mex) {
-        BoardController.getInstance().addCardOnBoard(mex.getCard());
+        BoardController.getInstance().addCardOnBoard(mex.getCard(),mex.getColor());
     }
 
     @Override
@@ -257,27 +257,48 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(SendHasLost mex) {
-        //(TODO)
-        javafx.application.Platform.runLater(()->{
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("LOST");
-            alert.setHeaderText(null);
-            alert.setContentText("You have lost!");
+        javafx.application.Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Stage stage= new Stage();
+                    Parent root = null;
+                    root = FXMLLoader.load(getClass().getResource("/fxml/lostStage.fxml"));
+                    Scene scene = new Scene(root);
 
-            alert.showAndWait();
+                    stage.setTitle("LOST");
+                    stage.setScene(scene);
+                    stage.setResizable(false);
+                    stage.initStyle(StageStyle.DECORATED);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         });
     }
 
     @Override
     public void visit(SendHasWon mex) {
         //(TODO)
-        javafx.application.Platform.runLater(()->{
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("WIN");
-            alert.setHeaderText(null);
-            alert.setContentText("You win!");
+        javafx.application.Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Stage stage= new Stage();
+                    Parent root = null;
+                    root = FXMLLoader.load(getClass().getResource("/fxml/winStage.fxml"));
+                    Scene scene = new Scene(root);
 
-            alert.showAndWait();
+                    stage.setTitle("WIN");
+                    stage.setScene(scene);
+                    stage.setResizable(false);
+                    stage.initStyle(StageStyle.DECORATED);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         });
     }
 }
