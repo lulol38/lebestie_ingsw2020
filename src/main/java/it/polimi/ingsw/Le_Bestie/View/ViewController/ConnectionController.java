@@ -29,8 +29,13 @@ public class ConnectionController {
     Button btnConnect;
     @FXML
     AnchorPane connectionPane;
+    private int n;
 
-    private ExecutorService executor = Executors.newCachedThreadPool();
+    public void initialize()
+    {
+        n=0;
+        GUIController.getInstance().setConnectionController(this);
+    }
 
     private void setRed(TextField tf) {
         ObservableList<String> styleClass = tf.getStyleClass();
@@ -66,20 +71,27 @@ public class ConnectionController {
         }
 
         System.out.println("Trying to connect...");
-        if(txtServerAddress.getText()!="" && txtServerPort.getText()!="" && txtUsername.getText()!="") {
-            Client c= new Client(txtServerAddress.getText(), Integer.parseInt(txtServerPort.getText()), txtUsername.getText());
-            if(c.init())
-                executor.submit(c);
-            else return;
-        }
-        /*Stage stage = (Stage) connectionPane.getScene().getWindow();
-        stage.close();*/
-        //GUIController.getInstance().setScene(connectionPane.getScene(),"/fxml/LobbyStage.fxml");
+        if(txtServerAddress.getText()!="" && txtServerPort.getText()!="" && txtUsername.getText()!="")
+            GUIController.getInstance().createConnection(txtServerAddress.getText(),Integer.parseInt(txtServerPort.getText()),txtUsername.getText());
 
     }
 
-    public  void pressBack(ActionEvent actionEvent) throws Exception {
+
+    public void pressBack(ActionEvent actionEvent) throws Exception {
         GUIController.getInstance().setScene(connectionPane.getScene(),"/fxml/StartStage.fxml");
     }
+
+    public void okConnection(){
+            GUIController.getInstance().setScene(connectionPane.getScene(), "/fxml/NPlayersStage.fxml");
+    }
+
+    public void openLobby(){
+        GUIController.getInstance().setScene(connectionPane.getScene(),"/fxml/LobbyStage.fxml");
+    }
+    public void close(){
+        Stage stage = (Stage) connectionPane.getScene().getWindow();
+        stage.close();
+    }
+
 
 }

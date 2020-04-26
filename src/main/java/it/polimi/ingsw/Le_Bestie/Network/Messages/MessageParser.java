@@ -33,8 +33,7 @@ public class MessageParser implements MessageVisitor {
     //Ask to the client the number of players for the match
     @Override
     public void visit(AskNumPlayers mex){
-        GUIController.getInstance().numberOfPlayers();
-
+        GUIController.getInstance().choiseNumber();
     }
 
     @Override
@@ -69,58 +68,15 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(ErrorUsername mex) {
-        javafx.application.Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Stage stage= new Stage();
-                    Parent root = null;
-                    root = FXMLLoader.load(getClass().getResource("/fxml/ModifyUsername.fxml"));
-                    Scene scene = new Scene(root);
+        GUIController.getInstance().digitWrongUsername();
 
-                    stage.setTitle("Modify Username");
-                    stage.setScene(scene);
-                    stage.setResizable(false);
-                    stage.initStyle(StageStyle.UNDECORATED);
-                    stage.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 
     @Override
     public void visit(SendGameStart mex) {
 
-        javafx.application.Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    BoardController b = new BoardController();
-
-                    Stage stage= new Stage();
-                    Parent root = null;
-                    root = FXMLLoader.load(getClass().getResource("/fxml/BoardStage.fxml"));
-                    Scene scene = new Scene(root);
-                    stage.setTitle("BOARD");
-                    stage.setScene(scene);
-                    stage.setResizable(false);
-                    stage.show();
-
-                    stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                        @Override
-                        public void handle(WindowEvent we) {
-                            if(Client.getInstance()!=null)
-                                Client.getInstance().sendMessage(new CloseConnection());
-                            System.exit(0);
-                        }
-                    });
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        GUIController.getInstance().setBoard();
+        GUIController.getInstance().closeLobbyStage();
     }
 
     @Override
@@ -235,7 +191,10 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(LostForDisconnection mex) {
-        BoardController.getInstance().sendDisconnection();
+
+        GUIController.getInstance().displayDisconnection();
+        GUIController.getInstance().closeBoard();
+
     }
 
     @Override
@@ -268,8 +227,6 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(SendHasWon mex) {
-        //(TODO)
-
         javafx.application.Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -290,5 +247,10 @@ public class MessageParser implements MessageVisitor {
             }
         });
 
+    }
+
+    @Override
+    public void visit(OpenLobby mex) {
+        GUIController.getInstance().openLobbyWaiting();
     }
 }

@@ -18,6 +18,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -65,10 +66,23 @@ public class BoardController extends GridPane {
     Label lblCard;
     @FXML
     Rectangle rect;
+    @FXML
+    AnchorPane boardPane;
 
     public BoardController(){
         this.instance=this;
         this.buildersSetted=false;
+    }
+    public static BoardController getInstance(){
+        if (instance == null)
+            instance = new BoardController();
+        return instance;
+    }
+
+
+    public void initialize()
+    {
+        GUIController.getInstance().setBoardController(this);
     }
 
     public void setSelectedCellX(int selectedCellX) {
@@ -95,9 +109,6 @@ public class BoardController extends GridPane {
         this.buildersSetted = buildersSetted;
     }
 
-    public static BoardController getInstance() {
-        return instance;
-    }
 
     public void activeGUI(){
         javafx.application.Platform.runLater(() -> gridBoard.setDisable(false));
@@ -311,13 +322,16 @@ public class BoardController extends GridPane {
         n.setStyle("-fx-border-color: Red;");
     }
 
-    public void closeConnWindow(){
-       Stage s= (Stage)gridBoard.getScene().getWindow();
-       s.close();
+
+    public void close(){
+        Stage stage = (Stage) boardPane.getScene().getWindow();
+        stage.close();
     }
 
-    public void sendDisconnection(){
-        GUIController.getInstance().displayDisconnection();
+    public void createBoard(){
+        GUIController.getInstance().setScene(gridBoard.getScene(),"/fxml/BoardStage.fxml");
     }
+
+
 
 }

@@ -10,14 +10,18 @@ import java.io.IOException;
 
 public class StartGameController {
 
+    GUIController guiController;
     @FXML
     public AnchorPane rootPane;
 
+
     public void playGameClick(ActionEvent actionEvent) throws Exception {
-        GUIController.getInstance().setScene(rootPane.getScene(),"/fxml/ConnectionStage.fxml");
+       GUIController.getInstance().setScene(rootPane.getScene(),"/fxml/ConnectionStage.fxml");
     }
 
     public void pressQuit(ActionEvent actionEvent) {
         System.exit(0);
     }
+
+
 }

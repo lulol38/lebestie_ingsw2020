@@ -58,4 +58,6 @@ public interface MessageVisitor {
     void visit(SendHasWon mex);
 
     void visit(LostForDisconnection mex);
+
+    void visit(OpenLobby openLobby);
 }

@@ -27,9 +27,6 @@ public class NPlayersController {
     public void pressSendNumPlayers(ActionEvent actionEvent) {
         if(rdb2P.isSelected()||rdb3P.isSelected()){
             Client.getInstance().sendMessage(new SendNumPlayers(Integer.parseInt(mygroup.getSelectedToggle().getUserData().toString())));
-            Node source = (Node)  actionEvent.getSource();
-            Stage stage  = (Stage) source.getScene().getWindow();
-            stage.close();
             GUIController.getInstance().setScene(playersPane.getScene(),"/fxml/LobbyStage.fxml");
         }
         else{

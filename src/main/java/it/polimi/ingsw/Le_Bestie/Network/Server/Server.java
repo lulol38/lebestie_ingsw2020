@@ -1,10 +1,8 @@
 package it.polimi.ingsw.Le_Bestie.Network.Server;
 
 import it.polimi.ingsw.Le_Bestie.Controller.GameController;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskNumPlayers;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskUsername;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.LostForDisconnection;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.SendGameStart;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.*;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -31,7 +29,6 @@ public class Server {
 
     public Server(int port){
         this.port=port;
-
         this.lobby= new Lobby();
         instance=this;
     }
@@ -84,6 +81,7 @@ public class Server {
             }
         }
         else {
+            client.sendMessage(new OpenLobby());
             if(lobby.getClientsWaiting().size()==lobby.getNumPlayersMatch()) {
                 System.out.println("Starting game");
                 for (ClientHandler s: lobby.getClientsWaiting()) {
