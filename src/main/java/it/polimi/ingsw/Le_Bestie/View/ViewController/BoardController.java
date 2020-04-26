@@ -169,7 +169,7 @@ public class BoardController extends GridPane {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == buttonTypeOne){
-                imgPower.setVisible(true);
+                imgPower.setOpacity(1.0);
                 AskCellChosen();
             } else if (result.get() == buttonTypeTwo) {
                 Client.getInstance().sendMessage(new SendPowerNotUsed(selectedCellX, selectedCellY));
@@ -277,7 +277,9 @@ public class BoardController extends GridPane {
         javafx.application.Platform.runLater(()->{
             BoardController.getInstance().disableGUI();
             lblTurn.setText("YOUR TURN IS ENDED");
-            n.setStyle("-fx-border-color: Transparent;");
+            imgPower.setOpacity(0.0);
+            if(n!=null)
+                n.setStyle("-fx-border-color: Transparent;");
         });
     }
 
@@ -304,7 +306,6 @@ public class BoardController extends GridPane {
     public void setClickBorder()
     {
         n.setStyle("-fx-border-color: Red;");
-
     }
 
     public void closeConnWindow(){
