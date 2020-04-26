@@ -1,5 +1,6 @@
 package it.polimi.ingsw.Le_Bestie.View.ViewController;
 
+import it.polimi.ingsw.Le_Bestie.View.GUIController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +17,6 @@ public class LostController {
 
 
     public void pressRejoin(ActionEvent actionEvent) {
-
         Stage stage = (Stage) lostPane.getScene().getWindow();
         stage.close();
         Stage connectionMenu= new Stage();

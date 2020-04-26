@@ -23,9 +23,13 @@ public class GUIController {
         return instance;
     }
 
-    public static void setScene(Scene scene,String path) throws Exception {
-        AnchorPane root =  (AnchorPane) FXMLLoader.load(GUIController.class.getResource(path));
-        scene.setRoot(root);
+    public static void setScene(Scene scene,String path) {
+        try {
+            AnchorPane root = (AnchorPane) FXMLLoader.load(GUIController.class.getResource(path));
+            scene.setRoot(root);
+        }catch (Exception e){
+
+        }
     }
 
     public void numberOfPlayers()  {

@@ -33,26 +33,7 @@ public class MessageParser implements MessageVisitor {
     //Ask to the client the number of players for the match
     @Override
     public void visit(AskNumPlayers mex){
-
         GUIController.getInstance().numberOfPlayers();
-       /* javafx.application.Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Stage stage= new Stage();
-                    Parent root = null;
-                    root = FXMLLoader.load(getClass().getResource("/fxml/NPlayersStage.fxml"));
-                    Scene scene = new Scene(root);
-
-                    stage.setTitle("START GAME");
-                    stage.setResizable(false);
-                    stage.setScene(scene);
-                    stage.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });*/
 
     }
 
@@ -200,7 +181,9 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(AskCell mex) {
+        BoardController.getInstance().setClickBorder();
         BoardController.getInstance().AskCellChosen();
+
     }
 
     @Override
@@ -281,6 +264,7 @@ public class MessageParser implements MessageVisitor {
     @Override
     public void visit(SendHasWon mex) {
         //(TODO)
+
         javafx.application.Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -300,5 +284,6 @@ public class MessageParser implements MessageVisitor {
                 }
             }
         });
+        BoardController.getInstance().closeConnWindow();
     }
 }

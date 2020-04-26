@@ -2,6 +2,7 @@ package it.polimi.ingsw.Le_Bestie.View.ViewController;
 
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendNumPlayers;
+import it.polimi.ingsw.Le_Bestie.View.GUIController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -9,9 +10,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class NPlayersController {
+
+    @FXML
+    public AnchorPane playersPane;
     @FXML
     public RadioButton rdb2P;
     @FXML
@@ -25,6 +30,7 @@ public class NPlayersController {
             Node source = (Node)  actionEvent.getSource();
             Stage stage  = (Stage) source.getScene().getWindow();
             stage.close();
+            GUIController.getInstance().setScene(playersPane.getScene(),"/fxml/LobbyStage.fxml");
         }
         else{
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

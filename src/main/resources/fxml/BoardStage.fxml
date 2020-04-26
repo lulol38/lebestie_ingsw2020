@@ -13,7 +13,7 @@
                 <Image url="@../images/board/SantoriniBoard.png" />
                </image>
         </ImageView>
-      <ImageView fx:id="imgGodCard" fitHeight="181.0" fitWidth="129.0" layoutX="27.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imgGodCard" fitHeight="181.0" fitWidth="129.0" layoutX="28.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true" />
       <GridPane fx:id="gridBoard" alignment="center" disable="true" layoutX="239.0" layoutY="64.0" prefHeight="325.0" prefWidth="324.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="63.0" />
@@ -105,10 +105,14 @@
                 <Label alignment="TOP_RIGHT" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
             </children>
         </GridPane>
-      <Label fx:id="lblCard" layoutX="9.0" layoutY="351.0" prefHeight="30.0" prefWidth="158.0">
+      <Label fx:id="lblCard" layoutX="58.0" layoutY="351.0" prefHeight="30.0" prefWidth="158.0">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Rectangle fx:id="rect" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="38.0" layoutX="51.0" layoutY="295.0" stroke="RED" strokeType="INSIDE" width="41.0" />
+      <Rectangle fx:id="rect" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="38.0" layoutX="7.0" layoutY="347.0" strokeType="INSIDE" width="41.0" />
+      <Label fx:id="lblTurn" layoutX="284.0" layoutY="29.0" prefHeight="30.0" prefWidth="241.0" textAlignment="CENTER">
+         <font>
+            <Font name="Cambria" size="22.0" />
+         </font></Label>
     </children>
 </AnchorPane>
