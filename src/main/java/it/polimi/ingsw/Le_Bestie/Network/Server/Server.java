@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -84,19 +85,34 @@ public class Server {
             client.sendMessage(new OpenLobby());
             if(lobby.getClientsWaiting().size()==lobby.getNumPlayersMatch()) {
                 System.out.println("Starting game");
+                Random rand = new Random();
+                int numGame=rand.nextInt(99999);
                 for (ClientHandler s: lobby.getClientsWaiting()) {
-                    s.sendMessage(new SendGameStart());
+                    s.sendMessage(new SendGameStart(numGame));
                 }
-                startMatch(lobby);
-                //lobby.cleanLobby();
+                Lobby lHelp= new Lobby();
+                for (ClientHandler c: lobby.getClientsWaiting()) {
+                    lHelp.addClientToLobby(c);
+                }
+                lHelp.setNumPlayersMatch(lobby.getNumPlayersMatch());
+                GameController game = new GameController(lHelp, numGame);
+                activeGames.add(game);
             }
         }
     }
 
-    public synchronized void startMatch(Lobby lobby){
+    public void checkLoadingBoards(int numGame){
+        GameController g = getGame(numGame);
+        g.getLobby().setLoadedBoards(g.getLobby().getLoadedBoards()+1);
+        if(g.getLobby().getLoadedBoards()==g.getLobby().getNumPlayersMatch()) {
+            startMatch(getGame(numGame));
+            lobby.cleanLobby();
+            lobby.setNumPlayersMatch(0);
+        }
+    }
+
+    public synchronized void startMatch(GameController game){
         try{
-            GameController game = new GameController(lobby);
-            activeGames.add(game);
             game.initGame();
         }
         catch(Exception ex){
@@ -121,6 +137,15 @@ public class Server {
                 return false;
         }
         return true;
+    }
+
+    public GameController getGame(int numGame){
+        for (GameController g: activeGames) {
+            if(g.getIdGame()==numGame){
+                return g;
+            }
+        }
+        return null;
     }
 
     public static void removeGame(GameController game){

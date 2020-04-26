@@ -69,14 +69,19 @@ public class MessageParser implements MessageVisitor {
     @Override
     public void visit(ErrorUsername mex) {
         GUIController.getInstance().digitWrongUsername();
-
     }
 
     @Override
     public void visit(SendGameStart mex) {
-
+        Client c = (Client) obj;
+        c.setIdGame(mex.getNumGame());
         GUIController.getInstance().setBoard();
         GUIController.getInstance().closeLobbyStage();
+    }
+
+    @Override
+    public void visit(SendBoardLoaded mex) {
+        Server.getInstance().checkLoadingBoards(mex.getNumGame());
     }
 
     @Override
@@ -101,17 +106,17 @@ public class MessageParser implements MessageVisitor {
     @Override
     public void visit(SendBuilderPositions mex) {
         ClientHandler clientSender = ((ClientHandler) obj);
-        if(GameController.getInstance().setPlayerBuilder(mex.getPosX(), mex.getPosY())==2){
-            Board b=GameController.getInstance().getMatchState().getBoard();
-            for (ClientHandler c : GameController.getInstance().getLobby().getClientsWaiting()) {
+        if(Server.getInstance().getGame(mex.getIdGame()).setPlayerBuilder(mex.getPosX(), mex.getPosY())==2){
+            Board b=Server.getInstance().getGame(mex.getIdGame()).getMatchState().getBoard();
+            for (ClientHandler c : Server.getInstance().getGame(mex.getIdGame()).getLobby().getClientsWaiting()) {
                 c.sendMessage(new SendUpdatedBoard(b));
             }
             clientSender.sendMessage(new AcceptedSetupBuilder());
-            GameController.getInstance().nextTurn();
+            Server.getInstance().getGame(mex.getIdGame()).nextTurn();
         }
         else{
-            Board b=GameController.getInstance().getMatchState().getBoard();
-            for (ClientHandler c : GameController.getInstance().getLobby().getClientsWaiting()) {
+            Board b=Server.getInstance().getGame(mex.getIdGame()).getMatchState().getBoard();
+            for (ClientHandler c : Server.getInstance().getGame(mex.getIdGame()).getLobby().getClientsWaiting()) {
                 c.sendMessage(new SendUpdatedBoard(b));
             }
             clientSender.sendMessage(new AskPositionBuilders());
@@ -131,20 +136,18 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(SendBuilderChosen mex) {
-
-        GameController.getInstance().checkBuilder(mex.getBx(), mex.getBy());
+        Server.getInstance().getGame(mex.getIdGame()).checkBuilder(mex.getBx(), mex.getBy());
     }
 
     @Override
     public void visit(AskCell mex) {
         BoardController.getInstance().setClickBorder();
         BoardController.getInstance().AskCellChosen();
-
     }
 
     @Override
     public void visit(SendCellChosen mex) {
-        GameController.getInstance().requestAction(mex.getCx(), mex.getCy());
+        Server.getInstance().getGame(mex.getIdGame()).requestAction(mex.getCx(), mex.getCy());
     }
 
     @Override
@@ -155,17 +158,17 @@ public class MessageParser implements MessageVisitor {
     @Override
     public void visit(SendPowerNotUsed mex) {
         ClientHandler c = (ClientHandler) obj;
-        if(!GameController.getInstance().getMatchState().getHasMoved()){
-            GameController.getInstance().getMatchState().setHasMoved(true);
+        if(!Server.getInstance().getGame(mex.getIdGame()).getMatchState().getHasMoved()){
+            Server.getInstance().getGame(mex.getIdGame()).getMatchState().setHasMoved(true);
             //Update clients
-            for (ClientHandler client : GameController.getInstance().getLobby().getClientsWaiting()) {
-                client.sendMessage(new SendUpdatedBoard(GameController.getInstance().getMatchState().getBoard()));
+            for (ClientHandler client : Server.getInstance().getGame(mex.getIdGame()).getLobby().getClientsWaiting()) {
+                client.sendMessage(new SendUpdatedBoard(Server.getInstance().getGame(mex.getIdGame()).getMatchState().getBoard()));
             }
             c.sendMessage(new AskCell());
         }
         else{
-            GameController.getInstance().getMatchState().setUsePower(true);
-            GameController.getInstance().requestAction(mex.getCx(), mex.getCy());
+            Server.getInstance().getGame(mex.getIdGame()).getMatchState().setUsePower(true);
+            Server.getInstance().getGame(mex.getIdGame()).requestAction(mex.getCx(), mex.getCy());
         }
     }
 
@@ -176,11 +179,11 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(SendCellWithPower mex) {
-        GameController.getInstance().getMatchState().setUsePower(mex.isPower());
-        GameController.getInstance().requestAction(mex.getCx(), mex.getCy());
+        Server.getInstance().getGame(mex.getIdGame()).getMatchState().setUsePower(mex.isPower());
+        Server.getInstance().getGame(mex.getIdGame()).requestAction(mex.getCx(), mex.getCy());
         //Update clients
-        for (ClientHandler client : GameController.getInstance().getLobby().getClientsWaiting()) {
-            client.sendMessage(new SendUpdatedBoard(GameController.getInstance().getMatchState().getBoard()));
+        for (ClientHandler client : Server.getInstance().getGame(mex.getIdGame()).getLobby().getClientsWaiting()) {
+            client.sendMessage(new SendUpdatedBoard(Server.getInstance().getGame(mex.getIdGame()).getMatchState().getBoard()));
         }
     }
 
@@ -191,10 +194,8 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(LostForDisconnection mex) {
-
         GUIController.getInstance().displayDisconnection();
         GUIController.getInstance().closeBoard();
-
     }
 
     @Override
@@ -246,7 +247,6 @@ public class MessageParser implements MessageVisitor {
                 }
             }
         });
-
     }
 
     @Override

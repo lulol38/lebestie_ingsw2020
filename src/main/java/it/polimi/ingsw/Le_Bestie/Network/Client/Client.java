@@ -25,7 +25,9 @@ public class Client implements Runnable {
     private ObjectOutputStream out;
     private ObjectInputStream in;
 
-    public Client(String ip, int port, String username) throws IOException {
+    private int idGame;
+
+    public Client(String ip, int port, String username) {
 
         this.ip=ip;
         this.port=port;
@@ -34,7 +36,7 @@ public class Client implements Runnable {
         instance=this;
     }
 
-    public boolean init() throws IOException {
+    public boolean init() {
         try {
             //Create the connection with the server
             this.socket = new Socket(ip, port);
@@ -43,6 +45,13 @@ public class Client implements Runnable {
             return true;
         }
         catch(Exception ex){
+            javafx.application.Platform.runLater(()->{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setContentText("The server is not running");
+
+                alert.showAndWait();
+            });
             return false;
         }
     }
@@ -77,6 +86,14 @@ public class Client implements Runnable {
 
     public void setNumPlayers(int numPlayers) {
         this.numPlayers = numPlayers;
+    }
+
+    public int getIdGame() {
+        return idGame;
+    }
+
+    public void setIdGame(int idGame) {
+        this.idGame = idGame;
     }
 
     public void receiveMessage() {

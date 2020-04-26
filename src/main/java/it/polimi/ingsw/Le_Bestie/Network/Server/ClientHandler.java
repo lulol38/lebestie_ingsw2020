@@ -79,7 +79,6 @@ public class ClientHandler implements Runnable {
             e.printStackTrace();
             closeConnection();
         }
-
     }
 
     public void sendMessage(Message message){

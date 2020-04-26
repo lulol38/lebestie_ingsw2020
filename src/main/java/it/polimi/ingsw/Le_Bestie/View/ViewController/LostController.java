@@ -1,5 +1,7 @@
 package it.polimi.ingsw.Le_Bestie.View.ViewController;
 
+import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.CloseConnection;
 import it.polimi.ingsw.Le_Bestie.View.GUI;
 import it.polimi.ingsw.Le_Bestie.View.GUIController;
 import javafx.event.ActionEvent;
@@ -12,11 +14,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-
 public class LostController {
+
     @FXML
     AnchorPane lostPane;
-
 
     public void pressRejoin(ActionEvent actionEvent) {
         Stage stage = (Stage) lostPane.getScene().getWindow();
@@ -36,13 +37,13 @@ public class LostController {
         connectionMenu.setScene(scene);
         connectionMenu.setResizable(false);
         connectionMenu.show();
-
     }
-
 
     public void pressQuit(ActionEvent actionEvent) {
+        Client.getInstance().sendMessage(new CloseConnection(Client.getInstance().getIdGame()));
         System.exit(0);
     }
+
     public void close(){
         Stage stage = (Stage) lostPane.getScene().getWindow();
         stage.close();

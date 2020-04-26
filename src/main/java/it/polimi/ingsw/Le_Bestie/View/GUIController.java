@@ -2,6 +2,7 @@ package it.polimi.ingsw.Le_Bestie.View;
 
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.CloseConnection;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendBoardLoaded;
 import it.polimi.ingsw.Le_Bestie.View.ViewController.BoardController;
 import it.polimi.ingsw.Le_Bestie.View.ViewController.ConnectionController;
 import it.polimi.ingsw.Le_Bestie.View.ViewController.LobbyController;
@@ -124,10 +125,11 @@ public class GUIController {
                         @Override
                         public void handle(WindowEvent we) {
                             if(Client.getInstance()!=null)
-                                Client.getInstance().sendMessage(new CloseConnection());
+                                Client.getInstance().sendMessage(new CloseConnection(Client.getInstance().getIdGame()));
                             System.exit(0);
                         }
                     });
+                    Client.getInstance().sendMessage(new SendBoardLoaded(Client.getInstance().getIdGame()));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

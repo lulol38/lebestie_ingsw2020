@@ -1,5 +1,7 @@
 package it.polimi.ingsw.Le_Bestie.View.ViewController;
 
+import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.CloseConnection;
 import it.polimi.ingsw.Le_Bestie.View.GUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,8 +39,8 @@ public class WinController {
 
     }
 
-
     public void pressQuit(ActionEvent actionEvent) {
+        Client.getInstance().sendMessage(new CloseConnection(Client.getInstance().getIdGame()));
         System.exit(0);
     }
 

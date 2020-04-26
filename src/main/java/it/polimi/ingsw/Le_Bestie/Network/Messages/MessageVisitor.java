@@ -60,4 +60,6 @@ public interface MessageVisitor {
     void visit(LostForDisconnection mex);
 
     void visit(OpenLobby openLobby);
+
+    void visit(SendBoardLoaded mex);
 }

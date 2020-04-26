@@ -73,12 +73,12 @@ public class BoardController extends GridPane {
         this.instance=this;
         this.buildersSetted=false;
     }
+
     public static BoardController getInstance(){
         if (instance == null)
             instance = new BoardController();
         return instance;
     }
-
 
     public void initialize()
     {
@@ -159,9 +159,9 @@ public class BoardController extends GridPane {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == buttonTypeOne){
 
-                Client.getInstance().sendMessage(new SendCellWithPower(selectedCellX, selectedCellY, false));
+                Client.getInstance().sendMessage(new SendCellWithPower(selectedCellX, selectedCellY, false, Client.getInstance().getIdGame()));
             } else if (result.get() == buttonTypeTwo) {
-                Client.getInstance().sendMessage(new SendCellWithPower(selectedCellX, selectedCellY, true));
+                Client.getInstance().sendMessage(new SendCellWithPower(selectedCellX, selectedCellY, true, Client.getInstance().getIdGame()));
             }
         });
     }
@@ -184,7 +184,7 @@ public class BoardController extends GridPane {
                 imgPower.setOpacity(1.0);
                 AskCellChosen();
             } else if (result.get() == buttonTypeTwo) {
-                Client.getInstance().sendMessage(new SendPowerNotUsed(selectedCellX, selectedCellY));
+                Client.getInstance().sendMessage(new SendPowerNotUsed(selectedCellX, selectedCellY, Client.getInstance().getIdGame()));
             }
         });
     }
@@ -202,7 +202,7 @@ public class BoardController extends GridPane {
 
 
                     try {
-                        Client.getInstance().sendMessage(new SendBuilderPositions(posx, posy));
+                        Client.getInstance().sendMessage(new SendBuilderPositions(posx, posy, Client.getInstance().getIdGame()));
                     } catch (Exception ex) {
                         System.out.println(ex.getMessage());
                     }
@@ -216,7 +216,7 @@ public class BoardController extends GridPane {
                         selectedBuilderX = gridBoard.getRowIndex(clickedNode);
                         selectedBuilderY = gridBoard.getColumnIndex(clickedNode);
 
-                        Client.getInstance().sendMessage(new SendBuilderChosen(selectedBuilderX, selectedBuilderY));
+                        Client.getInstance().sendMessage(new SendBuilderChosen(selectedBuilderX, selectedBuilderY, Client.getInstance().getIdGame()));
                         n=clickedNode;
 
                     }
@@ -227,7 +227,7 @@ public class BoardController extends GridPane {
                             selectedCellX = gridBoard.getRowIndex(clickedNode);
                             selectedCellY = gridBoard.getColumnIndex(clickedNode);
 
-                            Client.getInstance().sendMessage(new SendCellChosen(selectedCellX, selectedCellY));
+                            Client.getInstance().sendMessage(new SendCellChosen(selectedCellX, selectedCellY, Client.getInstance().getIdGame()));
 
                         }
                     }
@@ -264,7 +264,6 @@ public class BoardController extends GridPane {
                     }
                 }
             }
-
         });
     }
 
@@ -283,7 +282,6 @@ public class BoardController extends GridPane {
         javafx.application.Platform.runLater(()->{
             BoardController.getInstance().activeGUI();
             lblTurn.setText("IS YOUR TURN");
-
         });
     }
 
@@ -319,9 +317,8 @@ public class BoardController extends GridPane {
 
     public void setClickBorder()
     {
-        n.setStyle("-fx-border-color: Red;");
+        n.setStyle("-fx-border-color: #ff0000;");
     }
-
 
     public void close(){
         Stage stage = (Stage) boardPane.getScene().getWindow();
@@ -331,7 +328,5 @@ public class BoardController extends GridPane {
     public void createBoard(){
         GUIController.getInstance().setScene(gridBoard.getScene(),"/fxml/BoardStage.fxml");
     }
-
-
 
 }

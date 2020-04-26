@@ -18,17 +18,16 @@ import java.util.Collections;
 //Controller for the server, it takes place between the model and the network in the server side
 public class GameController {
 
-    private static GameController instance;
     private Lobby lobby;
     private MatchState matchState;
     private int Winner;
     private Player currentTurnPlayer;
+    private int idGame;
 
-    public GameController(Lobby lobby) {
+    public GameController(Lobby lobby, int idGame) {
         this.lobby=lobby;
         this.matchState=new MatchState();
-        this.instance=this;
-
+        this.idGame=idGame;
         for (ClientHandler c: lobby.getClientsWaiting()) {
             matchState.addPlayer(c.getUsername());
         }
@@ -38,16 +37,20 @@ public class GameController {
         return lobby;
     }
 
-    public static GameController getInstance() {
-        return instance;
-    }
-
     public MatchState getMatchState() {
         return matchState;
     }
 
     public void setWinner(int winner) {
         Winner = winner;
+    }
+
+    public int getIdGame() {
+        return idGame;
+    }
+
+    public void setIdGame(int idGame) {
+        this.idGame = idGame;
     }
 
     public void initGame(){

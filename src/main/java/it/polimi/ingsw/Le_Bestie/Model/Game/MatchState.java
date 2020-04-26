@@ -77,14 +77,6 @@ public class MatchState {
         return gameStarted;
     }
 
-    public boolean searchExistingNickname(String nickname) {
-        for (Player p : players) {
-            if (p.getNickname().equals(nickname))
-                return true;
-        }
-        return false;
-    }
-
     public void addPlayer(String nickname){
         Player p= new Player(nickname, builderColorNotUsed().get(0));
         players.add(p);

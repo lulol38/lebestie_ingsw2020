@@ -6,6 +6,7 @@ public class Lobby {
 
     private ArrayList<ClientHandler> clientsWaiting = new ArrayList<ClientHandler>();
     private int numPlayersMatch;
+    private int loadedBoards;
 
     public Lobby(){
 
@@ -21,6 +22,14 @@ public class Lobby {
 
     public ArrayList<ClientHandler> getClientsWaiting() {
         return clientsWaiting;
+    }
+
+    public int getLoadedBoards() {
+        return loadedBoards;
+    }
+
+    public void setLoadedBoards(int loadedBoards) {
+        this.loadedBoards = loadedBoards;
     }
 
     public void addClientToLobby(ClientHandler s){
