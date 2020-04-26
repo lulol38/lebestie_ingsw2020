@@ -24,33 +24,33 @@ public class Minotaur extends GodCard{
 
     @Override
     public int move(Board b,Builder w, Cell c, boolean usePower) {
-        if(w.possibleMoves(b,notMoveUp).contains(c))
-            return super.move(b, w, c,usePower);
+        if (w.possibleMoves(b, notMoveUp).contains(c))
+            return super.move(b, w, c, usePower);
 
-        Cell currentCell=b.getGrid()[w.getPosition().getX()][w.getPosition().getY()];
-        Position nextCellPosition=c.nextCellFree(b,currentCell);
-        if(nextCellPosition!=null)
-        {
-            //winner condition
-            if(HasWon(c,currentCell))
-                return 2;
+        if (w.possibleSwitch(b, notMoveUp).contains(c)) {
+            Cell currentCell = b.getGrid()[w.getPosition().getX()][w.getPosition().getY()];
+            Position nextCellPosition = c.nextCellFree(b, currentCell);
+            if (nextCellPosition != null) {
+                //winner condition
+                if (HasWon(c, currentCell))
+                    return 2;
 
-            Cell nextCell=b.getGrid()[nextCellPosition.getX()][nextCellPosition.getY()];
-            currentCell.setBuilder(null);
+                Cell nextCell = b.getGrid()[nextCellPosition.getX()][nextCellPosition.getY()];
+                currentCell.setBuilder(null);
 
-            //change cell to the opponent Builder
-            nextCell.setBuilder(c.getBuilder());
-            c.getBuilder().setPosition(nextCell.getPosition());
+                //change cell to the opponent Builder
+                nextCell.setBuilder(c.getBuilder());
+                c.getBuilder().setPosition(nextCell.getPosition());
 
-            //change my cell
-            c.setBuilder(w);
-            w.setPosition(c.getPosition());
+                //change my cell
+                c.setBuilder(w);
+                w.setPosition(c.getPosition());
 
-            return 1;
-
+                return 1;
+            }
         }
         return 0;
-    }
+     }
 
     @Override
     public boolean HasLost(Player player, Board b) {
