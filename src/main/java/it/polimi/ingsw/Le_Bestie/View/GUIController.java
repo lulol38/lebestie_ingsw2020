@@ -124,8 +124,14 @@ public class GUIController {
                     stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                         @Override
                         public void handle(WindowEvent we) {
-                            if(Client.getInstance()!=null)
+                            if(Client.getInstance()!=null) {
                                 Client.getInstance().sendMessage(new CloseConnection(Client.getInstance().getIdGame()));
+                                try {
+                                    Client.getInstance().closeConnection();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
                             System.exit(0);
                         }
                     });
@@ -141,7 +147,6 @@ public class GUIController {
     public void closeLobbyStage(){
         javafx.application.Platform.runLater(()-> {
             lobbyController.close();
-
         });
     }
 

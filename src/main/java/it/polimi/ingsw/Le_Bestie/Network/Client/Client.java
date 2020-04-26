@@ -64,7 +64,6 @@ public class Client implements Runnable {
             catch(Exception ex){
                 System.out.println(ex.getMessage());
             }
-
         }
     }
 
@@ -115,5 +114,11 @@ public class Client implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void closeConnection() throws IOException {
+        this.socket.close();
+        this.in.close();
+        this.out.close();
     }
 }

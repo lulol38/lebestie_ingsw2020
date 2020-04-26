@@ -14,6 +14,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
+
 public class LostController {
 
     @FXML
@@ -39,8 +41,9 @@ public class LostController {
         connectionMenu.show();
     }
 
-    public void pressQuit(ActionEvent actionEvent) {
+    public void pressQuit(ActionEvent actionEvent) throws IOException {
         Client.getInstance().sendMessage(new CloseConnection(Client.getInstance().getIdGame()));
+        Client.getInstance().closeConnection();
         System.exit(0);
     }
 

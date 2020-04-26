@@ -88,10 +88,9 @@ public class ConnectionController {
     public void openLobby(){
         GUIController.getInstance().setScene(connectionPane.getScene(),"/fxml/LobbyStage.fxml");
     }
+
     public void close(){
         Stage stage = (Stage) connectionPane.getScene().getWindow();
         stage.close();
     }
-
-
 }

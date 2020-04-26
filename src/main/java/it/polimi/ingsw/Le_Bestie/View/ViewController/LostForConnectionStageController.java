@@ -1,11 +1,14 @@
 package it.polimi.ingsw.Le_Bestie.View.ViewController;
 
+import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.CloseConnection;
 import it.polimi.ingsw.Le_Bestie.View.GUI;
 import it.polimi.ingsw.Le_Bestie.View.GUIController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import java.awt.*;
+import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -47,7 +50,9 @@ public class LostForConnectionStageController {
 
     }
 
-    public void pressQuit(javafx.event.ActionEvent actionEvent) {
+    public void pressQuit(javafx.event.ActionEvent actionEvent) throws IOException {
+        Client.getInstance().sendMessage(new CloseConnection(Client.getInstance().getIdGame()));
+        Client.getInstance().closeConnection();
         System.exit(0);
     }
 

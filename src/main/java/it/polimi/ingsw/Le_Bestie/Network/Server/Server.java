@@ -126,7 +126,13 @@ public class Server {
         for(ClientHandler client:lobby.getClientsWaiting())
             client.sendMessage(new LostForDisconnection());
         for (GameController g: activeGames) {
-            if(g.getLobby().getClientsWaiting().contains(c)) activeGames.remove(g);
+            if(g.getLobby().getClientsWaiting().contains(c)){
+                g.getLobby().getClientsWaiting().remove(c);
+                for (ClientHandler client: g.getLobby().getClientsWaiting()) {
+                    client.sendMessage(new LostForDisconnection());
+                }
+                activeGames.remove(g);
+            }
         }
     }
 
