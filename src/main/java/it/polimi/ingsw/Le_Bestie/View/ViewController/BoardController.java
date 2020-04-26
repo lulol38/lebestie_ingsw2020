@@ -3,6 +3,7 @@ package it.polimi.ingsw.Le_Bestie.View.ViewController;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.*;
+import it.polimi.ingsw.Le_Bestie.View.GUIController;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -183,6 +184,8 @@ public class BoardController extends GridPane {
             Node clickedNode = event.getPickResult().getIntersectedNode();
             if (buildersSetted == false) { //Enter here only to setup builders
                 if (clickedNode != gridBoard) {
+                    if(!(clickedNode instanceof Label))
+                        clickedNode=clickedNode.getParent();
                     posx = gridBoard.getRowIndex(clickedNode);
                     posy = gridBoard.getColumnIndex(clickedNode);
 
@@ -313,5 +316,8 @@ public class BoardController extends GridPane {
        s.close();
     }
 
+    public void sendDisconnection(){
+        GUIController.getInstance().displayDisconnection();
+    }
 
 }

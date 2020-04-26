@@ -23,7 +23,6 @@ public class GUI extends Application {
         Scene scene=new Scene(new AnchorPane());
         primaryStage.setScene(scene);
         GUIController.setScene(scene,"/fxml/StartStage.fxml");
-
         primaryStage.show();
 
     }

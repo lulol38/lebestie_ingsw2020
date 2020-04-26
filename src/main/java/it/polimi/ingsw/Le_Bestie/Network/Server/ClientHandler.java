@@ -1,18 +1,11 @@
 package it.polimi.ingsw.Le_Bestie.Network.Server;
 
-import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.Message;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageParser;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Scanner;
 
 /**
  * Class ServerClientHandler
@@ -84,7 +77,9 @@ public class ClientHandler implements Runnable {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            closeConnection();
         }
+
     }
 
     public void sendMessage(Message message){

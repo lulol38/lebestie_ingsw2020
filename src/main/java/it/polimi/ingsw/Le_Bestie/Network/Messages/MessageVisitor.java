@@ -56,4 +56,6 @@ public interface MessageVisitor {
     void visit(SendHasLost mex);
 
     void visit(SendHasWon mex);
+
+    void visit(LostForDisconnection mex);
 }

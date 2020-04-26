@@ -3,6 +3,7 @@ package it.polimi.ingsw.Le_Bestie.Network.Server;
 import it.polimi.ingsw.Le_Bestie.Controller.GameController;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskNumPlayers;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.AskUsername;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.LostForDisconnection;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.SendGameStart;
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -108,6 +109,8 @@ public class Server {
     public synchronized void deleteConnection(ClientHandler c) {
         clientsConnected.remove(c);
         if ( lobby.getClientsWaiting().contains(c) ) lobby.getClientsWaiting().remove(c);
+        for(ClientHandler client:lobby.getClientsWaiting())
+            client.sendMessage(new LostForDisconnection());
         for (GameController g: activeGames) {
             if(g.getLobby().getClientsWaiting().contains(c)) activeGames.remove(g);
         }

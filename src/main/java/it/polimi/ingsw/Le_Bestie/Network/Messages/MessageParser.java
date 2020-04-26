@@ -234,6 +234,11 @@ public class MessageParser implements MessageVisitor {
     }
 
     @Override
+    public void visit(LostForDisconnection mex) {
+        BoardController.getInstance().sendDisconnection();
+    }
+
+    @Override
     public void visit(AskCellError mex) {
         BoardController.getInstance().AskCellError("The pieces aren't available");
     }
@@ -284,6 +289,6 @@ public class MessageParser implements MessageVisitor {
                 }
             }
         });
-        BoardController.getInstance().closeConnWindow();
+
     }
 }

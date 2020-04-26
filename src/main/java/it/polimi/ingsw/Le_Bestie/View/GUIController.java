@@ -27,6 +27,7 @@ public class GUIController {
         try {
             AnchorPane root = (AnchorPane) FXMLLoader.load(GUIController.class.getResource(path));
             scene.setRoot(root);
+
         }catch (Exception e){
 
         }
@@ -51,6 +52,28 @@ public class GUIController {
                 }
             }
         });
+    }
+
+    public void displayDisconnection(){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Stage stage= new Stage();
+                    Parent root = null;
+                    root = FXMLLoader.load(getClass().getResource("/fxml/LostForConnectionStage.fxml"));
+                    Scene scene = new Scene(root);
+                    stage.initStyle(StageStyle.UNDECORATED);
+                    stage.setResizable(false);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
     }
 
 }
