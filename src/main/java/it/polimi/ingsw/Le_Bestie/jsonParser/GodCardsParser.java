@@ -98,6 +98,26 @@ public class GodCardsParser {
                     if(players.contains(n))
                     cards.add(new Pan(name));
                     break;
+               case "Ares":
+                   if(players.contains(n))
+                       cards.add(new Ares(name));
+                   break;
+               case "Chronus":
+                   if(players.contains(n))
+                       cards.add(new Chronus(name));
+                   break;
+               case "Hestia":
+                   if(players.contains(n))
+                       cards.add(new Hestia(name));
+                   break;
+               case "Triton":
+                   if(players.contains(n))
+                       cards.add(new Triton(name));
+                   break;
+               case "Zeus":
+                   if(players.contains(n))
+                       cards.add(new Zeus(name));
+                   break;
             }
 
         return cards;
