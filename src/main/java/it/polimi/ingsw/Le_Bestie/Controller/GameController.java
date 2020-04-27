@@ -60,7 +60,7 @@ public class GameController {
         ArrayList<String>opponents=new ArrayList<>();
         ArrayList<String>opponentsGods=new ArrayList<>();
         for(Player p:matchState.getPlayers()){
-            if(!(p.getNickname().equals(lobby.getClientsWaiting().get(0).getUsername()))){
+            if(p.getNickname().compareTo(lobby.getClientsWaiting().get(0).getUsername())!=0){
                 opponents.add(p.getNickname());
                 opponentsGods.add(p.getGodCard().getName());
             }
@@ -100,7 +100,7 @@ public class GameController {
             ArrayList<String>opponents=new ArrayList<>();
             ArrayList<String>opponentsGods=new ArrayList<>();
             for(Player p:matchState.getPlayers()){
-                if(!(p.getNickname().equals(lobby.getClientsWaiting().get(0).getUsername()))){
+                if(p.getNickname().compareTo(lobby.getClientsWaiting().get(0).getUsername())!=0){
                     opponents.add(p.getNickname());
                     opponentsGods.add(p.getGodCard().getName());
                 }
