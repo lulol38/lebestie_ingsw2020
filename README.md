@@ -44,7 +44,7 @@ The object of the game is to win by either moving a worker to stand on the third
 - [X] Multiple Concourrent Games
 - [ ] Undo
 - [ ] State of Game Persistent 
-- [ ] Advanced Gods
+- [X] Advanced Gods
 
 ## DOCUMENTATION
 ### UML
