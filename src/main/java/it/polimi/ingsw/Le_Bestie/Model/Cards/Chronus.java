@@ -14,8 +14,9 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 public class Chronus extends GodCard{
 
-    public Chronus(String name) {
-        super(name);
+    public Chronus(String name,String path)
+    {
+        super(name,path);
     }
 
     @Override

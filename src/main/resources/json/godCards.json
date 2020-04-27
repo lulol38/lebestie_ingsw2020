@@ -5,6 +5,7 @@
       "title":"God Of Music",
       "description": "Your Worker may move into an opponent Worker’s space by forcing their Worker to the space yours just vacated.",
       "active":"Your Move",
+      "path": "images/godCards/01.png",
       "players" : [2,3]
     },
     {
@@ -12,6 +13,7 @@
       "title":"Goddess of the Hunt",
       "description": "Your Worker may move one additional time, but not back to its initial space.",
       "active":"Your Move",
+      "path": "images/godCards/02.png",
       "players" : [2,3]
 
     },
@@ -20,6 +22,7 @@
       "title": "Goddess of Wisdom",
       "description": "If one of your Workers moved up on your last turn, opponent Workers cannot move up this turn.",
       "active":"Opponent’s Turn",
+      "path": "images/godCards/03.png",
       "players" : [2,3]
 
     },
@@ -28,6 +31,7 @@
       "title": "Titan Shouldering the Heavens",
       "description": "Your Worker may build a dome at any level.",
       "active":"Your Build",
+      "path": "images/godCards/04.png",
       "players" : [2,3]
 
     },
@@ -36,6 +40,7 @@
       "title": "Goddess of the Harvest",
       "description": "Your Worker may build one additional time, but not on the same space.",
       "active":"Your Build",
+      "path": "images/godCards/05.png",
       "players" : [2,3]
     },
     {
@@ -43,6 +48,7 @@
       "title": "God of Blacksmiths",
       "description": "Your Worker may build one additional block (not dome) on top of your first block.",
       "active":"Your Build",
+      "path": "images/godCards/06.png",
       "players" : [2]
 
     },
@@ -51,6 +57,7 @@
       "title": "Bull-headed Monster",
       "description": "Your Worker may move into an opponent Worker’s space, if their Worker can be forced one space straight backwards to an unoccupied space at any level.",
       "active":"Your Move",
+      "path": "images/godCards/08.png",
       "players" : [2,3]
 
     },
@@ -59,6 +66,7 @@
       "title": "God of the Wild",
       "description": "You also win if your Worker moves down two or more levels.",
       "active":"Your Move",
+      "path": "images/godCards/09.png",
       "players" : [2,3]
     },
     {
@@ -66,6 +74,7 @@
       "title": "Titan Benefactor of Mankind",
       "description": "If your Worker does not move up, it may build both before and after moving.",
       "active":"Win Condition",
+      "path": "images/godCards/10.png",
       "players" : [2]
     },
     {
@@ -73,6 +82,7 @@
       "title": "God of War",
       "description": " You may remove an unoccupied block (not dome) neighboring your unmoved Worker. You also remove any Tokens on the block",
       "active":"End of your turn",
+      "path": "images/godCards/12.png",
       "players" : [2,3]
     },
     {
@@ -80,6 +90,7 @@
       "title": "God of Time",
       "description": ": You also win when there are at least five Complete Towers on the board.",
       "active":"Win Condition",
+      "path": "images/godCards/16.png",
       "players" : [2]
     },
     {
@@ -87,6 +98,7 @@
       "title": "Goddess of Hear th and Home",
       "description": " Your Worker may\nbuild one additional time, but this\ncannot be on a perimeter space.",
       "active":"Your Build",
+      "path": "images/godCards/21.png",
       "players" : [2,3]
     },
     {
@@ -94,6 +106,7 @@
       "title": "God of the Waves",
       "description": " Each time your Worker moves into a perimeter space, it may immediately move again.",
       "active":"Your move",
+      "path": "images/godCards/29.png",
       "players" : [2,3]
     },
     {
@@ -101,6 +114,7 @@
       "title": "God of the Sky",
       "description": "Your Worker may build a block under itself.",
       "active":"Your Build",
+      "path": "images/godCards/30.png",
       "players" : [2,3]
     }
 

@@ -16,6 +16,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -28,10 +29,7 @@ import javafx.stage.Stage;
 
 import java.lang.reflect.Field;
 import java.net.URL;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 //Controller for the client Board
 public class BoardController{
@@ -62,6 +60,10 @@ public class BoardController{
     ImageView imgPower;
     @FXML
     Label lblMessages;
+    @FXML
+    Label lblOpponents1;
+    @FXML
+    Label lblOpponents2;
     @FXML
     Label lblTurn;
     @FXML
@@ -310,10 +312,12 @@ public class BoardController{
         });
     }
 
-    public void addCardOnBoard(String card,String color){
+    public void addCardOnBoard(String card, String color, String path){
         javafx.application.Platform.runLater(()-> {
             lblCard.setText(card);
             rect.setFill(Color.valueOf(color));
+            imgGodCard.setImage(new Image(path));
+
         });
     }
 
@@ -329,5 +333,18 @@ public class BoardController{
 
     public void createBoard(){
         GUIController.getInstance().setScene(gridBoard.getScene(),"/fxml/BoardStage.fxml");
+    }
+
+    public void addOpponentsOnBoard(ArrayList<String> opponents, ArrayList<String> opponentsGods) {
+        javafx.application.Platform.runLater(()-> {
+            for(int j=0;j<opponents.size();j++){
+                if(j==1){
+                    lblOpponents2.setText(opponents.get(j)+" with "+opponentsGods.get(j));
+                    break;
+                }
+                lblOpponents1.setText(opponents.get(j)+" with "+opponentsGods.get(j));
+            }
+
+        });
     }
 }

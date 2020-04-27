@@ -33,6 +33,8 @@ public interface MessageVisitor {
 
     void visit(SendUpdatedBoard mex);
 
+    void visit(SendOpponents mex);
+
     void visit(SendBuilderChosen mex);
 
     void visit(AskCell mex);

@@ -18,8 +18,8 @@ import java.util.ArrayList;
 
 public class Minotaur extends GodCard{
 
-    public Minotaur(String name) {
-        super(name);
+    public Minotaur(String name,String path) {
+        super(name,path);
     }
 
     @Override

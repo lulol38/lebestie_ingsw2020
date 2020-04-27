@@ -17,12 +17,15 @@ public abstract class GodCard implements Serializable {
 
     private String name;
     static protected boolean notMoveUp;
-    private String Message;
+    private String message;
+    private String path;
 
-    public GodCard(String name){
+    public GodCard(String name,String path){
         this.name=name;
+        this.path=path;
     }
     public String getName() { return this.name; }
+    public String getPath() { return this.path; }
 
     public void setNotMoveUp(boolean notMoveUp) {
         this.notMoveUp=notMoveUp;
@@ -33,11 +36,11 @@ public abstract class GodCard implements Serializable {
     }
 
     public String getMessage() {
-        return Message;
+        return message;
     }
 
     public void setMessage(String message) {
-        Message = message;
+        message = message;
     }
 
     /* return

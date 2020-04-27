@@ -57,7 +57,17 @@ public class GameController {
         matchState.startGame();
 
         lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
-        lobby.getClientsWaiting().get(0).sendMessage(new SendCardToPlayers(matchState.getCurrentPlayer().getGodCard().getName(),matchState.getCurrentPlayer().getColor().toString()));
+        ArrayList<String>opponents=new ArrayList<>();
+        ArrayList<String>opponentsGods=new ArrayList<>();
+        for(Player p:matchState.getPlayers()){
+            if(!(p.getNickname().equals(lobby.getClientsWaiting().get(0).getUsername()))){
+                opponents.add(p.getNickname());
+                opponentsGods.add(p.getGodCard().getName());
+            }
+        }
+        lobby.getClientsWaiting().get(0).sendMessage(new SendOpponents(opponents,opponentsGods));
+        lobby.getClientsWaiting().get(0).sendMessage(new SendCardToPlayers(matchState.getCurrentPlayer().getGodCard().getName(),matchState.getCurrentPlayer().getColor().toString(),matchState.getCurrentPlayer().getGodCard().getPath()));
+
         lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
     }
 
@@ -87,7 +97,16 @@ public class GameController {
         Collections.rotate(lobby.getClientsWaiting(), -1);
         lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
         if(matchState.getCurrentPlayer().getBuilder1()==null||matchState.getCurrentPlayer().getBuilder2()==null) {
-            lobby.getClientsWaiting().get(0).sendMessage(new SendCardToPlayers(matchState.getCurrentPlayer().getGodCard().getName(),matchState.getCurrentPlayer().getColor().toString()));
+            ArrayList<String>opponents=new ArrayList<>();
+            ArrayList<String>opponentsGods=new ArrayList<>();
+            for(Player p:matchState.getPlayers()){
+                if(!(p.getNickname().equals(lobby.getClientsWaiting().get(0).getUsername()))){
+                    opponents.add(p.getNickname());
+                    opponentsGods.add(p.getGodCard().getName());
+                }
+            }
+            lobby.getClientsWaiting().get(0).sendMessage(new SendOpponents(opponents,opponentsGods));
+            lobby.getClientsWaiting().get(0).sendMessage(new SendCardToPlayers(matchState.getCurrentPlayer().getGodCard().getName(),matchState.getCurrentPlayer().getColor().toString(),matchState.getCurrentPlayer().getGodCard().getPath()));
             lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
         }
         else{ //BEGIN TURN

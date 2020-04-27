@@ -13,7 +13,6 @@
                 <Image url="@../images/board/SantoriniBoard.png" />
                </image>
         </ImageView>
-      <ImageView fx:id="imgGodCard" fitHeight="181.0" fitWidth="129.0" layoutX="28.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true" />
       <GridPane fx:id="gridBoard" alignment="center" disable="true" layoutX="239.0" layoutY="64.0" prefHeight="325.0" prefWidth="324.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="63.0" />
@@ -110,14 +109,17 @@
             <Font size="20.0" />
          </font></Label>
       <Rectangle fx:id="rect" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="38.0" layoutX="7.0" layoutY="347.0" strokeType="INSIDE" width="41.0" />
-      <Label fx:id="lblTurn" layoutX="284.0" layoutY="29.0" prefHeight="30.0" prefWidth="241.0" textAlignment="CENTER">
+      <Label fx:id="lblTurn" alignment="CENTER" layoutX="284.0" layoutY="29.0" prefHeight="30.0" prefWidth="241.0" textAlignment="CENTER">
          <font>
             <Font name="Cambria" size="22.0" />
          </font></Label>
-      <ImageView fx:id="imgPower" fitHeight="62.0" fitWidth="62.0" layoutX="98.0" layoutY="24.0" opacity="0.0">
+      <ImageView fx:id="imgPower" fitHeight="45.0" fitWidth="41.0" layoutX="631.0" layoutY="13.0" opacity="0.0">
          <image>
             <Image url="@../images/power/heropower_active.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="imgGodCard" fitHeight="146.0" fitWidth="103.0" layoutX="86.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="lblOpponents2" layoutX="14.0" layoutY="59.0" prefHeight="38.0" prefWidth="158.0" />
+      <Label fx:id="lblOpponents1" layoutX="14.0" layoutY="10.0" prefHeight="38.0" prefWidth="158.0" />
     </children>
 </AnchorPane>

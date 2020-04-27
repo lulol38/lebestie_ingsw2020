@@ -17,8 +17,8 @@ public class Demeter extends GodCard{
     private Cell firstBuiltCell;
     private String Message;
 
-    public Demeter(String name) {
-        super(name);
+    public Demeter(String name,String path) {
+        super(name,path);
         firstBuiltCell=null;
         Message="Do you want to build one additional time? (NOT on the same space!)";
     }

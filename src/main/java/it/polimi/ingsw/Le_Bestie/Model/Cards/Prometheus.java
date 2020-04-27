@@ -18,8 +18,8 @@ public class Prometheus extends GodCard{
     private boolean firstBuild;
     private String Message;
 
-    public Prometheus(String name) {
-        super(name);
+    public Prometheus(String name,String path) {
+        super(name,path);
         firstBuild=false;
         sendMessage=false;
         Message="Do you want to build on this cell before moving? (during the move you can't move up!!)";
