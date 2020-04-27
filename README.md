@@ -36,12 +36,12 @@ The object of the game is to win by either moving a worker to stand on the third
 
 
 ## FEATURES IMPLEMENTED
-- [ ] Simplified Rules
-- [ ] Complex Rules
-- [ ] Socket (TCP connection)
+- [X] Simplified Rules
+- [X] Complex Rules
+- [X] Socket (TCP connection)
 - [ ] CLI
-- [ ] GUI
-- [ ] Multiple Concourrent Games
+- [X] GUI
+- [X] Multiple Concourrent Games
 - [ ] Undo
 - [ ] State of Game Persistent 
 - [ ] Advanced Gods
