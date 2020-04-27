@@ -45,7 +45,7 @@ public class Apollo extends GodCard {
     }
 
     @Override
-    public boolean HasLost(Player player,Board b) {
+    public int HasLost(Player player,Board b) {
 
         if (player.getBuilder1().possibleSwitch(b, notMoveUp).size() == 0&&player.getBuilder1().possibleMoves(b, notMoveUp).size() == 0)
             player.getBuilder1().setDisabled(true);
@@ -56,6 +56,9 @@ public class Apollo extends GodCard {
         else
             player.getBuilder2().setDisabled(false);
 
-        return player.getBuilder1().getDisabled() && player.getBuilder2().getDisabled();
+        if(player.getBuilder1().getDisabled() && player.getBuilder2().getDisabled())
+            return 1;
+
+        return 0;
     }
 }

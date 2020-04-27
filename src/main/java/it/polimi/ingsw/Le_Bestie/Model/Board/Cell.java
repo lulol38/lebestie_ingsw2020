@@ -13,6 +13,8 @@ public class Cell implements Serializable {
     private Builder builder;
     private Position position;
     private boolean disabled;
+    private boolean completeTower;
+
 
     public Cell(int level)
     {
@@ -34,6 +36,10 @@ public class Cell implements Serializable {
     public Position getPosition() {
         return position;
     }
+    public boolean isCompleteTower() {
+        return completeTower;
+    }
+
 
     //Setters
     public void setLevel(int level)
@@ -54,12 +60,18 @@ public class Cell implements Serializable {
     {
         this.disabled=disabled;
     }
+    public void setCompleteTower(boolean completeTower) {
+        this.completeTower = completeTower;
+    }
+
 
 
     public void addLevel() {
         this.level++;
-        if(this.level>3)
+        if(this.level>3) {
             setDisabled(true);
+            setCompleteTower(true);
+        }
     }
 
     // !!!!! "currentCell" is the cell in which is OUR Builder and "this" is the cell in which is OPPONENT builder !!!!!!!!!!

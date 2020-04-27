@@ -91,7 +91,14 @@ public class GameController {
             lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
         }
         else{ //BEGIN TURN
-            if(matchState.getCurrentPlayer().getGodCard().HasLost(matchState.getCurrentPlayer(), matchState.getBoard())) { //CHECK IF THE PLAYER LOSES
+            int result=matchState.getCurrentPlayer().getGodCard().HasLost(matchState.getCurrentPlayer(), matchState.getBoard());
+            if(result==2)
+            {
+                setWinner(0);
+                endMatch();
+            }
+            if(result==1)
+            { //CHECK IF THE PLAYER LOSES
                 manageHasLost();
             }
             lobby.getClientsWaiting().get(0).sendMessage(new AskBuilderChosen());
@@ -170,8 +177,6 @@ public class GameController {
                     break;
                 case 3:
                     updateClients();
-                    if(matchState.getCurrentPlayer().getBuilderChosen().getDisabled())
-                        manageHasLost();
                     lobby.getClientsWaiting().get(0).sendMessage(new SendPowerMessage(matchState.getCurrentPlayer().getGodCard().getMessage()));
                     break;
                 case 4:

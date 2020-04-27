@@ -95,8 +95,13 @@ public abstract class GodCard implements Serializable {
 
     }
 
-    //HasLost viene chiamato da matchstate prima la move e dopo la build
-    public boolean HasLost(Player player,Board b){
+    /*
+    return
+    0 -> se non ha perso
+    1 -> se ha perso
+    2 -> se ha vinto
+     */
+    public int HasLost(Player player,Board b){
         if(player.getBuilder1().possibleMoves(b,notMoveUp).size()==0)
             player.getBuilder1().setDisabled(true);
         else
@@ -106,7 +111,10 @@ public abstract class GodCard implements Serializable {
             player.getBuilder2().setDisabled(true);
         else
             player.getBuilder2().setDisabled(false);
-        return player.getBuilder1().getDisabled() && player.getBuilder2().getDisabled();
+
+        if(player.getBuilder1().getDisabled() && player.getBuilder2().getDisabled())
+            return 1;
+        return 0;
     }
 
 }

@@ -26,6 +26,8 @@ public class Board implements Serializable {
         }
     }
 
+    public int getROW(){return this.ROW;}
+    public int getCOL(){return this.COL;}
     public Cell[][] getGrid() {
         return this.grid;
     }
