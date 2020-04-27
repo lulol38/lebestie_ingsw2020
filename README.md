@@ -50,8 +50,6 @@ The object of the game is to win by either moving a worker to stand on the third
 ### UML
 Uml files are in UML <a href="https://github.com/lulol38/lebestie_ingsw2020/tree/master/UML/initial%20UML"> directory </a> with a pdf file that describes functioning of the model.
 
-## HOW TO PLAY
-
 
 ## SW & TOOLS
 * **Maven** - Dependecy Manager tool
