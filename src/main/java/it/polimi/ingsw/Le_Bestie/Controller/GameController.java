@@ -113,8 +113,9 @@ public class GameController {
             endMatch();
         }
         else{ //3 PLAYERS
-            matchState.getBoard().getGrid()[matchState.getCurrentPlayer().getBuilder1().getPosition().getX()][matchState.getCurrentPlayer().getBuilder1().getPosition().getX()].setBuilder(null);
-            matchState.getBoard().getGrid()[matchState.getCurrentPlayer().getBuilder2().getPosition().getX()][matchState.getCurrentPlayer().getBuilder2().getPosition().getX()].setBuilder(null);
+            matchState.getBoard().getGrid()[matchState.getCurrentPlayer().getBuilder1().getPosition().getX()][matchState.getCurrentPlayer().getBuilder1().getPosition().getY()].setBuilder(null);
+            matchState.getBoard().getGrid()[matchState.getCurrentPlayer().getBuilder2().getPosition().getX()][matchState.getCurrentPlayer().getBuilder2().getPosition().getY()].setBuilder(null);
+
             matchState.getPlayers().remove(matchState.getCurrentPlayer());
             lobby.getClientsWaiting().get(0).sendMessage(new SendHasLost());
             lobby.getClientsWaiting().remove(0);

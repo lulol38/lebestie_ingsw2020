@@ -91,9 +91,7 @@ public abstract class GodCard implements Serializable {
     }
 
     public boolean HasWon(Cell c,Cell currentCell) {
-
         return currentCell.getLevel()<c.getLevel()&&c.getLevel()==3;
-
     }
 
     /*
