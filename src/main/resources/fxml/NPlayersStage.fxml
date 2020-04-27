@@ -19,14 +19,14 @@
       </ImageView>
 
 
-      <Button fx:id="btnNPlayers" layoutX="209.0" layoutY="393.0" mnemonicParsing="false" onAction="#pressSendNumPlayers" prefHeight="48.0" prefWidth="187.0" text="CREATE MATCH" />
+      <Button fx:id="btnNPlayers" layoutX="210.0" layoutY="385.0" mnemonicParsing="false" onAction="#pressSendNumPlayers" prefHeight="48.0" prefWidth="187.0" text="CREATE MATCH" />
       <Pane fx:id="rdbPane" layoutX="170.0" layoutY="169.0" prefHeight="196.0" prefWidth="266.0">
          <children>
          <RadioButton fx:id="rdb3P" layoutX="72.0" layoutY="75.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="130.0" text="3 PLAYERS" userData="3">
                <toggleGroup>
                <ToggleGroup fx:id="mygroup" />
                </toggleGroup></RadioButton>
-         <RadioButton fx:id="rdb2P" layoutX="68.0" layoutY="14.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="137.0" text="2 PLAYERS" toggleGroup="$mygroup" userData="2" />
+         <RadioButton fx:id="rdb2P" layoutX="72.0" layoutY="38.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="163.0" text="2 PLAYERS" toggleGroup="$mygroup" userData="2" />
          </children>
       </Pane>
       <Pane fx:id="easterPane" prefHeight="30.0" prefWidth="71.0">
