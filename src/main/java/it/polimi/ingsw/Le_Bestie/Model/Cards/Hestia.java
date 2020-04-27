@@ -16,8 +16,8 @@ public class Hestia extends GodCard{
     private boolean firstBuilt;
     private String Message;
 
-    public Hestia(String name,String path) {
-        super(name,path);
+    public Hestia(String name,String path,String description) {
+        super(name,path,description);
         firstBuilt=false;
         Message="Do you want to build one additional time? (NOT on a perimeter space!)";
     }

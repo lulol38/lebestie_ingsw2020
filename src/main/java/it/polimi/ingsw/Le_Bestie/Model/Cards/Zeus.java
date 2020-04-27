@@ -12,8 +12,8 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
 public class Zeus extends GodCard{
 
-    public Zeus(String name,String path) {
-        super(name,path);
+    public Zeus(String name,String path,String description) {
+        super(name,path,description);
     }
 
     @Override

@@ -22,6 +22,7 @@ public class GodCardsParser {
 
         Deck deck = new Deck();
         String path = "json/godCards.json";
+
         InputStream inputstr = GodCardsParser.class.getClassLoader().getResourceAsStream(path);
 
         if (inputstr == null) {
@@ -49,6 +50,7 @@ public class GodCardsParser {
 
     private static ArrayList<GodCard> parseGod(JsonObject jsonObject, int n) {
         String name = jsonObject.get("name").getAsString();
+        String descriptionPower=jsonObject.get("description").getAsString();
         String path = jsonObject.get("path").getAsString();
 
         JsonArray numberOfPlayersArray = jsonObject.getAsJsonArray("players");
@@ -63,59 +65,59 @@ public class GodCardsParser {
            switch (name) {
                 case "Apollo":
                     if(players.contains(n))
-                    cards.add(new Apollo(name,path));
+                    cards.add(new Apollo(name,path,descriptionPower));
                     break;
                 case "Artemis":
                     if(players.contains(n))
-                    cards.add(new Artemis(name,path));
+                    cards.add(new Artemis(name,path,descriptionPower));
                     break;
                 case "Prometheus":
                     if(players.contains(n))
-                    cards.add(new Prometheus(name,path));
+                    cards.add(new Prometheus(name,path,descriptionPower));
                     break;
                 case "Athena":
                     if(players.contains(n))
-                    cards.add(new Athena(name,path));
+                    cards.add(new Athena(name,path,descriptionPower));
                     break;
                 case "Atlas":
                     if(players.contains(n))
-                    cards.add(new Atlas(name,path));
+                    cards.add(new Atlas(name,path,descriptionPower));
                     break;
                 case "Demeter":
                     if(players.contains(n))
-                    cards.add(new Demeter(name,path));
+                    cards.add(new Demeter(name,path,descriptionPower));
                     break;
                 case "Hephaestus":
                     if(players.contains(n))
-                    cards.add(new Hephaestus(name,path));
+                    cards.add(new Hephaestus(name,path,descriptionPower));
                     break;
                 case "Minotaur":
                     if(players.contains(n))
-                    cards.add(new Minotaur(name,path));
+                    cards.add(new Minotaur(name,path,descriptionPower));
                     break;
                 case "Pan":
                     if(players.contains(n))
-                    cards.add(new Pan(name,path));
+                    cards.add(new Pan(name,path,descriptionPower));
                     break;
                case "Ares":
                    if(players.contains(n))
-                       cards.add(new Ares(name,path));
+                       cards.add(new Ares(name,path,descriptionPower));
                    break;
                case "Chronus":
                    if(players.contains(n))
-                       cards.add(new Chronus(name,path));
+                       cards.add(new Chronus(name,path,descriptionPower));
                    break;
                case "Hestia":
                    if(players.contains(n))
-                       cards.add(new Hestia(name,path));
+                       cards.add(new Hestia(name,path,descriptionPower));
                    break;
                case "Triton":
                    if(players.contains(n))
-                       cards.add(new Triton(name,path));
+                       cards.add(new Triton(name,path,descriptionPower));
                    break;
                case "Zeus":
                    if(players.contains(n))
-                       cards.add(new Zeus(name,path));
+                       cards.add(new Zeus(name,path,descriptionPower));
                    break;
             }
 

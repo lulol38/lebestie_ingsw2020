@@ -72,6 +72,8 @@ public class BoardController{
     Rectangle rect;
     @FXML
     AnchorPane boardPane;
+    @FXML
+    Label lblDescription;
 
     public BoardController(){
         this.instance=this;
@@ -312,11 +314,12 @@ public class BoardController{
         });
     }
 
-    public void addCardOnBoard(String card, String color, String path){
+    public void addCardOnBoard(String card, String color, String path,String description){
         javafx.application.Platform.runLater(()-> {
             lblCard.setText(card);
             rect.setFill(Color.valueOf(color));
             imgGodCard.setImage(new Image(path));
+            lblDescription.setText(description);
 
         });
     }
