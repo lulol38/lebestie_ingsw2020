@@ -194,7 +194,6 @@ public class GameController {
     }
 
     public void endMatch(){
-        //(todo)
         lobby.getClientsWaiting().get(Winner).sendMessage(new SendHasWon());
         lobby.getClientsWaiting().remove(Winner);
         for(int i=0; i<lobby.getClientsWaiting().size();i++){

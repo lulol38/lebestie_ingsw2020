@@ -28,11 +28,13 @@ import javafx.stage.Stage;
 
 import java.lang.reflect.Field;
 import java.net.URL;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 //Controller for the client Board
-public class BoardController extends GridPane {
+public class BoardController{
 
     private static BoardController instance;
 
@@ -328,5 +330,4 @@ public class BoardController extends GridPane {
     public void createBoard(){
         GUIController.getInstance().setScene(gridBoard.getScene(),"/fxml/BoardStage.fxml");
     }
-
 }

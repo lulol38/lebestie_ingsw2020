@@ -44,13 +44,11 @@ The object of the game is to win by either moving a worker to stand on the third
 - [X] Multiple Concourrent Games
 - [ ] Undo
 - [ ] State of Game Persistent 
-- [ ] Advanced Gods
+- [X] Advanced Gods
 
 ## DOCUMENTATION
 ### UML
 Uml files are in UML <a href="https://github.com/lulol38/lebestie_ingsw2020/tree/master/UML/initial%20UML"> directory </a> with a pdf file that describes functioning of the model.
-
-## HOW TO PLAY
 
 
 ## SW & TOOLS
@@ -58,6 +56,7 @@ Uml files are in UML <a href="https://github.com/lulol38/lebestie_ingsw2020/tree
 * **IntelliJ Idea Ultimate Edition** - IDE
 * **StarUML** - UML tool
 * **JavaFX** - Standard GUI library for JAVA SE
+* **Scene Builder** - Visual Layout Tool
 
 ## CREDITS
 Santorini is a trademark of Gordon Hamilton and Roxley Games.

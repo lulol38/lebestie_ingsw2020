@@ -178,13 +178,59 @@ public class GUIController {
 
     public void closeBoard(){
         javafx.application.Platform.runLater(()-> {
-            BoardController.getInstance().close();
+            boardController.close();
         });
     }
 
     public void openLobbyWaiting(){
         javafx.application.Platform.runLater(()-> {
            connectionController.openLobby();
+        });
+    }
+
+    public void displayWin(){
+        javafx.application.Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Stage stage= new Stage();
+                    Parent root = null;
+                    root = FXMLLoader.load(getClass().getResource("/fxml/winStage.fxml"));
+                    Scene scene = new Scene(root);
+
+                    stage.setTitle("WIN");
+                    stage.setScene(scene);
+                    stage.setResizable(false);
+                    stage.getIcons().add(new Image(GUI.class.getClassLoader().getResourceAsStream("images/icon.png")));
+                    stage.initStyle(StageStyle.DECORATED);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public void displayLost(){
+        javafx.application.Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Stage stage= new Stage();
+                    Parent root = null;
+                    root = FXMLLoader.load(getClass().getResource("/fxml/lostStage.fxml"));
+                    Scene scene = new Scene(root);
+
+                    stage.setTitle("LOST");
+                    stage.setScene(scene);
+                    stage.setResizable(false);
+                    stage.getIcons().add(new Image(GUI.class.getClassLoader().getResourceAsStream("images/icon.png")));
+                    stage.initStyle(StageStyle.DECORATED);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         });
     }
 }

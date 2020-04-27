@@ -67,6 +67,42 @@
       "description": "If your Worker does not move up, it may build both before and after moving.",
       "active":"Win Condition",
       "players" : [2]
+    },
+    {
+      "name" : "Ares",
+      "title": "God of War",
+      "description": " You may remove an unoccupied block (not dome) neighboring your unmoved Worker. You also remove any Tokens on the block",
+      "active":"End of your turn",
+      "players" : [2,3]
+    },
+    {
+      "name" : "Chronus",
+      "title": "God of Time",
+      "description": ": You also win when there are at least five Complete Towers on the board.",
+      "active":"Win Condition",
+      "players" : [2]
+    },
+    {
+      "name" : "Hestia",
+      "title": "Goddess of Hear th and Home",
+      "description": " Your Worker may\nbuild one additional time, but this\ncannot be on a perimeter space.",
+      "active":"Your Build",
+      "players" : [2,3]
+    },
+    {
+      "name" : "Triton",
+      "title": "God of the Waves",
+      "description": " Each time your Worker moves into a perimeter space, it may immediately move again.",
+      "active":"Your move",
+      "players" : [2,3]
+    },
+    {
+      "name" : "Zeus",
+      "title": "God of the Sky",
+      "description": "Your Worker may build a block under itself.",
+      "active":"Your Build",
+      "players" : [2,3]
     }
+
   ]
 }

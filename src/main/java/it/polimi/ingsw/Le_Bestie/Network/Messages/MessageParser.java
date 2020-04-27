@@ -205,52 +205,20 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(SendHasLost mex) {
-        javafx.application.Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Stage stage= new Stage();
-                    Parent root = null;
-                    root = FXMLLoader.load(getClass().getResource("/fxml/lostStage.fxml"));
-                    Scene scene = new Scene(root);
-
-                    stage.setTitle("LOST");
-                    stage.setScene(scene);
-                    stage.setResizable(false);
-                    stage.initStyle(StageStyle.DECORATED);
-                    stage.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+      GUIController.getInstance().displayLost();
+        GUIController.getInstance().closeBoard();
     }
 
     @Override
     public void visit(SendHasWon mex) {
-        javafx.application.Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Stage stage= new Stage();
-                    Parent root = null;
-                    root = FXMLLoader.load(getClass().getResource("/fxml/winStage.fxml"));
-                    Scene scene = new Scene(root);
 
-                    stage.setTitle("WIN");
-                    stage.setScene(scene);
-                    stage.setResizable(false);
-                    stage.initStyle(StageStyle.DECORATED);
-                    stage.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        GUIController.getInstance().displayWin();
+        GUIController.getInstance().closeBoard();
     }
 
     @Override
     public void visit(OpenLobby mex) {
         GUIController.getInstance().openLobbyWaiting();
+
     }
 }
