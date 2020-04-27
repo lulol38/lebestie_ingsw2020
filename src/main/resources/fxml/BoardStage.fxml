@@ -56,7 +56,7 @@
              <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <Label fx:id="lblMessages" layoutX="282.0" layoutY="389.0" prefHeight="38.0" prefWidth="271.0" textAlignment="CENTER">
+      <Label fx:id="lblMessages" contentDisplay="CENTER" layoutX="260.0" layoutY="389.0" prefHeight="38.0" prefWidth="293.0" textAlignment="CENTER">
          <font>
             <Font name="Cambria" size="20.0" />
          </font>
@@ -118,8 +118,14 @@
             <Image url="@../images/power/heropower_active.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgGodCard" fitHeight="146.0" fitWidth="103.0" layoutX="86.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="lblOpponents2" layoutX="14.0" layoutY="59.0" prefHeight="38.0" prefWidth="158.0" />
-      <Label fx:id="lblOpponents1" layoutX="14.0" layoutY="10.0" prefHeight="38.0" prefWidth="158.0" />
+      <ImageView fx:id="imgGodCard" fitHeight="147.0" fitWidth="102.0" layoutX="73.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="lblOpponents2" layoutX="14.0" layoutY="59.0" prefHeight="38.0" prefWidth="158.0">
+         <font>
+            <Font name="Cambria" size="14.0" />
+         </font></Label>
+      <Label fx:id="lblOpponents1" layoutX="14.0" layoutY="10.0" prefHeight="38.0" prefWidth="158.0">
+         <font>
+            <Font name="Cambria" size="14.0" />
+         </font></Label>
     </children>
 </AnchorPane>
