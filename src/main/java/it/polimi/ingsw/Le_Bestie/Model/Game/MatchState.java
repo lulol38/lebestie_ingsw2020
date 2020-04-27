@@ -9,8 +9,9 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import it.polimi.ingsw.Le_Bestie.jsonParser.GodCardsParser;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Observable;
 
-public class MatchState {
+public class MatchState extends Observable {
 
     private Board board;
     private Deck deck;

@@ -3,6 +3,8 @@ package it.polimi.ingsw.Le_Bestie.Model.Board;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  *Class Board implements board of the game
@@ -36,5 +38,4 @@ public class Board implements Serializable {
     public int getRemainingPieces(int level) {
         return remainingPieces.get(level-1);
     }
-
 }
