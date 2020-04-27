@@ -65,7 +65,6 @@ public class GUIController {
             Client c= new Client(address, port,user);
             if(c.init()) {
                 executor.submit(c);
-
             }
             else {
                 javafx.application.Platform.runLater(()->{
