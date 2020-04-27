@@ -58,6 +58,7 @@ Uml files are in UML <a href="https://github.com/lulol38/lebestie_ingsw2020/tree
 * **IntelliJ Idea Ultimate Edition** - IDE
 * **StarUML** - UML tool
 * **JavaFX** - Standard GUI library for JAVA SE
+* **Scene Builder** - Visual Layout Tool
 
 ## CREDITS
 Santorini is a trademark of Gordon Hamilton and Roxley Games.
