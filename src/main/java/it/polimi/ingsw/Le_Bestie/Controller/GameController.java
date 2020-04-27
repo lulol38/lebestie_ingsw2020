@@ -182,6 +182,10 @@ public class GameController {
                 case 4:
                     lobby.getClientsWaiting().get(0).sendMessage(new AskUsePower(matchState.getCurrentPlayer().getGodCard().getMessage()));
                     break;
+                case 5:
+                    setWinner(0);
+                    endMatch();
+                    break;
             }
         }
 

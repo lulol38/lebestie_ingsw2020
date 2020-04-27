@@ -76,6 +76,7 @@ public abstract class GodCard implements Serializable {
          se si: richiedo nuova cella e richiamo la build (usePower=FALSE)
          se no: richiamo la build senza richiedere cella (usePower=TRUE)
     4 -> richiama la build passando stessi paramentri di prima ma hasPower=!(risposta utente)
+    5 -> il player ha vinto
      */
     public int build(Board b,Builder w, Cell c, boolean usePower){
         if(w.possibleBuilds(b).contains(c))
