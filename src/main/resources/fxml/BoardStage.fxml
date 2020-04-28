@@ -113,7 +113,7 @@
             <font>
                 <Font name="Cambria" size="22.0" />
             </font></Label>
-        <ImageView fx:id="imgPower" fitHeight="45.0" fitWidth="41.0" layoutX="631.0" layoutY="13.0" opacity="0.0">
+        <ImageView fx:id="imgPower" fitHeight="45.0" fitWidth="41.0" layoutX="583.0" layoutY="13.0" opacity="0.0">
             <image>
                 <Image url="@../images/power/heropower_active.png" />
             </image>
@@ -141,5 +141,10 @@
                 </Label>
             </children>
         </Pane>
+      <ImageView fx:id="imgPowerInactive" fitHeight="45.0" fitWidth="41.0" layoutX="624.0" layoutY="13.0">
+         <image>
+            <Image url="@../images/power/heropower_inactive.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
