@@ -16,8 +16,8 @@ public class Triton extends GodCard {
     private String Message;
     private boolean firstMove;
 
-    public Triton(String name,String path) {
-        super(name,path);
+    public Triton(String name,String path,String description) {
+        super(name,path,description);
         firstMove=false;
         Message="Do you want to move one additional time?";
     }

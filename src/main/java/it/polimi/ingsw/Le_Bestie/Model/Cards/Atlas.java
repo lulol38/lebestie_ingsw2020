@@ -17,8 +17,8 @@ public class Atlas extends GodCard{
     private boolean checkUsePower;
     private String Message;
 
-    public Atlas(String name,String path) {
-        super(name,path);
+    public Atlas(String name,String path,String description) {
+        super(name,path,description);
         checkUsePower=false;
         Message="Do you want to build a dome on this cell?";
     }

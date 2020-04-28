@@ -18,8 +18,8 @@ public class Artemis extends GodCard {
     private Cell startingCell;
     private String Message;
 
-    public Artemis(String name,String path) {
-        super(name,path);
+    public Artemis(String name,String path,String description) {
+        super(name,path,description);
         startingCell = null;
         Message="Do you want to move one additional time? (NOT back!!)";
     }

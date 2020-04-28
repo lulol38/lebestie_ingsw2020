@@ -19,13 +19,17 @@ public abstract class GodCard implements Serializable {
     static protected boolean notMoveUp;
     private String message;
     private String path;
+    private String description;
 
-    public GodCard(String name,String path){
+    public GodCard(String name,String path,String description){
         this.name=name;
         this.path=path;
+        this.description=description;
+
     }
     public String getName() { return this.name; }
     public String getPath() { return this.path; }
+    public String getDescription(){return this.description;}
 
     public void setNotMoveUp(boolean notMoveUp) {
         this.notMoveUp=notMoveUp;

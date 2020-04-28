@@ -18,8 +18,8 @@ public class Ares extends GodCard{
     private boolean firstBuilt;
     private Builder notMovedBuilder;
 
-    public Ares (String name,String path) {
-        super(name,path);
+    public Ares (String name,String path,String description) {
+        super(name,path,description);
         firstBuilt=false;
         notMovedBuilder=null;
         Message="Do tou want to remove an unoccupied block (not dome) neighboring your unmoved Worker?";

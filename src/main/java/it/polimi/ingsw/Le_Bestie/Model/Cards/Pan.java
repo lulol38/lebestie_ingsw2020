@@ -14,8 +14,8 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 public class Pan extends GodCard{
 
-    public Pan(String name,String path) {
-        super(name,path);
+    public Pan(String name,String path,String description) {
+        super(name,path,description);
     }
 
     @Override

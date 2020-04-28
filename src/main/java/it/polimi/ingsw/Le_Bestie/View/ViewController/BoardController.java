@@ -72,6 +72,10 @@ public class BoardController{
     Rectangle rect;
     @FXML
     AnchorPane boardPane;
+    @FXML
+    Label lblDescription;
+    @FXML
+    ImageView imgPowerInactive;
 
     public BoardController(){
         this.instance=this;
@@ -186,6 +190,7 @@ public class BoardController{
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == buttonTypeOne){
                 imgPower.setOpacity(1.0);
+                imgPowerInactive.setOpacity(0.0);
                 AskCellChosen();
             } else if (result.get() == buttonTypeTwo) {
                 Client.getInstance().sendMessage(new SendPowerNotUsed(selectedCellX, selectedCellY, Client.getInstance().getIdGame()));
@@ -294,6 +299,7 @@ public class BoardController{
             BoardController.getInstance().disableGUI();
             lblTurn.setText("YOUR TURN IS ENDED");
             imgPower.setOpacity(0.0);
+            imgPowerInactive.setOpacity(1.0);
             if(n!=null)
                 n.setStyle("-fx-border-color: Transparent;");
         });
@@ -312,11 +318,12 @@ public class BoardController{
         });
     }
 
-    public void addCardOnBoard(String card, String color, String path){
+    public void addCardOnBoard(String card, String color, String path,String description){
         javafx.application.Platform.runLater(()-> {
             lblCard.setText(card);
             rect.setFill(Color.valueOf(color));
             imgGodCard.setImage(new Image(path));
+            lblDescription.setText(description);
 
         });
     }

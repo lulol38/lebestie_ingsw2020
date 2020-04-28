@@ -17,8 +17,8 @@ public class Hephaestus extends GodCard{
     boolean secondBuild;
     private String Message;
 
-    public Hephaestus(String name,String path) {
-        super(name,path);
+    public Hephaestus(String name,String path,String description) {
+        super(name,path,description);
         secondBuild=false;
         Message="Do you want to build one additional block on top of your first block?";
     }

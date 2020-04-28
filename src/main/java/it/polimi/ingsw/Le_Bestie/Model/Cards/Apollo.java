@@ -16,8 +16,8 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 public class Apollo extends GodCard {
 
 
-    public Apollo(String name,String path) {
-        super(name,path);
+    public Apollo(String name,String path,String description) {
+        super(name,path,description);
     }
 
     @Override

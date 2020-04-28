@@ -19,7 +19,7 @@
       </ImageView>
 
 
-      <Button fx:id="btnNPlayers" layoutX="210.0" layoutY="385.0" mnemonicParsing="false" onAction="#pressSendNumPlayers" prefHeight="48.0" prefWidth="187.0" text="CREATE MATCH" />
+      <Button fx:id="btnNPlayers" layoutX="210.0" layoutY="385.0" mnemonicParsing="false" onAction="#pressSendNumPlayers" prefHeight="48.0" prefWidth="187.0" text="CREATE NEW MATCH" />
       <Pane fx:id="rdbPane" layoutX="170.0" layoutY="169.0" prefHeight="196.0" prefWidth="266.0">
          <children>
          <RadioButton fx:id="rdb3P" layoutX="72.0" layoutY="75.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="130.0" text="3 PLAYERS" userData="3">

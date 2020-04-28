@@ -30,7 +30,7 @@
     -fx-opacity: 0.8;
     -fx-transition: 0.3s;
     -fx-border-color:#E9967A;
-    -fx-font-size: 16 px;
+    -fx-font-size: 12 px;
 
 }
 #btnConnect{
@@ -63,7 +63,7 @@
    -fx-background-color: #E9967A;
    -fx-opacity: 1;
    -fx-color: #191970;
-   -fx-font-size:20 px;
+   -fx-font-size:15 px;
 }
 
 #easterPane:hover{
