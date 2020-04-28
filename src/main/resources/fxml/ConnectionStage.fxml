@@ -15,7 +15,7 @@
       <Pane layoutX="47.0" layoutY="94.0" opacity="0.9" prefHeight="261.0" prefWidth="510.0">
          <children>
             <TextField id="serverAddressText" fx:id="txtServerAddress" layoutX="254.0" layoutY="55.0" onMouseClicked="#pressTextFieldAddress" prefHeight="38.0" prefWidth="216.0" text="localhost" />
-            <TextField id="usernameText" fx:id="txtUsername" layoutX="253.0" layoutY="182.0" onMouseClicked="#pressTextFieldUsername" prefHeight="38.0" prefWidth="216.0" text="luca" />
+            <TextField id="usernameText" fx:id="txtUsername" layoutX="253.0" layoutY="182.0" onMouseClicked="#pressTextFieldUsername" prefHeight="38.0" prefWidth="216.0" text="user" />
             <Label layoutX="43.0" layoutY="190.0" prefHeight="27.0" prefWidth="121.0" text="USERNAME" />
             <Label layoutX="33.0" layoutY="128.0" text="SERVER PORT" />
             <TextField id="serverPortText" fx:id="txtServerPort" layoutX="254.0" layoutY="120.0" onMouseClicked="#pressTextFieldPort" prefHeight="38.0" prefWidth="216.0" text="45331" />
