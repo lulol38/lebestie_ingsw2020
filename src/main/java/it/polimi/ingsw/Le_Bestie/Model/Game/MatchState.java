@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Observable;
 
-public class MatchState extends Observable {
+public class MatchState{
 
     private Board board;
     private Deck deck;
