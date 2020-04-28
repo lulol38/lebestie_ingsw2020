@@ -27,6 +27,37 @@
                <ToggleGroup fx:id="mygroup" />
                </toggleGroup></RadioButton>
          <RadioButton fx:id="rdb2P" layoutX="72.0" layoutY="38.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="163.0" text="2 PLAYERS" toggleGroup="$mygroup" userData="2" />
+            <ImageView fitHeight="30.0" fitWidth="23.0" layoutX="202.0" layoutY="42.0">
+               <image>
+                  <Image url="@../images/icon_player.png" />
+               </image>
+            </ImageView>
+
+            <ImageView fitHeight="30.0" fitWidth="23.0" layoutX="202.0" layoutY="42.0">
+               <image>
+                  <Image url="@../images/icon_player.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="23.0" layoutX="236.0" layoutY="83.0">
+               <image>
+                  <Image url="@../images/icon_player.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="23.0" layoutX="214.0" layoutY="83.0">
+               <image>
+                  <Image url="@../images/icon_player.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="23.0" layoutX="224.0" layoutY="42.0">
+               <image>
+                  <Image url="@../images/icon_player.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="23.0" layoutX="191.0" layoutY="83.0">
+               <image>
+                  <Image url="@../images/icon_player.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane fx:id="easterPane" prefHeight="30.0" prefWidth="71.0">

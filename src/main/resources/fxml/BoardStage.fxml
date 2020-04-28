@@ -141,10 +141,10 @@
                 </Label>
             </children>
         </Pane>
-      <ImageView fx:id="imgPowerInactive" fitHeight="45.0" fitWidth="41.0" layoutX="624.0" layoutY="13.0">
-         <image>
-            <Image url="@../images/power/heropower_inactive.png" />
-         </image>
-      </ImageView>
+        <ImageView fx:id="imgPowerInactive" fitHeight="45.0" fitWidth="41.0" layoutX="624.0" layoutY="13.0">
+            <image>
+                <Image url="@../images/power/heropower_inactive.png" />
+            </image>
+        </ImageView>
     </children>
 </AnchorPane>
