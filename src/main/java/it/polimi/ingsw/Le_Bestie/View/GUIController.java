@@ -89,7 +89,6 @@ public class GUIController {
                     Parent root = null;
                     root = FXMLLoader.load(getClass().getResource("/fxml/ModifyUsername.fxml"));
                     Scene scene = new Scene(root);
-
                     stage.setTitle("Modify Username");
                     stage.setScene(scene);
                     stage.setResizable(false);
