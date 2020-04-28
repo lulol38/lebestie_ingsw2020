@@ -11,56 +11,56 @@
         <ImageView fitHeight="448.0" fitWidth="800.0" layoutX="1.0">
             <image>
                 <Image url="@../images/board/SantoriniBoard.png" />
-               </image>
+            </image>
         </ImageView>
-      <GridPane fx:id="gridBoard" alignment="center" disable="true" layoutX="239.0" layoutY="64.0" prefHeight="325.0" prefWidth="324.0">
-        <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="63.0" />
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="117.0" minWidth="10.0" prefWidth="68.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="74.0" minWidth="10.0" prefWidth="68.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="76.0" minWidth="10.0" prefWidth="66.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="62.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints maxHeight="62.0" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="73.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="4" GridPane.rowIndex="0" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-             <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-         </children>
-      </GridPane>
-      <Label fx:id="lblMessages" contentDisplay="CENTER" layoutX="260.0" layoutY="389.0" prefHeight="38.0" prefWidth="293.0" textAlignment="CENTER">
-         <font>
-            <Font name="Cambria" size="20.0" />
-         </font>
-      </Label>
+        <GridPane fx:id="gridBoard" alignment="center" disable="true" layoutX="239.0" layoutY="64.0" prefHeight="325.0" prefWidth="324.0">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="63.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="117.0" minWidth="10.0" prefWidth="68.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="74.0" minWidth="10.0" prefWidth="68.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="76.0" minWidth="10.0" prefWidth="66.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="62.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="62.0" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="73.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            </children>
+        </GridPane>
+        <Label fx:id="lblMessages" contentDisplay="CENTER" layoutX="260.0" layoutY="389.0" prefHeight="38.0" prefWidth="293.0" textAlignment="CENTER">
+            <font>
+                <Font name="Cambria" size="20.0" />
+            </font>
+        </Label>
         <GridPane fx:id="gridLevels" disable="true" layoutX="239.0" layoutY="64.0" prefHeight="325.0" prefWidth="324.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="63.0" />
@@ -104,29 +104,42 @@
                 <Label alignment="TOP_RIGHT" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
             </children>
         </GridPane>
-      <Label fx:id="lblCard" layoutX="58.0" layoutY="351.0" prefHeight="30.0" prefWidth="158.0">
-         <font>
-            <Font size="20.0" />
-         </font></Label>
-      <Rectangle fx:id="rect" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="38.0" layoutX="7.0" layoutY="347.0" strokeType="INSIDE" width="41.0" />
-      <Label fx:id="lblTurn" alignment="CENTER" layoutX="284.0" layoutY="29.0" prefHeight="30.0" prefWidth="241.0" textAlignment="CENTER">
-         <font>
-            <Font name="Cambria" size="22.0" />
-         </font></Label>
-      <ImageView fx:id="imgPower" fitHeight="45.0" fitWidth="41.0" layoutX="631.0" layoutY="13.0" opacity="0.0">
-         <image>
-            <Image url="@../images/power/heropower_active.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="imgGodCard" fitHeight="147.0" fitWidth="102.0" layoutX="42.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="lblOpponents2" layoutX="14.0" layoutY="59.0" prefHeight="38.0" prefWidth="158.0">
-         <font>
-            <Font name="Cambria" size="14.0" />
-         </font></Label>
-      <Label fx:id="lblOpponents1" layoutX="14.0" layoutY="10.0" prefHeight="38.0" prefWidth="158.0">
-         <font>
-            <Font name="Cambria" size="14.0" />
-         </font></Label>
-      <Label fx:id="lblDescription" layoutX="14.0" layoutY="389.0" prefHeight="45.0" prefWidth="132.0"  />
+        <Label fx:id="lblCard" alignment="CENTER" layoutX="21.0" layoutY="324.0" prefHeight="30.0" prefWidth="201.0">
+            <font>
+                <Font size="20.0" />
+            </font></Label>
+        <Rectangle fx:id="rect" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="63.0" layoutX="38.0" layoutY="28.0" strokeType="INSIDE" width="66.0" />
+        <Label fx:id="lblTurn" alignment="CENTER" layoutX="284.0" layoutY="29.0" prefHeight="30.0" prefWidth="241.0" text="Waiting your turn..." textAlignment="CENTER">
+            <font>
+                <Font name="Cambria" size="22.0" />
+            </font></Label>
+        <ImageView fx:id="imgPower" fitHeight="45.0" fitWidth="41.0" layoutX="631.0" layoutY="13.0" opacity="0.0">
+            <image>
+                <Image url="@../images/power/heropower_active.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="imgGodCard" fitHeight="147.0" fitWidth="102.0" layoutX="71.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="lblDescription" alignment="CENTER" layoutX="7.0" layoutY="345.0" prefHeight="97.0" prefWidth="229.0">
+            <font>
+                <Font name="Cambria" size="11.0" />
+            </font></Label>
+        <Pane fx:id="opponentsPane" layoutX="603.0" layoutY="277.0" prefHeight="166.0" prefWidth="192.0">
+            <children>
+                <Label fx:id="lblOpponents1" alignment="CENTER" layoutX="6.0" layoutY="43.0" prefHeight="38.0" prefWidth="180.0">
+                    <font>
+                        <Font name="Cambria Bold" size="15.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" prefHeight="30.0" prefWidth="192.0" text="Other players in the game:">
+                    <font>
+                        <Font name="Cambria" size="12.0" />
+                    </font></Label>
+                <Label fx:id="lblOpponents2" alignment="CENTER" layoutX="6.0" layoutY="91.0" prefHeight="38.0" prefWidth="180.0">
+                    <font>
+                        <Font name="Cambria Bold" size="15.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
     </children>
 </AnchorPane>
