@@ -62,64 +62,17 @@ public class GodCardsParser {
 
         ArrayList<GodCard> cards = new ArrayList<>();
 
-           switch (name) {
-                case "Apollo":
-                    if(players.contains(n))
-                    cards.add(new Apollo(name,path,descriptionPower));
-                    break;
-                case "Artemis":
-                    if(players.contains(n))
-                    cards.add(new Artemis(name,path,descriptionPower));
-                    break;
-                case "Prometheus":
-                    if(players.contains(n))
-                    cards.add(new Prometheus(name,path,descriptionPower));
-                    break;
-                case "Athena":
-                    if(players.contains(n))
-                    cards.add(new Athena(name,path,descriptionPower));
-                    break;
-                case "Atlas":
-                    if(players.contains(n))
-                    cards.add(new Atlas(name,path,descriptionPower));
-                    break;
-                case "Demeter":
-                    if(players.contains(n))
-                    cards.add(new Demeter(name,path,descriptionPower));
-                    break;
-                case "Hephaestus":
-                    if(players.contains(n))
-                    cards.add(new Hephaestus(name,path,descriptionPower));
-                    break;
-                case "Minotaur":
-                    if(players.contains(n))
-                    cards.add(new Minotaur(name,path,descriptionPower));
-                    break;
-                case "Pan":
-                    if(players.contains(n))
-                    cards.add(new Pan(name,path,descriptionPower));
-                    break;
-               case "Ares":
-                   if(players.contains(n))
-                       cards.add(new Ares(name,path,descriptionPower));
-                   break;
-               case "Chronus":
-                   if(players.contains(n))
-                       cards.add(new Chronus(name,path,descriptionPower));
-                   break;
-               case "Hestia":
-                   if(players.contains(n))
-                       cards.add(new Hestia(name,path,descriptionPower));
-                   break;
-               case "Triton":
-                   if(players.contains(n))
-                       cards.add(new Triton(name,path,descriptionPower));
-                   break;
-               case "Zeus":
-                   if(players.contains(n))
-                       cards.add(new Zeus(name,path,descriptionPower));
-                   break;
-            }
+        try {
+            Class<?> clazz = Class.forName("it.polimi.ingsw.Le_Bestie.Model.Cards."+name);
+            Constructor<?> constructor = clazz.getConstructor(String.class,String.class,String.class);
+            Object object = constructor.newInstance(new Object[]{name,path,descriptionPower});
+            if(players.contains(n))
+                cards.add((GodCard)object);
+        }
+        catch (Exception e){
+
+        }
+
 
         return cards;
     }

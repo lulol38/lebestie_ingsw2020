@@ -45,13 +45,13 @@ public class DeckTest {
     @Test
     public void GodCardDeck2Players() {
         Deck deck2Players= GodCardsParser.parseCards(2);
-        assertEquals(9,deck2Players.numberOfCards());
+        assertEquals(14,deck2Players.numberOfCards());
     }
 
     @Test
     public void GodCardDeck3Players(){
         Deck deck3Players= GodCardsParser.parseCards(3);
-        assertEquals(7,deck3Players.numberOfCards());
+        assertEquals(13,deck3Players.numberOfCards());
     }
 
 }
