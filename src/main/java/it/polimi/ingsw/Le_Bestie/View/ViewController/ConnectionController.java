@@ -1,25 +1,16 @@
 package it.polimi.ingsw.Le_Bestie.View.ViewController;
 
-import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
+
 import it.polimi.ingsw.Le_Bestie.View.GUIController;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-
-import java.awt.*;
-import java.io.IOException;
-import java.sql.Connection;
 import java.util.Collections;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import javafx.event.ActionEvent;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.stage.Stage;
+
 
 public class ConnectionController {
 
@@ -40,13 +31,13 @@ public class ConnectionController {
     private void setRed(TextField tf) {
         ObservableList<String> styleClass = tf.getStyleClass();
 
-        if(!styleClass.contains("tferror")) {
-            styleClass.add("tferror");
+        if(!styleClass.contains("error")) {
+            styleClass.add("error");
         }
     }
     private void removeRed(TextField tf) {
         ObservableList<String> styleClass = tf.getStyleClass();
-        styleClass.removeAll(Collections.singleton("tferror"));
+        styleClass.removeAll(Collections.singleton("error"));
     }
 
     public void pressTextFieldUsername(){
@@ -60,10 +51,10 @@ public class ConnectionController {
     }
 
     public void pressConnectButton(ActionEvent actionEvent) throws Exception {
-        if(txtUsername.getLength()==0||txtServerAddress.getLength()==0||txtServerPort.getLength()==0){
+        if(txtUsername.getLength()==0||txtServerAddress.getLength()==0||txtServerPort.getLength()==0||!isInteger(txtServerPort.getText()) ){
             if(txtUsername.getLength()==0)
                  setRed(txtUsername);
-            if(txtServerPort.getLength()==0)
+            if(txtServerPort.getLength()==0 || !isInteger(txtServerPort.getText()))
                 setRed(txtServerPort);
             if(txtServerAddress.getLength()==0)
                 setRed(txtServerAddress);
@@ -92,5 +83,22 @@ public class ConnectionController {
     public void close(){
         Stage stage = (Stage) connectionPane.getScene().getWindow();
         stage.close();
+    }
+
+    public void disableButton(){
+        btnConnect.setDisable(true);
+    }
+
+
+    public static boolean isInteger(String s) {
+        boolean isValidInteger = false;
+        try {
+            Integer.parseInt(s);
+            isValidInteger = true;
+        } catch (NumberFormatException ex) {
+        }
+
+        return isValidInteger;
+
     }
 }

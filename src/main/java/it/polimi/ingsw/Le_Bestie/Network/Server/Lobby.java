@@ -8,26 +8,19 @@ public class Lobby {
     private int numPlayersMatch;
     private int loadedBoards;
 
-    public Lobby(){
-
-    }
-
     public int getNumPlayersMatch() {
         return numPlayersMatch;
+    }
+    public int getLoadedBoards() {
+        return loadedBoards;
+    }
+    public ArrayList<ClientHandler> getClientsWaiting() {
+        return clientsWaiting;
     }
 
     public void setNumPlayersMatch(int numPlayersMatch) {
         this.numPlayersMatch = numPlayersMatch;
     }
-
-    public ArrayList<ClientHandler> getClientsWaiting() {
-        return clientsWaiting;
-    }
-
-    public int getLoadedBoards() {
-        return loadedBoards;
-    }
-
     public void setLoadedBoards(int loadedBoards) {
         this.loadedBoards = loadedBoards;
     }
@@ -35,7 +28,6 @@ public class Lobby {
     public void addClientToLobby(ClientHandler s){
         clientsWaiting.add(s);
     }
-
     public void cleanLobby(){
         clientsWaiting.clear();
     }

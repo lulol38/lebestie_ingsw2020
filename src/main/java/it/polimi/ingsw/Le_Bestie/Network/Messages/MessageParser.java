@@ -1,6 +1,5 @@
 package it.polimi.ingsw.Le_Bestie.Network.Messages;
 
-import it.polimi.ingsw.Le_Bestie.Controller.GameController;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.*;
 import it.polimi.ingsw.Le_Bestie.View.GUIController;
@@ -9,22 +8,10 @@ import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.*;
 import it.polimi.ingsw.Le_Bestie.Network.Server.Server;
 import it.polimi.ingsw.Le_Bestie.Network.Server.ClientHandler;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.stage.WindowEvent;
-
-import java.io.IOException;
 
 public class MessageParser implements MessageVisitor {
 
     private Object obj;
-
-    public MessageParser(){}
 
     public MessageParser(Object obj){
         this.obj= obj;
@@ -40,7 +27,11 @@ public class MessageParser implements MessageVisitor {
     public void visit(SendNumPlayers mex) {
         ClientHandler clientSender= (ClientHandler) obj;
         clientSender.getServer().getLobby().setNumPlayersMatch(mex.getNumPlayers());
+        clientSender.getServer().getLobby().addClientToLobby(clientSender);
+        clientSender.getServer().getClientsWaiting().remove(clientSender);
         System.out.println("Setted match num players to: " + Server.getInstance().getLobby().getNumPlayersMatch());
+        clientSender.getServer().manageWaiting(clientSender);
+
     }
 
     @Override
@@ -60,7 +51,9 @@ public class MessageParser implements MessageVisitor {
         ClientHandler clientSender = ((ClientHandler) obj);
         if(clientSender.getServer().checkUsername(mex.getUsername())) {
             clientSender.setUsername(mex.getUsername());
-            clientSender.getServer().addWaitingClient(clientSender, clientSender.getSocket());
+            clientSender.getServer().getClientsWaiting().add(clientSender);
+            clientSender.getServer().manageWaiting(clientSender);
+            //clientSender.getServer().addWaitingClient(clientSender, clientSender.getSocket());
         }
         else
             clientSender.sendMessage(new ErrorUsername());
@@ -210,13 +203,12 @@ public class MessageParser implements MessageVisitor {
 
     @Override
     public void visit(SendHasLost mex) {
-      GUIController.getInstance().displayLost();
+        GUIController.getInstance().displayLost();
         GUIController.getInstance().closeBoard();
     }
 
     @Override
     public void visit(SendHasWon mex) {
-
         GUIController.getInstance().displayWin();
         GUIController.getInstance().closeBoard();
     }
@@ -224,6 +216,5 @@ public class MessageParser implements MessageVisitor {
     @Override
     public void visit(OpenLobby mex) {
         GUIController.getInstance().openLobbyWaiting();
-
     }
 }

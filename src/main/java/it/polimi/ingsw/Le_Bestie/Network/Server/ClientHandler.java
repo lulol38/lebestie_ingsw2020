@@ -15,14 +15,10 @@ import java.net.Socket;
 public class ClientHandler implements Runnable {
 
     private String username;
-
     private ObjectOutputStream out;
     private ObjectInputStream in;
-
     private Socket socket;
-
     private boolean connected;
-
     private Server server;
 
     public ClientHandler(Socket socket, Server server){
@@ -52,22 +48,19 @@ public class ClientHandler implements Runnable {
     public Server getServer() {
         return server;
     }
-
     public String getUsername() {
         return username;
     }
+    public String getAddress(){ return socket.getInetAddress().toString(); }
+    public Socket getSocket() {
+        return socket;
+    }
+
 
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public String getAddress(){
-        return socket.getInetAddress().toString();
-    }
-
-    public Socket getSocket() {
-        return socket;
-    }
 
     public void receiveMessage(){
         try {

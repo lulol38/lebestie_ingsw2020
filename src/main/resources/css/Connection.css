@@ -70,7 +70,7 @@
      -fx-opacity: 1;
 }
 
-.tferror {
+.error {
      -fx-text-box-border: red ;
      -fx-focus-color: red ;
 }

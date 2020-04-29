@@ -10,21 +10,18 @@ import it.polimi.ingsw.Le_Bestie.View.ViewController.NPlayersController;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
-
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
 
 public class GUIController {
 
@@ -32,8 +29,9 @@ public class GUIController {
     private ConnectionController connectionController;
     private BoardController boardController;
     private LobbyController lobbyController;
-
+    private NPlayersController nPlayersController;
     private ExecutorService executor = Executors.newCachedThreadPool();
+
 
     public static GUIController getInstance() {
         if (instance == null)
@@ -50,15 +48,32 @@ public class GUIController {
     public void setLobbyController(LobbyController l){
         this.lobbyController=l;
     }
+    public void setnPlayersController(NPlayersController n){this.nPlayersController=n;}
+
 
     public static void setScene(Scene s, String resource){
         try {
             AnchorPane root = (AnchorPane) FXMLLoader.load(GUIController.class.getResource(resource));
             s.setRoot(root);
+            s.getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent we) {
+                    if(Client.getInstance()!=null) {
+                        Client.getInstance().sendMessage(new CloseConnection(Client.getInstance().getIdGame()));
+                        try {
+                            Client.getInstance().closeConnection();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    System.exit(0);
+                }
+            });
         }catch (Exception e){
         }
 
     }
+
 
     public void createConnection(String address,int port,String user){
         try {
@@ -85,6 +100,7 @@ public class GUIController {
             @Override
             public void run() {
                 try {
+                    connectionController.disableButton();
                     Stage stage= new Stage();
                     Parent root = null;
                     root = FXMLLoader.load(getClass().getResource("/fxml/ModifyUsername.fxml"));
@@ -102,12 +118,12 @@ public class GUIController {
     }
 
     public void setBoard(){
-
         javafx.application.Platform.runLater(new Runnable() {
+
             @Override
             public void run() {
                 try {
-
+                    closeNumber();
                     Stage stage= new Stage();
                     Parent root = null;
                     root = FXMLLoader.load(getClass().getResource("/fxml/BoardStage.fxml"));
@@ -142,11 +158,7 @@ public class GUIController {
 
     }
 
-    public void closeLobbyStage(){
-        javafx.application.Platform.runLater(()-> {
-            lobbyController.close();
-        });
-    }
+
 
     public void choiseNumber(){
         connectionController.okConnection();
@@ -174,6 +186,13 @@ public class GUIController {
         });
     }
 
+
+    public void closeLobbyStage(){
+        javafx.application.Platform.runLater(()-> {
+            lobbyController.close();
+        });
+    }
+
     public void closeBoard(){
         javafx.application.Platform.runLater(()-> {
             boardController.close();
@@ -183,6 +202,12 @@ public class GUIController {
     public void openLobbyWaiting(){
         javafx.application.Platform.runLater(()-> {
            connectionController.openLobby();
+        });
+    }
+
+    public void closeNumber(){
+        javafx.application.Platform.runLater(()-> {
+           nPlayersController.close();
         });
     }
 

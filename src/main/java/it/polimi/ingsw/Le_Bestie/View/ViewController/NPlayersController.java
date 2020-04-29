@@ -24,6 +24,13 @@ public class NPlayersController {
     @FXML
     public RadioButton rdb3P;
 
+    public void initialize()
+    {
+
+        GUIController.getInstance().setnPlayersController(this);
+    }
+
+
     public void pressSendNumPlayers(ActionEvent actionEvent) {
         if(rdb2P.isSelected()||rdb3P.isSelected()){
             Client.getInstance().sendMessage(new SendNumPlayers(Integer.parseInt(mygroup.getSelectedToggle().getUserData().toString())));
@@ -37,5 +44,10 @@ public class NPlayersController {
             alert.showAndWait();
         }
 
+    }
+
+    public void close(){
+        Stage stage = (Stage) playersPane.getScene().getWindow();
+        stage.close();
     }
 }
