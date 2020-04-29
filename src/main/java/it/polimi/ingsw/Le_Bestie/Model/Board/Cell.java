@@ -1,6 +1,6 @@
 package it.polimi.ingsw.Le_Bestie.Model.Board;
-import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
+import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 import java.io.Serializable;
 
 /**
@@ -14,7 +14,6 @@ public class Cell implements Serializable {
     private Position position;
     private boolean disabled;
     private boolean completeTower;
-
 
     public Cell(int level)
     {

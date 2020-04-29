@@ -3,13 +3,12 @@ package it.polimi.ingsw.Le_Bestie.Model.Board;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
  *Class Board implements board of the game
  * @author Davide Carini
  */
+
 public class Board implements Serializable {
 
     private final int ROW=5;

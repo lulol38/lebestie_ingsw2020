@@ -1,6 +1,5 @@
 package it.polimi.ingsw.Le_Bestie.View.ViewController;
 
-
 import it.polimi.ingsw.Le_Bestie.View.GUIController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
