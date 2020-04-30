@@ -37,6 +37,7 @@ The object of the game is to win by either moving a worker to stand on the third
 Complete rules are available [HERE](http://www.craniocreations.it/prodotto/santorini/). :point_left:
 
 ## FEATURES IMPLEMENTED
+```
 - [X] Simplified Rules
 - [X] Complex Rules
 - [X] Socket (TCP connection)
@@ -46,6 +47,7 @@ Complete rules are available [HERE](http://www.craniocreations.it/prodotto/santo
 - [ ] Undo
 - [ ] State of Game Persistent 
 - [X] Advanced Gods
+```
 
 ## DOCUMENTATION
 ### UML
@@ -62,14 +64,16 @@ Uml files are in UML <a href="https://github.com/lulol38/lebestie_ingsw2020/tree
 ## HOW TO PLAY
 
 ### Client
+```
 java --module-path javafx-sdk-14/lib --add-modules javafx.controls --add-modules javafx.fxml -jar Santorini_Client.jar
+```
 
 
 
 ### Server
-
+```
 java -jar Santorini_Server.jar
-
+```
 
 
 ### GOOD FUN! :call_me_hand:
