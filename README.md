@@ -34,8 +34,10 @@ Santorini is an abstract strategy board game for 2-4 players(we implements the g
 #### VICTORY CONDITIONS
 The object of the game is to win by either moving a worker to stand on the third level above the base of the board, or alternatively to manouver so your opponent cannot move on his turn.
 
+Complete rules are available [HERE](http://www.craniocreations.it/prodotto/santorini/). :point_left:
 
 ## FEATURES IMPLEMENTED
+```
 - [X] Simplified Rules
 - [X] Complex Rules
 - [X] Socket (TCP connection)
@@ -44,7 +46,9 @@ The object of the game is to win by either moving a worker to stand on the third
 - [X] Multiple Concourrent Games
 - [ ] Undo
 - [ ] State of Game Persistent 
-- [X] Advanced Gods
+- [X] Advanced Gods *
+```
+*Five advanced gods: Ares, Chronus, Hestia, Triton, Zeus.
 
 ## DOCUMENTATION
 ### UML
@@ -57,6 +61,23 @@ Uml files are in UML <a href="https://github.com/lulol38/lebestie_ingsw2020/tree
 * **StarUML** - UML tool
 * **JavaFX** - Standard GUI library for JAVA SE
 * **Scene Builder** - Visual Layout Tool
+
+## HOW TO PLAY
+
+### Client
+```
+java --module-path javafx-sdk-14/lib --add-modules javafx.controls --add-modules javafx.fxml -jar Santorini_Client.jar
+```
+
+
+
+### Server
+```
+java -jar Santorini_Server.jar
+```
+
+
+### GOOD FUN! :call_me_hand:
 
 ## CREDITS
 Santorini is a trademark of Gordon Hamilton and Roxley Games.
