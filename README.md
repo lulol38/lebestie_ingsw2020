@@ -58,6 +58,17 @@ Uml files are in UML <a href="https://github.com/lulol38/lebestie_ingsw2020/tree
 * **JavaFX** - Standard GUI library for JAVA SE
 * **Scene Builder** - Visual Layout Tool
 
+## HOW TO PLAY
+
+### Client
+java --module-path javafx-sdk-14/lib --add-modules javafx.controls --add-modules javafx.fxml -jar Santorini_Client.jar
+
+
+
+### Server
+
+java -jar Santorini_Server.jar
+
 ## CREDITS
 Santorini is a trademark of Gordon Hamilton and Roxley Games.
 
