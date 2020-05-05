@@ -5,9 +5,7 @@ import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendNumPlayers;
 import it.polimi.ingsw.Le_Bestie.View.GUIController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
@@ -24,12 +22,7 @@ public class NPlayersController {
     @FXML
     public RadioButton rdb3P;
 
-    public void initialize()
-    {
-
-        GUIController.getInstance().setnPlayersController(this);
-    }
-
+    public void initialize() { GUIController.getInstance().setNPlayersController(this); }
 
     public void pressSendNumPlayers(ActionEvent actionEvent) {
         if(rdb2P.isSelected()||rdb3P.isSelected()){

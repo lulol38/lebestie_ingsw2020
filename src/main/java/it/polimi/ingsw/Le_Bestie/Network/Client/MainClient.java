@@ -5,8 +5,14 @@ import javafx.application.Application;
 
 /**
  * Main Client
+ * @author Davide Carini
  */
 public class MainClient {
+
+    /**
+     * Starting the Game GUI
+     * @param args
+     */
     public static void main(String[] args )
     {
         System.out.println("Starting GUI...");

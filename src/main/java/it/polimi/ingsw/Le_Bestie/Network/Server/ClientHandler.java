@@ -10,8 +10,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 /**
- * Class ServerClientHandler
- * server launches thread foreach client
+ * Class ClientHandler
+ * server launches a thread for each client to listen and to send messages
  * @author Luca Ferrari
  */
 public class ClientHandler implements Runnable {

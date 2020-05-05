@@ -10,8 +10,14 @@ import javafx.event.ActionEvent;
 import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 
+/**
+ *
+ * @author Davide Carini
+ */
 
 public class ConnectionController {
+
+    private int n;
 
     @FXML
     TextField txtUsername, txtServerAddress, txtServerPort;
@@ -19,7 +25,7 @@ public class ConnectionController {
     Button btnConnect;
     @FXML
     AnchorPane connectionPane;
-    private int n;
+
 
     public void initialize()
     {
@@ -29,7 +35,6 @@ public class ConnectionController {
 
     private void setRed(TextField tf) {
         ObservableList<String> styleClass = tf.getStyleClass();
-
         if(!styleClass.contains("error")) {
             styleClass.add("error");
         }
@@ -95,9 +100,8 @@ public class ConnectionController {
             Integer.parseInt(s);
             isValidInteger = true;
         } catch (NumberFormatException ex) {
+            ex.printStackTrace();
         }
-
         return isValidInteger;
-
     }
 }

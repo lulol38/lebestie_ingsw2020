@@ -16,6 +16,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class WinController {
+
     @FXML
     AnchorPane winPane;
 
@@ -29,7 +30,7 @@ public class WinController {
             root = FXMLLoader.load(getClass().getResource("/fxml/ConnectionStage.fxml"));
         }
         catch (Exception e){
-
+            e.printStackTrace();
         }
         Scene scene = new Scene(root);
         connectionMenu.setTitle("SANTORINI");
@@ -38,7 +39,6 @@ public class WinController {
         connectionMenu.setScene(scene);
         connectionMenu.setResizable(false);
         connectionMenu.show();
-
     }
 
     public void pressQuit(ActionEvent actionEvent) throws IOException {
