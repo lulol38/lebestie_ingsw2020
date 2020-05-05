@@ -21,6 +21,7 @@ import javafx.stage.StageStyle;
 
 
 public class LostForConnectionStageController {
+
     @FXML
     Button btnRejoin;
     @FXML

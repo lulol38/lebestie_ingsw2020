@@ -4,16 +4,10 @@ import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.*;
 import it.polimi.ingsw.Le_Bestie.View.GUIController;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.concurrent.Task;
-import javafx.css.PseudoClass;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -21,34 +15,30 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-
 import java.lang.reflect.Field;
-import java.net.URL;
 import java.util.*;
 
-//Controller for the client Board
+/**
+ * This class represents the controller for the client's board
+ * @author Davide Carini
+ */
+
 public class BoardController{
 
     private static BoardController instance;
-
     private int countPositionedBuilders=0;
-    private boolean s=false;
-    private int posx, posy; //Builders positions
-
+    private boolean s;
+    private int posx, posy; //Builder's positions
     private boolean buildersSetted;
-
     private int selectedBuilderX=10;
     private int selectedBuilderY=10;
     private int selectedCellX=10;
     private int selectedCellY=10;
-
     private Node n;
-    int i = 0;
 
     @FXML
     GridPane gridBoard;
@@ -77,63 +67,68 @@ public class BoardController{
     @FXML
     ImageView imgPowerInactive;
 
+    //CONSTRUCTOR
     public BoardController(){
         this.instance=this;
         this.buildersSetted=false;
+        s=false;
     }
 
+    //GETTERS
+    public boolean isBuildersSetted() { return buildersSetted; }
+
+    //SETTERS
+    public void setSelectedCellX(int selectedCellX) { this.selectedCellX = selectedCellX; }
+    public void setSelectedCellY(int selectedCellY) { this.selectedCellY = selectedCellY; }
+    public void setSelectedBuilderX(int selectedBuilderX) { this.selectedBuilderX = selectedBuilderX; }
+    public void setSelectedBuilderY(int selectedBuilderY) { this.selectedBuilderY = selectedBuilderY; }
+    public void setBuildersSetted(boolean buildersSetted) { this.buildersSetted = buildersSetted; }
+
+    /**
+     * The singleton instance of the Board Controller returns, if it has not been created it allocates it as well
+     * @return the singleton instance
+     */
     public static BoardController getInstance(){
         if (instance == null)
             instance = new BoardController();
         return instance;
     }
 
+    /**
+     * This method is used for initialize boardController in the instance of the GUI controller.
+     */
     public void initialize()
     {
         GUIController.getInstance().setBoardController(this);
     }
 
-    public void setSelectedCellX(int selectedCellX) {
-        this.selectedCellX = selectedCellX;
-    }
+    /**
+     * Active the GUI
+     */
+    public void activeGUI(){ javafx.application.Platform.runLater(() -> gridBoard.setDisable(false)); }
 
-    public void setSelectedCellY(int selectedCellY) {
-        this.selectedCellY = selectedCellY;
-    }
-
-    public void setSelectedBuilderX(int selectedBuilderX) {
-        this.selectedBuilderX = selectedBuilderX;
-    }
-
-    public void setSelectedBuilderY(int selectedBuilderY) {
-        this.selectedBuilderY = selectedBuilderY;
-    }
-
-    public boolean isBuildersSetted() {
-        return buildersSetted;
-    }
-
-    public void setBuildersSetted(boolean buildersSetted) {
-        this.buildersSetted = buildersSetted;
-    }
-
-
-    public void activeGUI(){
-        javafx.application.Platform.runLater(() -> gridBoard.setDisable(false));
-    }
-
+    /**
+     * Disable the GUI
+     */
     public void disableGUI(){
         javafx.application.Platform.runLater(() -> {
             gridBoard.setDisable(true);
-            lblMessages.setText("");});
-        }
+            lblMessages.setText("");
+        });
+    }
 
+    /**
+     *Request to the user the initial positions of builders
+     */
     public void BuilderPositions(){
         javafx.application.Platform.runLater(() -> {
             lblMessages.setText("Add workers to board");
         });
     }
 
+    /**
+     *Ask to the user the builder that he want to move.
+     */
     public void AskBuilderChosen(){
         javafx.application.Platform.runLater(()->{
             s=false;
@@ -142,7 +137,9 @@ public class BoardController{
             lblMessages.setText("Select a worker");
         });
     }
-
+    /**
+     *Ask to the user the cell.
+     */
     public void AskCellChosen(){
         javafx.application.Platform.runLater(()->{
             setSelectedCellX(10);
@@ -154,16 +151,12 @@ public class BoardController{
     public void ShowQuestionPower(String mex){
         javafx.application.Platform.runLater(()->{
             lblMessages.setText(mex);
-
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("POWER");
             alert.setContentText(mex);
-
             ButtonType buttonTypeOne = new ButtonType("Yes");
             ButtonType buttonTypeTwo = new ButtonType("No");
-
             alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
-
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == buttonTypeOne){
 
@@ -200,7 +193,6 @@ public class BoardController{
 
     public void getCell(MouseEvent event) {
         javafx.application.Platform.runLater(()->{
-
             Node clickedNode = event.getPickResult().getIntersectedNode();
             if (buildersSetted == false) { //Enter here only to setup builders
                 if (clickedNode != gridBoard) {
@@ -338,9 +330,7 @@ public class BoardController{
         stage.close();
     }
 
-    public void createBoard(){
-        GUIController.getInstance().setScene(gridBoard.getScene(),"/fxml/BoardStage.fxml");
-    }
+
 
     public void addOpponentsOnBoard(ArrayList<String> opponents, ArrayList<String> opponentsGods) {
         javafx.application.Platform.runLater(()-> {
@@ -354,4 +344,10 @@ public class BoardController{
 
         });
     }
+
+
+    /*public void createBoard(){
+        GUIController.getInstance().setScene(gridBoard.getScene(),"/fxml/BoardStage.fxml");
+    }*/
+
 }
