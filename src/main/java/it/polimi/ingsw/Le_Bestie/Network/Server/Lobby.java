@@ -13,6 +13,7 @@ public class Lobby {
     private int numPlayersMatch;
     private int loadedBoards;
 
+    //Getters
     public int getNumPlayersMatch() {
         return numPlayersMatch;
     }
@@ -23,6 +24,7 @@ public class Lobby {
         return clientsWaiting;
     }
 
+    //Setters
     public void setNumPlayersMatch(int numPlayersMatch) {
         this.numPlayersMatch = numPlayersMatch;
     }
@@ -30,13 +32,26 @@ public class Lobby {
         this.loadedBoards = loadedBoards;
     }
 
+    /**
+     *This methods adds a client to the lobby
+     * @param s is the client to be added
+     */
     public void addClientToLobby(ClientHandler s){
         clientsWaiting.add(s);
     }
+
+    /**
+     * This method cleans the lobby
+     */
     public void cleanLobby(){
         clientsWaiting.clear();
     }
 
+    /**
+     * This method returns a client in the lobby by looking for his username
+     * @param username is the username used for the research
+     * @return
+     */
     public ClientHandler getClientHandlerFromUsername(String username){
         for (ClientHandler c: clientsWaiting) {
             if(c.getUsername()==username) return c;

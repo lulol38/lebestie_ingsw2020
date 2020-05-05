@@ -1,6 +1,6 @@
 package it.polimi.ingsw.Le_Bestie.Network.Server;
 
-import it.polimi.ingsw.Le_Bestie.Network.MessageParserServer;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageParserServer;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageClient;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageServer;
 
@@ -35,6 +35,26 @@ public class ClientHandler implements Runnable {
         this.server=server;
     }
 
+    //Getters
+    public Server getServer() {
+        return server;
+    }
+    public String getUsername() {
+        return username;
+    }
+    public String getAddress(){ return socket.getInetAddress().toString(); }
+    public Socket getSocket() {
+        return socket;
+    }
+
+    //Setter
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * Method that listens for messages while the server is connected to the client
+     */
     public void run(){
         try{
             while(connected) {
@@ -47,23 +67,9 @@ public class ClientHandler implements Runnable {
         }
     }
 
-    public Server getServer() {
-        return server;
-    }
-    public String getUsername() {
-        return username;
-    }
-    public String getAddress(){ return socket.getInetAddress().toString(); }
-    public Socket getSocket() {
-        return socket;
-    }
-
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-
+    /**
+     * Method that handles when a message is received, and sends it to the parser
+     */
     public void receiveMessage(){
         try {
             MessageClient mex= (MessageClient) in.readObject();
@@ -76,6 +82,10 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    /**
+     * Method that sends the message to the client
+     * @param message It's the message that has to be sent to the client
+     */
     public void sendMessage(MessageServer message){
         try {
             out.reset();
@@ -86,6 +96,9 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    /**
+     * Method that closes the client connection to the client
+     */
     public synchronized void closeConnection(){
         try{
             Server.getInstance().deleteConnection(this);
@@ -94,7 +107,7 @@ public class ClientHandler implements Runnable {
             this.connected=false;
         }
         catch(Exception ex){
-            System.out.println(ex.getMessage().toString());
+            System.out.println(ex.getMessage());
         }
     }
 }
