@@ -1,13 +1,14 @@
 package it.polimi.ingsw.Le_Bestie.Model.Player;
 
-
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.BuilderColor;
 import it.polimi.ingsw.Le_Bestie.Model.Cards.GodCard;
 import java.io.Serializable;
 
 /**
- * Class Player describes a generic player that play on the board
+ * Class Player describes a generic player that play on the board.
+ * The color is associated by the order of the player in the lobby connection.
+ * Builders are defined at the start of the game by the client.
  * @author Davide Carini
  */
 
@@ -21,67 +22,41 @@ public class Player implements Serializable {
     private BuilderColor color;
     private Builder builderChosen;
 
-    public Player(String nickname) {
-        this.nickname=nickname;
-        this.disabled=false;
-        this.builder1=null;
-        this.builder2=null;
-    }
+ public Player(String nickname) {
+     this.nickname = nickname;
+     this.disabled = false;
+     this.builder1 = null;
+     this.builder2 = null;
+ }
 
-    public Player(String nickname, BuilderColor color) {
-        this.nickname=nickname;
-        this.disabled=false;
-        this.builder1=null;
-        this.builder2=null;
-        this.color=color;
-    }
+ public Player(String nickname, BuilderColor color) {
+     this.nickname = nickname;
+     this.disabled = false;
+     this.builder1 = null;
+     this.builder2 = null;
+     this.color = color;
+ }
 
-    //Getters
-    public String getNickname(){
-        return this.nickname;
-   }
-    public GodCard getGodCard() {
-        return this.godCardPlayer;
-    }
-    public boolean isDisabled(){
-        return this.disabled;
-    }
-    public Builder getBuilder1(){
-        return this.builder1;
-    }
-    public Builder getBuilder2(){
-        return this.builder2;
-    }
-    public BuilderColor getColor() {
-        return color;
-    }
-    public Builder getBuilderChosen() { return builderChosen; }
+ //Getters
+ public String getNickname(){ return this.nickname; }
+ public GodCard getGodCard() { return this.godCardPlayer; }
+ public boolean isDisabled(){ return this.disabled; }
+ public Builder getBuilder1(){ return this.builder1; }
+ public Builder getBuilder2(){ return this.builder2; }
+ public BuilderColor getColor() { return color; }
+ public Builder getBuilderChosen() { return builderChosen; }
 
-    //Setters
-    public void setNickname(String nickname)
-    {
-        this.nickname=nickname;
-    }
-    public void setGodCard(GodCard godCardPlayer)
-    {
-        this.godCardPlayer=godCardPlayer;
-    }
-    public void setBuilder1(Builder builder1)
-    {
-        this.builder1= builder1;
-    }
-    public void setBuilder2(Builder builder2)
-    {
-        this.builder2=builder2;
-    }
-    public void setColor(BuilderColor color) {
-        this.color = color;
-    }
-    public void setBuilderChosen(Builder builderChosen) { this.builderChosen = builderChosen; }
+ //Setters
+ public void setNickname(String nickname) { this.nickname=nickname; }
+ public void setGodCard(GodCard godCardPlayer) { this.godCardPlayer=godCardPlayer; }
+ public void setBuilder1(Builder builder1) { this.builder1= builder1; }
+ public void setBuilder2(Builder builder2) { this.builder2=builder2; }
+ public void setColor(BuilderColor color) { this.color = color; }
+ public void setBuilderChosen(Builder builderChosen) { this.builderChosen = builderChosen; }
 
-    //Method that returns the God Card name(string) associated to the player
-    public String toString() {
-        return this.godCardPlayer.getName();
-    }
+ /**
+  * @return the name of the god card (string) associated to the player.
+  */
+    public String toString() { return this.godCardPlayer.getName(); }
 
 }

@@ -56,9 +56,9 @@
                 <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
             </children>
         </GridPane>
-        <Label fx:id="lblMessages" contentDisplay="CENTER" layoutX="260.0" layoutY="389.0" prefHeight="38.0" prefWidth="293.0" textAlignment="CENTER">
+        <Label fx:id="lblMessages" alignment="CENTER" contentDisplay="CENTER" layoutX="214.0" layoutY="389.0" prefHeight="38.0" prefWidth="387.0" textAlignment="CENTER">
             <font>
-                <Font name="Cambria" size="20.0" />
+                <Font name="Cambria" size="18.0" />
             </font>
         </Label>
         <GridPane fx:id="gridLevels" disable="true" layoutX="239.0" layoutY="64.0" prefHeight="325.0" prefWidth="324.0">

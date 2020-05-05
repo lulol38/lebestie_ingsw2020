@@ -22,6 +22,10 @@ import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ *This class is used for the interaction between GUI and the message parser of the client.
+ *@author Davide Carini
+ */
 
 public class GUIController {
 
@@ -32,13 +36,9 @@ public class GUIController {
     private NPlayersController nPlayersController;
     private ExecutorService executor = Executors.newCachedThreadPool();
 
+    //GETTERS
 
-    public static GUIController getInstance() {
-        if (instance == null)
-            instance = new GUIController();
-        return instance;
-    }
-
+    //SETTERS
     public void setConnectionController(ConnectionController c){
         this.connectionController=c;
     }
@@ -48,33 +48,49 @@ public class GUIController {
     public void setLobbyController(LobbyController l){
         this.lobbyController=l;
     }
-    public void setnPlayersController(NPlayersController n){this.nPlayersController=n;}
+    public void setNPlayersController(NPlayersController n){this.nPlayersController=n;}
 
-
-    public static void setScene(Scene s, String resource){
-        try {
-            AnchorPane root = (AnchorPane) FXMLLoader.load(GUIController.class.getResource(resource));
-            s.setRoot(root);
-            s.getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent we) {
-                    if(Client.getInstance()!=null) {
-                        Client.getInstance().sendMessage(new CloseConnection(Client.getInstance().getIdGame()));
-                        try {
-                            Client.getInstance().closeConnection();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    System.exit(0);
-                }
-            });
-        }catch (Exception e){
-        }
-
+    /**
+     * The singleton instance of the GUi controller returns, if it has not been created it allocates it as well
+     * @return the singleton instance
+     */
+    public static GUIController getInstance() {
+        if (instance == null)
+            instance = new GUIController();
+        return instance;
     }
 
+    /**
+     * This method is used to set scene of the current stage
+     * @param s is the scene to load
+     * @param resource is the path of the scene to load (.fxml file)
+     */
+    public static void setScene(Scene s, String resource){
+        try {
+            AnchorPane root = FXMLLoader.load(GUIController.class.getResource(resource));
+            s.setRoot(root);
+            s.getWindow().setOnCloseRequest(we -> {
+                if(Client.getInstance()!=null) {
+                    Client.getInstance().sendMessage(new CloseConnection(Client.getInstance().getIdGame()));
+                    try {
+                        Client.getInstance().closeConnection();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                System.exit(0);
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
+    /**
+     * This method creates new client connection if the server is running(in this case is open an alert that display the error).
+     * @param address of the server that the client want to connect
+     * @param port of the server that the client want to connect
+     * @param user is the nickname that represents the user in the game
+     */
     public void createConnection(String address,int port,String user){
         try {
             Client c= new Client(address, port,user);
@@ -91,10 +107,13 @@ public class GUIController {
             }
         }
         catch (Exception e){
+            e.printStackTrace();
         }
     }
 
-
+    /**
+     * This method is called to display an alert that allows the user to modify the nickname chosen.
+     */
     public void digitWrongUsername(){
         javafx.application.Platform.runLater(new Runnable() {
             @Override
@@ -117,9 +136,11 @@ public class GUIController {
         });
     }
 
+    /**
+     * This method is called to set a new stage that represents the board
+     */
     public void setBoard(){
         javafx.application.Platform.runLater(new Runnable() {
-
             @Override
             public void run() {
                 try {
@@ -134,20 +155,16 @@ public class GUIController {
                     stage.setScene(scene);
                     stage.setResizable(false);
                     stage.show();
-
-                    stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                        @Override
-                        public void handle(WindowEvent we) {
-                            if(Client.getInstance()!=null) {
-                                Client.getInstance().sendMessage(new CloseConnection(Client.getInstance().getIdGame()));
-                                try {
-                                    Client.getInstance().closeConnection();
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
+                    stage.setOnCloseRequest(we -> {
+                        if(Client.getInstance()!=null) {
+                            Client.getInstance().sendMessage(new CloseConnection(Client.getInstance().getIdGame()));
+                            try {
+                                Client.getInstance().closeConnection();
+                            } catch (IOException e) {
+                                e.printStackTrace();
                             }
-                            System.exit(0);
                         }
+                        System.exit(0);
                     });
                     Client.getInstance().sendMessage(new SendBoardLoaded(Client.getInstance().getIdGame()));
                 } catch (IOException e) {
@@ -155,15 +172,18 @@ public class GUIController {
                 }
             }
         });
-
     }
 
-
-
+    /**
+     * This method is used to display to the first user the window for the selection of player's number in the game
+     */
     public void choiseNumber(){
         connectionController.okConnection();
     }
 
+    /**
+     * This method is called when a user disconnects himself from the game. All the user in the game lose.
+     */
     public void displayDisconnection() {
         Platform.runLater(new Runnable() {
             @Override
@@ -186,31 +206,45 @@ public class GUIController {
         });
     }
 
-
+    /**
+     * This method is used to called lobby Controller and close the stage lobby when the game starts.
+     */
     public void closeLobbyStage(){
         javafx.application.Platform.runLater(()-> {
             lobbyController.close();
         });
     }
 
+    /**
+     * This method is used to close board when the game terminates.
+     */
     public void closeBoard(){
         javafx.application.Platform.runLater(()-> {
             boardController.close();
         });
     }
 
+    /**
+     * This method is used to open lobby and to wait all users.
+     */
     public void openLobbyWaiting(){
         javafx.application.Platform.runLater(()-> {
            connectionController.openLobby();
         });
     }
 
+    /**
+     * This method is used to close the window "Nplayers".
+     */
     public void closeNumber(){
         javafx.application.Platform.runLater(()-> {
            nPlayersController.close();
         });
     }
 
+    /**
+     * This method is used to display the win's window when a user wins.
+     */
     public void displayWin(){
         javafx.application.Platform.runLater(new Runnable() {
             @Override
@@ -234,6 +268,9 @@ public class GUIController {
         });
     }
 
+    /**
+     * This method is used to display the lost's window when a user wins.
+     */
     public void displayLost(){
         javafx.application.Platform.runLater(new Runnable() {
             @Override
