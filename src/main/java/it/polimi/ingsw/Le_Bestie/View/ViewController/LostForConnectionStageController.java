@@ -3,13 +3,9 @@ package it.polimi.ingsw.Le_Bestie.View.ViewController;
 import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.CloseConnection;
 import it.polimi.ingsw.Le_Bestie.View.GUI;
-import it.polimi.ingsw.Le_Bestie.View.GUIController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
-import java.awt.*;
 import java.io.IOException;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,6 +15,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ *
+ * @author Davide Carini
+ */
 
 public class LostForConnectionStageController {
 
@@ -39,7 +39,7 @@ public class LostForConnectionStageController {
             root = FXMLLoader.load(getClass().getResource("/fxml/ConnectionStage.fxml"));
         }
         catch (Exception e){
-
+            e.printStackTrace();
         }
         Scene scene = new Scene(root);
         connectionMenu.setTitle("SANTORINI");
@@ -48,7 +48,6 @@ public class LostForConnectionStageController {
         connectionMenu.setScene(scene);
         connectionMenu.setResizable(false);
         connectionMenu.show();
-
     }
 
     public void pressQuit(javafx.event.ActionEvent actionEvent) throws IOException {

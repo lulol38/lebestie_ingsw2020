@@ -15,6 +15,10 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
+/**
+ *
+ * @author Davide Carini
+ */
 public class LostController {
 
     @FXML

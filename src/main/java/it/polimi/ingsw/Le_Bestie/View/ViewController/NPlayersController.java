@@ -11,6 +11,11 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ *
+ * @author Davide Carini
+ */
+
 public class NPlayersController {
 
     @FXML

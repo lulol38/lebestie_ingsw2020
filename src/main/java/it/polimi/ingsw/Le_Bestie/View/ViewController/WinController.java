@@ -15,6 +15,11 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
+/**
+ *
+ * @author Davide Carini
+ */
+
 public class WinController {
 
     @FXML

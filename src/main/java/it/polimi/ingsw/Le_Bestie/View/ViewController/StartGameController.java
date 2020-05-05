@@ -5,6 +5,10 @@ import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ *
+ * @author Davide Carini
+ */
 public class StartGameController {
 
     @FXML

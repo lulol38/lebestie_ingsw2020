@@ -11,7 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 
 /**
- *
+ * This class represents the controller for the connection window
  * @author Davide Carini
  */
 
@@ -26,34 +26,44 @@ public class ConnectionController {
     @FXML
     AnchorPane connectionPane;
 
-
+    /**
+     * initialize the connection controller in the instance of the GUI controller
+     */
     public void initialize()
     {
         n=0;
         GUIController.getInstance().setConnectionController(this);
     }
 
+    /**
+     * This class sets red the border of textfield that contains errors
+     * @param tf is the textfield to set red
+     */
     private void setRed(TextField tf) {
         ObservableList<String> styleClass = tf.getStyleClass();
         if(!styleClass.contains("error")) {
             styleClass.add("error");
         }
     }
+
+    /**
+     * Remove the color red from textfields when are respected conditions allow that
+     * @param tf is the textfield that is pressed
+     */
     private void removeRed(TextField tf) {
         ObservableList<String> styleClass = tf.getStyleClass();
         styleClass.removeAll(Collections.singleton("error"));
     }
 
-    public void pressTextFieldUsername(){
-        removeRed(txtUsername);
-    }
-    public void pressTextFieldPort(){
-        removeRed(txtServerPort);
-    }
-    public void pressTextFieldAddress(){
-        removeRed(txtServerAddress);
-    }
+    public void pressTextFieldUsername(){ removeRed(txtUsername); }
+    public void pressTextFieldPort(){ removeRed(txtServerPort); }
+    public void pressTextFieldAddress(){ removeRed(txtServerAddress); }
 
+    /**
+     * This method is connected to the click of the button Connect and it controls textfields are corrected
+     * @param actionEvent
+     * @throws Exception
+     */
     public void pressConnectButton(ActionEvent actionEvent) throws Exception {
         if(txtUsername.getLength()==0||txtServerAddress.getLength()==0||txtServerPort.getLength()==0||!isInteger(txtServerPort.getText()) ){
             if(txtUsername.getLength()==0)
@@ -64,36 +74,40 @@ public class ConnectionController {
                 setRed(txtServerAddress);
             return;
         }
-
         System.out.println("Trying to connect...");
         if(txtServerAddress.getText()!="" && txtServerPort.getText()!="" && txtUsername.getText()!="")
             GUIController.getInstance().createConnection(txtServerAddress.getText(),Integer.parseInt(txtServerPort.getText()),txtUsername.getText());
-
     }
 
+    /**
+     * Connect the back button to the precedent stage
+     * @param actionEvent
+     * @throws Exception
+     */
+    public void pressBack(ActionEvent actionEvent) throws Exception { GUIController.getInstance().setScene(connectionPane.getScene(),"/fxml/StartStage.fxml"); }
 
-    public void pressBack(ActionEvent actionEvent) throws Exception {
-        GUIController.getInstance().setScene(connectionPane.getScene(),"/fxml/StartStage.fxml");
-    }
+    /**
+     * This method is called if the user is the player that creates the game
+     */
+    public void okConnection(){ GUIController.getInstance().setScene(connectionPane.getScene(), "/fxml/NPlayersStage.fxml"); }
 
-    public void okConnection(){
-            GUIController.getInstance().setScene(connectionPane.getScene(), "/fxml/NPlayersStage.fxml");
-    }
-
-    public void openLobby(){
-        GUIController.getInstance().setScene(connectionPane.getScene(),"/fxml/LobbyStage.fxml");
-    }
+    /**
+     * This method is called to open stage associated to the lobby
+     */
+    public void openLobby(){ GUIController.getInstance().setScene(connectionPane.getScene(),"/fxml/LobbyStage.fxml"); }
 
     public void close(){
         Stage stage = (Stage) connectionPane.getScene().getWindow();
         stage.close();
     }
 
-    public void disableButton(){
-        btnConnect.setDisable(true);
-    }
+    public void disableButton(){ btnConnect.setDisable(true); }
 
-
+    /**
+     * This method controls if the string in input is a queue of integer( is used for the port)
+     * @param s is the string associated to the port textfield
+     * @return true if s is a valid integer, false else
+     */
     public static boolean isInteger(String s) {
         boolean isValidInteger = false;
         try {

@@ -148,6 +148,10 @@ public class BoardController{
         });
     }
 
+    /**
+     * This method shows Power request.
+     * @param mex is an answer for the client for use or not the power of the god card
+     */
     public void ShowQuestionPower(String mex){
         javafx.application.Platform.runLater(()->{
             lblMessages.setText(mex);
@@ -167,19 +171,19 @@ public class BoardController{
         });
     }
 
+    /**
+     * This method shows the power used
+     * @param mex represents the power
+     */
     public void ShowPowerMessage(String mex) {
         javafx.application.Platform.runLater(()->{
             lblMessages.setText(mex);
-
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("POWER");
             alert.setContentText(mex);
-
             ButtonType buttonTypeOne = new ButtonType("Yes");
             ButtonType buttonTypeTwo = new ButtonType("No");
-
             alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
-
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == buttonTypeOne){
                 imgPower.setOpacity(1.0);
@@ -191,6 +195,10 @@ public class BoardController{
         });
     }
 
+    /**
+     *
+     * @param event get the cell that the user clicks
+     */
     public void getCell(MouseEvent event) {
         javafx.application.Platform.runLater(()->{
             Node clickedNode = event.getPickResult().getIntersectedNode();
@@ -200,7 +208,6 @@ public class BoardController{
                         clickedNode=clickedNode.getParent();
                     posx = gridBoard.getRowIndex(clickedNode);
                     posy = gridBoard.getColumnIndex(clickedNode);
-
 
                     try {
                         Client.getInstance().sendMessage(new SendBuilderPositions(posx, posy, Client.getInstance().getIdGame()));
@@ -216,20 +223,15 @@ public class BoardController{
                     if (clickedNode != gridBoard) {
                         selectedBuilderX = gridBoard.getRowIndex(clickedNode);
                         selectedBuilderY = gridBoard.getColumnIndex(clickedNode);
-
                         Client.getInstance().sendMessage(new SendBuilderChosen(selectedBuilderX, selectedBuilderY, Client.getInstance().getIdGame()));
                         n=clickedNode;
-
                     }
                 } else {
                     if (selectedCellX == 10 || selectedCellY == 10) {
                         if (clickedNode != gridBoard) {
-
                             selectedCellX = gridBoard.getRowIndex(clickedNode);
                             selectedCellY = gridBoard.getColumnIndex(clickedNode);
-
                             Client.getInstance().sendMessage(new SendCellChosen(selectedCellX, selectedCellY, Client.getInstance().getIdGame()));
-
                         }
                     }
                 }
@@ -237,6 +239,10 @@ public class BoardController{
         });
     }
 
+    /**
+     * This method update the board (visible to the user)
+     * @param b is the board that is serialized from the model and represents the situation of the board game
+     */
     public void setupBoard(Board b) { //UPDATE BOARD
         javafx.application.Platform.runLater(()->{
             Field field = null;
@@ -268,17 +274,25 @@ public class BoardController{
         });
     }
 
+    /**
+     *
+     * @param gridPane grid with the 25 cell
+     * @param row
+     * @param col
+     * @return label associated to the node at coordinates (row,col)
+     */
     private Label getNodeGridPane(GridPane gridPane, int row, int col) {
         for (Node node : gridBoard.getChildren()) {
-            if (node instanceof Label
-                    && gridBoard.getColumnIndex(node) == col
-                    && gridBoard.getRowIndex(node) == row) {
+            if (node instanceof Label && gridBoard.getColumnIndex(node) == col && gridBoard.getRowIndex(node) == row) {
                 return (Label) node;
             }
         }
         return null;
     }
 
+    /**
+     * Active GUI and display label for the start turn of the player
+     */
     public void beginTurn() {
         javafx.application.Platform.runLater(()->{
             BoardController.getInstance().activeGUI();
@@ -286,6 +300,9 @@ public class BoardController{
         });
     }
 
+    /**
+     * Disable GUI, hides color of border of cell clicked and display label that indicates the turn is finished
+     */
     public void endTurn() {
         javafx.application.Platform.runLater(()->{
             BoardController.getInstance().disableGUI();
@@ -303,35 +320,45 @@ public class BoardController{
             alert.setTitle("ERROR");
             alert.setHeaderText(null);
             alert.setContentText(s);
-
             alert.showAndWait();
-
             AskCellChosen();
         });
     }
 
+    /**
+     * Display god card, color associated to the player and description god card drawn
+     * @param card is the god card drawn from the deck
+     * @param color is the color univocal associated to the user
+     * @param path is the relative path of the card image
+     * @param description is the power of the god card
+     */
     public void addCardOnBoard(String card, String color, String path,String description){
         javafx.application.Platform.runLater(()-> {
             lblCard.setText(card);
             rect.setFill(Color.valueOf(color));
             imgGodCard.setImage(new Image(path));
             lblDescription.setText(description);
-
         });
     }
 
-    public void setClickBorder()
-    {
-        n.setStyle("-fx-border-color: #ff0000;");
-    }
+    /**
+     * This method is used to set the Color of the border of the cell to remember the builder and the first cell selected
+     */
+    public void setClickBorder() { n.setStyle("-fx-border-color: #ff0000;"); }
 
+    /**
+     * This method is used to close the window associated to the board
+     */
     public void close(){
         Stage stage = (Stage) boardPane.getScene().getWindow();
         stage.close();
     }
 
-
-
+    /**
+     * This method writes on the board the opponents players in the game
+     * @param opponents are nicknames of other players
+     * @param opponentsGods are names of cards drawn by other players
+     */
     public void addOpponentsOnBoard(ArrayList<String> opponents, ArrayList<String> opponentsGods) {
         javafx.application.Platform.runLater(()-> {
             for(int j=0;j<opponents.size();j++){
