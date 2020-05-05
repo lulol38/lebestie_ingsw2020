@@ -7,7 +7,7 @@ import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageServer;
 import java.io.*;
 import java.net.Socket;
 /**
- * Class ClientSocket
+ * Class Client
  * client connection with server using socket
  * @author Luca Ferrari
  */
@@ -27,21 +27,51 @@ public class Client implements Runnable {
 
     private int idGame;
 
-    public Client(String ip, int port, String username) {
+    private boolean connected;
 
+    public Client(String ip, int port, String username) {
         this.ip=ip;
         this.port=port;
         this.username=username;
-
         instance=this;
     }
 
+    //Getters
+    public static Client getInstance() {
+        return instance;
+    }
+    public String getUsername() {
+        return username;
+    }
+    public int getNumPlayers() {
+        return numPlayers;
+    }
+    public int getIdGame() {
+        return idGame;
+    }
+
+    //Setters
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public void setNumPlayers(int numPlayers) {
+        this.numPlayers = numPlayers;
+    }
+    public void setIdGame(int idGame) {
+        this.idGame = idGame;
+    }
+
+    /**
+     * This method initializes the socket connection to the server and the in/out streams
+     * @return if all has gone well returns true, instead false
+     */
     public boolean init() {
         try {
             //Create the connection with the server
             this.socket = new Socket(ip, port);
             this.out = new ObjectOutputStream(socket.getOutputStream());
             this.in = new ObjectInputStream(socket.getInputStream());
+            this.connected=true;
             return true;
         }
         catch(Exception ex){
@@ -49,8 +79,11 @@ public class Client implements Runnable {
         }
     }
 
+    /**
+     * Method that listens for messages while the client is connected
+     */
     public void run() {
-        while (true) {
+        while (connected) {
             try {
                 receiveMessage();
             }
@@ -60,34 +93,9 @@ public class Client implements Runnable {
         }
     }
 
-    public static Client getInstance() {
-        return instance;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public int getNumPlayers() {
-        return numPlayers;
-    }
-
-    public void setNumPlayers(int numPlayers) {
-        this.numPlayers = numPlayers;
-    }
-
-    public int getIdGame() {
-        return idGame;
-    }
-
-    public void setIdGame(int idGame) {
-        this.idGame = idGame;
-    }
-
+    /**
+     * Method that handles when a message is received, and sends it to the parser
+     */
     public void receiveMessage() {
         try {
             MessageServer mex = (MessageServer) in.readObject();
@@ -99,6 +107,10 @@ public class Client implements Runnable {
         }
     }
 
+    /**
+     * Method that sends the message to the server
+     * @param message It's the message that has to be sent to the server
+     */
     public void sendMessage(MessageClient message){
         try {
             out.reset();
@@ -109,7 +121,12 @@ public class Client implements Runnable {
         }
     }
 
+    /**
+     * Method that closes the client connection to the server
+     * @throws IOException
+     */
     public void closeConnection() throws IOException {
+        this.connected=false;
         this.in.close();
         this.out.close();
         this.socket.close();

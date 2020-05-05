@@ -2,6 +2,11 @@ package it.polimi.ingsw.Le_Bestie.Network.Messages.S2C;
 
 import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageVisitorClient;
 
+/**
+ * The server sends to the client the GodCard randomly assigned to him
+ * @author Luca Ferrari
+ */
+
 public class SendCardToPlayers extends S2C{
     private String card;
     private String color;
@@ -15,7 +20,7 @@ public class SendCardToPlayers extends S2C{
         this.description=description;
     }
 
-
+    //Getter
     public String getCard() {
         return this.card;
     }
@@ -29,6 +34,10 @@ public class SendCardToPlayers extends S2C{
         return description;
     }
 
+    /**
+     * Visitor pattern
+     * @param visitor
+     */
     @Override
     public void receive(MessageVisitorClient visitor) {
         visitor.visit(this);
