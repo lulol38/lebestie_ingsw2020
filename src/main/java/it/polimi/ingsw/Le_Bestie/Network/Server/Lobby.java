@@ -2,6 +2,11 @@ package it.polimi.ingsw.Le_Bestie.Network.Server;
 
 import java.util.ArrayList;
 
+/**
+ * Lobby includes the clients waiting for the beginning of the match
+ * @author Luca Ferrari
+ */
+
 public class Lobby {
 
     private ArrayList<ClientHandler> clientsWaiting = new ArrayList<ClientHandler>();

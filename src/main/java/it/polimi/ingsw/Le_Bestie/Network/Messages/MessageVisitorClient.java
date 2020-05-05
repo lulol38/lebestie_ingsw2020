@@ -1,11 +1,14 @@
 package it.polimi.ingsw.Le_Bestie.Network.Messages;
 
-import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.*;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.*;
 
-public interface MessageVisitorClient {
+/**
+ * Visitor pattern
+ * 1 method for each message that the client can receive
+ * @author Luca Ferrari
+ */
 
-    //1 metodo per ogni tipo di messaggio
+public interface MessageVisitorClient {
 
     void visit(AskNumPlayers mex);
 

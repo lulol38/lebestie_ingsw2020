@@ -7,6 +7,12 @@ import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.*;
 import it.polimi.ingsw.Le_Bestie.Network.Server.ClientHandler;
 import it.polimi.ingsw.Le_Bestie.Network.Server.Server;
 
+/**
+ * Visitor pattern
+ * For each received message, here are described the actions that the server has to do
+ * @author Luca Ferrari
+ */
+
 public class MessageParserServer implements MessageVisitorServer {
 
     private Object obj;
