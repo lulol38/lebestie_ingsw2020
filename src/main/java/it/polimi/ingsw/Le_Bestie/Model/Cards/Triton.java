@@ -36,7 +36,7 @@ public class Triton extends GodCard {
             if (x == 1) {
                 if(c.getPosition().getY()==0||c.getPosition().getY()==4||c.getPosition().getX()==0||c.getPosition().getX()==4)
                 {
-                    if(w.possibleMoves(b,notMoveUp).size()==0)
+                    if(w.possibleMoves(b).size()==0)
                         return 1;
                     else {
                         firstMove = true;
@@ -49,7 +49,7 @@ public class Triton extends GodCard {
         }
         //second move
         else {
-            if (w.possibleMoves(b,notMoveUp).contains(c))
+            if (w.possibleMoves(b).contains(c))
                 return super.move(b, w, c, usePower);
             else
                 return 0;

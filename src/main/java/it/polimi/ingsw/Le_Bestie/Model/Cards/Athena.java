@@ -4,6 +4,7 @@ package it.polimi.ingsw.Le_Bestie.Model.Cards;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
+import it.polimi.ingsw.Le_Bestie.Model.Game.MatchState;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 /**
@@ -21,13 +22,13 @@ public class Athena extends GodCard{
 
     @Override
     public int move(Board b, Builder w, Cell c, boolean usePower) {
-        notMoveUp=false;
+        MatchState.setNotMoveUp(false);
         int startingLevel=b.getGrid()[w.getPosition().getX()][w.getPosition().getY()].getLevel();
         int x=super.move(b,w,c,usePower);
         if(x==1) {
             //Athena power
             if (c.getLevel() > startingLevel)
-              notMoveUp=true;
+                MatchState.setNotMoveUp(true);
               return 1;
         }
         else

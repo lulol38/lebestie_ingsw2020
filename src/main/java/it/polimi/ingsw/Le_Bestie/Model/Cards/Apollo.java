@@ -22,10 +22,10 @@ public class Apollo extends GodCard {
 
     @Override
     public int move(Board b, Builder w, Cell c,boolean usePower) {
-        if (w.possibleMoves(b, notMoveUp).contains(c))
+        if (w.possibleMoves(b).contains(c))
             return super.move(b, w, c,usePower);
 
-        if (w.possibleSwitch(b, notMoveUp).contains(c)) {
+        if (w.possibleSwitch(b).contains(c)) {
             Cell currentCell=b.getGrid()[w.getPosition().getX()][w.getPosition().getY()];
             //winner condition
             if(HasWon(c,currentCell))
@@ -47,11 +47,11 @@ public class Apollo extends GodCard {
     @Override
     public int HasLost(Player player,Board b) {
 
-        if (player.getBuilder1().possibleSwitch(b, notMoveUp).size() == 0&&player.getBuilder1().possibleMoves(b, notMoveUp).size() == 0)
+        if (player.getBuilder1().possibleSwitch(b).size() == 0&&player.getBuilder1().possibleMoves(b).size() == 0)
             player.getBuilder1().setDisabled(true);
         else
             player.getBuilder1().setDisabled(false);
-        if (player.getBuilder2().possibleSwitch(b, notMoveUp).size() == 0&&player.getBuilder2().possibleMoves(b, notMoveUp).size() == 0)
+        if (player.getBuilder2().possibleSwitch(b).size() == 0&&player.getBuilder2().possibleMoves(b).size() == 0)
             player.getBuilder2().setDisabled(true);
         else
             player.getBuilder2().setDisabled(false);

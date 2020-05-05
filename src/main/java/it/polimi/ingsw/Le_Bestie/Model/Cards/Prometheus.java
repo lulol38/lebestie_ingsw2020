@@ -3,6 +3,7 @@ package it.polimi.ingsw.Le_Bestie.Model.Cards;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
+import it.polimi.ingsw.Le_Bestie.Model.Game.MatchState;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 /**
@@ -53,8 +54,11 @@ public class Prometheus extends GodCard{
                 int x=build(b, w, c, usePower);
                 if(x==1) {
                     firstBuild = true;
-                    if(w.possibleMoves(b, true).size()==0)
+                    boolean temp = MatchState.getNotMoveUp();
+                    MatchState.setNotMoveUp(true);
+                    if(w.possibleMoves(b).size()==0)
                         w.setDisabled(true);
+                    MatchState.setNotMoveUp(temp);
                     return 0;
                 }
                 return x;

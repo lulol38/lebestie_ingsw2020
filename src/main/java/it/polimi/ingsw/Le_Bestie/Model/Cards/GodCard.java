@@ -16,7 +16,6 @@ import java.io.Serializable;
 public abstract class GodCard implements Serializable {
 
     private String name;
-    static protected boolean notMoveUp;
     private String message;
     private String path;
     private String description;
@@ -30,14 +29,6 @@ public abstract class GodCard implements Serializable {
     public String getName() { return this.name; }
     public String getPath() { return this.path; }
     public String getDescription(){return this.description;}
-
-    public void setNotMoveUp(boolean notMoveUp) {
-        this.notMoveUp=notMoveUp;
-    }
-
-    public boolean getNotMoveUp() {
-        return notMoveUp;
-    }
 
     public String getMessage() {
         return message;
@@ -62,7 +53,7 @@ public abstract class GodCard implements Serializable {
 
     public int move(Board b, Builder w, Cell c,boolean usePower){
         Cell currentCell=b.getGrid()[w.getPosition().getX()][w.getPosition().getY()];
-        if(w.possibleMoves(b,notMoveUp).contains(c))
+        if(w.possibleMoves(b).contains(c))
         {
             //winner condition
             if(HasWon(c,currentCell))
@@ -108,12 +99,12 @@ public abstract class GodCard implements Serializable {
     2 -> se ha vinto
      */
     public int HasLost(Player player,Board b){
-        if(player.getBuilder1().possibleMoves(b,notMoveUp).size()==0)
+        if(player.getBuilder1().possibleMoves(b).size()==0)
             player.getBuilder1().setDisabled(true);
         else
             player.getBuilder1().setDisabled(false);
 
-        if(player.getBuilder2().possibleMoves(b,notMoveUp).size()==0)
+        if(player.getBuilder2().possibleMoves(b).size()==0)
             player.getBuilder2().setDisabled(true);
         else
             player.getBuilder2().setDisabled(false);

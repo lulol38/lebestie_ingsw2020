@@ -24,10 +24,10 @@ public class Minotaur extends GodCard{
 
     @Override
     public int move(Board b,Builder w, Cell c, boolean usePower) {
-        if (w.possibleMoves(b, notMoveUp).contains(c))
+        if (w.possibleMoves(b).contains(c))
             return super.move(b, w, c, usePower);
 
-        if (w.possibleSwitch(b, notMoveUp).contains(c)) {
+        if (w.possibleSwitch(b).contains(c)) {
             Cell currentCell = b.getGrid()[w.getPosition().getX()][w.getPosition().getY()];
             Position nextCellPosition = c.nextCellFree(b, currentCell);
             if (nextCellPosition != null) {
@@ -54,12 +54,12 @@ public class Minotaur extends GodCard{
 
     @Override
     public int HasLost(Player player, Board b) {
-        if (player.getBuilder1().possibleMoves(b, notMoveUp).size() == 0&&player.getBuilder1().notPossibleSwitchMinotaur(b,notMoveUp))
+        if (player.getBuilder1().possibleMoves(b).size() == 0&&player.getBuilder1().notPossibleSwitchMinotaur(b))
             player.getBuilder1().setDisabled(true);
         else
             player.getBuilder1().setDisabled(false);
 
-        if (player.getBuilder2().possibleMoves(b, notMoveUp).size() == 0&&player.getBuilder2().notPossibleSwitchMinotaur(b,notMoveUp))
+        if (player.getBuilder2().possibleMoves(b).size() == 0&&player.getBuilder2().notPossibleSwitchMinotaur(b))
             player.getBuilder2().setDisabled(true);
         else
             player.getBuilder2().setDisabled(false);

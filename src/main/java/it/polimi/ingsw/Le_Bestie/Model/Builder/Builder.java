@@ -3,6 +3,7 @@ package it.polimi.ingsw.Le_Bestie.Model.Builder;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Position;
+import it.polimi.ingsw.Le_Bestie.Model.Game.MatchState;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 import java.io.Serializable;
@@ -36,7 +37,8 @@ public class Builder implements Serializable {
         this.disabled=disabled;
     }
 
-    public ArrayList<Cell> possibleMoves(Board b,boolean notmoveup) {
+    public ArrayList<Cell> possibleMoves(Board b) {
+        boolean notmoveup = MatchState.getNotMoveUp();
         Cell currentCell=b.getGrid()[this.getPosition().getX()][this.getPosition().getY()];
         ArrayList<Position> possibleMoves = new ArrayList<>();
         int x = this.getPosition().getX();
@@ -85,7 +87,8 @@ public class Builder implements Serializable {
         return around;
     }
 
-    public ArrayList<Cell> possibleSwitch(Board b,boolean notmoveup) {
+    public ArrayList<Cell> possibleSwitch(Board b) {
+        boolean notmoveup = MatchState.getNotMoveUp();
         Cell currentCell=b.getGrid()[this.getPosition().getX()][this.getPosition().getY()];
         ArrayList<Position> possibleMoves = new ArrayList<>();
         int x = this.getPosition().getX();
@@ -114,12 +117,13 @@ public class Builder implements Serializable {
         return around;
     }
 
-    public boolean notPossibleSwitchMinotaur(Board b,boolean notMoveUp) {
-        if (this.possibleSwitch(b, notMoveUp).size() == 0)
+    public boolean notPossibleSwitchMinotaur(Board b) {
+        boolean notMoveUp = MatchState.getNotMoveUp();
+        if (this.possibleSwitch(b).size() == 0)
             return true;
         else {
             Cell currentCell = b.getGrid()[this.getPosition().getX()][this.getPosition().getY()];
-            ArrayList<Cell> possibleSwitch = this.possibleSwitch(b, notMoveUp);
+            ArrayList<Cell> possibleSwitch = this.possibleSwitch(b);
 
             for (int i = 0; i < possibleSwitch.size(); i++) {
                 if (possibleSwitch.get(i).nextCellFree(b, currentCell) != null)
