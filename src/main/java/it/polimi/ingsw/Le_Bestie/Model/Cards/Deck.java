@@ -12,25 +12,29 @@ public class Deck {
 
     private ArrayList<GodCard> deck;
 
+    //CONSTRUCTOR
     public Deck(){
         deck=new ArrayList<>();
     }
 
+    //GETTERS
     public ArrayList<GodCard> getDeck() {
         return deck;
     }
 
+    /**
+     * This method add a card if is not null to the deck
+     * @param card is the god card read from the json
+     */
     public void addCard(GodCard card) {
         if (card == null) throw new NullPointerException("Card cannot be null");
         deck.add(card);
     }
 
-    public void shuffle(){
-
-        Collections.shuffle(deck);
-    }
-
-
+    /**
+     * This method returns a card to the player
+     * @return god card draw in the arraylist
+     */
     public GodCard draw() {
         try {
             return deck.remove(0);
@@ -39,8 +43,24 @@ public class Deck {
         }
     }
 
+    /**
+     * This method shuffle in random order the deck
+     */
+    public void shuffle(){ Collections.shuffle(deck); }
+
+    /**
+     * This method clear the deck
+     */
     public void flush() {
         deck.clear();
+    }
+
+    /**
+     *
+     * @return the number of cards in the deck
+     */
+    public int numberOfCards(){
+        return deck.size();
     }
 
     /*private int getRandomNumber(int max) {
@@ -48,10 +68,4 @@ public class Deck {
         return nRand.nextInt(max);
     }
     */
-
-    public int numberOfCards(){
-        return deck.size();
-    }
-
-
 }

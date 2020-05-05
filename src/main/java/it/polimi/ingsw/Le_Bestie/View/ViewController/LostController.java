@@ -16,7 +16,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 /**
- *
+ * this class is used to manage the lost's window
  * @author Davide Carini
  */
 public class LostController {
@@ -24,6 +24,10 @@ public class LostController {
     @FXML
     AnchorPane lostPane;
 
+    /**
+     * this method is associated to the button rejoin and allows to user to join another match
+     * @param actionEvent
+     */
     public void pressRejoin(ActionEvent actionEvent) {
         Stage stage = (Stage) lostPane.getScene().getWindow();
         stage.close();
@@ -44,12 +48,20 @@ public class LostController {
         connectionMenu.show();
     }
 
+    /**
+     * this method is associated at the click of the button quit and close client window
+     * @param actionEvent
+     * @throws IOException
+     */
     public void pressQuit(ActionEvent actionEvent) throws IOException {
         Client.getInstance().sendMessage(new CloseConnection(Client.getInstance().getIdGame()));
         Client.getInstance().closeConnection();
         System.exit(0);
     }
 
+    /**
+     * this method closes the window
+     */
     public void close(){
         Stage stage = (Stage) lostPane.getScene().getWindow();
         stage.close();

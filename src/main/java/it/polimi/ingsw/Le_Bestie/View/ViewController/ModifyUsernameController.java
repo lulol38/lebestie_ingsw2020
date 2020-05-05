@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
- *
+ * This class manages the username modify window
  * @author Davide Carini
  */
 public class ModifyUsernameController {
@@ -21,11 +21,14 @@ public class ModifyUsernameController {
     @FXML
     public TextField txtUsernameModified;
 
+    /**
+     * this method controls the username is univocal in the game
+     * @param actionEvent
+     */
     public void pressSendCorrectedUsername(ActionEvent actionEvent) {
         String text= txtUsernameModified.getText();
         if(text.length()!=0){
             Client.getInstance().sendMessage(new SendUsername(text));
-
             Node source = (Node)  actionEvent.getSource();
             Stage stage  = (Stage) source.getScene().getWindow();
             stage.close();

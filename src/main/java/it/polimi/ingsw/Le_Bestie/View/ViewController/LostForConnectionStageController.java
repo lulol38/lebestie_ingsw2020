@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 /**
- *
+ *This class is used to manage the lost for disconnection
  * @author Davide Carini
  */
 
@@ -29,6 +29,10 @@ public class LostForConnectionStageController {
     @FXML
     AnchorPane disconnectionPane;
 
+    /**
+     * this method is associated to the button rejoin and allows to user to join another match
+     * @param actionEvent
+     */
     public void pressRejoin(ActionEvent actionEvent) {
 
         Stage stage = (Stage) disconnectionPane.getScene().getWindow();
@@ -50,12 +54,20 @@ public class LostForConnectionStageController {
         connectionMenu.show();
     }
 
+    /**
+     * this method is associated at the click of the button quit and close client window
+     * @param actionEvent
+     * @throws IOException
+     */
     public void pressQuit(javafx.event.ActionEvent actionEvent) throws IOException {
         Client.getInstance().sendMessage(new CloseConnection(Client.getInstance().getIdGame()));
         Client.getInstance().closeConnection();
         System.exit(0);
     }
 
+    /**
+     * this method closes the window
+     */
     public void close(){
         Stage stage = (Stage) disconnectionPane.getScene().getWindow();
         stage.close();

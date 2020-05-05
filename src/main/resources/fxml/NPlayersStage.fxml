@@ -24,9 +24,9 @@
          <children>
          <RadioButton fx:id="rdb3P" layoutX="28.0" layoutY="75.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="130.0" text="   3 PLAYERS" userData="3">
                <toggleGroup>
-               <ToggleGroup fx:id="mygroup" />
+               <ToggleGroup fx:id="grpToggle" />
                </toggleGroup></RadioButton>
-         <RadioButton fx:id="rdb2P" layoutX="28.0" layoutY="39.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="163.0" text="   2 PLAYERS" toggleGroup="$mygroup" userData="2" />
+         <RadioButton fx:id="rdb2P" layoutX="28.0" layoutY="39.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="163.0" text="   2 PLAYERS" toggleGroup="$grpToggle" userData="2" />
             <ImageView fitHeight="30.0" fitWidth="23.0" layoutX="214.0" layoutY="43.0">
                <image>
                   <Image url="@../images/icon_player.png" />

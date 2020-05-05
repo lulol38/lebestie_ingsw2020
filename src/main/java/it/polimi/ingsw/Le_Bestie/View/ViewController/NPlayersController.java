@@ -12,7 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- *
+ *this class is used to manage and display window associated to the n players choice
  * @author Davide Carini
  */
 
@@ -23,15 +23,22 @@ public class NPlayersController {
     @FXML
     public RadioButton rdb2P;
     @FXML
-    public ToggleGroup mygroup;
+    public ToggleGroup grpToggle;
     @FXML
     public RadioButton rdb3P;
 
+    /**
+     * initialize the NPlayers controller in the instance of the GUI controller
+     */
     public void initialize() { GUIController.getInstance().setNPlayersController(this); }
 
+    /**
+     * this method is called when the button is pressed and controls that one of the two radio button in the toggle is selected
+     * @param actionEvent
+     */
     public void pressSendNumPlayers(ActionEvent actionEvent) {
         if(rdb2P.isSelected()||rdb3P.isSelected()){
-            Client.getInstance().sendMessage(new SendNumPlayers(Integer.parseInt(mygroup.getSelectedToggle().getUserData().toString())));
+            Client.getInstance().sendMessage(new SendNumPlayers(Integer.parseInt(grpToggle.getSelectedToggle().getUserData().toString())));
             GUIController.getInstance().setScene(playersPane.getScene(),"/fxml/LobbyStage.fxml");
         }
         else{
@@ -41,9 +48,11 @@ public class NPlayersController {
             alert.setContentText("The number of players must be 2 or 3");
             alert.showAndWait();
         }
-
     }
 
+    /**
+     * this method closes the window. this method is called from the GUI controller
+     */
     public void close(){
         Stage stage = (Stage) playersPane.getScene().getWindow();
         stage.close();
