@@ -10,6 +10,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * This class implements Builder, that is the pawn which moves on the Board.
+ * A builder is property of a player, is located by a position on the board and can be disabled if it hasn't possible moves.
+ */
+
 public class Builder implements Serializable {
 
     private boolean disabled;
@@ -21,14 +26,18 @@ public class Builder implements Serializable {
         this.disabled=false;
     }
 
-    //Getter
+    /**
+     * Getters
+     */
     public Position getPosition() { return position; }
     public Player getPlayer() {
         return player;
     }
     public boolean getDisabled(){ return this.disabled; }
 
-    //Setter
+    /**
+     * Setters
+     */
     public void setPlayer(Player player) {
         this.player=player;
     }
@@ -37,6 +46,13 @@ public class Builder implements Serializable {
         this.disabled=disabled;
     }
 
+
+    /**
+     * Method that obtain an array of cells in which the builder can move
+     *
+     * @param b the current board
+     * @return an array of cells in which the builder can move
+     */
     public ArrayList<Cell> possibleMoves(Board b) {
         boolean notmoveup = MatchState.getNotMoveUp();
         Cell currentCell=b.getGrid()[this.getPosition().getX()][this.getPosition().getY()];
@@ -65,6 +81,13 @@ public class Builder implements Serializable {
         return around;
     }
 
+
+    /**
+     * Method that obtain an array of cells in which the builder can build
+     *
+     * @param b the current board
+     * @return an array of cells in which the builder can build
+     */
     public ArrayList<Cell> possibleBuilds(Board b) {
         Cell currentCell=b.getGrid()[this.getPosition().getX()][this.getPosition().getY()];
         ArrayList<Position> possibleMoves = new ArrayList<>();
@@ -87,6 +110,13 @@ public class Builder implements Serializable {
         return around;
     }
 
+
+    /**
+     * Method that obtain an array of cells in which the builder can switch with another player's builder
+     *
+     * @param b the current board
+     * @return an array of cells in which the builder can switch
+     */
     public ArrayList<Cell> possibleSwitch(Board b) {
         boolean notmoveup = MatchState.getNotMoveUp();
         Cell currentCell=b.getGrid()[this.getPosition().getX()][this.getPosition().getY()];
@@ -117,6 +147,13 @@ public class Builder implements Serializable {
         return around;
     }
 
+
+    /**
+     * Method that check if the builder of a player who has Minotaur GodCard, can switch with another player's builder
+     *
+     * @param b the current board
+     * @return if the builder of a player who has Minotaur GodCard, can switch with another player's builder
+     */
     public boolean notPossibleSwitchMinotaur(Board b) {
         boolean notMoveUp = MatchState.getNotMoveUp();
         if (this.possibleSwitch(b).size() == 0)

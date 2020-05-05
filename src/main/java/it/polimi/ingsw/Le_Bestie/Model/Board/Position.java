@@ -2,6 +2,10 @@ package it.polimi.ingsw.Le_Bestie.Model.Board;
 
 import java.io.Serializable;
 
+/**
+ *This class implements position, that is the couple of coordinates of the cell in the board matrix
+ */
+
 public class Position implements Serializable {
     private int x, y;
 
@@ -10,22 +14,22 @@ public class Position implements Serializable {
         this.y = y;
     }
 
-    // Getters
-
+    /**
+     * Getters
+     */
     public int getX() {
         return x;
     }
-
     public int getY() {
         return y;
     }
 
-    // Setters
-
+    /**
+     * Setters
+     */
     public void setX(int x) {
         this.x = x;
     }
-
     public void setY(int y) {
         this.y = y;
     }
