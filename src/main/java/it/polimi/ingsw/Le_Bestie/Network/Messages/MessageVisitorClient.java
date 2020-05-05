@@ -3,19 +3,13 @@ package it.polimi.ingsw.Le_Bestie.Network.Messages;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.*;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.*;
 
-public interface MessageVisitor {
+public interface MessageVisitorClient {
 
     //1 metodo per ogni tipo di messaggio
 
     void visit(AskNumPlayers mex);
 
-    void visit(SendNumPlayers mex);
-
-    void visit(CloseConnection mex);
-
     void visit(AskUsername mex);
-
-    void visit(SendUsername mex);
 
     void visit(ErrorUsername mex);
 
@@ -27,27 +21,17 @@ public interface MessageVisitor {
 
     void visit(AskPositionBuilders mex);
 
-    void visit(SendBuilderPositions mex);
-
     void visit(AcceptedSetupBuilder mex);
 
     void visit(SendUpdatedBoard mex);
 
     void visit(SendOpponents mex);
 
-    void visit(SendBuilderChosen mex);
-
     void visit(AskCell mex);
-
-    void visit(SendCellChosen mex);
 
     void visit(SendPowerMessage mex);
 
-    void visit(SendPowerNotUsed mex);
-
     void visit(AskUsePower mex);
-
-    void visit(SendCellWithPower mex);
 
     void visit(AskBuilderChosen mex);
 
@@ -62,6 +46,4 @@ public interface MessageVisitor {
     void visit(LostForDisconnection mex);
 
     void visit(OpenLobby openLobby);
-
-    void visit(SendBoardLoaded mex);
 }

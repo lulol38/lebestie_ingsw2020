@@ -1,7 +1,9 @@
 package it.polimi.ingsw.Le_Bestie.Network.Server;
 
-import it.polimi.ingsw.Le_Bestie.Network.Messages.Message;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageParser;
+import it.polimi.ingsw.Le_Bestie.Network.MessageParserServer;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageClient;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageServer;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -64,8 +66,8 @@ public class ClientHandler implements Runnable {
 
     public void receiveMessage(){
         try {
-            Message mex= (Message) in.readObject();
-            mex.receive(new MessageParser(this));
+            MessageClient mex= (MessageClient) in.readObject();
+            mex.receive(new MessageParserServer(this));
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -74,7 +76,7 @@ public class ClientHandler implements Runnable {
         }
     }
 
-    public void sendMessage(Message message){
+    public void sendMessage(MessageServer message){
         try {
             out.reset();
             out.writeObject(message);

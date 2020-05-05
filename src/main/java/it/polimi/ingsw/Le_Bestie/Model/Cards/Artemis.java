@@ -3,8 +3,6 @@ package it.polimi.ingsw.Le_Bestie.Model.Cards;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
-import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.Message;
 
 /**
  * Class Artemis

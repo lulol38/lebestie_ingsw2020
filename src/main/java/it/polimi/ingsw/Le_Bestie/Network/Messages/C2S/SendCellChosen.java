@@ -1,6 +1,6 @@
 package it.polimi.ingsw.Le_Bestie.Network.Messages.C2S;
 
-import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageVisitor;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageVisitorServer;
 
 public class SendCellChosen extends C2S{
 
@@ -27,7 +27,7 @@ public class SendCellChosen extends C2S{
     }
 
     @Override
-    public void receive(MessageVisitor mex) {
+    public void receive(MessageVisitorServer mex) {
         mex.visit(this);
     }
 }
