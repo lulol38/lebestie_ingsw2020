@@ -39,7 +39,6 @@ public class DeckTest {
         assertEquals(1, deck.numberOfCards());
         deck.flush();
         assertEquals(0, deck.numberOfCards());
-
     }
 
     @Test
