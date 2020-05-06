@@ -1,10 +1,8 @@
 package it.polimi.ingsw.Le_Bestie.Model;
 
 import static org.junit.Assert.*;
-
 import it.polimi.ingsw.Le_Bestie.Model.Board.Position;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
-import it.polimi.ingsw.Le_Bestie.Model.Builder.BuilderColor;
 import it.polimi.ingsw.Le_Bestie.Model.Cards.*;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import org.junit.Test;
