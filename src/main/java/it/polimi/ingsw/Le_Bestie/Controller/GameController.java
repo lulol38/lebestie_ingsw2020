@@ -15,7 +15,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-//Controller for the server, it takes place between the model and the network in the server side
+/**
+ * Controller for the server, it takes place between the model and the network in the server side
+ * @author Davide Carini, Luca Ferrari, Veronica Rovelli
+ */
 public class GameController {
 
     private Lobby lobby;
@@ -33,26 +36,19 @@ public class GameController {
         }
     }
 
-    public Lobby getLobby() {
-        return lobby;
-    }
+    //Getters
+    public Lobby getLobby() { return lobby; }
+    public MatchState getMatchState() { return matchState; }
+    public int getIdGame() { return idGame; }
 
-    public MatchState getMatchState() {
-        return matchState;
-    }
+    //Setters
+    public void setWinner(int winner) { Winner = winner; }
+    public void setIdGame(int idGame) { this.idGame = idGame; }
 
-    public void setWinner(int winner) {
-        Winner = winner;
-    }
-
-    public int getIdGame() {
-        return idGame;
-    }
-
-    public void setIdGame(int idGame) {
-        this.idGame = idGame;
-    }
-
+    /**
+     * This method initializes the game
+     * It sends the message to the first player to setup the builders and sends him his opponents and their GodCards
+     */
     public void initGame(){
         matchState.startGame();
 
@@ -71,6 +67,12 @@ public class GameController {
         lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
     }
 
+    /**
+     * This method sets the builders to the players
+     * @param posx is the x coordinate of the builder to set
+     * @param posy is the y coordinate of the builder to set
+     * @return
+     */
     public int setPlayerBuilder(int posx, int posy){
         if(matchState.getCurrentPlayer().getBuilder1()==null) {
             if(matchState.getBoard().getGrid()[posx][posy].getBuilder()==null) {
@@ -91,6 +93,13 @@ public class GameController {
         return 0; //The cell was occupied
     }
 
+    /**
+     * This method handles the rotation of the turns for the players in the game
+     * (If someone hasn't already setup their builders, it sends the message to the player in the turn
+     * to setup the builders and sends him his opponents and their GodCards)
+     * At the beginning of the turn the methos controls if the player has lost or won, if not, asks an action to the player
+     * that begins with asking the builder to move
+     */
     public void nextTurn(){
         lobby.getClientsWaiting().get(0).sendMessage(new SendEndTurn());
         matchState.nextTurn();
@@ -124,6 +133,11 @@ public class GameController {
         }
     }
 
+    /**
+     * This method handles the case when someone has lost
+     * if 2 players -> end match
+     * if 3 players -> remove the player and all his builders and continue the game
+     */
     public void manageHasLost(){
         if(matchState.getPlayers().size()==2){ //IF ONLY 2 PLAYERS
             //lobby.getClientsWaiting().get(0).sendMessage(new SendHasLost());
@@ -142,6 +156,11 @@ public class GameController {
         }
     }
 
+    /**
+     * Check if the builder selected for an action is correct
+     * @param bx coordinate x of the builder
+     * @param by coordinate y of the builder
+     */
     public void checkBuilder(int bx, int by){
         if(matchState.getBoard().getGrid()[bx][by].getBuilder()!=null && matchState.getBoard().getGrid()[bx][by].getBuilder().getPlayer()==matchState.getCurrentPlayer()&&matchState.getBoard().getGrid()[bx][by].getBuilder().getDisabled()==false){
             matchState.getCurrentPlayer().setBuilderChosen(matchState.getBoard().getGrid()[bx][by].getBuilder());
@@ -153,6 +172,11 @@ public class GameController {
         }
     }
 
+    /**
+     * This method handles the request of an action, move or build
+     * @param cx
+     * @param cy
+     */
     public void requestAction(int cx, int cy){
         if(!matchState.getHasMoved()) {
             int moveResult = matchState.getCurrentPlayer().getGodCard().move(matchState.getBoard(), matchState.getCurrentPlayer().getBuilderChosen(), matchState.getBoard().getGrid()[cx][cy], matchState.getUsePower());
@@ -211,12 +235,18 @@ public class GameController {
 
     }
 
+    /**
+     * This method sends the board to the client after every change
+     */
     public void updateClients(){
         for (ClientHandler c : lobby.getClientsWaiting()) {
             c.sendMessage(new SendUpdatedBoard(matchState.getBoard()));
         }
     }
 
+    /**
+     * This method ends the match when there is a winner and removes the game from the game list
+     */
     public void endMatch(){
         lobby.getClientsWaiting().get(Winner).sendMessage(new SendHasWon());
         lobby.getClientsWaiting().remove(Winner);

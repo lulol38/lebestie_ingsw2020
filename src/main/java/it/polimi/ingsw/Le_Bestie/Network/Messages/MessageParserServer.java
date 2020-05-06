@@ -21,7 +21,7 @@ public class MessageParserServer implements MessageVisitorServer {
     }
 
     /**
-     * Sevrer sets the number of players fot the match sent from the client and inserts him in the lobby as first player
+     * Server sets the number of players fot the match sent from the client and inserts him in the lobby as first player
      */
     @Override
     public void visit(SendNumPlayers mex) {
