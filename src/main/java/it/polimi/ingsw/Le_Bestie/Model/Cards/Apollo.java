@@ -20,6 +20,10 @@ public class Apollo extends GodCard {
     }
 
 
+    /**
+     * Method that override the move of GodCard.
+     * The builder can move normally, but he can also move in an opponent Builder's cell and switch with him.
+     */
     @Override
     public int move(Board b, Builder w, Cell c,boolean usePower) {
         if (w.possibleMoves(b).contains(c))
@@ -44,6 +48,11 @@ public class Apollo extends GodCard {
         return 0;
     }
 
+
+    /**
+     * Method that override the HasLost of GodCard.
+     * A builder can move in usual possible moves but also in the neighboring opponent Builder's cell
+     */
     @Override
     public int HasLost(Player player,Board b) {
 

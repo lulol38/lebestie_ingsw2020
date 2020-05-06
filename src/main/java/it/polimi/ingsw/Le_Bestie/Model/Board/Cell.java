@@ -6,8 +6,8 @@ import java.io.Serializable;
 /**
  * This class implements cell.
  * A cell is located by a position on the board, has a building level and can be occupied by a builder.
- * There is 5 different levels, from 0 to 4. Level 4 is the dome: in this case the cell is disabled, that means any builder can't move on that.
- * A complete tower is when the cell has all 4 levels. Pay attention: a cell could be disabled with a dome, but not be a complete tower!
+ * There is 5 different levels, from 0 (ground) to 4. Level 4 is the dome: in this case the cell is disabled, that means any builder can't move on that.
+ * A tower with 3 blocks and a dome is a Complete Tower. Pay attention: a cell could be disabled with a dome, but not be a complete tower!
  * @author Davide Carini
  */
 

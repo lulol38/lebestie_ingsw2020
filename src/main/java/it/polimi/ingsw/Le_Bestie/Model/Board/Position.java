@@ -34,7 +34,11 @@ public class Position implements Serializable {
         this.y = y;
     }
 
-    // Checking if this location is on a 5 x 5 Grid or out of bounds
+
+    /**
+     * Method that checks if this location is on a 5 x 5 grid or out of bounds
+     * @return true if the location is correct, otherwise false
+     */
     public boolean onGrid() {
         return (this.x >= 0 && this.x <= 4 && this.y >= 0 && this.y <= 4);
     }

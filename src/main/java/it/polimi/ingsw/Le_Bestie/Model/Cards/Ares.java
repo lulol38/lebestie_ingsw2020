@@ -30,6 +30,7 @@ public class Ares extends GodCard{
         return Message;
     }
 
+
     @Override
     public int build(Board b, Builder w, Cell c, boolean usePower){
 

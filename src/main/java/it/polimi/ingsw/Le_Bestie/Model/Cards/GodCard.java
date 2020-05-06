@@ -40,7 +40,8 @@ public abstract class GodCard implements Serializable {
 
 
     /**
-     * Method that makes a request move on the board, only if it is a possible move
+     * Method that makes a request move on the board, only if it is a possible move.
+     * A player can move a builder into one of the eight neighboring cells, if it's unoccupied (not containing a builder or dome) and maximum one level higher.
      *
      * @param b the current board
      * @param w the builder to move
@@ -70,7 +71,8 @@ public abstract class GodCard implements Serializable {
 
 
     /**
-     * Method that makes a request build on the board, only if it is a possible build
+     * Method that makes a request build on the board, only if it is a possible build.
+     * A player can build a block or dome on an unoccupied space neighboring the moved builder.
      *
      * @param b the current board
      * @param w the chosen builder
@@ -79,7 +81,7 @@ public abstract class GodCard implements Serializable {
      * @return an integer that correspond with the follow cases:
      * 0 if the client can't build in the selected cell
      * 1 if the builder correctly builds in the selected cell
-     * 2 if the builder can't build because there aren't the right level building pieces
+     * 2 if the builder can't build because there aren't the correct shape of block or dome for the level being build
      * 3 if the client must choose to use his GodCard's power (if the client chooses "yes" recall the build method with a new selected cell and usePower=false, otherwise recall the build method with the same cell and usePower=true)
      * 4 if the client must choose to use his GodCard's power (then recall the build method with the same cell, but if the client chooses "yes" usePower=false, otherwise usePower=true)
      * 5 if the builder's player won
@@ -98,7 +100,8 @@ public abstract class GodCard implements Serializable {
 
 
     /**
-     * Method that checks if the player has won
+     * Method that checks if the player won.
+     * Win condition: when one of your builders moves up on top of level 3 during your turn.
      *
      * @param c the cell in which move the builder
      * @param currentCell the cell in which is the builder before the move
@@ -110,7 +113,8 @@ public abstract class GodCard implements Serializable {
 
 
     /**
-     * Method that checks if the player has lost
+     * Method that checks if the player has lost.
+     * If you are unable to perform a move then build on your turn, you lose.
      *
      * @param player the current player
      * @param b the current board
