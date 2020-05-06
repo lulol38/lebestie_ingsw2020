@@ -21,7 +21,7 @@ public class Apollo extends GodCard {
 
 
     /**
-     * Method that override the move of GodCard.
+     * Method that overrides the move of GodCard.
      * The builder can move normally, but he can also move in an opponent Builder's cell and switch with him.
      */
     @Override
@@ -50,7 +50,7 @@ public class Apollo extends GodCard {
 
 
     /**
-     * Method that override the HasLost of GodCard.
+     * Method that overrides the HasLost of GodCard.
      * A builder can move in usual possible moves but also in the neighboring opponent Builder's cell
      */
     @Override

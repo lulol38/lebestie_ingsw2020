@@ -9,7 +9,7 @@ public enum BuilderColor implements Serializable {
     WHITE, BLUE, BROWN;
 
     /**
-     * Method that check if the request color is a possible Builder's color
+     * Method that checks if the request color is a possible Builder's color
      *
      * @param colorBuilderChosen the color chosen
      * @return the request color if it is a possible Builder color, otherwise null

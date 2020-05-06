@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * This class represent the Board used to play the game. It is a 5x5 matrix of cells.
+ * This class represents the Board used to play the game. It is a 5x5 matrix of cells.
  * @author Davide Carini
  */
 

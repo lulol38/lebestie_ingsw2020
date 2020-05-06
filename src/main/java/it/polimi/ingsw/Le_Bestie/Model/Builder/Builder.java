@@ -48,7 +48,7 @@ public class Builder implements Serializable {
 
 
     /**
-     * Method that obtain an array of cells in which the builder can move
+     * Method that obtains an array of cells in which the builder can move
      *
      * @param b the current board
      * @return an array of cells in which the builder can move
@@ -83,7 +83,7 @@ public class Builder implements Serializable {
 
 
     /**
-     * Method that obtain an array of cells in which the builder can build
+     * Method that obtains an array of cells in which the builder can build
      *
      * @param b the current board
      * @return an array of cells in which the builder can build
@@ -112,7 +112,7 @@ public class Builder implements Serializable {
 
 
     /**
-     * Method that obtain an array of cells in which the builder can switch with another player's builder
+     * Method that obtains an array of cells in which the builder can switch with another player's builder
      *
      * @param b the current board
      * @return an array of cells in which the builder can switch
@@ -149,7 +149,7 @@ public class Builder implements Serializable {
 
 
     /**
-     * Method that check if the builder of a player who has Minotaur GodCard, can switch with another player's builder
+     * Method that checks if the builder of a player who has Minotaur GodCard, can switch with another player's builder
      *
      * @param b the current board
      * @return if the builder of a player who has Minotaur GodCard, can switch with another player's builder
