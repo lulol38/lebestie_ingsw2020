@@ -174,8 +174,25 @@ public class GameController {
 
     /**
      * This method handles the request of an action, move or build
-     * @param cx
-     * @param cy
+     * @param cx coordinate x of the cell for the action
+     * @param cy coordinate y of the cell for the action
+     *
+     * MOVE
+     *
+     * 0 if the client must select another cell
+     * 1 if the builder correctly moves in the selected cell
+     * 2 if the builder's player won
+     * 3 if the client must choose to use his GodCard's power (if the client chooses "yes" recall the move method with a new selected cell, otherwise go on with the build)
+     * 4 if the client must choose to use his GodCard's power (then recall the move method with the same cell, but if the client chooses "yes" usePower=false, otherwise usePower=true)
+     *
+     * BUILD
+     *
+     * 0 if the client can't build in the selected cell
+     * 1 if the builder correctly builds in the selected cell
+     * 2 if the builder can't build because there aren't the right level building pieces
+     * 3 if the client must choose to use his GodCard's power (if the client chooses "yes" recall the build method with a new selected cell and usePower=false, otherwise recall the build method with the same cell and usePower=true)
+     * 4 if the client must choose to use his GodCard's power (then recall the build method with the same cell, but if the client chooses "yes" usePower=false, otherwise usePower=true)
+     * 5 if the builder's player won
      */
     public void requestAction(int cx, int cy){
         if(!matchState.getHasMoved()) {
