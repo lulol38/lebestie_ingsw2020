@@ -26,6 +26,10 @@ public abstract class GodCard implements Serializable {
         this.description=description;
 
     }
+
+    /**
+     * Getters
+     */
     public String getName() { return this.name; }
     public String getPath() { return this.path; }
     public String getDescription(){return this.description;}
@@ -34,23 +38,21 @@ public abstract class GodCard implements Serializable {
         return message;
     }
 
-    public void setMessage(String message) {
-        message = message;
-    }
 
-    /* return
-    0 -> il builder non può muoversi nella cella richiesta
-         **** scrivo all'utente "scegli un'altra cella"
-         **** NON che non può muoversi in quella selezionata (vedi prometeo)
-    1 -> il builder si è spostato nella cella desiderata(c)
-    2 -> il player associato al builder ha vinto!!
-    3 -> richiama la move SSE l'utente vuole usare potere (nuovi parametri da chiedere a utente)
-    4 -> richiama la move passando stessi paramentri di prima ma usePower = !(risposta utente)
-    ***
-    ***ATTENZIONE: quando richiamo metodi move o build perchè la prima volta
-    ***hanno avuto dei problemi(return 0 or 2) devo passare anche hasPower corretto
-    */
-
+    /**
+     * Method that makes a request move on the board, only if it is a possible move
+     *
+     * @param b the current board
+     * @param w the builder to move
+     * @param c the selected cell in which move the builder
+     * @param usePower if the client chooses to use power or not
+     * @return an integer that correspond with the follow cases:
+     * 0 if the client must select another cell
+     * 1 if the builder correctly moves in the selected cell
+     * 2 if the builder's player won
+     * 3 if the client must choose to use his GodCard's power (if the client chooses "yes" recall the move method with a new selected cell, otherwise go on with the build)
+     * 4 if the client must choose to use his GodCard's power (then recall the move method with the same cell, but if the client chooses "yes" usePower=false, otherwise usePower=true)
+     */
     public int move(Board b, Builder w, Cell c,boolean usePower){
         Cell currentCell=b.getGrid()[w.getPosition().getX()][w.getPosition().getY()];
         if(w.possibleMoves(b).contains(c))
@@ -66,15 +68,21 @@ public abstract class GodCard implements Serializable {
         return 0;
     }
 
-    /* return
-    0 -> il builder non può costruire in quella cella (c)
-    1 -> il builder ha costruito con successo
-    2 -> il builder non ha costruito per mancanza di pezzi
-    3 -> chiedo all'utente se vuole usare potere:
-         se si: richiedo nuova cella e richiamo la build (usePower=FALSE)
-         se no: richiamo la build senza richiedere cella (usePower=TRUE)
-    4 -> richiama la build passando stessi paramentri di prima ma hasPower=!(risposta utente)
-    5 -> il player ha vinto
+
+    /**
+     * Method that makes a request build on the board, only if it is a possible build
+     *
+     * @param b the current board
+     * @param w the chosen builder
+     * @param c the selected cell in which build
+     * @param usePower if the client chooses to use power or not
+     * @return an integer that correspond with the follow cases:
+     * 0 if the client can't build in the selected cell
+     * 1 if the builder correctly builds in the selected cell
+     * 2 if the builder can't build because there aren't the right level building pieces
+     * 3 if the client must choose to use his GodCard's power (if the client chooses "yes" recall the build method with a new selected cell and usePower=false, otherwise recall the build method with the same cell and usePower=true)
+     * 4 if the client must choose to use his GodCard's power (then recall the build method with the same cell, but if the client chooses "yes" usePower=false, otherwise usePower=true)
+     * 5 if the builder's player won
      */
     public int build(Board b,Builder w, Cell c, boolean usePower){
         if(w.possibleBuilds(b).contains(c))
@@ -88,15 +96,28 @@ public abstract class GodCard implements Serializable {
         return 0;
     }
 
+
+    /**
+     * Method that checks if the player has won
+     *
+     * @param c the cell in which move the builder
+     * @param currentCell the cell in which is the builder before the move
+     * @return 1 if the player won, otherwise 0
+     */
     public boolean HasWon(Cell c,Cell currentCell) {
         return currentCell.getLevel()<c.getLevel()&&c.getLevel()==3;
     }
 
-    /*
-    return
-    0 -> se non ha perso
-    1 -> se ha perso
-    2 -> se ha vinto
+
+    /**
+     * Method that checks if the player has lost
+     *
+     * @param player the current player
+     * @param b the current board
+     * @return an integer that correspond with the follow cases:
+     * 0 if the player hasn't lost
+     * 1 if the player has lost
+     * 2 if the player won
      */
     public int HasLost(Player player,Board b){
         if(player.getBuilder1().possibleMoves(b).size()==0)
