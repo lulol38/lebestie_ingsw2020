@@ -57,6 +57,6 @@ public class Player implements Serializable {
  /**
   * @return the name of the god card (string) associated to the player.
   */
-    public String toString() { return this.godCardPlayer.getName(); }
+  public String toString() { return this.godCardPlayer.getName(); }
 
 }

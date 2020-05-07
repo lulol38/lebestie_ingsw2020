@@ -314,6 +314,10 @@ public class BoardController{
         });
     }
 
+    /**
+     * this methos is used whe there are no more pieces available
+     * @param s
+     */
     public void AskCellError(String s) {
         javafx.application.Platform.runLater(()->{
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
