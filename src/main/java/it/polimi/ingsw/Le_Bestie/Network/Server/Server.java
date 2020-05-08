@@ -111,9 +111,11 @@ public class Server {
 
                     lobby.addClientToLobby(clientsWaiting.get(x));
                     clientsWaiting.get(x).sendMessage(new OpenLobby());
-                    clientsWaiting.remove(clientsWaiting.get(x));
+
                     if(lobby.getClientsWaiting().size()==lobby.getNumPlayersMatch())
                     {
+                        for(ClientHandler c : lobby.getClientsWaiting())
+                            clientsWaiting.remove(c);
                         System.out.println("Starting game");
                         Random rand = new Random();
                         int numGame=rand.nextInt(99999);
