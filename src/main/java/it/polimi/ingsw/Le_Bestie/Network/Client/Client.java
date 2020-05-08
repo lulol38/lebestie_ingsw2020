@@ -3,6 +3,9 @@ package it.polimi.ingsw.Le_Bestie.Network.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageClient;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageParserClient;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageServer;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.LostForDisconnection;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.SendGameStart;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.SendHasLost;
 
 import java.io.*;
 import java.net.Socket;
@@ -101,6 +104,7 @@ public class Client implements Runnable {
             MessageServer mex = (MessageServer) in.readObject();
             mex.receive(new MessageParserClient(this));
         } catch (IOException e) {
+
             closeConnection();
            // e.printStackTrace();
         } catch (ClassNotFoundException e) {

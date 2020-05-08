@@ -114,7 +114,7 @@ public class ConnectionController {
             Integer.parseInt(s);
             isValidInteger = true;
         } catch (NumberFormatException ex) {
-            ex.printStackTrace();
+            System.out.println("The server port name is not a not a string, but is the number:45331");
         }
         return isValidInteger;
     }
