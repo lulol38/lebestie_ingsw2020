@@ -115,7 +115,7 @@ public class GameController {
         Collections.rotate(lobby.getClientsWaiting(), -1);
         lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
         if(matchState.getCurrentPlayer().getBuilder1()==null||matchState.getCurrentPlayer().getBuilder2()==null) {
-             lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
+            lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
         }
         else{ //BEGIN TURN
             int result=matchState.getCurrentPlayer().getGodCard().HasLost(matchState.getCurrentPlayer(), matchState.getBoard());
@@ -139,8 +139,6 @@ public class GameController {
      */
     public void manageHasLost(){
         if(matchState.getPlayers().size()==2){ //IF ONLY 2 PLAYERS
-            //lobby.getClientsWaiting().get(0).sendMessage(new SendHasLost());
-            //lobby.getClientsWaiting().get(1).sendMessage(new SendHasWon());
             setWinner(1);
             endMatch();
         }

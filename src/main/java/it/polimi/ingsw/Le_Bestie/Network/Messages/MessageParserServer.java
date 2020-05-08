@@ -27,7 +27,7 @@ public class MessageParserServer implements MessageVisitorServer {
     public void visit(SendNumPlayers mex) {
         ClientHandler clientSender= (ClientHandler) obj;
         clientSender.getServer().getLobby().setNumPlayersMatch(mex.getNumPlayers());
-        clientSender.getServer().getLobby().addClientToLobby(clientSender);
+        //clientSender.getServer().getLobby().addClientToLobby(clientSender);
         clientSender.getServer().getClientsWaiting().remove(clientSender);
         System.out.println("Setted match num players to: " + Server.getInstance().getLobby().getNumPlayersMatch());
         clientSender.getServer().manageWaiting(clientSender);
