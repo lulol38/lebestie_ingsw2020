@@ -75,10 +75,11 @@ public class ClientHandler implements Runnable {
             MessageClient mex= (MessageClient) in.readObject();
             mex.receive(new MessageParserServer(this));
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            closeConnection();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            closeConnection();
+
         }
     }
 

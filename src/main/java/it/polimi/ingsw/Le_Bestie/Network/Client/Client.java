@@ -96,12 +96,13 @@ public class Client implements Runnable {
     /**
      * Method that handles when a message is received, and sends it to the parser
      */
-    public void receiveMessage() {
+    public void receiveMessage() throws IOException {
         try {
             MessageServer mex = (MessageServer) in.readObject();
             mex.receive(new MessageParserClient(this));
         } catch (IOException e) {
-            e.printStackTrace();
+            closeConnection();
+           // e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -123,7 +124,7 @@ public class Client implements Runnable {
 
     /**
      * Method that closes the client connection to the server
-     * @throws IOException
+     * @throws IOException exception
      */
     public void closeConnection() throws IOException {
         this.connected=false;
