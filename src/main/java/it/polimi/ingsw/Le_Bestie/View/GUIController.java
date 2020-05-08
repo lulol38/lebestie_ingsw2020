@@ -103,6 +103,7 @@ public class GUIController {
                     alert.setTitle("ERROR");
                     alert.setContentText("The server is not running");
                     alert.showAndWait();
+                    System.out.println("The server is not running");
                 });
             }
         }
@@ -238,7 +239,8 @@ public class GUIController {
      */
     public void closeNumber(){
         javafx.application.Platform.runLater(()-> {
-           nPlayersController.close();
+        if(nPlayersController !=null)
+            nPlayersController.close();
         });
     }
 

@@ -104,6 +104,8 @@ public class ClientHandler implements Runnable {
             Server.getInstance().deleteConnection(this);
             System.out.println("Closing: "+ socket.toString());
             socket.close();
+            in.close();
+            out.close();
             this.connected=false;
         }
         catch(Exception ex){

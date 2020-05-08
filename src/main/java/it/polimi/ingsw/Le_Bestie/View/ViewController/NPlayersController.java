@@ -54,7 +54,9 @@ public class NPlayersController {
      * this method closes the window. this method is called from the GUI controller
      */
     public void close(){
-        Stage stage = (Stage) playersPane.getScene().getWindow();
-        stage.close();
+        if(playersPane.getScene()!=null) {
+            Stage stage = (Stage) playersPane.getScene().getWindow();
+            stage.close();
+        }
     }
 }

@@ -30,7 +30,7 @@ public class Server {
     private static ArrayList<GameController> activeGames = new ArrayList<>();
     private Lobby lobby;
     private ExecutorService executor = Executors.newCachedThreadPool();
-    final String lexicon = "ABCDEFGHIJKLMNOPQRSTUVWXYZ12345674890";
+    final String dictionary = "ABCDEFGHIJKLMNOPQRSTUVWXYZ12345674890";
 
     final java.util.Random rand = new java.util.Random();
 
@@ -107,8 +107,7 @@ public class Server {
             if(lobby.getNumPlayersMatch()!=0){
                 for(int x=0; x<clientsWaiting.size();x++) {
                     if(clientsWaiting.get(x).getUsername().compareTo(lobby.getClientsWaiting().get(0).getUsername())==0)
-                        clientsWaiting.get(x).setUsername(randomIdentifier());
-
+                        clientsWaiting.get(x).setUsername(randomNickname());
 
                     lobby.addClientToLobby(clientsWaiting.get(x));
                     clientsWaiting.get(x).sendMessage(new OpenLobby());
@@ -222,12 +221,12 @@ public class Server {
      * Random username generated
      * @return string username
      */
-    public String randomIdentifier() {
+    public String randomNickname() {
         StringBuilder builder = new StringBuilder();
         while(builder.toString().length() == 0) {
             int length = rand.nextInt(5)+5;
             for(int i = 0; i < length; i++) {
-                builder.append(lexicon.charAt(rand.nextInt(lexicon.length())));
+                builder.append(dictionary.charAt(rand.nextInt(dictionary.length())));
             }
             if(identifiers.contains(builder.toString())) {
                 builder = new StringBuilder();
