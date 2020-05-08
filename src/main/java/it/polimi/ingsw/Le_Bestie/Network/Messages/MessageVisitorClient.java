@@ -49,4 +49,5 @@ public interface MessageVisitorClient {
     void visit(LostForDisconnection mex);
 
     void visit(OpenLobby openLobby);
+
 }

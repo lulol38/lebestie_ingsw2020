@@ -89,7 +89,7 @@ public class Server {
     }
 
     /**
-     * When a new client is connected handle if he is the first and in this case, ask gìhim the number of
+     * When a new client is connected handle if he is the first and in this case, ask him the number of
      * players for the match, or add him to the lobby
      * When the lobby is full (size of the lobby == number of players of the match), create the game
      * @param client
@@ -105,17 +105,15 @@ public class Server {
         }
         else{
             if(lobby.getNumPlayersMatch()!=0){
-                for(int x=0; x<clientsWaiting.size();x++) {
-                    if(clientsWaiting.get(x).getUsername().compareTo(lobby.getClientsWaiting().get(0).getUsername())==0)
-                        clientsWaiting.get(x).setUsername(randomNickname());
+                for(int x=0; x<=clientsWaiting.size();x++) {
+                    if(clientsWaiting.get(0).getUsername().compareTo(lobby.getClientsWaiting().get(0).getUsername())==0)
+                        clientsWaiting.get(0).setUsername(randomNickname());
 
-                    lobby.addClientToLobby(clientsWaiting.get(x));
-                    clientsWaiting.get(x).sendMessage(new OpenLobby());
-
+                    lobby.addClientToLobby(clientsWaiting.get(0));
+                    clientsWaiting.get(0).sendMessage(new OpenLobby());
+                    clientsWaiting.remove(clientsWaiting.get(0));
                     if(lobby.getClientsWaiting().size()==lobby.getNumPlayersMatch())
                     {
-                        for(ClientHandler c : lobby.getClientsWaiting())
-                            clientsWaiting.remove(c);
                         System.out.println("Starting game");
                         Random rand = new Random();
                         int numGame=rand.nextInt(99999);
