@@ -3,6 +3,7 @@ package it.polimi.ingsw.Le_Bestie.Model;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import org.junit.Test;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CellTest {
@@ -10,6 +11,7 @@ public class CellTest {
     @Test
     public void CellTest(){
         Cell c = new Cell(2);
+        assertNotNull(c);
         assertEquals(c.getLevel(), 2);
         c.setLevel(3);
         assertEquals(c.getLevel(), 3);
@@ -21,6 +23,7 @@ public class CellTest {
     @Test
     public void IncreaseLevel(){
         Cell c = new Cell(0);
+        assertNotNull(c);
         c.addLevel();
         assertEquals(c.getLevel(), 1);
         c.addLevel();
@@ -36,6 +39,7 @@ public class CellTest {
     @Test
     public void IncreaseLevelBlocked(){
         Cell c = new Cell(0);
+        assertNotNull(c);
         c.addLevel();
         assertEquals(c.getLevel(), 1);
         c.addLevel();
