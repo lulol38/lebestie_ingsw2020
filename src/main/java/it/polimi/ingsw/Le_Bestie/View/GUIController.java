@@ -108,6 +108,7 @@ public class GUIController {
                     alert.showAndWait();
                     System.out.println("The server is not running");
                 });
+                Client.setInstance(null);
             }
         }
         catch (Exception e){

@@ -64,6 +64,7 @@ public class Client implements Runnable {
     public void setIdGame(int idGame) {
         this.idGame = idGame;
     }
+    public static void setInstance(Client c){instance=c;}
 
     /**
      * This method initializes the socket connection to the server and the in/out streams
