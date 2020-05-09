@@ -67,21 +67,24 @@ public class GUIController {
      */
     public static void setScene(Scene s, String resource){
         try {
+
             AnchorPane root = FXMLLoader.load(GUIController.class.getResource(resource));
-            s.setRoot(root);
-            s.getWindow().setOnCloseRequest(we -> {
-                if(Client.getInstance()!=null) {
-                    Client.getInstance().sendMessage(new CloseConnection(Client.getInstance().getIdGame()));
-                    try {
-                        Client.getInstance().closeConnection();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+            if (s != null) {
+                s.setRoot(root);
+                s.getWindow().setOnCloseRequest(we -> {
+                    if (Client.getInstance() != null) {
+                        Client.getInstance().sendMessage(new CloseConnection(Client.getInstance().getIdGame()));
+                        try {
+                            Client.getInstance().closeConnection();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
-                }
-                System.exit(0);
-            });
-        }catch (Exception e){
-            e.printStackTrace();
+                    System.exit(0);
+                });}
+            }catch(Exception e){
+                e.printStackTrace();
+
         }
     }
 
@@ -103,6 +106,7 @@ public class GUIController {
                     alert.setTitle("ERROR");
                     alert.setContentText("The server is not running");
                     alert.showAndWait();
+                    System.out.println("The server is not running");
                 });
             }
         }
@@ -211,7 +215,8 @@ public class GUIController {
      */
     public void closeLobbyStage(){
         javafx.application.Platform.runLater(()-> {
-            lobbyController.close();
+            if (lobbyController!=null)
+                 lobbyController.close();
         });
     }
 
@@ -238,7 +243,8 @@ public class GUIController {
      */
     public void closeNumber(){
         javafx.application.Platform.runLater(()-> {
-           nPlayersController.close();
+        if(nPlayersController !=null)
+            nPlayersController.close();
         });
     }
 

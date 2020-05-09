@@ -76,7 +76,7 @@ public class MatchState{
     /**
      *This method is used to initialize a new deck to associate a the current match
      */
-    private void initializeDeck(){
+    public void initializeDeck(){
         this.deck= GodCardsParser.parseCards(numberOfPlayers());
     }
 
@@ -118,7 +118,7 @@ public class MatchState{
      *
      * @return an arraylist of color that have not yet been assigned to players.
      */
-    private ArrayList<BuilderColor> builderColorNotUsed() {
+    public ArrayList<BuilderColor> builderColorNotUsed() {
         ArrayList<BuilderColor> builderColorsUsed = new ArrayList<>();
         ArrayList<BuilderColor> builderColors = new ArrayList<>();
         ArrayList<BuilderColor> helpBuilderColors = new ArrayList<>();

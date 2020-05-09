@@ -26,8 +26,10 @@ public class LobbyController {
      * this method is used to close the window associated to the lobby
      */
     public void close(){
-        Stage stage = (Stage) lobbyPane.getScene().getWindow();
-        stage.close();
+        if(lobbyPane.getScene()!=null) {
+            Stage stage = (Stage) lobbyPane.getScene().getWindow();
+            stage.close();
+        }
     }
 
 }

@@ -55,14 +55,24 @@ public class GameController {
         lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
         ArrayList<String>opponents=new ArrayList<>();
         ArrayList<String>opponentsGods=new ArrayList<>();
-        for(Player p:matchState.getPlayers()){
-            if(p.getNickname().compareTo(lobby.getClientsWaiting().get(0).getUsername())!=0){
-                opponents.add(p.getNickname());
-                opponentsGods.add(p.getGodCard().getName());
+        Player current=null;
+        int i=0;
+        for(ClientHandler c : lobby.getClientsWaiting()) {
+            opponents=new ArrayList<>();
+            opponentsGods=new ArrayList<>();
+            for (Player p : matchState.getPlayers()) {
+                if (p.getNickname().compareTo(lobby.getClientsWaiting().get(i).getUsername()) != 0) {
+                    opponents.add(p.getNickname());
+                    opponentsGods.add(p.getGodCard().getName());
+                }
+                if (p.getNickname().compareTo(lobby.getClientsWaiting().get(i).getUsername()) == 0){
+                    current = p;
+                }
             }
+            lobby.getClientsWaiting().get(i).sendMessage(new SendOpponents(opponents, opponentsGods));
+            lobby.getClientsWaiting().get(i).sendMessage(new SendCardToPlayers(current.getGodCard().getName(), current.getColor().toString(),current.getGodCard().getPath(),current.getGodCard().getDescription()));
+            i++;
         }
-        lobby.getClientsWaiting().get(0).sendMessage(new SendOpponents(opponents,opponentsGods));
-        lobby.getClientsWaiting().get(0).sendMessage(new SendCardToPlayers(matchState.getCurrentPlayer().getGodCard().getName(),matchState.getCurrentPlayer().getColor().toString(),matchState.getCurrentPlayer().getGodCard().getPath(),matchState.getCurrentPlayer().getGodCard().getDescription()));
 
         lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
     }
@@ -106,16 +116,6 @@ public class GameController {
         Collections.rotate(lobby.getClientsWaiting(), -1);
         lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
         if(matchState.getCurrentPlayer().getBuilder1()==null||matchState.getCurrentPlayer().getBuilder2()==null) {
-            ArrayList<String>opponents=new ArrayList<>();
-            ArrayList<String>opponentsGods=new ArrayList<>();
-            for(Player p:matchState.getPlayers()){
-                if(p.getNickname().compareTo(lobby.getClientsWaiting().get(0).getUsername())!=0){
-                    opponents.add(p.getNickname());
-                    opponentsGods.add(p.getGodCard().getName());
-                }
-            }
-            lobby.getClientsWaiting().get(0).sendMessage(new SendOpponents(opponents,opponentsGods));
-            lobby.getClientsWaiting().get(0).sendMessage(new SendCardToPlayers(matchState.getCurrentPlayer().getGodCard().getName(),matchState.getCurrentPlayer().getColor().toString(),matchState.getCurrentPlayer().getGodCard().getPath(),matchState.getCurrentPlayer().getGodCard().getDescription()));
             lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
         }
         else{ //BEGIN TURN
@@ -140,8 +140,6 @@ public class GameController {
      */
     public void manageHasLost(){
         if(matchState.getPlayers().size()==2){ //IF ONLY 2 PLAYERS
-            //lobby.getClientsWaiting().get(0).sendMessage(new SendHasLost());
-            //lobby.getClientsWaiting().get(1).sendMessage(new SendHasWon());
             setWinner(1);
             endMatch();
         }

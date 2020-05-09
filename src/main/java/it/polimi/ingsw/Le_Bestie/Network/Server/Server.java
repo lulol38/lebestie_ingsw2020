@@ -30,7 +30,7 @@ public class Server {
     private static ArrayList<GameController> activeGames = new ArrayList<>();
     private Lobby lobby;
     private ExecutorService executor = Executors.newCachedThreadPool();
-    final String lexicon = "ABCDEFGHIJKLMNOPQRSTUVWXYZ12345674890";
+    final String dictionary = "ABCDEFGHIJKLMNOPQRSTUVWXYZ12345674890";
 
     final java.util.Random rand = new java.util.Random();
 
@@ -89,7 +89,7 @@ public class Server {
     }
 
     /**
-     * When a new client is connected handle if he is the first and in this case, ask gìhim the number of
+     * When a new client is connected handle if he is the first and in this case, ask him the number of
      * players for the match, or add him to the lobby
      * When the lobby is full (size of the lobby == number of players of the match), create the game
      * @param client
@@ -105,14 +105,15 @@ public class Server {
         }
         else{
             if(lobby.getNumPlayersMatch()!=0){
-                for(int x=0; x<clientsWaiting.size();x++) {
-                    if(clientsWaiting.get(x).getUsername().compareTo(lobby.getClientsWaiting().get(0).getUsername())==0)
-                        clientsWaiting.get(x).setUsername(randomIdentifier());
+                if(clientsWaiting.size()==0)
+                    return;
+                for(int x=0; x<=clientsWaiting.size();x++) {
+                    if(clientsWaiting.get(0).getUsername().compareTo(lobby.getClientsWaiting().get(0).getUsername())==0)
+                        clientsWaiting.get(0).setUsername(randomNickname());
 
-
-                    lobby.addClientToLobby(clientsWaiting.get(x));
-                    clientsWaiting.get(x).sendMessage(new OpenLobby());
-                    clientsWaiting.remove(clientsWaiting.get(x));
+                    lobby.addClientToLobby(clientsWaiting.get(0));
+                    clientsWaiting.get(0).sendMessage(new OpenLobby());
+                    clientsWaiting.remove(clientsWaiting.get(0));
                     if(lobby.getClientsWaiting().size()==lobby.getNumPlayersMatch())
                     {
                         System.out.println("Starting game");
@@ -222,12 +223,12 @@ public class Server {
      * Random username generated
      * @return string username
      */
-    public String randomIdentifier() {
+    public String randomNickname() {
         StringBuilder builder = new StringBuilder();
         while(builder.toString().length() == 0) {
             int length = rand.nextInt(5)+5;
             for(int i = 0; i < length; i++) {
-                builder.append(lexicon.charAt(rand.nextInt(lexicon.length())));
+                builder.append(dictionary.charAt(rand.nextInt(dictionary.length())));
             }
             if(identifiers.contains(builder.toString())) {
                 builder = new StringBuilder();

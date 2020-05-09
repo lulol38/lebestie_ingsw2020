@@ -3,6 +3,10 @@ package it.polimi.ingsw.Le_Bestie.Network.Client;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageClient;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageParserClient;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.MessageServer;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.LostForDisconnection;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.SendGameStart;
+import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.SendHasLost;
+import it.polimi.ingsw.Le_Bestie.View.GUIController;
 
 import java.io.*;
 import java.net.Socket;
@@ -96,12 +100,12 @@ public class Client implements Runnable {
     /**
      * Method that handles when a message is received, and sends it to the parser
      */
-    public void receiveMessage() {
+    public void receiveMessage() throws IOException {
         try {
             MessageServer mex = (MessageServer) in.readObject();
             mex.receive(new MessageParserClient(this));
         } catch (IOException e) {
-            e.printStackTrace();
+            closeConnection();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -111,24 +115,30 @@ public class Client implements Runnable {
      * Method that sends the message to the server
      * @param message It's the message that has to be sent to the server
      */
-    public void sendMessage(MessageClient message){
+    public void sendMessage(MessageClient message) {
         try {
             out.reset();
             out.writeObject(message);
             out.flush();
         } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                closeConnection();
+            }
+            catch(Exception ex){
+                System.out.println(ex.getMessage());
+            }
         }
     }
 
     /**
      * Method that closes the client connection to the server
-     * @throws IOException
+     * @throws IOException exception
      */
     public void closeConnection() throws IOException {
         this.connected=false;
         this.in.close();
         this.out.close();
         this.socket.close();
+        GUIController.getInstance().closeBoard();
     }
 }
