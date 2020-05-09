@@ -300,4 +300,27 @@ public class GUIController {
             }
         });
     }
+
+    public void openServerClosedWindow(){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Stage stage = new Stage();
+                    Parent root = null;
+                    root = FXMLLoader.load(getClass().getResource("/fxml/ServerClosedStage.fxml"));
+                    Scene scene = new Scene(root);
+                    stage.setTitle("SANTORINI");
+                    stage.getIcons().add(new Image(GUI.class.getClassLoader().getResourceAsStream("images/icon.png")));
+                    stage.initStyle(StageStyle.DECORATED);
+                    stage.setResizable(false);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
 }
