@@ -52,6 +52,7 @@ public class GameController {
     public void initGame(){
         matchState.startGame();
 
+        lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
         ArrayList<String>opponents=new ArrayList<>();
         ArrayList<String>opponentsGods=new ArrayList<>();
         Player current=null;
@@ -72,7 +73,7 @@ public class GameController {
             lobby.getClientsWaiting().get(i).sendMessage(new SendCardToPlayers(current.getGodCard().getName(), current.getColor().toString(),current.getGodCard().getPath(),current.getGodCard().getDescription()));
             i++;
         }
-        lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
+
         lobby.getClientsWaiting().get(0).sendMessage(new AskPositionBuilders());
     }
 

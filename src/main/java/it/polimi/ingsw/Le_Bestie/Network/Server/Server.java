@@ -98,7 +98,6 @@ public class Server {
         if(lobby.getClientsWaiting().size()==0){
             try {
                 client.sendMessage(new AskNumPlayers());
-                lobby.addClientToLobby(client);
                 System.out.println("Asking num players");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -106,13 +105,15 @@ public class Server {
         }
         else{
             if(lobby.getNumPlayersMatch()!=0){
-                for(int x=0; x<clientsWaiting.size();x++) {
-                    if(clientsWaiting.get(x).getUsername().compareTo(lobby.getClientsWaiting().get(0).getUsername())==0)
-                        clientsWaiting.get(x).setUsername(randomNickname());
+                if(clientsWaiting.size()==0)
+                    return;
+                for(int x=0; x<=clientsWaiting.size();x++) {
+                    if(clientsWaiting.get(0).getUsername().compareTo(lobby.getClientsWaiting().get(0).getUsername())==0)
+                        clientsWaiting.get(0).setUsername(randomNickname());
 
-                    lobby.addClientToLobby(clientsWaiting.get(x));
-                    clientsWaiting.get(x).sendMessage(new OpenLobby());
-                    clientsWaiting.remove(clientsWaiting.get(x));
+                    lobby.addClientToLobby(clientsWaiting.get(0));
+                    clientsWaiting.get(0).sendMessage(new OpenLobby());
+                    clientsWaiting.remove(clientsWaiting.get(0));
                     if(lobby.getClientsWaiting().size()==lobby.getNumPlayersMatch())
                     {
                         System.out.println("Starting game");
@@ -132,8 +133,6 @@ public class Server {
                     }
                 }
             }
-            else
-                client.sendMessage(new OpenLobby());
         }
     }
 
