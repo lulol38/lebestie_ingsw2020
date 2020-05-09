@@ -13,7 +13,13 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
 public class Hestia extends GodCard{
 
+    /**
+     * If it is the first or the second build
+     */
     private boolean firstBuilt;
+    /**
+     * A message to send to the client to decide if use Hestia' power
+     */
     private String Message;
 
     public Hestia(String name,String path,String description) {
@@ -27,6 +33,13 @@ public class Hestia extends GodCard{
         return Message;
     }
 
+
+    /**
+     * Method that overrides the build of GodCard.
+     * The builder can build one additional time,
+     * but this cannot be on a perimeter space.
+     * The build method is always called twice.
+     */
     @Override
     public int build(Board b, Builder w, Cell c, boolean usePower) {
 

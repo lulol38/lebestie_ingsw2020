@@ -14,7 +14,13 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 public class Demeter extends GodCard{
 
+    /**
+     * The first cell in which builder builds
+     */
     private Cell firstBuiltCell;
+    /**
+     * A message to send to the client to decide if use Demeter' power
+     */
     private String Message;
 
     public Demeter(String name,String path,String description) {
@@ -28,6 +34,11 @@ public class Demeter extends GodCard{
         return Message;
     }
 
+    /**
+     * Method that overrides the build of GodCard.
+     * The builder can build twice.
+     * The build method is always called twice.
+     */
     @Override
     public int build(Board b,Builder w, Cell c, boolean usePower) {
 

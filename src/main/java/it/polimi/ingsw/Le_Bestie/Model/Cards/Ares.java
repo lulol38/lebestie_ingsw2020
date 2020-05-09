@@ -14,9 +14,19 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
 public class Ares extends GodCard{
 
+    /**
+     * A message to send to the client to decide if use Ares' power
+     */
     private String Message;
+    /**
+     * If the player has already built
+     */
     private boolean firstBuilt;
+    /**
+     * The player's unmoved builder
+     */
     private Builder notMovedBuilder;
+
 
     public Ares (String name,String path,String description) {
         super(name,path,description);
@@ -31,6 +41,13 @@ public class Ares extends GodCard{
     }
 
 
+    /**
+     * Method that overrides the build of GodCard.
+     * At the end of his turn (after the usual build),
+     * the player can remove an unoccupied block (not dome)
+     * in neighboring his unmoved builder.
+     * The build method is always called twice.
+     */
     @Override
     public int build(Board b, Builder w, Cell c, boolean usePower){
 

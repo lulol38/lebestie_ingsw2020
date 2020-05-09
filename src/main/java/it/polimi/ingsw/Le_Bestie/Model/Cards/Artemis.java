@@ -13,7 +13,13 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
 public class Artemis extends GodCard {
 
+    /**
+     * The initial space of the builder before the move
+     */
     private Cell startingCell;
+    /**
+     * A message to send to the client to decide if use Artemis' power
+     */
     private String Message;
 
     public Artemis(String name,String path,String description) {
@@ -27,6 +33,13 @@ public class Artemis extends GodCard {
         return Message;
     }
 
+
+    /**
+     * Method that overrides the move of GodCard.
+     * The builder may move one additional time, but not back to its initial space.
+     * If the client wants to use Artemis power,
+     * the move method is called twice.
+     */
     @Override
     public int move(Board b, Builder w, Cell c, boolean usePower) {
 
@@ -51,6 +64,9 @@ public class Artemis extends GodCard {
         }
     }
 
+    /**
+     * Method that initializes startingCell for the next turn and calls the usual build of GodCard.
+     */
     @Override
     public int build(Board b, Builder w, Cell c, boolean usePower) {
         startingCell = null;
