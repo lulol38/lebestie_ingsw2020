@@ -64,6 +64,15 @@ public class BuilderTest {
     }
 
     @Test
+    public void Building(){
+        Board board = new Board();
+        Builder builder1 = new Builder(new Position(1,1));
+        board.getGrid()[builder1.getPosition().getX()][builder1.getPosition().getY()].setBuilder(builder1);
+
+        assertEquals(builder1.possibleBuilds(board).size(), 8);
+    }
+
+    @Test
     public void NotBuilding(){
         Board board = new Board();
         Builder builder1 = new Builder(new Position(1,1));
