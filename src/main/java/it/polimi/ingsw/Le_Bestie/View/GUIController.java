@@ -301,6 +301,9 @@ public class GUIController {
         });
     }
 
+    /**
+     * This method is used to display the window for clients when the server falls
+     */
     public void openServerClosedWindow(){
         Platform.runLater(new Runnable() {
             @Override

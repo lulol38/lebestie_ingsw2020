@@ -1,7 +1,5 @@
 package it.polimi.ingsw.Le_Bestie.View.ViewController;
 
-import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.CloseConnection;
 import it.polimi.ingsw.Le_Bestie.View.GUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,9 +11,12 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.IOException;
 
+/**
+ *This class is used to manage the fall of the server
+ * @author Davide Carini
+ */
 public class ServerClosedController {
     @FXML
     Button btnRejoin;
