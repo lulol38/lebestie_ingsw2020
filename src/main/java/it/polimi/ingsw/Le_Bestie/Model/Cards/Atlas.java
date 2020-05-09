@@ -14,7 +14,13 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 public class Atlas extends GodCard{
 
+    /**
+     * If the client has already chosen to use Atlas' power
+     */
     private boolean checkUsePower;
+    /**
+     * A message to sent to the client to decide if use Atlas' power
+     */
     private String Message;
 
     public Atlas(String name,String path,String description) {
@@ -28,6 +34,12 @@ public class Atlas extends GodCard{
         return Message;
     }
 
+    /**
+     * Method that overrides the build of GodCard.
+     * The build method is always called twice:
+     * the first time it asks client if he wants to use power
+     * the second time build correctly.
+     */
     @Override
     public int build(Board b, Builder w, Cell c, boolean usePower) {
 

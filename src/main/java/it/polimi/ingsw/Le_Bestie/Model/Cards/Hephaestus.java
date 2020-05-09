@@ -14,7 +14,13 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 public class Hephaestus extends GodCard{
 
+    /**
+     * If the player has already built once
+     */
     boolean secondBuild;
+    /**
+     * A message to send to the client to decide if use Hephaestus' power
+     */
     private String Message;
 
     public Hephaestus(String name,String path,String description) {
@@ -28,6 +34,12 @@ public class Hephaestus extends GodCard{
         return Message;
     }
 
+    /**
+     * Method that overrides the build of GodCard.
+     * The builder can build one additional block (not dome)
+     * on top of his first block.
+     * The build method is always called twice.
+     */
     @Override
     public int build(Board b, Builder w, Cell c, boolean usePower) {
 

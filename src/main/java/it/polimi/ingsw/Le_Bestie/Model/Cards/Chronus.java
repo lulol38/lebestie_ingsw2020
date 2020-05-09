@@ -18,6 +18,11 @@ public class Chronus extends GodCard{
         super(name,path,description);
     }
 
+    /**
+     * Method that overrides the build of GodCard.
+     * Usual build, but if a dome was built, it checks win condition (5 complete towers).
+     * Return 5 if the player won.
+     */
     @Override
     public int build(Board b,Builder w, Cell c, boolean usePower){
         if(w.possibleBuilds(b).contains(c))
@@ -44,6 +49,11 @@ public class Chronus extends GodCard{
         return 0;
     }
 
+    /**
+     * Method that overrides the HasLost of GodCard.
+     * With the lost check at the beginning of the turn,
+     * it does the win check too.
+     */
     @Override
     public int HasLost(Player player, Board b) {
 

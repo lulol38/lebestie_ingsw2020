@@ -20,6 +20,12 @@ public class Athena extends GodCard{
         super(name,path,description);
     }
 
+    /**
+     * Method that overrides the move of GodCard.
+     * If the builder moves up, the variable setNotMoveUp in MatchState
+     * becomes true and opponent builders cannot move up next turn.
+     * At the beginning of each Athena's turn, setNotMoveUe is set false.
+     */
     @Override
     public int move(Board b, Builder w, Cell c, boolean usePower) {
         MatchState.setNotMoveUp(false);
