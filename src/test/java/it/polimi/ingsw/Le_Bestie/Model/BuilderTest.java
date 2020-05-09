@@ -25,6 +25,9 @@ public class BuilderTest {
         assertNotNull(board.getGrid()[builder2.getPosition().getX()][builder2.getPosition().getY()]);
         assertEquals(builder2.getPosition().getX(), 4);
         assertEquals(builder2.getPosition().getY(), 4);
+
+        assertEquals(builder1.possibleMoves(board).size(), 8);
+        assertEquals(builder2.possibleMoves(board).size(), 3);
     }
 
     public void NotMoving(){
