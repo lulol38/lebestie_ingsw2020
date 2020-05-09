@@ -22,6 +22,12 @@ public class Minotaur extends GodCard{
         super(name,path,description);
     }
 
+
+    /**
+     * Method that overrides the move of GodCard.
+     * The builder can move normally, but he can also move in an opponent Builder's cell
+     * and force him one space straight backwards if the cell is unoccupied.
+     */
     @Override
     public int move(Board b,Builder w, Cell c, boolean usePower) {
         if (w.possibleMoves(b).contains(c))
@@ -52,6 +58,12 @@ public class Minotaur extends GodCard{
         return 0;
      }
 
+
+    /**
+     * Method that overrides the HasLost of GodCard.
+     * A builder can move in usual possible moves but also in the neighboring opponent Builder's cell
+     * if the next cell in the same direction is unoccupied.
+     */
     @Override
     public int HasLost(Player player, Board b) {
         if (player.getBuilder1().possibleMoves(b).size() == 0&&player.getBuilder1().notPossibleSwitchMinotaur(b))

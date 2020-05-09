@@ -16,6 +16,10 @@ public class Zeus extends GodCard{
         super(name,path,description);
     }
 
+    /**
+     * Method that overrides the build of GodCard.
+     * The builder can build a block under itself.
+     */
     @Override
     public int build(Board b, Builder w, Cell c, boolean usePower) {
 

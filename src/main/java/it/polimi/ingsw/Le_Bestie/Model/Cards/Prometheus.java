@@ -15,8 +15,17 @@ import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 public class Prometheus extends GodCard{
 
+    /**
+     * If the message has already been sent to the client
+     */
     private boolean sendMessage;
+    /**
+     * If use power and the player has already built
+     */
     private boolean firstBuild;
+    /**
+     * A message to send to the client to decide if use Prometheus' power
+     */
     private String Message;
 
     public Prometheus(String name,String path,String description) {
@@ -31,6 +40,15 @@ public class Prometheus extends GodCard{
         return Message;
     }
 
+    /**
+     * Method that overrides the move of GodCard.
+     * If the client don't want to use power he can move up,
+     * otherwise he can build before move.
+     * The move method is always called twice at least:
+     * first time it sends message to the client
+     * second time build (if use power) or usual move (if not use power)
+     * third time move without move up (if use power)
+     */
     @Override
     public int move(Board b,Builder w, Cell c, boolean usePower) {
 

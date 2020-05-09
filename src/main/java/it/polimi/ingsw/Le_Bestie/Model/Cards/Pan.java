@@ -18,6 +18,10 @@ public class Pan extends GodCard{
         super(name,path,description);
     }
 
+    /**
+     * Method that overrides the HasWon of GodCard.
+     * The player wins also if his builder moves down two or more levels.
+     */
     @Override
     public boolean HasWon(Cell c,Cell currentCell) {
         return (currentCell.getLevel()<c.getLevel()&&c.getLevel()==3)||currentCell.getLevel()-c.getLevel()>=2;

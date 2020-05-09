@@ -37,8 +37,8 @@ public class Atlas extends GodCard{
     /**
      * Method that overrides the build of GodCard.
      * The build method is always called twice:
-     * the first time it asks client if he wants to use power
-     * the second time build correctly.
+     * first time it asks client if he wants to use power
+     * second time build correctly.
      */
     @Override
     public int build(Board b, Builder w, Cell c, boolean usePower) {

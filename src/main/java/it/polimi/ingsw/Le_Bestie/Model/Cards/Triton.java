@@ -13,6 +13,9 @@ import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
 
 public class Triton extends GodCard {
 
+    /**
+     * A message to send to the client to decide if use Triton' power
+     */
     private String Message;
     private boolean firstMove;
 
@@ -27,6 +30,13 @@ public class Triton extends GodCard {
         return Message;
     }
 
+    /**
+     * Method that overrides the move of GodCard.
+     * Each time the builder moves into a perimeter space,
+     * it may immediately move again.
+     * If the client wants to use Triton power,
+     * the move method is called twice.
+     */
     @Override
     public int move(Board b, Builder w, Cell c, boolean usePower) {
 
@@ -57,6 +67,10 @@ public class Triton extends GodCard {
 
     }
 
+
+    /**
+     * Method that initializes firstMove for the next turn and calls the usual build of GodCard.
+     */
     @Override
     public int build(Board b, Builder w, Cell c, boolean usePower) {
        firstMove=false;
