@@ -239,7 +239,7 @@ public class Server {
      * @param args
      */
     public static void main(String[] args){
-        Server multiEchoServer = new Server(45331);
+        Server multiEchoServer = new Server(4095);
         multiEchoServer.startServer();
     }
 }
