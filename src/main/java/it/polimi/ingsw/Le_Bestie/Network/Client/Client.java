@@ -140,6 +140,7 @@ public class Client implements Runnable {
         this.in.close();
         this.out.close();
         this.socket.close();
+        GUIController.getInstance().openServerClosedWindow();
         GUIController.getInstance().closeBoard();
     }
 }
