@@ -19,7 +19,7 @@ public class Poseidon extends GodCard {
 
     public Poseidon(String name,String path,String description) {
         super(name,path,description);
-        Message="Do you want to build another time with this builder?";
+        Message="Do you want to build another time with the not moved builder?";
         cont = 0;
         notMovedBuilder=null;
     }
@@ -45,7 +45,7 @@ public class Poseidon extends GodCard {
             if(res==1)
             {
                 cont++;
-                if(cont==3||notMovedBuilder.possibleBuilds(b).size()==0) {
+                if(cont==4||notMovedBuilder.possibleBuilds(b).size()==0) {
                     cont=0;
                     notMovedBuilder=null;
                     return 1;
@@ -61,8 +61,8 @@ public class Poseidon extends GodCard {
             if(cont==0) {
                 int res = super.build(b, w, c, usePower);
                 if(res==1){
-                    cont=0;
-                    notMovedBuilder=null;
+                    cont++;
+                    return 3;
                 }
                 return res;
             }
