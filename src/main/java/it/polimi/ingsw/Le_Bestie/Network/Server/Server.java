@@ -1,10 +1,7 @@
 package it.polimi.ingsw.Le_Bestie.Network.Server;
 
 import it.polimi.ingsw.Le_Bestie.Controller.GameController;
-import it.polimi.ingsw.Le_Bestie.Network.Client.Client;
-import it.polimi.ingsw.Le_Bestie.Network.Messages.C2S.SendUsername;
 import it.polimi.ingsw.Le_Bestie.Network.Messages.S2C.*;
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
