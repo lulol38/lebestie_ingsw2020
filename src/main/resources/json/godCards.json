@@ -78,14 +78,14 @@
     {
       "name" : "Poseidon",
       "title": "God of the Sea",
-      "description": "Win Condition: You also win\nwhen there are at least five\nComplete Towers on the board.",
+      "description": "End of Your Turn: If your\nunmoved Worker is on the\nground level, it may build up to\nthree times.",
       "path": "images/godCards/27.png",
       "players" : [2,3]
     },
     {
       "name" : "Hestia",
       "title": "Goddess of Hear th and Home",
-      "description": "End of Your Turn:\nIf your unmoved Worker is on the\nground level, it may build\nup to three times",
+      "description": "Your Build: Your Worker may\nbuild one additional time, but this\ncannot be on a perimeter space.",
       "path": "images/godCards/21.png",
       "players" : [2,3]
     },
