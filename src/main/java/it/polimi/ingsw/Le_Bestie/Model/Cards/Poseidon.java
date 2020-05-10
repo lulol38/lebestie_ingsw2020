@@ -39,40 +39,37 @@ public class Poseidon extends GodCard {
                 notMovedBuilder = w.getPlayer().getBuilder1();
         }
 
-
-        if(b.getGrid()[notMovedBuilder.getPosition().getX()][notMovedBuilder.getPosition().getY()].getLevel()==0&&notMovedBuilder.possibleBuilds(b).contains(c)&&!usePower) {
-            int res=super.build(b,notMovedBuilder,c,usePower);
-            if(res==1)
-            {
+        if(cont==0) {
+            int res = super.build(b, w, c, usePower);
+            if(res==1){
                 cont++;
-                if(cont==4||notMovedBuilder.possibleBuilds(b).size()==0) {
-                    cont=0;
-                    notMovedBuilder=null;
+                if(b.getGrid()[notMovedBuilder.getPosition().getX()][notMovedBuilder.getPosition().getY()].getLevel()==0)
+                    return 3;
+            }
+            return res;
+        }
+        else {
+            if (b.getGrid()[notMovedBuilder.getPosition().getX()][notMovedBuilder.getPosition().getY()].getLevel() == 0 && notMovedBuilder.possibleBuilds(b).contains(c) && !usePower) {
+                int res = super.build(b, notMovedBuilder, c, usePower);
+                if (res == 1) {
+                    cont++;
+                    if (cont == 4 || notMovedBuilder.possibleBuilds(b).size() == 0) {
+                        cont = 0;
+                        notMovedBuilder = null;
+                        return 1;
+                    }
+
+                    return 3;
+                } else
+                    return res;
+            } else {
+                if (usePower) {
+                    cont = 0;
+                    notMovedBuilder = null;
                     return 1;
                 }
-
-                return 3;
+                return 0;
             }
-            else
-                return res;
-        }
-        else
-        {
-            if(cont==0) {
-                int res = super.build(b, w, c, usePower);
-                if(res==1){
-                    cont++;
-                    return 3;
-                }
-                return res;
-            }
-            if(usePower)
-            {
-                cont=0;
-                notMovedBuilder=null;
-                return 1;
-            }
-            return 0;
         }
 
     }
