@@ -45,8 +45,11 @@ public class Poseidon extends GodCard {
             if(res==1)
             {
                 cont++;
-                if(cont==3||notMovedBuilder.possibleBuilds(b).size()==0)
+                if(cont==3||notMovedBuilder.possibleBuilds(b).size()==0) {
+                    cont=0;
+                    notMovedBuilder=null;
                     return 1;
+                }
 
                 return 3;
             }
@@ -55,8 +58,14 @@ public class Poseidon extends GodCard {
         }
         else
         {
-            if(cont==0)
-                super.build(b,w,c,usePower);
+            if(cont==0) {
+                int res = super.build(b, w, c, usePower);
+                if(res==1){
+                    cont=0;
+                    notMovedBuilder=null;
+                }
+                return res;
+            }
             if(usePower)
             {
                 cont=0;
