@@ -204,6 +204,7 @@ public class GameController {
                     break;
                 case 1:
                     matchState.setHasMoved(true);
+                    matchState.setUsePower(false);
                     updateClients();
                     lobby.getClientsWaiting().get(0).sendMessage(new AskCell());
                     break;
@@ -228,6 +229,7 @@ public class GameController {
                     lobby.getClientsWaiting().get(0).sendMessage(new AskCell());
                     break;
                 case 1:
+                    matchState.setUsePower(false);
                     updateClients();
                     nextTurn();
                     break;
