@@ -104,12 +104,12 @@
                 <Label alignment="TOP_RIGHT" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
             </children>
         </GridPane>
-        <Label fx:id="lblCard" alignment="CENTER" layoutX="21.0" layoutY="324.0" prefHeight="30.0" prefWidth="201.0">
+        <Label fx:id="lblCard" alignment="CENTER" layoutX="4.0" layoutY="324.0" prefHeight="30.0" prefWidth="201.0">
             <font>
                 <Font size="20.0" />
             </font></Label>
         <Rectangle fx:id="rect" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="63.0" layoutX="38.0" layoutY="28.0" strokeType="INSIDE" width="66.0" />
-        <Label fx:id="lblTurn" alignment="CENTER" layoutX="284.0" layoutY="29.0" prefHeight="30.0" prefWidth="241.0" text="Waiting your turn..." textAlignment="CENTER">
+        <Label fx:id="lblTurn" alignment="CENTER" layoutX="287.0" layoutY="21.0" prefHeight="30.0" prefWidth="241.0" text="Waiting your turn..." textAlignment="CENTER">
             <font>
                 <Font name="Cambria" size="22.0" />
             </font></Label>
@@ -118,8 +118,8 @@
                 <Image url="@../images/power/heropower_active.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="imgGodCard" fitHeight="147.0" fitWidth="102.0" layoutX="71.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true" />
-        <Label fx:id="lblDescription" alignment="CENTER" layoutX="7.0" layoutY="345.0" prefHeight="97.0" prefWidth="229.0">
+        <ImageView fx:id="imgGodCard" fitHeight="147.0" fitWidth="102.0" layoutX="54.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="lblDescription" alignment="CENTER" layoutY="341.0" prefHeight="97.0" prefWidth="229.0">
             <font>
                 <Font name="Cambria" size="11.0" />
             </font></Label>
