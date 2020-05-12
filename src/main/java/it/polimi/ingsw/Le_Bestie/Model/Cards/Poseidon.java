@@ -47,9 +47,11 @@ public class Poseidon extends GodCard {
         if(cont==0) {
             int res = super.build(b, w, c, usePower);
             if(res==1){
-                cont++;
                 if(b.getGrid()[notMovedBuilder.getPosition().getX()][notMovedBuilder.getPosition().getY()].getLevel()==0)
+                {
+                    cont++;
                     return 3;
+                }
             }
             return res;
         }

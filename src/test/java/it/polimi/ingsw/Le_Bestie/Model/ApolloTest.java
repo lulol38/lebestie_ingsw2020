@@ -122,4 +122,5 @@ public class ApolloTest {
         int x=apollo.HasLost(pl1,board);
         assertEquals(x,0);
     }
+
 }

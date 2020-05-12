@@ -15,7 +15,7 @@ public class HephaestusTest {
 
     @Test
     public void Message() {
-        GodCard heph = new Hephaestus("Demeter", "path", "descr");
+        GodCard heph = new Hephaestus("Hephaestus", "path", "descr");
         String s = heph.getMessage();
         assertEquals(s, "Do you want to build one additional block on top of your first block?");
     }
@@ -28,7 +28,7 @@ public class HephaestusTest {
         player.setBuilder1(builder1);
         builder1.setPlayer(player);
         board.getGrid()[builder1.getPosition().getX()][builder1.getPosition().getY()].setBuilder(builder1);
-        GodCard heph = new Hephaestus("Demeter", "path", "descr");
+        GodCard heph = new Hephaestus("Hephaestus", "path", "descr");
         board.getGrid()[1][0].setLevel(4);
 
         int x=heph.build(board,builder1,board.getGrid()[0][4], false);
@@ -64,7 +64,7 @@ public class HephaestusTest {
         player.setBuilder1(builder1);
         builder1.setPlayer(player);
         board.getGrid()[builder1.getPosition().getX()][builder1.getPosition().getY()].setBuilder(builder1);
-        GodCard heph = new Hephaestus("Demeter", "path", "descr");
+        GodCard heph = new Hephaestus("Hephaestus", "path", "descr");
 
 
         int x=heph.build(board,builder1,board.getGrid()[1][0], false);

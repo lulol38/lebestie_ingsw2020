@@ -26,7 +26,7 @@ public class AresTest {
         Builder builder1 = new Builder(new Position(1,1));
         Builder builder2 = new Builder(new Position(4,4));
         Player player=new Player("player");
-        player.setBuilder1(builder1);
+        player.setBuilder2(builder1);
         player.setBuilder1(builder2);
         builder1.setPlayer(player);
         builder2.setPlayer(player);
@@ -45,7 +45,7 @@ public class AresTest {
         Builder builder2 = new Builder(new Position(4,4));
         Player player=new Player("player");
         player.setBuilder1(builder1);
-        player.setBuilder1(builder2);
+        player.setBuilder2(builder2);
         builder1.setPlayer(player);
         builder2.setPlayer(player);
         board.getGrid()[builder1.getPosition().getX()][builder1.getPosition().getY()].setBuilder(builder1);
@@ -69,7 +69,7 @@ public class AresTest {
         Builder builder2 = new Builder(new Position(4,4));
         Player player=new Player("player");
         player.setBuilder1(builder1);
-        player.setBuilder1(builder2);
+        player.setBuilder2(builder2);
         builder1.setPlayer(player);
         builder2.setPlayer(player);
         board.getGrid()[builder1.getPosition().getX()][builder1.getPosition().getY()].setBuilder(builder1);
@@ -95,7 +95,7 @@ public class AresTest {
         Builder builder2 = new Builder(new Position(4,4));
         Player player=new Player("player");
         player.setBuilder1(builder1);
-        player.setBuilder1(builder2);
+        player.setBuilder2(builder2);
         builder1.setPlayer(player);
         builder2.setPlayer(player);
         board.getGrid()[builder1.getPosition().getX()][builder1.getPosition().getY()].setBuilder(builder1);
