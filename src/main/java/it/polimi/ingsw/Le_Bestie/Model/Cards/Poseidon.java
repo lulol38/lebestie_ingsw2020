@@ -29,6 +29,11 @@ public class Poseidon extends GodCard {
         return Message;
     }
 
+    /**
+     * Method that overrides the build of GodCard.
+     * At the end of his turn (after the usual build),
+     * the player can build up to 3 times with the not moved builder
+     */
     @Override
     public  int build(Board b, Builder w, Cell c, boolean usePower) {
 
