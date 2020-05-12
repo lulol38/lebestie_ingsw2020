@@ -8,7 +8,6 @@ import it.polimi.ingsw.Le_Bestie.Model.Cards.GodCard;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 import org.junit.Test;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
 
 public class ArtemisTest {
@@ -17,7 +16,7 @@ public class ArtemisTest {
     public void Message() {
         GodCard artemis = new Artemis("Artemis", "path", "descr");
         String s = artemis.getMessage();
-        assertEquals(s, "Do tou want to remove an unoccupied block (not dome) neighboring your unmoved Worker?");
+        assertEquals(s, "Do you want to move one additional time? (NOT back!!)");
     }
 
     @Test
@@ -44,16 +43,27 @@ public class ArtemisTest {
     @Test
     public void Move2() {
         Board board = new Board();
-        Builder builder1 = new Builder(new Position(2, 2));
+        Builder builder1 = new Builder(new Position(1, 1));
         Player player = new Player("player");
         player.setBuilder1(builder1);
         builder1.setPlayer(player);
         board.getGrid()[builder1.getPosition().getX()][builder1.getPosition().getY()].setBuilder(builder1);
-        board.getGrid()[1][2].setLevel(3);
-        board.getGrid()[2][1].setLevel(3);
+        board.getGrid()[0][1].setLevel(3);
+        board.getGrid()[1][0].setLevel(3);
 
         GodCard artemis = new Artemis("Artemis", "path", "descr");
-        int x = artemis.move(board, builder1, board.getGrid()[1][1], false);
+        int x = artemis.move(board, builder1, board.getGrid()[0][0], false);
+        assertEquals(x, 1);
+    }
+
+    @Test
+    public void Build(){
+        Board board = new Board();
+        Builder builder1 = new Builder(new Position(1, 1));
+        board.getGrid()[builder1.getPosition().getX()][builder1.getPosition().getY()].setBuilder(builder1);
+
+        GodCard artemis = new Artemis("Artemis", "path", "descr");
+        int x = artemis.build(board, builder1, board.getGrid()[0][0], false);
         assertEquals(x, 1);
     }
 
