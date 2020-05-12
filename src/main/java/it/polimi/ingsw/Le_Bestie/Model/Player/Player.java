@@ -47,7 +47,6 @@ public class Player implements Serializable {
  public Builder getBuilderChosen() { return builderChosen; }
 
  //Setters
- public void setNickname(String nickname) { this.nickname=nickname; }
  public void setGodCard(GodCard godCardPlayer) { this.godCardPlayer=godCardPlayer; }
  public void setBuilder1(Builder builder1) { this.builder1= builder1; }
  public void setBuilder2(Builder builder2) { this.builder2=builder2; }
