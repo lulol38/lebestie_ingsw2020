@@ -226,7 +226,8 @@ public class GUIController {
      */
     public void closeBoard(){
         javafx.application.Platform.runLater(()-> {
-            boardController.close();
+            if(boardController!=null)
+                 boardController.close();
         });
     }
 

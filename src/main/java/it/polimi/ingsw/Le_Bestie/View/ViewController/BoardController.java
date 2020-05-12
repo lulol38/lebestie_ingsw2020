@@ -16,11 +16,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.DrawMode;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Sphere;
 import javafx.stage.Stage;
 import java.lang.reflect.Field;
 import java.util.*;
@@ -263,12 +260,7 @@ public class BoardController{
                         try {
                             field = Class.forName("javafx.scene.paint.Color").getField(b.getGrid()[x][y].getBuilder().getPlayer().getColor().toString());
                             Color color = (Color)field.get(null);
-                            PhongMaterial material = new PhongMaterial();
-                            material.setDiffuseColor(color);
-                            Sphere c = new Sphere(20);
-                            c.setDrawMode(DrawMode.FILL);
-                            c.setMaterial(material);
-                            Node.setGraphic(c);
+                            Node.setGraphic(new Circle(15,15 ,15, color));
 
                         } catch (Exception e) {
                             System.out.println(e.getMessage());
