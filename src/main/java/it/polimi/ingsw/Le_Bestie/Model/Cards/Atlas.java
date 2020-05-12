@@ -44,7 +44,7 @@ public class Atlas extends GodCard{
     public int build(Board b, Builder w, Cell c, boolean usePower) {
 
         if (c.getLevel() == 3)
-            return build(b, w, c, usePower);
+            return super.build(b, w, c, usePower);
 
         if (!checkUsePower)
         //ask client if usePower or not
