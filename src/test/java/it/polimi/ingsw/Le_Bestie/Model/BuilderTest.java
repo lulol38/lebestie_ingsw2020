@@ -3,6 +3,8 @@ package it.polimi.ingsw.Le_Bestie.Model;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Position;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
+import it.polimi.ingsw.Le_Bestie.Model.Builder.BuilderColor;
+import it.polimi.ingsw.Le_Bestie.Model.Cards.GodCard;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
@@ -97,5 +99,13 @@ public class BuilderTest {
         board.getGrid()[2][2].setLevel(3);
 
         assertEquals(builder1.possibleBuilds(board).size(), 1);
+    }
+
+    @Test
+    public void ColorTest(){
+        assertEquals(BuilderColor.getColor("WHITE"), BuilderColor.WHITE);
+        assertEquals(BuilderColor.getColor("BLUE"), BuilderColor.BLUE);
+        assertEquals(BuilderColor.getColor("BROWN"), BuilderColor.BROWN);
+        assertEquals(BuilderColor.getColor("GREEN"), null);
     }
 }

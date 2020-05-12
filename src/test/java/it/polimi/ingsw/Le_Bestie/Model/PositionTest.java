@@ -22,5 +22,8 @@ public class PositionTest {
         assertEquals(p.onGrid(), false);
         p.setX(2);
         assertEquals(p.onGrid(), true);
+
+        Position p1 = new Position(4,4);
+        assertEquals(p1.toString(), "X  4,Y  4");
     }
 }

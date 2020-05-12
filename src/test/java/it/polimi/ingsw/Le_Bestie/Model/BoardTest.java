@@ -28,6 +28,8 @@ public class BoardTest {
         assertNotNull(board.getGrid());
         assertEquals(19,board.getRemainingPieces(1));
 
+        assertEquals(board.getROW(), 5);
+        assertEquals(board.getCOL(), 5);
     }
 
 
