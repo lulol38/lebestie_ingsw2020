@@ -12,6 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 public class HephaestusTest {
 
+
     @Test
     public void Message() {
         GodCard heph = new Hephaestus("Demeter", "path", "descr");
