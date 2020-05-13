@@ -125,6 +125,7 @@ public class Server {
                         }
                         lHelp.setNumPlayersMatch(lobby.getNumPlayersMatch());
                         GameController game = new GameController(lHelp, numGame);
+                        lobby.cleanLobby();
                         activeGames.add(game);
                         return;
                     }

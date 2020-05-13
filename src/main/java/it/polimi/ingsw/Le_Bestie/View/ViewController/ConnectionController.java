@@ -24,6 +24,8 @@ public class ConnectionController {
     @FXML
     Button btnConnect;
     @FXML
+    Button btnBack;
+    @FXML
     AnchorPane connectionPane;
 
     /**
@@ -101,7 +103,9 @@ public class ConnectionController {
         stage.close();
     }
 
-    public void disableButton(){ btnConnect.setDisable(true); }
+    public void disableButton(){
+        btnBack.setDisable(true);
+        btnConnect.setDisable(true); }
 
     /**
      * This method controls if the string in input is a queue of integer( is used for the port)
