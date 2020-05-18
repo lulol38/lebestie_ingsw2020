@@ -4,6 +4,7 @@ import it.polimi.ingsw.Le_Bestie.Model.Board.Board;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Cell;
 import it.polimi.ingsw.Le_Bestie.Model.Board.Position;
 import it.polimi.ingsw.Le_Bestie.Model.Builder.Builder;
+import it.polimi.ingsw.Le_Bestie.Model.Game.MatchState;
 import it.polimi.ingsw.Le_Bestie.Model.Player.Player;
 
 import java.util.ArrayList;
@@ -66,12 +67,12 @@ public class Minotaur extends GodCard{
      */
     @Override
     public int HasLost(Player player, Board b) {
-        if (player.getBuilder1().possibleMoves(b).size() == 0&&player.getBuilder1().notPossibleSwitchMinotaur(b))
+        if (player.getBuilder1().possibleMoves(b).size() == 0&&notPossibleSwitchMinotaur(b, player.getBuilder1()))
             player.getBuilder1().setDisabled(true);
         else
             player.getBuilder1().setDisabled(false);
 
-        if (player.getBuilder2().possibleMoves(b).size() == 0&&player.getBuilder2().notPossibleSwitchMinotaur(b))
+        if (player.getBuilder2().possibleMoves(b).size() == 0&&notPossibleSwitchMinotaur(b, player.getBuilder2()))
             player.getBuilder2().setDisabled(true);
         else
             player.getBuilder2().setDisabled(false);
@@ -80,6 +81,28 @@ public class Minotaur extends GodCard{
             return 1;
 
         return 0;
+    }
+
+    /**
+     * Method that checks if the builder of a player who has Minotaur GodCard, can switch with another player's builder
+     *
+     * @param b the current board
+     * @return if the builder of a player who has Minotaur GodCard, can switch with another player's builder
+     */
+    public boolean notPossibleSwitchMinotaur(Board b, Builder builder) {
+        boolean notMoveUp = MatchState.getNotMoveUp();
+        if (builder.possibleSwitch(b).size() == 0)
+            return true;
+        else {
+            Cell currentCell = b.getGrid()[builder.getPosition().getX()][builder.getPosition().getY()];
+            ArrayList<Cell> possibleSwitch = builder.possibleSwitch(b);
+
+            for (int i = 0; i < possibleSwitch.size(); i++) {
+                if (possibleSwitch.get(i).nextCellFree(b, currentCell) != null)
+                    return false;
+            }
+            return true;
+        }
     }
 }
 

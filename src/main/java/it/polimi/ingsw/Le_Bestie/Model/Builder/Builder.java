@@ -147,27 +147,4 @@ public class Builder implements Serializable {
         return around;
     }
 
-
-    /**
-     * Method that checks if the builder of a player who has Minotaur GodCard, can switch with another player's builder
-     *
-     * @param b the current board
-     * @return if the builder of a player who has Minotaur GodCard, can switch with another player's builder
-     */
-    public boolean notPossibleSwitchMinotaur(Board b) {
-        boolean notMoveUp = MatchState.getNotMoveUp();
-        if (this.possibleSwitch(b).size() == 0)
-            return true;
-        else {
-            Cell currentCell = b.getGrid()[this.getPosition().getX()][this.getPosition().getY()];
-            ArrayList<Cell> possibleSwitch = this.possibleSwitch(b);
-
-            for (int i = 0; i < possibleSwitch.size(); i++) {
-                if (possibleSwitch.get(i).nextCellFree(b, currentCell) != null)
-                    return false;
-            }
-            return true;
-        }
-    }
-
 }
