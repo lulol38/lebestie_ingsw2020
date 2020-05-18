@@ -66,14 +66,14 @@ Uml files are in UML <a href="https://github.com/lulol38/lebestie_ingsw2020/tree
 
 ### Client
 ```
-java --module-path javafx-sdk-14/lib --add-modules javafx.controls --add-modules javafx.fxml -jar Santorini_Client.jar
+java --module-path javafx-sdk-14/lib --add-modules javafx.controls --add-modules javafx.fxml -jar Client.jar
 ```
 
 
 
 ### Server
 ```
-java -jar Santorini_Server.jar
+java -jar Server.jar
 ```
 
 
