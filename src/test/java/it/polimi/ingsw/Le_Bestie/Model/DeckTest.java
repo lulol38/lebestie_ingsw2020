@@ -4,6 +4,9 @@ import it.polimi.ingsw.Le_Bestie.Model.Cards.*;
 import it.polimi.ingsw.Le_Bestie.jsonParser.GodCardsParser;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
+
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
@@ -39,6 +42,9 @@ public class DeckTest {
         assertEquals(1, deck.numberOfCards());
         deck.flush();
         assertEquals(0, deck.numberOfCards());
+
+        ArrayList<GodCard> a = deck.getDeck();
+        assertNotNull(a);
     }
 
     @Test
