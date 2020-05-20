@@ -32,7 +32,7 @@ public class Ares extends GodCard{
         super(name,path,description);
         firstBuilt=false;
         notMovedBuilder=null;
-        Message="Do tou want to remove an unoccupied block (not dome) neighboring your unmoved Worker?";
+        Message="Do tou want to remove an unoccupied block\n(not dome) neighboring your unmoved Worker?";
     }
 
     @Override
