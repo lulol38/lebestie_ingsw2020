@@ -174,6 +174,21 @@ public class GameController {
      * This method handles the request of an action, move or build
      * @param cx coordinate x of the cell for the action
      * @param cy coordinate y of the cell for the action
+     */
+    public void requestAction(int cx, int cy){
+        if(!matchState.getHasMoved()) {
+            int moveResult = matchState.getCurrentPlayer().getGodCard().move(matchState.getBoard(), matchState.getCurrentPlayer().getBuilderChosen(), matchState.getBoard().getGrid()[cx][cy], matchState.getUsePower());
+            checkMoveResult(moveResult);
+        }
+        else{
+            int buildResult = matchState.getCurrentPlayer().getGodCard().build(matchState.getBoard(), matchState.getCurrentPlayer().getBuilderChosen(), matchState.getBoard().getGrid()[cx][cy], matchState.getUsePower());
+            checkBuildResult(buildResult);
+        }
+
+    }
+
+    /**
+     * This method checks the result of a move
      *
      * MOVE
      *
@@ -183,6 +198,38 @@ public class GameController {
      * 3 if the client must choose to use his GodCard's power (if the client chooses "yes" recall the move method with a new selected cell, otherwise go on with the build)
      * 4 if the client must choose to use his GodCard's power (then recall the move method with the same cell, but if the client chooses "yes" usePower=false, otherwise usePower=true)
      *
+     * @param moveRes is the result of the move
+     */
+    public void checkMoveResult(int moveRes){
+        switch (moveRes) {
+            case 0:
+                if(matchState.getCurrentPlayer().getBuilderChosen().getDisabled())
+                    manageHasLost();
+                lobby.getClientsWaiting().get(0).sendMessage(new AskCell());
+                break;
+            case 1:
+                matchState.setHasMoved(true);
+                matchState.setUsePower(false);
+                updateClients();
+                lobby.getClientsWaiting().get(0).sendMessage(new AskCell());
+                break;
+            case 2:
+                setWinner(0);
+                endMatch();
+                break;
+            case 3:
+                updateClients();
+                lobby.getClientsWaiting().get(0).sendMessage(new SendPowerMessage(matchState.getCurrentPlayer().getGodCard().getMessage()));
+                break;
+            case 4:
+                lobby.getClientsWaiting().get(0).sendMessage(new AskUsePower(matchState.getCurrentPlayer().getGodCard().getMessage()));
+                break;
+        }
+    }
+
+    /**
+     * This method checks the result of a build
+     *
      * BUILD
      *
      * 0 if the client can't build in the selected cell
@@ -191,65 +238,34 @@ public class GameController {
      * 3 if the client must choose to use his GodCard's power (if the client chooses "yes" recall the build method with a new selected cell and usePower=false, otherwise recall the build method with the same cell and usePower=true)
      * 4 if the client must choose to use his GodCard's power (then recall the build method with the same cell, but if the client chooses "yes" usePower=false, otherwise usePower=true)
      * 5 if the builder's player won
+     *
+     * @param buildRes is the result of the build
      */
-    public void requestAction(int cx, int cy){
-        if(!matchState.getHasMoved()) {
-            int moveResult = matchState.getCurrentPlayer().getGodCard().move(matchState.getBoard(), matchState.getCurrentPlayer().getBuilderChosen(), matchState.getBoard().getGrid()[cx][cy], matchState.getUsePower());
-
-            switch (moveResult) {
-                case 0:
-                    if(matchState.getCurrentPlayer().getBuilderChosen().getDisabled())
-                        manageHasLost();
-                    lobby.getClientsWaiting().get(0).sendMessage(new AskCell());
-                    break;
-                case 1:
-                    matchState.setHasMoved(true);
-                    matchState.setUsePower(false);
-                    updateClients();
-                    lobby.getClientsWaiting().get(0).sendMessage(new AskCell());
-                    break;
-                case 2:
-                    setWinner(0);
-                    endMatch();
-                    break;
-                case 3:
-                    updateClients();
-                    lobby.getClientsWaiting().get(0).sendMessage(new SendPowerMessage(matchState.getCurrentPlayer().getGodCard().getMessage()));
-                    break;
-                case 4:
-                    lobby.getClientsWaiting().get(0).sendMessage(new AskUsePower(matchState.getCurrentPlayer().getGodCard().getMessage()));
-                    break;
-            }
+    public void checkBuildResult(int buildRes){
+        switch(buildRes){
+            case 0:
+                lobby.getClientsWaiting().get(0).sendMessage(new AskCell());
+                break;
+            case 1:
+                matchState.setUsePower(false);
+                updateClients();
+                nextTurn();
+                break;
+            case 2:
+                lobby.getClientsWaiting().get(0).sendMessage(new AskCellError());
+                break;
+            case 3:
+                updateClients();
+                lobby.getClientsWaiting().get(0).sendMessage(new SendPowerMessage(matchState.getCurrentPlayer().getGodCard().getMessage()));
+                break;
+            case 4:
+                lobby.getClientsWaiting().get(0).sendMessage(new AskUsePower(matchState.getCurrentPlayer().getGodCard().getMessage()));
+                break;
+            case 5:
+                setWinner(0);
+                endMatch();
+                break;
         }
-        else{
-            int buildResult = matchState.getCurrentPlayer().getGodCard().build(matchState.getBoard(), matchState.getCurrentPlayer().getBuilderChosen(), matchState.getBoard().getGrid()[cx][cy], matchState.getUsePower());
-
-            switch(buildResult){
-                case 0:
-                    lobby.getClientsWaiting().get(0).sendMessage(new AskCell());
-                    break;
-                case 1:
-                    matchState.setUsePower(false);
-                    updateClients();
-                    nextTurn();
-                    break;
-                case 2:
-                    lobby.getClientsWaiting().get(0).sendMessage(new AskCellError());
-                    break;
-                case 3:
-                    updateClients();
-                    lobby.getClientsWaiting().get(0).sendMessage(new SendPowerMessage(matchState.getCurrentPlayer().getGodCard().getMessage()));
-                    break;
-                case 4:
-                    lobby.getClientsWaiting().get(0).sendMessage(new AskUsePower(matchState.getCurrentPlayer().getGodCard().getMessage()));
-                    break;
-                case 5:
-                    setWinner(0);
-                    endMatch();
-                    break;
-            }
-        }
-
     }
 
     /**
