@@ -16,7 +16,7 @@ public class ArtemisTest {
     public void Message() {
         GodCard artemis = new Artemis("Artemis", "path", "descr");
         String s = artemis.getMessage();
-        assertEquals(s, "Do you want to move one additional time? (NOT back!!)");
+        assertEquals(s, "Do you want to move one additional time?\n(NOT back!!)");
     }
 
     @Test

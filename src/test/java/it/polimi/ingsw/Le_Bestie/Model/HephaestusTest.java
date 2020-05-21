@@ -17,7 +17,7 @@ public class HephaestusTest {
     public void Message() {
         GodCard heph = new Hephaestus("Hephaestus", "path", "descr");
         String s = heph.getMessage();
-        assertEquals(s, "Do you want to build one additional block on top of your first block?");
+        assertEquals(s, "Do you want to build one additional block\non top of your first block?");
     }
 
     @Test

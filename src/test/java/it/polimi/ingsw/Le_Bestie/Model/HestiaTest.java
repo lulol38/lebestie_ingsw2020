@@ -16,7 +16,7 @@ public class HestiaTest {
     public void Message() {
         GodCard hestia = new Hestia("Hestia", "path", "descr");
         String s = hestia.getMessage();
-        assertEquals(s, "Do you want to build one additional time? (NOT on a perimeter space!)");
+        assertEquals(s, "Do you want to build one additional time? \n(NOT on a perimeter space!)");
     }
 
     @Test

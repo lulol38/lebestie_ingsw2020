@@ -18,7 +18,7 @@ public class PrometheusTest {
     public void Message() {
         GodCard prom = new Prometheus("Prometheus", "path", "descr");
         String s = prom.getMessage();
-        assertEquals(s, "Do you want to build on this cell before moving? (during the move you can't move up!!)");
+        assertEquals(s, "Do you want to build on this cell before\nmoving? (during the move you can't move up!!)");
     }
 
     @Test

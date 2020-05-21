@@ -17,7 +17,7 @@ public class AresTest {
     public void Message(){
         GodCard ares=new Ares("Ares", "path", "descr");
         String s = ares.getMessage();
-        assertEquals(s, "Do tou want to remove an unoccupied block (not dome) neighboring your unmoved Worker?");
+        assertEquals(s, "Do tou want to remove an unoccupied block\n(not dome) neighboring your unmoved Worker?");
     }
 
     @Test

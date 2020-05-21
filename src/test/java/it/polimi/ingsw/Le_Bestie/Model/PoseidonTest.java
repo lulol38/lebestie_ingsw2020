@@ -17,7 +17,7 @@ public class PoseidonTest {
     public void Message() {
         GodCard poseidon = new Poseidon("Poseidon", "path", "descr");
         String s = poseidon.getMessage();
-        assertEquals(s, "Do you want to build another time with the not moved builder?");
+        assertEquals(s, "Do you want to build another time \nwith the not moved builder?");
     }
 
     @Test

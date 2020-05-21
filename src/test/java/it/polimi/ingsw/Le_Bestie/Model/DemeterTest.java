@@ -16,7 +16,7 @@ public class DemeterTest {
     public void Message() {
         GodCard demeter = new Demeter("Demeter", "path", "descr");
         String s = demeter.getMessage();
-        assertEquals(s, "Do you want to build one additional time? (NOT on the same space!)");
+        assertEquals(s, "Do you want to build one additional time?\n(NOT on the same space!)");
     }
 
     @Test
