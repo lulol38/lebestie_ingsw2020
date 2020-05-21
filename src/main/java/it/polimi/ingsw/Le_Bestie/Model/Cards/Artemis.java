@@ -25,7 +25,7 @@ public class Artemis extends GodCard {
     public Artemis(String name,String path,String description) {
         super(name,path,description);
         startingCell = null;
-        Message="Do you want to move one additional time? (NOT back!!)";
+        Message="Do you want to move one additional time?\n(NOT back!!)";
     }
 
     @Override

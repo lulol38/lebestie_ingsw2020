@@ -32,7 +32,7 @@ public class Prometheus extends GodCard{
         super(name,path,description);
         firstBuild=false;
         sendMessage=false;
-        Message="Do you want to build on this cell before moving? (during the move you can't move up!!)";
+        Message="Do you want to build on this cell before\nmoving? (during the move you can't move up!!)";
     }
 
     @Override

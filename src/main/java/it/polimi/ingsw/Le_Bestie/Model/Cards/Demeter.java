@@ -26,7 +26,7 @@ public class Demeter extends GodCard{
     public Demeter(String name,String path,String description) {
         super(name,path,description);
         firstBuiltCell=null;
-        Message="Do you want to build one additional time? (NOT on the same space!)";
+        Message="Do you want to build one additional time?\n(NOT on the same space!)";
     }
 
     @Override

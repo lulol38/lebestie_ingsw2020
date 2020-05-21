@@ -25,7 +25,7 @@ public class Hestia extends GodCard{
     public Hestia(String name,String path,String description) {
         super(name,path,description);
         firstBuilt=false;
-        Message="Do you want to build one additional time? (NOT on a perimeter space!)";
+        Message="Do you want to build one additional time? \n(NOT on a perimeter space!)";
     }
 
     @Override

@@ -19,7 +19,7 @@ public class Poseidon extends GodCard {
 
     public Poseidon(String name,String path,String description) {
         super(name,path,description);
-        Message="Do you want to build another time with the not moved builder?";
+        Message="Do you want to build another time \nwith the not moved builder?";
         cont = 0;
         notMovedBuilder=null;
     }
