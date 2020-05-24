@@ -74,7 +74,7 @@ public class MessageParserClient implements MessageVisitorClient {
      */
     @Override
     public void visit(SendOpponents mex) {
-        BoardController.getInstance().addOpponentsOnBoard(mex.getOpponents(),mex.getOpponentsGods());
+        BoardController.getInstance().addOpponentsOnBoard(mex.getOpponents(),mex.getOpponentsGods(),mex.getOpponentsColors());
     }
 
     /**

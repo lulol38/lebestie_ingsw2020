@@ -54,22 +54,25 @@ public class GameController {
 
         lobby.getClientsWaiting().get(0).sendMessage(new SendBeginTurn());
         ArrayList<String>opponents=new ArrayList<>();
+        ArrayList<String>opponentsColors=new ArrayList<>();
         ArrayList<String>opponentsGods=new ArrayList<>();
         Player current=null;
         int i=0;
         for(ClientHandler c : lobby.getClientsWaiting()) {
             opponents=new ArrayList<>();
             opponentsGods=new ArrayList<>();
+            opponentsColors=new ArrayList<>();
             for (Player p : matchState.getPlayers()) {
                 if (p.getNickname().compareTo(lobby.getClientsWaiting().get(i).getUsername()) != 0) {
                     opponents.add(p.getNickname());
                     opponentsGods.add(p.getGodCard().getName());
+                    opponentsColors.add(p.getColor().toString());
                 }
                 if (p.getNickname().compareTo(lobby.getClientsWaiting().get(i).getUsername()) == 0){
                     current = p;
                 }
             }
-            lobby.getClientsWaiting().get(i).sendMessage(new SendOpponents(opponents, opponentsGods));
+            lobby.getClientsWaiting().get(i).sendMessage(new SendOpponents(opponents, opponentsGods,opponentsColors));
             lobby.getClientsWaiting().get(i).sendMessage(new SendCardToPlayers(current.getGodCard().getName(), current.getColor().toString(),current.getGodCard().getPath(),current.getGodCard().getDescription()));
             i++;
         }

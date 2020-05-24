@@ -61,6 +61,10 @@ public class BoardController{
     @FXML
     Rectangle rect;
     @FXML
+    Rectangle rect1;
+    @FXML
+    Rectangle rect2;
+    @FXML
     AnchorPane boardPane;
     @FXML
     Label lblDescription;
@@ -122,7 +126,7 @@ public class BoardController{
      */
     public void BuilderPositions(){
         javafx.application.Platform.runLater(() -> {
-            lblMessages.setText("Add workers to board");
+            lblMessages.setText("ADD WORKERS TO THE BOARD");
         });
     }
 
@@ -134,7 +138,7 @@ public class BoardController{
             s=false;
             setSelectedBuilderX(10);
             setSelectedBuilderY(10);
-            lblMessages.setText("Select a worker");
+            lblMessages.setText("SELECT A WORKER");
         });
     }
     /**
@@ -144,7 +148,7 @@ public class BoardController{
         javafx.application.Platform.runLater(()->{
             setSelectedCellX(10);
             setSelectedCellY(10);
-            lblMessages.setText("Select a cell");
+            lblMessages.setText("SELECT A CELL");
         });
     }
 
@@ -363,13 +367,15 @@ public class BoardController{
      * @param opponents are nicknames of other players
      * @param opponentsGods are names of cards drawn by other players
      */
-    public void addOpponentsOnBoard(ArrayList<String> opponents, ArrayList<String> opponentsGods) {
+    public void addOpponentsOnBoard(ArrayList<String> opponents, ArrayList<String> opponentsGods, ArrayList<String> opponentsColors) {
         javafx.application.Platform.runLater(()-> {
             for(int j=0;j<opponents.size();j++){
                 if(j==1){
                     lblOpponents2.setText(opponents.get(j)+" with "+opponentsGods.get(j));
+                    rect2.setFill(Color.valueOf(opponentsColors.get(j)));
                     break;
                 }
+                rect1.setFill(Color.valueOf(opponentsColors.get(j)));
                 lblOpponents1.setText(opponents.get(j)+" with "+opponentsGods.get(j));
             }
 

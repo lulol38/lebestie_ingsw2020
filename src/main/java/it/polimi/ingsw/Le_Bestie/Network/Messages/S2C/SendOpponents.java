@@ -13,10 +13,12 @@ public class SendOpponents extends S2C {
 
     private ArrayList<String>opponents;
     private ArrayList<String> opponentsGods;
+    private ArrayList<String>opponentsColors;
 
-    public SendOpponents(ArrayList<String>opponents,ArrayList<String>opponentsGods){
+    public SendOpponents(ArrayList<String>opponents,ArrayList<String>opponentsGods,ArrayList<String>opponentsColors){
         this.opponentsGods=opponentsGods;
         this.opponents=opponents;
+        this.opponentsColors=opponentsColors;
     }
 
     //Getter
@@ -26,7 +28,9 @@ public class SendOpponents extends S2C {
     public ArrayList<String> getOpponentsGods() {
         return opponentsGods;
     }
-
+    public ArrayList<String> getOpponentsColors() {
+        return opponentsColors;
+    }
     /**
      * Visitor pattern
      * @param visitor
