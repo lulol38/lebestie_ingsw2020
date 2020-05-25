@@ -48,7 +48,7 @@ Complete rules are available [HERE](http://www.craniocreations.it/prodotto/santo
 - [ ] State of Game Persistent 
 - [X] Advanced Gods *
 ```
-*Five advanced gods: Ares, Chronus, Hestia, Poseidon, Zeus.
+*Five advanced gods: Ares, Triton , Hestia, Poseidon, Zeus.
 
 ## DOCUMENTATION
 ### UML
