@@ -58,7 +58,7 @@
                 <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
             </children>
         </GridPane>
-        <Label fx:id="lblMessages" alignment="CENTER" contentDisplay="CENTER" layoutX="236.0" layoutY="408.0" prefHeight="30.0" prefWidth="333.0" style="-fx-background-color: POWDERBLUE; -fx-border-color: BLACK;" text="SANTORINI GAME" textAlignment="CENTER">
+        <Label fx:id="lblMessages" alignment="CENTER" contentDisplay="CENTER" layoutX="236.0" layoutY="408.0" prefHeight="38.0" prefWidth="333.0" style="-fx-background-color: POWDERBLUE; -fx-border-color: BLACK;" text="SANTORINI GAME" textAlignment="CENTER">
             <font>
                 <Font name="Cambria" size="13.0" />
             </font>
