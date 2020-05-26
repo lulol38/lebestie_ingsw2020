@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -200,7 +201,23 @@ public class GUIController {
                     Scene scene = new Scene(root);
                     stage.setTitle("SANTORINI");
                     stage.getIcons().add(new Image(GUI.class.getClassLoader().getResourceAsStream("images/icon.png")));
-                    stage.initStyle(StageStyle.DECORATED);
+                    final double[] x = {0};
+                    final double[] y = {0};
+                    root.setOnMousePressed(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            x[0] = event.getSceneX();
+                            y[0] = event.getSceneY();
+                        }
+                    });
+                    root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            stage.setX(event.getScreenX() - x[0]);
+                            stage.setY(event.getScreenY() - y[0]);
+                        }
+                    });
+                    stage.initStyle(StageStyle.UNDECORATED);
                     stage.setResizable(false);
                     stage.setScene(scene);
                     stage.show();
@@ -267,7 +284,23 @@ public class GUIController {
                     stage.setScene(scene);
                     stage.setResizable(false);
                     stage.getIcons().add(new Image(GUI.class.getClassLoader().getResourceAsStream("images/icon.png")));
-                    stage.initStyle(StageStyle.DECORATED);
+                    final double[] x = {0};
+                    final double[] y = {0};
+                    root.setOnMousePressed(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            x[0] = event.getSceneX();
+                            y[0] = event.getSceneY();
+                        }
+                    });
+                    root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            stage.setX(event.getScreenX() - x[0]);
+                            stage.setY(event.getScreenY() - y[0]);
+                        }
+                    });
+                    stage.initStyle(StageStyle.UNDECORATED);
                     stage.show();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -288,12 +321,27 @@ public class GUIController {
                     Parent root = null;
                     root = FXMLLoader.load(getClass().getResource("/fxml/lostStage.fxml"));
                     Scene scene = new Scene(root);
-
+                    final double[] x = {0};
+                    final double[] y = {0};
+                    root.setOnMousePressed(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            x[0] = event.getSceneX();
+                            y[0] = event.getSceneY();
+                        }
+                    });
+                    root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            stage.setX(event.getScreenX() - x[0]);
+                            stage.setY(event.getScreenY() - y[0]);
+                        }
+                    });
                     stage.setTitle("LOST");
                     stage.setScene(scene);
                     stage.setResizable(false);
                     stage.getIcons().add(new Image(GUI.class.getClassLoader().getResourceAsStream("images/icon.png")));
-                    stage.initStyle(StageStyle.DECORATED);
+                    stage.initStyle(StageStyle.UNDECORATED);
                     stage.show();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -316,7 +364,23 @@ public class GUIController {
                     Scene scene = new Scene(root);
                     stage.setTitle("SANTORINI");
                     stage.getIcons().add(new Image(GUI.class.getClassLoader().getResourceAsStream("images/icon.png")));
-                    stage.initStyle(StageStyle.DECORATED);
+                    final double[] x = {0};
+                    final double[] y = {0};
+                    root.setOnMousePressed(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            x[0] = event.getSceneX();
+                            y[0] = event.getSceneY();
+                        }
+                    });
+                    root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            stage.setX(event.getScreenX() - x[0]);
+                            stage.setY(event.getScreenY() - y[0]);
+                        }
+                    });
+                    stage.initStyle(StageStyle.UNDECORATED);
                     stage.setResizable(false);
                     stage.setScene(scene);
                     stage.show();

@@ -58,7 +58,7 @@
                 <Label onMouseClicked="#getCell" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
             </children>
         </GridPane>
-        <Label fx:id="lblMessages" alignment="CENTER" contentDisplay="CENTER" layoutX="236.0" layoutY="408.0" prefHeight="38.0" prefWidth="333.0" style="-fx-background-color: POWDERBLUE; -fx-border-color: BLACK;" text="SANTORINI GAME" textAlignment="CENTER">
+        <Label fx:id="lblMessages" alignment="CENTER" contentDisplay="CENTER" layoutX="236.0" layoutY="408.0" prefHeight="38.0" prefWidth="333.0" style="-fx-background-color: POWDERBLUE; -fx-border-color: BLACK;" text="WELCOME TO THE ISLAND OF SANTORINI" textAlignment="CENTER">
             <font>
                 <Font name="Cambria" size="13.0" />
             </font>
@@ -106,7 +106,7 @@
                 <Label alignment="TOP_RIGHT" prefHeight="83.0" prefWidth="78.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
             </children>
         </GridPane>
-        <Label fx:id="lblCard" alignment="CENTER" layoutX="14.0" layoutY="324.0" prefHeight="30.0" prefWidth="201.0">
+        <Label fx:id="lblCard" alignment="CENTER" layoutX="4.0" layoutY="315.0" prefHeight="30.0" prefWidth="201.0">
             <font>
                 <Font size="20.0" />
             </font></Label>
@@ -130,27 +130,27 @@
                 <Image url="@../images/power/heropower_inactive.png" />
             </image>
         </ImageView>
-      <ImageView fitHeight="239.0" fitWidth="192.0" layoutX="610.0" layoutY="195.0">
+      <ImageView fitHeight="237.0" fitWidth="207.0" layoutX="595.0" layoutY="197.0">
          <image>
             <Image url="@../images/boardP.png" />
          </image>
       </ImageView>
           <Label fx:id="lblOpponents1" alignment="CENTER" layoutX="655.0" layoutY="322.0" prefHeight="38.0" prefWidth="102.0">
               <font>
-                  <Font name="Cambria Bold" size="9.0" />
+                  <Font name="Cambria Bold" size="10.0" />
               </font>
           </Label>
-          <Label alignment="CENTER" layoutX="608.0" layoutY="300.0" prefHeight="30.0" prefWidth="192.0" text="Other players in the game:">
+          <Label alignment="CENTER" layoutX="603.0" layoutY="300.0" prefHeight="30.0" prefWidth="192.0" text="Other players in the game:">
               <font>
                   <Font name="Cambria" size="9.0" />
               </font>
       </Label>
-          <Label fx:id="lblOpponents2" alignment="CENTER" layoutX="655.0" layoutY="340.0" prefHeight="38.0" prefWidth="102.0">
+          <Label fx:id="lblOpponents2" alignment="CENTER" layoutX="655.0" layoutY="346.0" prefHeight="38.0" prefWidth="102.0">
               <font>
                   <Font name="Cambria Bold" size="9.0" />
               </font>
           </Label>
-      <Rectangle fx:id="rect1" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="11.0" layoutX="645.0" layoutY="334.0" strokeType="INSIDE" width="12.0" />
-      <Rectangle fx:id="rect2" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="11.0" layoutX="645.0" layoutY="359.0" strokeType="INSIDE" width="12.0" />
+      <Rectangle fx:id="rect1" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="11.0" layoutX="633.0" layoutY="336.0" strokeType="INSIDE" width="12.0" />
+      <Rectangle fx:id="rect2" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="11.0" layoutX="633.0" layoutY="360.0" strokeType="INSIDE" width="12.0" />
     </children>
 </AnchorPane>

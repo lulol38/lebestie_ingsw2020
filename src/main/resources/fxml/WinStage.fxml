@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="winPane" prefHeight="305.0" prefWidth="347.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.Le_Bestie.View.ViewController.WinController" >
+<AnchorPane fx:id="winPane" prefHeight="308.0" prefWidth="366.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.Le_Bestie.View.ViewController.WinController">
 
    <stylesheets>
       <URL value="@../css/Score.css" />
@@ -13,22 +13,22 @@
 
    <children>
 
-      <ImageView fitHeight="305.0" fitWidth="348.0">
+      <ImageView fitHeight="308.0" fitWidth="366.0" layoutY="2.0">
          <image>
             <Image url="@../images/win/Odyssey_Win.png" />
          </image>
       </ImageView>
 
-      <ImageView fitHeight="118.0" fitWidth="116.0" layoutX="116.0" layoutY="70.0">
+      <ImageView fitHeight="118.0" fitWidth="116.0" layoutX="125.0" layoutY="69.0">
          <image>
             <Image url="@../images/win/trophy.png" />
          </image>
       </ImageView>
 
-      <Label layoutX="75.0" layoutY="32.0" text="YOU WIN!" />
+      <Label layoutX="84.0" layoutY="28.0" text="YOU WIN!" />
 
-      <Button fx:id="btnRejoin" layoutX="133.0" layoutY="194.0" onAction="#pressRejoin"  mnemonicParsing="false" prefHeight="36.0" prefWidth="82.0" text="REJOIN" />
-      <Button fx:id="btnQuit" layoutX="133.0" layoutY="241.0" onAction="#pressQuit" mnemonicParsing="false" prefHeight="36.0" prefWidth="82.0" text="QUIT" />
+      <Button fx:id="btnRejoin" layoutX="142.0" layoutY="187.0" mnemonicParsing="false" onAction="#pressRejoin" prefHeight="36.0" prefWidth="82.0" text="REJOIN" />
+      <Button fx:id="btnQuit" layoutX="142.0" layoutY="240.0" mnemonicParsing="false" onAction="#pressQuit" prefHeight="36.0" prefWidth="82.0" text="QUIT" />
 
    </children>
 </AnchorPane>
