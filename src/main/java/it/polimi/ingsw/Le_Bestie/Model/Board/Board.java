@@ -28,6 +28,8 @@ public class Board implements Serializable {
      */
     private ArrayList<Integer> remainingPieces;
 
+    private boolean notMoveUp;
+
     /**
      * Builds the new board with every cell at level zero
      */
@@ -53,6 +55,12 @@ public class Board implements Serializable {
     public Cell[][] getGrid() {
         return this.grid;
     }
+    public boolean getNotMoveUp() { return notMoveUp; }
+
+    /**
+     * Setter
+     */
+    public void setNotMoveUp(boolean notmoveup) { notMoveUp=notmoveup; }
 
     /**
      * Method to remove building piece just used in the build, from the array that counts available pieces

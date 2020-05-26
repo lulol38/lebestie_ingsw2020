@@ -28,13 +28,13 @@ public class Athena extends GodCard{
      */
     @Override
     public int move(Board b, Builder w, Cell c, boolean usePower) {
-        MatchState.setNotMoveUp(false);
+        b.setNotMoveUp(false);
         int startingLevel=b.getGrid()[w.getPosition().getX()][w.getPosition().getY()].getLevel();
         int x=super.move(b,w,c,usePower);
         if(x==1) {
             //Athena power
             if (c.getLevel() > startingLevel)
-                MatchState.setNotMoveUp(true);
+                b.setNotMoveUp(true);
               return 1;
         }
         else

@@ -72,11 +72,11 @@ public class Prometheus extends GodCard{
                 int x=build(b, w, c, usePower);
                 if(x==1) {
                     firstBuild = true;
-                    boolean temp = MatchState.getNotMoveUp();
-                    MatchState.setNotMoveUp(true);
+                    boolean temp = b.getNotMoveUp();
+                    b.setNotMoveUp(true);
                     if(w.possibleMoves(b).size()==0)
                         w.setDisabled(true);
-                    MatchState.setNotMoveUp(temp);
+                    b.setNotMoveUp(temp);
                     return 0;
                 }
                 return x;

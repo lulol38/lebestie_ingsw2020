@@ -21,7 +21,6 @@ public class MatchState{
     private Deck deck;
     private boolean usePower;
     private boolean hasMoved;
-    private static boolean notMoveUp;
     private ArrayList<Player> players = new ArrayList<Player>();
 
     //CONSTRUCTOR
@@ -48,12 +47,6 @@ public class MatchState{
     }
     public void setHasMoved(boolean hasMoved) {
         this.hasMoved=hasMoved;
-    }
-    public static void setNotMoveUp(boolean notmoveup) {
-        notMoveUp=notmoveup;
-    }
-    public static boolean getNotMoveUp() {
-        return notMoveUp;
     }
 
     /**

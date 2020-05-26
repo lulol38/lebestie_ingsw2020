@@ -90,7 +90,7 @@ public class Minotaur extends GodCard{
      * @return if the builder of a player who has Minotaur GodCard, can switch with another player's builder
      */
     public boolean notPossibleSwitchMinotaur(Board b, Builder builder) {
-        boolean notMoveUp = MatchState.getNotMoveUp();
+        boolean notMoveUp = b.getNotMoveUp();
         if (builder.possibleSwitch(b).size() == 0)
             return true;
         else {

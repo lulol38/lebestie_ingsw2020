@@ -54,7 +54,7 @@ public class Builder implements Serializable {
      * @return an array of cells in which the builder can move
      */
     public ArrayList<Cell> possibleMoves(Board b) {
-        boolean notmoveup = MatchState.getNotMoveUp();
+        boolean notmoveup = b.getNotMoveUp();
         Cell currentCell=b.getGrid()[this.getPosition().getX()][this.getPosition().getY()];
         ArrayList<Position> possibleMoves = new ArrayList<>();
         int x = this.getPosition().getX();
@@ -118,7 +118,7 @@ public class Builder implements Serializable {
      * @return an array of cells in which the builder can switch
      */
     public ArrayList<Cell> possibleSwitch(Board b) {
-        boolean notmoveup = MatchState.getNotMoveUp();
+        boolean notmoveup = b.getNotMoveUp();
         Cell currentCell=b.getGrid()[this.getPosition().getX()][this.getPosition().getY()];
         ArrayList<Position> possibleMoves = new ArrayList<>();
         int x = this.getPosition().getX();
