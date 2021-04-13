@@ -20,7 +20,7 @@ The game has been developed in JAVA as a Software Engineering project at Politec
 ## TEAM MEMBERS
 <table style="margin-left: auto; margin-right: auto">
 <thead>
-<tr><th>NAME</th><th>USER</th><th>EMAIL</th></tr>
+<tr><th>NAME</th><th>EMAIL</th></tr>
 </thead>
 <tbody>
 <tr><td><a href="https://github.com/veronicarovelli">Veronica Rovelli<a/></td><td align="center">veronica.rovelli@mail.polimi.it</td> </tr>
