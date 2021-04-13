@@ -79,7 +79,7 @@ java -jar Server.jar
 
 ### GOOD FUN! :call_me_hand:
 
-## CREDITS
+## CREDITS AND LICENSE
 Santorini is a trademark of Gordon Hamilton and Roxley Games.
 
 The graphical resources copyright is held by Roxley Games, which provided the mentioned resources for educational purposes only.
