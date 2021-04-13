@@ -82,4 +82,6 @@ java -jar Server.jar
 ## CREDITS
 Santorini is a trademark of Gordon Hamilton and Roxley Games.
 
+The graphical resources copyright is held by Roxley Games, which provided the mentioned resources for educational purposes only.
+
 Copyright (C) 2020 Davide Carini, Veronica Rovelli, Luca Ferrari
