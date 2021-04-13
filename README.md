@@ -23,9 +23,9 @@ The game has been developed in JAVA as a Software Engineering project at Politec
 <tr><th>NAME</th><th>USER</th><th>EMAIL</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="https://github.com/veronicarovelli">Veronica Rovelli<a/></td><td align="center">890673</td><td align="center">veronica.rovelli@mail.polimi.it</td> </tr>
-<tr><td><a href="https://github.com/lulol38"> Luca Ferrari <a/></td><td align="center">886557</td><td align="center">luca.ferrari23@mail.polimi.it</td></tr>
-<tr><td><a href="https://github.com/davidecarini">Davide Carini<a/></td><td align="center">890034</td><td align="center">davide.carini@mail.polimi.it</td></tr>
+<tr><td><a href="https://github.com/veronicarovelli">Veronica Rovelli<a/></td><td align="center">veronica.rovelli@mail.polimi.it</td> </tr>
+<tr><td><a href="https://github.com/lulol38"> Luca Ferrari <a/></td><td align="center">luca.ferrari23@mail.polimi.it</td></tr>
+<tr><td><a href="https://github.com/davidecarini">Davide Carini<a/></td><td align="center">davide.carini@mail.polimi.it</td></tr>
 </tbody>
 </table>
 
